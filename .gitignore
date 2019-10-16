@@ -107,4 +107,5 @@ venv.bak/
 *.swp
 *~
 *.bak
+*.sh
 

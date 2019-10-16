@@ -5,5 +5,7 @@ theme:
     name: readthedocs
 nav:
   - 'Home': index.md
-  - 'Overview': overview.md
+  - 'API':
+    - 'Overview': overview.md
+    - 'Object Detection': object_detection.md
 
