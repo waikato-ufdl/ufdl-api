@@ -11,3 +11,4 @@ Requirements for user management:
     * manage datasets
     * schedule jobs (eg building a model on a dataset)
 
+* suport for one or more organization-wide admins
