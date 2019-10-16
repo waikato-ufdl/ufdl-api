@@ -5,7 +5,8 @@ theme:
     name: readthedocs
 nav:
   - 'Home': index.md
-  - 'API':
-    - 'Overview': overview.md
+  - 'User management': user_management.md
+  - 'Job execution': jobs.md
+  - 'Application domains':
     - 'Object Detection': object_detection.md
 
