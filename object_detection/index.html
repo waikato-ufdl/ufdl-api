@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Object Detection - UFDL API</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Object Detection";
+    var mkdocs_page_input_path = "object_detection.md";
+    var mkdocs_page_url = "/waikato-datamining/ufdl-api/object_detection/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> UFDL API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../user_management/">User management</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../jobs/">Job execution</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Application domains</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Object Detection</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#use-cases">Use-cases</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#create-dataset">Create dataset</a></li>
+        
+            <li><a class="toctree-l4" href="#delete-dataset">Delete dataset</a></li>
+        
+            <li><a class="toctree-l4" href="#modify-dataset">Modify dataset</a></li>
+        
+            <li><a class="toctree-l4" href="#download">Download</a></li>
+        
+            <li><a class="toctree-l4" href="#other">Other</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#notes">Notes</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#annotation-formats">Annotation formats</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">UFDL API</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Application domains &raquo;</li>
+        
+      
+    
+    <li>Object Detection</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><a href="https://en.wikipedia.org/wiki/Object_detection">Object detection</a> or 
+<a href="https://en.wikipedia.org/wiki/Object_Co-segmentation">object co-segmentation</a>
+is used for detecting specific types of objects in images. For this to work, 
+images need to be annotated with the relevant regions highlighted. The regions 
+can either be simple bounding boxes or polygons that align to the shape of the 
+objects.</p>
+<h1 id="use-cases">Use-cases</h1>
+<p>The following use-cases must be covered </p>
+<h2 id="create-dataset">Create dataset</h2>
+<p>requires: </p>
+<ul>
+<li>name of dataset</li>
+<li>project it belongs to (optional; default is <em>all</em> project)</li>
+<li>users allowed to manage it (optional; default is <em>only</em> user creating it)</li>
+</ul>
+<h2 id="delete-dataset">Delete dataset</h2>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+</ul>
+<h2 id="modify-dataset">Modify dataset</h2>
+<p>Sub use-cases:</p>
+<h3 id="add-image">Add image</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to add to</li>
+</ul>
+<h3 id="add-annotations">Add annotations</h3>
+<p>Automatically replaces any existing annotations for an image.</p>
+<p>requires:</p>
+<ul>
+<li>name of dataset to add to</li>
+<li>name of image to add to</li>
+</ul>
+<h3 id="delete-image">Delete image</h3>
+<p>Automatically removes any associated annotations.</p>
+<p>requires:</p>
+<ul>
+<li>name of dataset to remove from</li>
+<li>name of image to remove</li>
+</ul>
+<h3 id="delete-annotations">Delete annotations</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to remove from</li>
+</ul>
+<h3 id="replace-annotations">Replace annotations</h3>
+<p>See <em>Add annotations</em>.</p>
+<h2 id="download">Download</h2>
+<h3 id="download-image">Download image</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+<li>name of image</li>
+</ul>
+<h3 id="download-annotations">Download annotations</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+<li>annotation format</li>
+</ul>
+<h3 id="download-dataset">Download dataset</h3>
+<p>Downloads the complete dataset as ZIP file.</p>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+<li>annotation format</li>
+</ul>
+<h2 id="other">Other</h2>
+<h3 id="bulk-upload">Bulk upload</h3>
+<p>Uploads a complete dataset as ZIP file. Replaces any existing images
+with the same names and their associated annotations.</p>
+<p>To be used when annotating data with third-party tools like ADAMS.</p>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+<li>type of annotations</li>
+</ul>
+<h3 id="pre-label-images">Pre-label images</h3>
+<p>Upload images as ZIP file and submits a job for labeling them.</p>
+<p>requires:</p>
+<ul>
+<li>annotation format</li>
+<li>name of model to use for pre-labeling</li>
+<li>
+<p>either:</p>
+<ul>
+<li>send email with annotations for images</li>
+<li>add images and their annotations to existing dataset (requires dataset name then)</li>
+</ul>
+</li>
+</ul>
+<h1 id="notes">Notes</h1>
+<h2 id="annotation-formats">Annotation formats</h2>
+<p>The following annotation formats need to be supported:</p>
+<ul>
+<li>
+<p>ADAMS reports</p>
+<ul>
+<li>simple <a href="https://en.wikipedia.org/wiki/.properties">Java properties</a> files</li>
+<li>extension <code>.report</code></li>
+<li>annotation format: <code>Object.XYZ.{y|y|width|height|poly_x|poly_y}</code> (<code>poly_x</code> and 
+  <code>poly_y</code> are only used for object shapes; the numeric <code>XYZ</code> index ties the 
+  various properties for an object together)</li>
+</ul>
+</li>
+<li>
+<p><a href="http://cocodataset.org/#format-data">MS COCO JSON</a></p>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../jobs/" class="btn btn-neutral" title="Job execution"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../jobs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

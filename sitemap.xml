@@ -6,7 +6,17 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://github.com/waikato-datamining/ufdl-api/overview/</loc>
+     <loc>https://github.com/waikato-datamining/ufdl-api/user_management/</loc>
+     <lastmod>2019-10-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://github.com/waikato-datamining/ufdl-api/jobs/</loc>
+     <lastmod>2019-10-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://github.com/waikato-datamining/ufdl-api/object_detection/</loc>
      <lastmod>2019-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
