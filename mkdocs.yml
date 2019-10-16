@@ -1,0 +1,9 @@
+site_name: UFDL API
+site_url: https://github.com/waikato-datamining/ufdl-api
+site_description: API documentation for the user-friendly deep-learning (UFDL) framework.
+theme:
+    name: readthedocs
+nav:
+  - 'Home': index.md
+  - 'Overview': overview.md
+

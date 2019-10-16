@@ -1,0 +1,4 @@
+Contains the API documentation for the user-friendly deep-learning (UFDL) framework.
+
+For a general API overview, see [this article](overview.md).
+
