@@ -20,6 +20,7 @@ requires:
     * license
     * origin URL
     * description (input nodes, dimensions, etc)
+    * data domain(s)
     * ...
 
 ## Delete model
@@ -39,6 +40,15 @@ requires:
   * model name
   * format
   * version
+
+
+## Search
+
+parameters:
+
+  * data domain
+  * license
+  * ...
 
 
 # Final models
