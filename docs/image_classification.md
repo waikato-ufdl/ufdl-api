@@ -13,6 +13,8 @@ requires:
   * name of dataset
   * project it belongs to (optional; default is *all* project)
   * users allowed to manage it (optional; default is *only* user creating it)
+  * license (default: proprietary, ie all rights reserved)
+  * optional tag(s)
 
 
 ## Delete dataset
@@ -20,6 +22,13 @@ requires:
 requires:
 
   * name of dataset
+
+
+## List datasets
+
+requires:
+
+  * filters for tags, license, ...
 
 
 ## Modify dataset
@@ -56,6 +65,20 @@ requires:
 
   * name of dataset to remove from
   * name of image(s) to remove from
+
+### Change license
+
+requires:
+
+  * name of dataset to update
+  * license
+
+### Tag dataset
+
+requires:
+
+  * name of dataset to tag
+  * tag(s)
 
 
 ## Download 
