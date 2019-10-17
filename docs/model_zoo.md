@@ -69,6 +69,7 @@ requires:
 
     * license
     * description (input nodes, dimensions, etc)
+    * results on validation/test datasets
     * ...
 
 ## Delete model
