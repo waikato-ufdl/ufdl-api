@@ -84,6 +84,8 @@
         
             <li><a class="toctree-l4" href="#delete-dataset">Delete dataset</a></li>
         
+            <li><a class="toctree-l4" href="#list-datasets">List datasets</a></li>
+        
             <li><a class="toctree-l4" href="#modify-dataset">Modify dataset</a></li>
         
             <li><a class="toctree-l4" href="#download">Download</a></li>
@@ -168,11 +170,18 @@ objects.</p>
 <li>name of dataset</li>
 <li>project it belongs to (optional; default is <em>all</em> project)</li>
 <li>users allowed to manage it (optional; default is <em>only</em> user creating it)</li>
+<li>license (default: proprietary, ie all rights reserved)</li>
+<li>optional tag(s)</li>
 </ul>
 <h2 id="delete-dataset">Delete dataset</h2>
 <p>requires:</p>
 <ul>
 <li>name of dataset</li>
+</ul>
+<h2 id="list-datasets">List datasets</h2>
+<p>requires:</p>
+<ul>
+<li>filters for tags, license, ...</li>
 </ul>
 <h2 id="modify-dataset">Modify dataset</h2>
 <p>Sub use-cases:</p>
@@ -203,6 +212,18 @@ objects.</p>
 </ul>
 <h3 id="replace-annotations">Replace annotations</h3>
 <p>See <em>Add annotations</em>.</p>
+<h3 id="change-license">Change license</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to update</li>
+<li>license</li>
+</ul>
+<h3 id="tag-dataset">Tag dataset</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to tag</li>
+<li>tag(s)</li>
+</ul>
 <h2 id="download">Download</h2>
 <h3 id="download-image">Download image</h3>
 <p>requires:</p>
@@ -271,7 +292,7 @@ with the same names and their associated annotations.</p>
 <p>Users must be able to flag a dataset as being public, i.e., being accessible
 without requiring login. Can be used for research datasets.</p>
 <h2 id="dependent-models">Dependent models</h2>
-<p>Datasets cannot be deleted if final models are in the model zoo depending on them.</p>
+<p>Datasets cannot be deleted if final models in the model zoo depend on them.</p>
               
             </div>
           </div>

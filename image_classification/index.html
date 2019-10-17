@@ -80,6 +80,8 @@
         
             <li><a class="toctree-l4" href="#delete-dataset">Delete dataset</a></li>
         
+            <li><a class="toctree-l4" href="#list-datasets">List datasets</a></li>
+        
             <li><a class="toctree-l4" href="#modify-dataset">Modify dataset</a></li>
         
             <li><a class="toctree-l4" href="#download">Download</a></li>
@@ -165,11 +167,18 @@ or a face.</p>
 <li>name of dataset</li>
 <li>project it belongs to (optional; default is <em>all</em> project)</li>
 <li>users allowed to manage it (optional; default is <em>only</em> user creating it)</li>
+<li>license (default: proprietary, ie all rights reserved)</li>
+<li>optional tag(s)</li>
 </ul>
 <h2 id="delete-dataset">Delete dataset</h2>
 <p>requires:</p>
 <ul>
 <li>name of dataset</li>
+</ul>
+<h2 id="list-datasets">List datasets</h2>
+<p>requires:</p>
+<ul>
+<li>filters for tags, license, ...</li>
 </ul>
 <h2 id="modify-dataset">Modify dataset</h2>
 <p>Sub use-cases:</p>
@@ -198,6 +207,18 @@ or a face.</p>
 <ul>
 <li>name of dataset to remove from</li>
 <li>name of image(s) to remove from</li>
+</ul>
+<h3 id="change-license">Change license</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to update</li>
+<li>license</li>
+</ul>
+<h3 id="tag-dataset">Tag dataset</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to tag</li>
+<li>tag(s)</li>
 </ul>
 <h2 id="download">Download</h2>
 <h3 id="download-image">Download image</h3>
