@@ -51,13 +51,14 @@ Automatically removes any associated annotations.
 requires:
 
   * name of dataset to remove from
-  * name of image to remove
+  * name of image(s) to remove
 
 ### Delete annotations
 
 requires:
 
   * name of dataset to remove from
+  * name of image(s) to remove them from
 
 ### Replace annotations
 
@@ -119,6 +120,11 @@ requires:
 
 # Notes
 
+## Versioning
+
+How to do versioning? Simple copy?
+
+
 ## Annotation formats
 
 The following annotation formats need to be supported:
@@ -132,4 +138,13 @@ The following annotation formats need to be supported:
       various properties for an object together)
 
   * [MS COCO JSON](http://cocodataset.org/#format-data)
+
+## Public datasets
+
+Users must be able to flag a dataset as being public, i.e., being accessible
+without requiring login. Can be used for research datasets.
+
+## Dependent models
+
+Datasets cannot be deleted if final models are in the model zoo depending on them.
 
