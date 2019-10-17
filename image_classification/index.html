@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Object Detection - UFDL API</title>
+  <title>Image classification - UFDL API</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Object Detection";
-    var mkdocs_page_input_path = "object_detection.md";
-    var mkdocs_page_url = "/waikato-datamining/ufdl-api/object_detection/";
+    var mkdocs_page_name = "Image classification";
+    var mkdocs_page_input_path = "image_classification.md";
+    var mkdocs_page_url = "/waikato-datamining/ufdl-api/image_classification/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -67,13 +67,9 @@
 		
     <span class="caption-text">Data domains</span>
     <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../image_classification/">Image classification</a>
-                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Object Detection</a>
+    <a class="current" href="./">Image classification</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#use-cases">Use-cases</a></li>
@@ -99,7 +95,7 @@
         
             <li><a class="toctree-l4" href="#versioning">Versioning</a></li>
         
-            <li><a class="toctree-l4" href="#annotation-formats">Annotation formats</a></li>
+            <li><a class="toctree-l4" href="#category-formats">Category formats</a></li>
         
             <li><a class="toctree-l4" href="#public-datasets">Public datasets</a></li>
         
@@ -109,6 +105,10 @@
     
 
     </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../object_detection/">Object Detection</a>
                 </li>
     </ul>
 	    </li>
@@ -144,7 +144,7 @@
         
       
     
-    <li>Object Detection</li>
+    <li>Image classification</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -154,14 +154,11 @@
           <div role="main">
             <div class="section">
               
-                <p><a href="https://en.wikipedia.org/wiki/Object_detection">Object detection</a> or 
-<a href="https://en.wikipedia.org/wiki/Object_Co-segmentation">object co-segmentation</a>
-is used for detecting specific types of objects in images. For this to work, 
-images need to be annotated with the relevant regions highlighted. The regions 
-can either be simple bounding boxes or polygons that align to the shape of the 
-objects.</p>
+                <p><a href="https://en.wikipedia.org/wiki/Computer_vision#Recognition">Image classification</a> 
+is used to assign categories to images, e.g., whether the image represents an animal
+or a face.</p>
 <h1 id="use-cases">Use-cases</h1>
-<p>The following use-cases must be covered </p>
+<p>The following use-cases must be covered.</p>
 <h2 id="create-dataset">Create dataset</h2>
 <p>requires: </p>
 <ul>
@@ -180,29 +177,28 @@ objects.</p>
 <p>requires:</p>
 <ul>
 <li>name of dataset to add to</li>
-</ul>
-<h3 id="add-annotations">Add annotations</h3>
-<p>Automatically replaces any existing annotations for an image.</p>
-<p>requires:</p>
-<ul>
-<li>name of dataset to add to</li>
-<li>name of image to add to</li>
+<li>image categories</li>
 </ul>
 <h3 id="delete-image">Delete image</h3>
-<p>Automatically removes any associated annotations.</p>
+<p>Automatically removes any associated categories.</p>
 <p>requires:</p>
 <ul>
 <li>name of dataset to remove from</li>
 <li>name of image(s) to remove</li>
 </ul>
-<h3 id="delete-annotations">Delete annotations</h3>
+<h3 id="add-categories">Add categories</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to add to</li>
+<li>name of image(s) to add to</li>
+<li>the categories to add</li>
+</ul>
+<h3 id="delete-categories">Delete categories</h3>
 <p>requires:</p>
 <ul>
 <li>name of dataset to remove from</li>
-<li>name of image(s) to remove them from</li>
+<li>name of image(s) to remove from</li>
 </ul>
-<h3 id="replace-annotations">Replace annotations</h3>
-<p>See <em>Add annotations</em>.</p>
 <h2 id="download">Download</h2>
 <h3 id="download-image">Download image</h3>
 <p>requires:</p>
@@ -210,7 +206,7 @@ objects.</p>
 <li>name of dataset</li>
 <li>name of image</li>
 </ul>
-<h3 id="download-annotations">Download annotations</h3>
+<h3 id="download-categories">Download categories</h3>
 <p>requires:</p>
 <ul>
 <li>name of dataset</li>
@@ -226,46 +222,21 @@ objects.</p>
 <h2 id="other">Other</h2>
 <h3 id="bulk-upload">Bulk upload</h3>
 <p>Uploads a complete dataset as ZIP file. Replaces any existing images
-with the same names and their associated annotations.</p>
-<p>To be used when annotating data with third-party tools like ADAMS.</p>
+with the same names and their associated categories.</p>
+<p>To be used when annotating data with third-party tools.</p>
 <p>requires:</p>
 <ul>
 <li>name of dataset</li>
-<li>type of annotations</li>
-</ul>
-<h3 id="pre-label-images">Pre-label images</h3>
-<p>Upload images as ZIP file and submits a job for labeling them.</p>
-<p>requires:</p>
-<ul>
 <li>annotation format</li>
-<li>name of model to use for pre-labeling</li>
-<li>
-<p>either:</p>
-<ul>
-<li>send email with annotations for images</li>
-<li>add images and their annotations to existing dataset (requires dataset name then)</li>
-</ul>
-</li>
 </ul>
 <h1 id="notes">Notes</h1>
 <h2 id="versioning">Versioning</h2>
 <p>How to do versioning? Simple copy?</p>
-<h2 id="annotation-formats">Annotation formats</h2>
+<h2 id="category-formats">Category formats</h2>
 <p>The following annotation formats need to be supported:</p>
 <ul>
-<li>
-<p>ADAMS reports</p>
-<ul>
-<li>simple <a href="https://en.wikipedia.org/wiki/.properties">Java properties</a> files</li>
-<li>extension <code>.report</code></li>
-<li>annotation format: <code>Object.XYZ.{y|y|width|height|poly_x|poly_y}</code> (<code>poly_x</code> and 
-  <code>poly_y</code> are only used for object shapes; the numeric <code>XYZ</code> index ties the 
-  various properties for an object together)</li>
-</ul>
-</li>
-<li>
-<p><a href="http://cocodataset.org/#format-data">MS COCO JSON</a></p>
-</li>
+<li>simple JSON: key (= name of image) with associated array of categories</li>
+<li>ADAMS ??</li>
 </ul>
 <h2 id="public-datasets">Public datasets</h2>
 <p>Users must be able to flag a dataset as being public, i.e., being accessible
@@ -279,10 +250,10 @@ without requiring login. Can be used for research datasets.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../model_zoo/" class="btn btn-neutral float-right" title="Model Zoo">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../object_detection/" class="btn btn-neutral float-right" title="Object Detection">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../image_classification/" class="btn btn-neutral" title="Image classification"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../jobs/" class="btn btn-neutral" title="Job execution"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -308,10 +279,10 @@ without requiring login. Can be used for research datasets.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../image_classification/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../jobs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../model_zoo/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../object_detection/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

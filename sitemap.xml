@@ -16,7 +16,17 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://github.com/waikato-datamining/ufdl-api/image_classification/</loc>
+     <lastmod>2019-10-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://github.com/waikato-datamining/ufdl-api/object_detection/</loc>
+     <lastmod>2019-10-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://github.com/waikato-datamining/ufdl-api/model_zoo/</loc>
      <lastmod>2019-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
