@@ -25,7 +25,9 @@ requires:
 
 ## Delete model
 
-Automatically deletes the meta-data
+Automatically deletes the meta-data.
+
+Cannot be deleted if a final model depends on it.
 
 requires:
 
