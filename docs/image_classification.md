@@ -22,6 +22,17 @@ requires:
 requires:
 
   * name of dataset
+  
+
+## Copy dataset
+
+requires:
+
+  * name of dataset
+  * either:
+
+    * new version
+    * new name
 
 
 ## List datasets
@@ -125,7 +136,7 @@ requires:
 
 ## Versioning
 
-How to do versioning? Simple copy?
+Versioning is handled in database: a dataset simply combines IDs of images
 
 ## Category formats
 
