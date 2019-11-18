@@ -37,15 +37,14 @@
 * operators can be named, may have options
 * operations may have incoming ports and/or outgoing ports
 * operator examples
-
-  * Job: outgoing (all job details as ports)
-  * LoadDataset: incoming (dataset id), outgoing (dataset)
-  * BuildModel: incoming (dataset, pretrained model id, model params), outgoing (model)
-  * BuildApp: incoming (model), outgoing (app)
-  * EvaluateModel: incoming (model, test dataset), outgoing (eval results, key-value-pairs)
-  * StoreModel: incoming (model)
-  * StoreEvaluation: incoming (eval results)
-  * Email: incoming (anything, sends [model|app|evaluation] ID as link)
+    * Job: outgoing (all job details as ports)
+    * LoadDataset: incoming (dataset id), outgoing (dataset)
+    * BuildModel: incoming (dataset, pretrained model id, model params), outgoing (model)
+    * BuildApp: incoming (model), outgoing (app)
+    * EvaluateModel: incoming (model, test dataset), outgoing (eval results, key-value-pairs)
+    * StoreModel: incoming (model)
+    * StoreEvaluation: incoming (eval results)
+    * Email: incoming (anything, sends [model|app|evaluation] ID as link)
 
 * job execution errors are automatically stored in Model repo by flow executor
 * definition language: [Common Workflow Language](https://en.wikipedia.org/wiki/Common_Workflow_Language)?
