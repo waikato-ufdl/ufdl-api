@@ -80,6 +80,8 @@
         
             <li><a class="toctree-l4" href="#delete-dataset">Delete dataset</a></li>
         
+            <li><a class="toctree-l4" href="#copy-dataset">Copy dataset</a></li>
+        
             <li><a class="toctree-l4" href="#list-datasets">List datasets</a></li>
         
             <li><a class="toctree-l4" href="#modify-dataset">Modify dataset</a></li>
@@ -175,6 +177,18 @@ or a face.</p>
 <ul>
 <li>name of dataset</li>
 </ul>
+<h2 id="copy-dataset">Copy dataset</h2>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+<li>
+<p>either:</p>
+<ul>
+<li>new version</li>
+<li>new name</li>
+</ul>
+</li>
+</ul>
 <h2 id="list-datasets">List datasets</h2>
 <p>requires:</p>
 <ul>
@@ -252,7 +266,7 @@ with the same names and their associated categories.</p>
 </ul>
 <h1 id="notes">Notes</h1>
 <h2 id="versioning">Versioning</h2>
-<p>How to do versioning? Simple copy?</p>
+<p>Versioning is handled in database: a dataset simply combines IDs of images</p>
 <h2 id="category-formats">Category formats</h2>
 <p>The following annotation formats need to be supported:</p>
 <ul>

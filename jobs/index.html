@@ -63,16 +63,22 @@
     <a class="current" href="./">Job execution</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#build-request">Build request</a></li>
+    <li class="toctree-l2"><a href="#overview">Overview</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#build-request">Build request</a></li>
+        
+            <li><a class="toctree-l3" href="#build-job">Build job</a></li>
+        
+            <li><a class="toctree-l3" href="#slave-x">Slave X</a></li>
+        
+            <li><a class="toctree-l3" href="#links">Links</a></li>
+        
+        </ul>
     
 
-    <li class="toctree-l2"><a href="#build-job">Build job</a></li>
-    
-
-    <li class="toctree-l2"><a href="#slave-x">Slave X</a></li>
-    
-
-    <li class="toctree-l2"><a href="#links">Links</a></li>
+    <li class="toctree-l2"><a href="#job-flows">Job flows</a></li>
     
 
     </ul>
@@ -130,32 +136,60 @@
           <div role="main">
             <div class="section">
               
-                <p><img alt="Overview" src="../img/overview.svg" /></p>
-<h1 id="build-request">Build request</h1>
+                <h1 id="overview">Overview</h1>
+<p><img alt="Overview" src="../img/overview.svg" /></p>
+<h2 id="build-request">Build request</h2>
 <ul>
 <li>(docker) image ID (specific AI framework, libraries and version)</li>
 <li>dataset ID</li>
+<li>pretrained model id</li>
 <li>model parameters</li>
 </ul>
-<h1 id="build-job">Build job</h1>
+<h2 id="build-job">Build job</h2>
 <ul>
 <li>build ID</li>
 <li>(docker) image ID (specific AI framework, libraries and version)</li>
 <li>dataset ID</li>
 <li>model ID (for storing outcomes/errors)</li>
+<li>pretrained model id</li>
 <li>model parameters</li>
+<li>job flow</li>
 </ul>
-<h1 id="slave-x">Slave X</h1>
+<h2 id="slave-x">Slave X</h2>
 <ul>
 <li>GPU server</li>
 <li>arbitrary number of slaves can subscribe to job queue</li>
 <li>can be brought online any time</li>
 </ul>
-<h1 id="links">Links</h1>
+<h2 id="links">Links</h2>
 <ul>
 <li><a href="https://www.rabbitmq.com/">RabbitMQ</a></li>
 <li><a href="https://docker-py.readthedocs.io/en/stable/">docker-py</a></li>
 <li><a href="https://www.docker.com/">docker</a></li>
+</ul>
+<h1 id="job-flows">Job flows</h1>
+<ul>
+<li>simple operators to define job in detail</li>
+<li>operators can be named, may have options</li>
+<li>operations may have incoming ports and/or outgoing ports</li>
+<li>
+<p>operator examples</p>
+<ul>
+<li>Job: outgoing (all job details as ports)</li>
+<li>LoadDataset: incoming (dataset id), outgoing (dataset)</li>
+<li>BuildModel: incoming (dataset, pretrained model id, model params), outgoing (model)</li>
+<li>BuildApp: incoming (model), outgoing (app)</li>
+<li>EvaluateModel: incoming (model, test dataset), outgoing (eval results, key-value-pairs)</li>
+<li>StoreModel: incoming (model)</li>
+<li>StoreEvaluation: incoming (eval results)</li>
+<li>Email: incoming (anything, sends [model|app|evaluation] ID as link)</li>
+</ul>
+</li>
+<li>
+<p>job execution errors are automatically stored in Model repo by flow executor</p>
+</li>
+<li>definition language: <a href="https://en.wikipedia.org/wiki/Common_Workflow_Language">Common Workflow Language</a>?</li>
+<li>GUI editor: <a href="https://github.com/rabix/composer">Rabix Composer</a>?</li>
 </ul>
               
             </div>

@@ -169,5 +169,5 @@ without requiring login. Can be used for research datasets.
 
 ## Dependent models
 
-Datasets cannot be deleted if final models are in the model zoo depending on them.
+Datasets cannot be deleted if final models in the model zoo depend on them.
 
