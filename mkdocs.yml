@@ -11,3 +11,4 @@ nav:
     - 'Image classification': image_classification.md
     - 'Object Detection': object_detection.md
   - 'Model Zoo': model_zoo.md
+  - 'Model templates': model_templates.md
