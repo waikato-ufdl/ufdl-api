@@ -17,7 +17,7 @@ requires:
   * model file or URL to upload
   * meta-data
 
-    * license
+    * [license or permissions/limitations/conditions](license_overview.md)
     * origin URL
     * description (input nodes, dimensions, etc)
     * data domain(s)
@@ -49,7 +49,7 @@ requires:
 parameters:
 
   * data domain
-  * license
+  * [license or permissions/limitations/conditions](license_overview.md)
   * ...
 
 
@@ -67,7 +67,7 @@ requires:
   * dataset ID it was trained with
   * meta-data
 
-    * license
+    * [license or permissions/limitations/conditions](license_overview.md)
     * description (input nodes, dimensions, etc)
     * results on validation/test datasets
     * ...
