@@ -17,7 +17,7 @@ requires:
   * model file or URL to upload
   * meta-data
 
-    * license
+    * license or permissions/limitations/conditions
     * origin URL
     * description (input nodes, dimensions, etc)
     * data domain(s)
@@ -49,7 +49,7 @@ requires:
 parameters:
 
   * data domain
-  * license
+  * license or permissions/limitations/conditions
   * ...
 
 
@@ -67,8 +67,9 @@ requires:
   * dataset ID it was trained with
   * meta-data
 
-    * license
+    * license or permissions/limitations/conditions
     * description (input nodes, dimensions, etc)
+    * results on validation/test datasets
     * ...
 
 ## Delete model
