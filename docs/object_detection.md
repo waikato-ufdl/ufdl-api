@@ -45,6 +45,13 @@ requires:
   * filters for tags, license, ...
 
 
+## List images in dataset
+
+requires:
+
+  * name of dataset to list
+
+
 ## Modify dataset
 
 Sub use-cases:
