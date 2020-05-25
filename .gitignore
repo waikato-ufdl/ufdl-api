@@ -110,3 +110,5 @@ venv.bak/
 *.sh
 .~lock*
 
+# IDEA IDE config files
+.idea/*
