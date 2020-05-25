@@ -8,5 +8,5 @@ l:Warranty
 c:License and copyright notice
 c:Disclose source
 c:State changes
-c:Same license (library) 
+c:Same license (library)
 u:https://github.com/EpistasisLab/tpot/blob/master/LICENSE

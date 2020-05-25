@@ -8,5 +8,5 @@ l:Warranty
 c:License and copyright notice
 c:State changes
 c:Disclose source
-c:Same license 
+c:Same license
 u:https://github.com/fracpete/rsync4j/blob/master/LICENSE

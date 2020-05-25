@@ -7,5 +7,5 @@ l:Warranty
 c:License and copyright notice
 c:State changes
 c:Disclose source
-c:Same license 
+c:Same license
 u:https://github.com/creativecommons/wp-plugin-creativecommons/blob/master/license.txt

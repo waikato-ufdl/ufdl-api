@@ -7,5 +7,5 @@ l:Trademark use
 l:Patent use
 l:Warranty
 c:License and copyright notice
-c:State changes 
+c:State changes
 u:https://github.com/creativecommons/team-open/blob/master/LICENSE

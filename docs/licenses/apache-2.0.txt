@@ -7,5 +7,5 @@ l:Trademark use
 l:Liability
 l:Warranty
 c:License and copyright notice
-c:State changes 
+c:State changes
 u:https://github.com/fracpete/bootstrapp/blob/master/LICENSE
