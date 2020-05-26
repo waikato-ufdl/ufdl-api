@@ -1,8 +1,0 @@
-p:Commercial use
-p:Modification
-p:Distribution
-p:Private use
-l:Liability
-l:Warranty
-c:License and copyright notice
-u:https://github.com/fracpete/python-pulse-profiles/blob/master/LICENSE
