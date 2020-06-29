@@ -7,14 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://github.com/waikato-datamining/ufdl-api/jobs/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Job execution - UFDL API</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="../css/theme.css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
@@ -25,7 +24,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -36,7 +35,6 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> UFDL API</a>
         <div role="search">
@@ -47,53 +45,82 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../user_management/">User management</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../data_storage/">Data storage</a>
-                    </li>
-                </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Job execution</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#build-request">Build request</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#build-job">Build job</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#slave-x">Slave X</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#links">Links</a>
-    </li>
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../user_management/">User management</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../data_storage/">Data storage</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Job execution</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#overview">Overview</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#train">Train</a></li>
+        
+            <li><a class="toctree-l3" href="#predict-or-pre-label">Predict (or pre-label)</a></li>
+        
+            <li><a class="toctree-l3" href="#evaluate">Evaluate</a></li>
+        
+            <li><a class="toctree-l3" href="#export">Export</a></li>
+        
+            <li><a class="toctree-l3" href="#links">Links</a></li>
+        
+        </ul>
+    
+
     </ul>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Data domains</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../image_classification/">Image classification</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../object_detection/">Object Detection</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../model_zoo/">Model Zoo</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../model_templates/">Model templates</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../license_overview/">Licenses</a>
-                    </li>
-                </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Data domains</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../image_classification/">Image classification</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../object_detection/">Object Detection</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../model_zoo/">Model Zoo</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../model_templates/">Model templates</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../license_overview/">Licenses</a>
+	    </li>
+          
+        </ul>
       </div>
-    </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -118,66 +145,61 @@
       
     </li>
   </ul>
-  
   <hr/>
 </div>
           <div role="main">
             <div class="section">
               
                 <h1 id="overview">Overview</h1>
-<p><img alt="Overview" src="../img/overview.svg" /></p>
-<h2 id="build-request">Build request</h2>
+<p>The following types of jobs are available:</p>
 <ul>
-<li>(docker) image ID (specific AI framework, libraries and version)</li>
-<li>dataset ID</li>
-<li>pretrained model id</li>
-<li>model parameters</li>
+<li>train</li>
+<li>predict</li>
+<li>evaluate</li>
+<li>export</li>
 </ul>
-<h2 id="build-job">Build job</h2>
+<p>Jobs share the following common fields:</p>
 <ul>
-<li>build ID</li>
-<li>(docker) image ID (specific AI framework, libraries and version)</li>
-<li>dataset ID</li>
-<li>model ID (for storing outcomes/errors)</li>
-<li>pretrained model id</li>
-<li>model parameters</li>
-<li>job flow</li>
+<li>job template</li>
+<li>start_time</li>
+<li>end_time</li>
+<li>error</li>
 </ul>
-<h2 id="slave-x">Slave X</h2>
+<p>Once a job gets submitted, a broadcast is sent via RabbitMQ to all worker nodes.
+If a worker node matches (driver version, cpu/gpu memory), it can pull the job.</p>
+<h2 id="train">Train</h2>
+<p>A train job has the additional fields:</p>
 <ul>
-<li>GPU server</li>
-<li>arbitrary number of slaves can subscribe to job queue</li>
-<li>can be brought online any time</li>
+<li>datasets (train/test/val)</li>
+</ul>
+<h2 id="predict-or-pre-label">Predict (or pre-label)</h2>
+<p>A predict job has the additional fields:</p>
+<ul>
+<li>final_model</li>
+<li>dataset</li>
+</ul>
+<h2 id="evaluate">Evaluate</h2>
+<p>An evaluate job has the additional fields:</p>
+<ul>
+<li>final_model</li>
+<li>dataset (test)</li>
+</ul>
+<h2 id="export">Export</h2>
+<p>An export job as the additional fields:</p>
+<ul>
+<li>final_model</li>
+</ul>
+<p>The following types of exports may be available:</p>
+<ul>
+<li>model</li>
+<li>model + batch-prediction code</li>
+<li>Android app</li>
 </ul>
 <h2 id="links">Links</h2>
 <ul>
 <li><a href="https://www.rabbitmq.com/">RabbitMQ</a></li>
 <li><a href="https://docker-py.readthedocs.io/en/stable/">docker-py</a></li>
 <li><a href="https://www.docker.com/">docker</a></li>
-</ul>
-<h1 id="job-flows">Job flows</h1>
-<ul>
-<li>simple operators to define job in detail</li>
-<li>operators can be named, may have options</li>
-<li>operations may have incoming ports and/or outgoing ports</li>
-<li>
-<p>operator examples</p>
-<ul>
-<li>Job: outgoing (all job details as ports)</li>
-<li>LoadDataset: incoming (dataset id), outgoing (dataset)</li>
-<li>BuildModel: incoming (dataset, pretrained model id, model params), outgoing (model)</li>
-<li>BuildApp: incoming (model), outgoing (app)</li>
-<li>EvaluateModel: incoming (model, test dataset), outgoing (eval results, key-value-pairs)</li>
-<li>StoreModel: incoming (model)</li>
-<li>StoreEvaluation: incoming (eval results)</li>
-<li>Email: incoming (anything, sends [model|app|evaluation] ID as link)</li>
-</ul>
-</li>
-<li>
-<p>job execution errors are automatically stored in Model repo by flow executor</p>
-</li>
-<li>definition language: <a href="https://en.wikipedia.org/wiki/Common_Workflow_Language">Common Workflow Language</a>?</li>
-<li>GUI editor: <a href="https://github.com/rabix/composer">Rabix Composer</a>?</li>
 </ul>
               
             </div>
@@ -201,7 +223,7 @@
     
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -211,7 +233,7 @@
 
   </div>
 
-  <div class="rst-versions" role="note" aria-label="versions">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -225,11 +247,6 @@
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
 
 </body>
 </html>
