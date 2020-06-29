@@ -2,3 +2,6 @@ Contains the API documentation for the user-friendly deep-learning (UFDL) framew
 
 The documentation available here is to be considered *work in progress* and can change 
 at any given time as the project evolves.
+
+![API](img/api.png)
+

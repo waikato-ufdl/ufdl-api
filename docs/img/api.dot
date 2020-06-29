@@ -1,0 +1,34 @@
+graph {
+
+  node [shape=record fontname=Arial];
+
+  cuda [label = "CUDA\l- cuda_version\l- min_driver_version"];
+  licenses [label = "LICENSES\l- name\l- url\l- conditions\l- limitations\l- permissions"];
+  datasets [label = "DATASETS\l- type (objdet/classify/speech/...)\l- version\l- description\l- license\l"];
+  dataset_conversions [label = "DATASET CONVERSIONS\l- framework/version\l- domain (objdet/classify/speech/...)\l- options (for wai.annotations)\l"];
+  pretrained_models [label = "PRETRAINED MODELS\l- framework/version\l- domain (objdet/classify/speech/...)\l- license\l- url\l- description\l"];
+  final_models [label = "FINAL MODELS\l- framework/version\l- license\l- domain (objdet/classify/speech/...)"];
+  nodes [label = "NODES\l- ip\l- driver_version\l- gpu_mem\l- cpu_mem\l- last_seen\l- current_job\l"];
+  jobs [label = "JOBS\l- template\l- start_time\l- end_time\l- error\l- datasets (train/test/val)\l"];
+  job_templates [label = "JOB TEMPLATES\l- scope (user/project/public)\l- framework/version\l- pretrained_model\l- domain (objdet/classify/speech/...)\l- type (train/predict/evaluate/export/android_app/...)"];
+  job_output [label = "JOB OUTPUT\l- job\l- raw output\l"];
+  //job_visualization [label = "JOB VISUALIZATION\l- job\l- template\l"];
+  //job_visualization_templates [label = "JOB VISUALIZATION TEMPLATES\leg Tensorboard"];
+  docker_images [label = "DOCKER IMAGES\l- name\l- url\l- registry\l- user\l- password\l- cuda_version\l- framework/version\l- domain (objdet/classify/speech/...)\l- types (train/predict/export/evaluate/...)"];
+  //temp_downloads [label = "TEMP DOWNLOADS"];
+
+  cuda -- docker_images;
+  datasets -- licenses;
+  datasets -- jobs;
+  pretrained_models -- licenses;
+  final_models -- licenses;
+  job_templates -- jobs;
+  jobs -- job_output;
+  jobs -- nodes;
+  //job_output -- job_visualization;
+  //job_visualization_templates -- job_visualization;
+  //job_visualization_templates -- docker_images;
+  docker_images -- job_templates;
+  dataset_conversions -- job_templates;
+  job_templates -- pretrained_models;
+}

@@ -1,52 +1,62 @@
 # Overview
 
-![Overview](img/overview.svg)
+The following types of jobs are available:
 
-## Build request
+* train
+* predict
+* evaluate
+* export
 
-* (docker) image ID (specific AI framework, libraries and version)
-* dataset ID
-* pretrained model id
-* model parameters
+Jobs share the following common fields:
 
-## Build job
+* job template
+* start_time
+* end_time
+* error
 
-* build ID
-* (docker) image ID (specific AI framework, libraries and version)
-* dataset ID
-* model ID (for storing outcomes/errors)
-* pretrained model id
-* model parameters
-* job flow
+Once a job gets submitted, a broadcast is sent via RabbitMQ to all worker nodes.
+If a worker node matches (driver version, cpu/gpu memory), it can pull the job.
 
-## Slave X
 
-* GPU server
-* arbitrary number of slaves can subscribe to job queue
-* can be brought online any time
+## Train
+
+A train job has the additional fields:
+
+* datasets (train/test/val)
+
+
+## Predict (or pre-label)
+
+A predict job has the additional fields:
+
+* final_model
+* dataset
+
+
+## Evaluate
+
+An evaluate job has the additional fields:
+
+* final_model
+* dataset (test)
+
+
+## Export
+
+An export job as the additional fields:
+
+* final_model
+
+The following types of exports may be available:
+
+* model
+* model + batch-prediction code
+* Android app
+
 
 ## Links
 
 * [RabbitMQ](https://www.rabbitmq.com/)
 * [docker-py](https://docker-py.readthedocs.io/en/stable/)
 * [docker](https://www.docker.com/)
-
-# Job flows
-
-* simple operators to define job in detail
-* operators can be named, may have options
-* operations may have incoming ports and/or outgoing ports
-* operator examples
-    * Job: outgoing (all job details as ports)
-    * LoadDataset: incoming (dataset id), outgoing (dataset)
-    * BuildModel: incoming (dataset, pretrained model id, model params), outgoing (model)
-    * BuildApp: incoming (model), outgoing (app)
-    * EvaluateModel: incoming (model, test dataset), outgoing (eval results, key-value-pairs)
-    * StoreModel: incoming (model)
-    * StoreEvaluation: incoming (eval results)
-    * Email: incoming (anything, sends [model|app|evaluation] ID as link)
-
-* job execution errors are automatically stored in Model repo by flow executor
-* definition language: [Common Workflow Language](https://en.wikipedia.org/wiki/Common_Workflow_Language)?
-* GUI editor: [Rabix Composer](https://github.com/rabix/composer)?
 
