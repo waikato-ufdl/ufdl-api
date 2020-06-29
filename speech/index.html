@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Model Zoo - UFDL API</title>
+  <title>Speech - UFDL API</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Model Zoo";
-    var mkdocs_page_input_path = "model_zoo.md";
-    var mkdocs_page_url = "/waikato-datamining/ufdl-api/model_zoo/";
+    var mkdocs_page_name = "Speech";
+    var mkdocs_page_input_path = "speech.md";
+    var mkdocs_page_url = "/waikato-datamining/ufdl-api/speech/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -80,58 +80,55 @@
                     
     <a class="" href="../object_detection/">Object Detection</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../speech/">Speech</a>
+    <a class="current" href="./">Speech</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#use-cases">Use-cases</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#create-dataset">Create dataset</a></li>
+        
+            <li><a class="toctree-l4" href="#delete-dataset">Delete dataset</a></li>
+        
+            <li><a class="toctree-l4" href="#copy-dataset">Copy dataset</a></li>
+        
+            <li><a class="toctree-l4" href="#list-datasets">List datasets</a></li>
+        
+            <li><a class="toctree-l4" href="#list-images-in-dataset">List images in dataset</a></li>
+        
+            <li><a class="toctree-l4" href="#modify-dataset">Modify dataset</a></li>
+        
+            <li><a class="toctree-l4" href="#download">Download</a></li>
+        
+            <li><a class="toctree-l4" href="#other">Other</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#notes">Notes</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#versioning">Versioning</a></li>
+        
+            <li><a class="toctree-l4" href="#public-datasets">Public datasets</a></li>
+        
+            <li><a class="toctree-l4" href="#dependent-models">Dependent models</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Model Zoo</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#pre-trained-models">Pre-trained models</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#add-model">Add model</a></li>
-        
-            <li><a class="toctree-l3" href="#delete-model">Delete model</a></li>
-        
-            <li><a class="toctree-l3" href="#download-model">Download model</a></li>
-        
-            <li><a class="toctree-l3" href="#search">Search</a></li>
-        
-        </ul>
-    
-
-    <li class="toctree-l2"><a href="#final-models">Final models</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#add-model_1">Add model</a></li>
-        
-            <li><a class="toctree-l3" href="#delete-model_1">Delete model</a></li>
-        
-            <li><a class="toctree-l3" href="#download-model_1">Download model</a></li>
-        
-        </ul>
-    
-
-    <li class="toctree-l2"><a href="#notes">Notes</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#format-conversions">Format conversions</a></li>
-        
-            <li><a class="toctree-l3" href="#public-models">Public models</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../model_zoo/">Model Zoo</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -165,8 +162,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Data domains &raquo;</li>
+        
+      
     
-    <li>Model Zoo</li>
+    <li>Speech</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -176,96 +177,108 @@
           <div role="main">
             <div class="section">
               
-                <p>In order to perform transfer learning and build models on data, it is necessary 
-to have pre-trained models readily available for the training process.
-Therefore we require two types of model storage:</p>
+                <p>Speech processing is used for generating text from audio or audio from text.</p>
+<h1 id="use-cases">Use-cases</h1>
+<p>The following use-cases must be covered.</p>
+<h2 id="create-dataset">Create dataset</h2>
+<p>requires: </p>
 <ul>
-<li>pre-trained models</li>
-<li>final models</li>
+<li>name of dataset</li>
+<li>project it belongs to (optional; default is <em>all</em> project)</li>
+<li>users allowed to manage it (optional; default is <em>only</em> user creating it)</li>
+<li>license (default: proprietary, ie all rights reserved)</li>
+<li>optional tag(s)</li>
 </ul>
-<h1 id="pre-trained-models">Pre-trained models</h1>
-<h2 id="add-model">Add model</h2>
+<h2 id="delete-dataset">Delete dataset</h2>
 <p>requires:</p>
 <ul>
-<li>model name</li>
-<li>version</li>
-<li>format</li>
-<li>model file or URL to upload</li>
-<li>
-<p>meta-data</p>
+<li>name of dataset</li>
+</ul>
+<h2 id="copy-dataset">Copy dataset</h2>
+<p>requires:</p>
 <ul>
-<li><a href="../license_overview/">license or permissions/limitations/conditions</a></li>
-<li>origin URL</li>
-<li>description (input nodes, dimensions, etc)</li>
-<li>data domain(s)</li>
-<li>...</li>
+<li>name of dataset</li>
+<li>
+<p>either:</p>
+<ul>
+<li>new version</li>
+<li>new name</li>
 </ul>
 </li>
 </ul>
-<h2 id="delete-model">Delete model</h2>
-<p>Automatically deletes the meta-data.</p>
-<p>Cannot be deleted if a final model depends on it.</p>
+<h2 id="list-datasets">List datasets</h2>
 <p>requires:</p>
 <ul>
-<li>model name</li>
-<li>version</li>
-<li>format</li>
+<li>filters for tags, license, ...</li>
 </ul>
-<h2 id="download-model">Download model</h2>
+<h2 id="list-images-in-dataset">List images in dataset</h2>
 <p>requires:</p>
 <ul>
-<li>model name</li>
-<li>format</li>
-<li>version</li>
+<li>name of dataset to list</li>
 </ul>
-<h2 id="search">Search</h2>
-<p>parameters:</p>
-<ul>
-<li>data domain</li>
-<li><a href="../license_overview/">license or permissions/limitations/conditions</a></li>
-<li>...</li>
-</ul>
-<h1 id="final-models">Final models</h1>
-<h2 id="add-model_1">Add model</h2>
+<h2 id="modify-dataset">Modify dataset</h2>
+<p>Sub use-cases:</p>
+<h3 id="add-sound-file">Add sound file</h3>
 <p>requires:</p>
 <ul>
-<li>model name</li>
-<li>version</li>
-<li>format</li>
-<li>model file or URL to upload</li>
-<li>pre-trained model ID it was built on top of</li>
-<li>dataset ID it was trained with</li>
-<li>
-<p>meta-data</p>
-<ul>
-<li><a href="../license_overview/">license or permissions/limitations/conditions</a></li>
-<li>description (input nodes, dimensions, etc)</li>
-<li>results on validation/test datasets</li>
-<li>...</li>
+<li>name of dataset to add to</li>
+<li>associated transcript</li>
 </ul>
-</li>
-</ul>
-<h2 id="delete-model_1">Delete model</h2>
-<p>Automatically deletes the meta-data.</p>
+<h3 id="delete-sound-file">Delete sound file</h3>
+<p>Automatically removes the associated transcript.</p>
 <p>requires:</p>
 <ul>
-<li>model name</li>
-<li>version</li>
-<li>format</li>
+<li>name of dataset to remove from</li>
+<li>name of file(s) to remove</li>
 </ul>
-<h2 id="download-model_1">Download model</h2>
+<h3 id="set-transcript">Set transcript</h3>
 <p>requires:</p>
 <ul>
-<li>model name</li>
-<li>format</li>
-<li>version</li>
+<li>name of dataset to update</li>
+<li>name of file(s) </li>
+<li>the transcript</li>
 </ul>
+<h3 id="change-license">Change license</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to update</li>
+<li>license</li>
+</ul>
+<h3 id="tag-dataset">Tag dataset</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to tag</li>
+<li>tag(s)</li>
+</ul>
+<h2 id="download">Download</h2>
+<h3 id="download-sound-file">Download sound file</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+<li>name of file</li>
+</ul>
+<h3 id="download-transcript">Download transcript</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+<li>name of file</li>
+</ul>
+<h3 id="download-dataset">Download dataset</h3>
+<p>Downloads the complete dataset as ZIP file.</p>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+<li>format</li>
+</ul>
+<h2 id="other">Other</h2>
 <h1 id="notes">Notes</h1>
-<h2 id="format-conversions">Format conversions</h2>
-<p>Automatic model conversion into different formats (<a href="https://github.com/Microsoft/MMdnn">MMdnn</a>)?</p>
-<h2 id="public-models">Public models</h2>
-<p>Users must be able to flag a models (pre-trained or train) as being public, 
-i.e., being accessible without requiring login.</p>
+<h2 id="versioning">Versioning</h2>
+<p>Versioning is handled in database: a dataset simply combines IDs of images</p>
+<h2 id="public-datasets">Public datasets</h2>
+<p>Users must be able to flag a dataset as being public, i.e., being accessible
+without requiring login. Can be used for research datasets.</p>
+<h2 id="dependent-models">Dependent models</h2>
+<p>Datasets cannot be deleted if final models are in the model zoo depending on them.</p>
               
             </div>
           </div>
@@ -273,10 +286,10 @@ i.e., being accessible without requiring login.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../model_templates/" class="btn btn-neutral float-right" title="Model templates">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../model_zoo/" class="btn btn-neutral float-right" title="Model Zoo">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../speech/" class="btn btn-neutral" title="Speech"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../object_detection/" class="btn btn-neutral" title="Object Detection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -302,10 +315,10 @@ i.e., being accessible without requiring login.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../speech/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../object_detection/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../model_templates/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../model_zoo/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
