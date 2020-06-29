@@ -1,0 +1,3 @@
+Generate PNG with this command (using graphviz):
+
+dot -Tpng api.dot -o api.png
