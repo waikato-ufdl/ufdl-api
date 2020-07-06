@@ -1,5 +1,12 @@
 Licenses give permissions, impose limitations and conditions.
 
+# Domains
+
+Licenses can be applicable to one or more of the following domains:
+* software
+* data
+* models
+
 # Current licenses
 
 * [AGPL3](https://github.com/waikato-ufdl/ufdl-backend/tree/master/ufdl-core-app/src/ufdl/core_app/migrations/licences/agpl3.txt)
