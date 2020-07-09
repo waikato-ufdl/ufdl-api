@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Model Zoo - UFDL API</title>
+  <title>Hardware - UFDL API</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Model Zoo";
-    var mkdocs_page_input_path = "model_zoo.md";
-    var mkdocs_page_url = "/waikato-datamining/ufdl-api/model_zoo/";
+    var mkdocs_page_name = "Hardware";
+    var mkdocs_page_input_path = "hardware.md";
+    var mkdocs_page_url = "/waikato-datamining/ufdl-api/hardware/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -73,9 +73,30 @@
     <a class="" href="../cuda/">CUDA</a>
 	    </li>
           
-            <li class="toctree-l1">
+            <li class="toctree-l1 current">
 		
-    <a class="" href="../hardware/">Hardware</a>
+    <a class="current" href="./">Hardware</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#fields">Fields</a></li>
+    
+
+    <li class="toctree-l2"><a href="#actions">Actions</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#add-hardware">Add hardware</a></li>
+        
+            <li><a class="toctree-l3" href="#update-harware">Update harware</a></li>
+        
+            <li><a class="toctree-l3" href="#delete-hardware">Delete hardware</a></li>
+        
+            <li><a class="toctree-l3" href="#links">Links</a></li>
+        
+        </ul>
+    
+
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -102,51 +123,9 @@
     </ul>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Model Zoo</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#pre-trained-models">Pre-trained models</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#add-model">Add model</a></li>
-        
-            <li><a class="toctree-l3" href="#delete-model">Delete model</a></li>
-        
-            <li><a class="toctree-l3" href="#download-model">Download model</a></li>
-        
-            <li><a class="toctree-l3" href="#search">Search</a></li>
-        
-        </ul>
-    
-
-    <li class="toctree-l2"><a href="#final-models">Final models</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#add-model_1">Add model</a></li>
-        
-            <li><a class="toctree-l3" href="#delete-model_1">Delete model</a></li>
-        
-            <li><a class="toctree-l3" href="#download-model_1">Download model</a></li>
-        
-        </ul>
-    
-
-    <li class="toctree-l2"><a href="#notes">Notes</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#format-conversions">Format conversions</a></li>
-        
-            <li><a class="toctree-l3" href="#public-models">Public models</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../model_zoo/">Model Zoo</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -181,7 +160,7 @@
     
       
     
-    <li>Model Zoo</li>
+    <li>Hardware</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -191,99 +170,36 @@
           <div role="main">
             <div class="section">
               
-                <p>In order to perform transfer learning and build models on data, it is necessary 
-to have pre-trained models readily available for the training process.
-Therefore we require two types of model storage:</p>
+                <p>NVIDIA cards use belong to certain hardware generations, which have
+codenames. This table contains the hardware names and their compute
+capability.</p>
+<h1 id="fields">Fields</h1>
 <ul>
-<li>pre-trained models</li>
-<li>final models</li>
+<li>generation</li>
+<li>compute_capability</li>
 </ul>
-<h1 id="pre-trained-models">Pre-trained models</h1>
-<h2 id="add-model">Add model</h2>
+<h1 id="actions">Actions</h1>
+<h2 id="add-hardware">Add hardware</h2>
 <p>requires:</p>
 <ul>
-<li>model name</li>
-<li>version</li>
-<li>format</li>
-<li>model file or URL to upload</li>
-<li><a href="../license_overview/">license</a></li>
-<li>origin URL</li>
-<li>data domain(s) (classify/objdet/speech/...)</li>
-<li>public?</li>
-<li>
-<p>meta-data</p>
+<li>generation</li>
+<li>compute_capability</li>
+</ul>
+<h2 id="update-harware">Update harware</h2>
+<p>partial update of any of these fields:</p>
 <ul>
-<li>description (input nodes, dimensions, etc)</li>
-<li>...</li>
+<li>generation</li>
+<li>compute_capability</li>
 </ul>
-</li>
-</ul>
-<h2 id="delete-model">Delete model</h2>
-<p>Automatically deletes the meta-data.</p>
-<p>Cannot be deleted if a final model depends on it.</p>
+<h2 id="delete-hardware">Delete hardware</h2>
 <p>requires:</p>
 <ul>
-<li>model name</li>
-<li>version</li>
-<li>format</li>
+<li>generation</li>
 </ul>
-<h2 id="download-model">Download model</h2>
-<p>requires:</p>
+<h2 id="links">Links</h2>
 <ul>
-<li>model name</li>
-<li>format</li>
-<li>version</li>
+<li><a href="https://docs.nvidia.com/deploy/cuda-compatibility/index.html#support-hardware">Hardware support</a></li>
 </ul>
-<h2 id="search">Search</h2>
-<p>parameters:</p>
-<ul>
-<li>data domain</li>
-<li><a href="../license_overview/">license or permissions/limitations/conditions</a></li>
-<li>...</li>
-</ul>
-<h1 id="final-models">Final models</h1>
-<h2 id="add-model_1">Add model</h2>
-<p>requires:</p>
-<ul>
-<li>model name</li>
-<li>version</li>
-<li>format</li>
-<li>model file or URL to upload</li>
-<li>pre-trained model ID it was built on top of</li>
-<li>dataset ID it was trained with</li>
-<li><a href="../license_overview/">license</a></li>
-<li>data domain(s) (classify/objdet/speech/...)</li>
-<li>public?</li>
-<li>
-<p>meta-data</p>
-<ul>
-<li>description (input nodes, dimensions, etc)</li>
-<li>results on validation/test datasets</li>
-<li>...</li>
-</ul>
-</li>
-</ul>
-<h2 id="delete-model_1">Delete model</h2>
-<p>Automatically deletes the meta-data.</p>
-<p>requires:</p>
-<ul>
-<li>model name</li>
-<li>version</li>
-<li>format</li>
-</ul>
-<h2 id="download-model_1">Download model</h2>
-<p>requires:</p>
-<ul>
-<li>model name</li>
-<li>format</li>
-<li>version</li>
-</ul>
-<h1 id="notes">Notes</h1>
-<h2 id="format-conversions">Format conversions</h2>
-<p>Automatic model conversion into different formats (<a href="https://github.com/Microsoft/MMdnn">MMdnn</a>)?</p>
-<h2 id="public-models">Public models</h2>
-<p>Users must be able to flag a models (pre-trained or train) as being public, 
-i.e., being accessible without requiring login.</p>
               
             </div>
           </div>
@@ -291,10 +207,10 @@ i.e., being accessible without requiring login.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../model_templates/" class="btn btn-neutral float-right" title="Model templates">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../jobs/" class="btn btn-neutral float-right" title="Job execution">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../speech/" class="btn btn-neutral" title="Speech"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cuda/" class="btn btn-neutral" title="CUDA"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -320,10 +236,10 @@ i.e., being accessible without requiring login.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../speech/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../cuda/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../model_templates/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../jobs/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

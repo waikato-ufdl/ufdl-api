@@ -1,0 +1,38 @@
+Different NVIDIA graphics cards are based on different hardware 
+architectures and certain frameworks may not work on older
+generations.
+
+
+# Fields
+
+* name
+* compute_capability
+
+# Actions
+
+## Add hardware
+
+requires:
+
+  * name
+  * compute_capability
+
+## Update harware
+
+partial update of any of these fields:
+
+  * name
+  * compute_capability
+
+
+## Delete hardware
+
+requires:
+
+  * name
+
+
+## Links
+
+* [Hardware support](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#support-hardware)
+
