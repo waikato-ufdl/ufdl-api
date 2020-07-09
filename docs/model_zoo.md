@@ -15,12 +15,13 @@ requires:
   * version
   * format
   * model file or URL to upload
+  * [license](license_overview.md)
+  * origin URL
+  * data domain(s) (classify/objdet/speech/...)
+  * public?
   * meta-data
 
-    * [license or permissions/limitations/conditions](license_overview.md)
-    * origin URL
     * description (input nodes, dimensions, etc)
-    * data domain(s)
     * ...
 
 ## Delete model
@@ -65,9 +66,11 @@ requires:
   * model file or URL to upload
   * pre-trained model ID it was built on top of
   * dataset ID it was trained with
+  * [license](license_overview.md)
+  * data domain(s) (classify/objdet/speech/...)
+  * public?
   * meta-data
 
-    * [license or permissions/limitations/conditions](license_overview.md)
     * description (input nodes, dimensions, etc)
     * results on validation/test datasets
     * ...
