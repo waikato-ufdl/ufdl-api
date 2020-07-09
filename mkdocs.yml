@@ -7,6 +7,9 @@ nav:
   - 'Home': index.md
   - 'User management': user_management.md
   - 'Data storage': data_storage.md
+  - 'Docker images': docker_images.md
+  - 'CUDA': cuda.md
+  - 'Hardware': hardware.md
   - 'Job execution': jobs.md
   - 'Data domains':
     - 'Image classification': image_classification.md
