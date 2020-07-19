@@ -9,7 +9,7 @@ graph {
   dataset_conversions [label = "DATASET CONVERSIONS\l- framework/version\l- domain (objdet/classify/speech/...)\l- options (for wai.annotations)\l"];
   pretrained_models [label = "PRETRAINED MODELS\l- framework/version\l- domain (objdet/classify/speech/...)\l- license\l- url\l- description\l"];
   final_models [label = "FINAL MODELS\l- framework/version\l- license\l- domain (objdet/classify/speech/...)"];
-  nodes [label = "NODES\l- ip\l- driver_version\- hardware_generation\l- gpu_mem\l- cpu_mem\l- last_seen\l- current_job\l"];
+  nodes [label = "NODES\l- ip\l- driver_version\l- hardware_generation\l- gpu_mem\l- cpu_mem\l- last_seen\l- current_job\l"];
   jobs [label = "JOBS\l- template\l- start_time\l- end_time\l- error\l- datasets (train/test/val)\l"];
   job_templates [label = "JOB TEMPLATES\l- scope (user/project/public)\l- framework/version\l- pretrained_model\l- domain (objdet/classify/speech/...)\l- type (train/predict/evaluate/export/android_app/...)"];
   job_output [label = "JOB OUTPUT\l- job\l- raw output\l"];
