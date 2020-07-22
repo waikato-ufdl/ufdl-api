@@ -43,7 +43,7 @@ An evaluate job has the additional fields:
 
 ## Export
 
-An export job as the additional fields:
+An export job has the additional fields:
 
 * final_model
 

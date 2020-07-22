@@ -10,6 +10,7 @@ for exporting them and generating other output.
 * registry_password (dito)
 * cuda_version (the required cuda version to run this image)
 * min_hardware (Pascal=1080Ti, Turing=2080Ti)
+* cpu (bool)
 * framework_name
 * framework_version
 * domain (objdet/classify/speech/...)
@@ -28,6 +29,7 @@ requires:
   * registry_password
   * cuda_version
   * min_hardware
+  * cpu
   * framework_name
   * framework_version
   * domain
@@ -44,6 +46,7 @@ partial update of any of these fields:
   * registry_password
   * cuda_version
   * min_hardware
+  * cpu
   * framework_name
   * framework_version
   * domain
