@@ -15,6 +15,7 @@ requires:
   * version
   * format
   * model file or URL to upload
+  * local filename (eg a hash; optional)
   * [license](license_overview.md)
   * origin URL
   * data domain(s) (classify/objdet/speech/...)
