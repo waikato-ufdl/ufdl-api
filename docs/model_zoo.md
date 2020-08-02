@@ -15,6 +15,7 @@ requires:
   * version
   * format
   * model file or URL to upload
+  * local filename (eg a hash; optional)
   * [license](license_overview.md)
   * origin URL
   * data domain(s) (classify/objdet/speech/...)
@@ -65,7 +66,7 @@ requires:
   * format
   * model file or URL to upload
   * pre-trained model ID it was built on top of
-  * dataset ID it was trained with
+  * dataset ID(s) it was trained with
   * [license](license_overview.md)
   * data domain(s) (classify/objdet/speech/...)
   * public?
