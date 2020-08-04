@@ -1,62 +1,55 @@
 # Overview
 
-The following types of jobs are available:
+The following types of jobs are available (but not limited to):
 
 * train
 * predict
 * evaluate
 * export
 
+# Fields
+
 Jobs share the following common fields:
 
-* job template
+* job template PK
 * start_time
 * end_time
+* inputs (one or more); see job templates
+* parameters (zero or more); see job templates
 * error
 
 Once a job gets submitted, a broadcast is sent via RabbitMQ to all worker nodes.
 If a worker node matches (driver version, cpu/gpu memory), it can pull the job.
 
+A job template defines what inputs, outputs and parameters are available.
 
-## Train
+# Actions
 
-A train job has the additional fields:
+## Add job
 
-* datasets (train/test/val)
+requires:
 
+  * job template PK
+  * start_time
+  * end_time
+  * inputs (one or more); see job templates
+  * parameters (zero or more); see job templates
+  * error
 
-## Predict (or pre-label)
+## Update job
 
-A predict job has the additional fields:
-
-* final_model
-* dataset
-
-
-## Evaluate
-
-An evaluate job has the additional fields:
-
-* final_model
-* dataset (test)
+partial update of any of the above fields.
 
 
-## Export
+## Delete job
 
-An export job as the additional fields:
+requires:
 
-* final_model
-
-The following types of exports may be available:
-
-* model
-* model + batch-prediction code
-* Android app
+  * job PK
 
 
-## Links
+
+# Links
 
 * [RabbitMQ](https://www.rabbitmq.com/)
-* [docker-py](https://docker-py.readthedocs.io/en/stable/)
-* [docker](https://www.docker.com/)
 

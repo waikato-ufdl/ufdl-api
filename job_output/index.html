@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Hardware - UFDL API</title>
+  <title>Job output - UFDL API</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Hardware";
-    var mkdocs_page_input_path = "hardware.md";
-    var mkdocs_page_url = "/waikato-datamining/ufdl-api/hardware/";
+    var mkdocs_page_name = "Job output";
+    var mkdocs_page_input_path = "job_output.md";
+    var mkdocs_page_url = "/waikato-datamining/ufdl-api/job_output/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -73,30 +73,9 @@
     <a class="" href="../cuda/">CUDA</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Hardware</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#fields">Fields</a></li>
-    
-
-    <li class="toctree-l2"><a href="#actions">Actions</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#add-hardware">Add hardware</a></li>
-        
-            <li><a class="toctree-l3" href="#update-harware">Update harware</a></li>
-        
-            <li><a class="toctree-l3" href="#delete-hardware">Delete hardware</a></li>
-        
-            <li><a class="toctree-l3" href="#links">Links</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../hardware/">Hardware</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -111,9 +90,28 @@
                     
     <a class="" href="../job_templates/">Job templates</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../job_output/">Job output</a>
+    <a class="current" href="./">Job output</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#fields">Fields</a></li>
+    
+
+    <li class="toctree-l3"><a href="#actions">Actions</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#add-job-output">Add job output</a></li>
+        
+            <li><a class="toctree-l4" href="#update-job-output">Update job output</a></li>
+        
+            <li><a class="toctree-l4" href="#delete-job-output">Delete job output</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -173,8 +171,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Job execution &raquo;</li>
+        
+      
     
-    <li>Hardware</li>
+    <li>Job output</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -184,35 +186,34 @@
           <div role="main">
             <div class="section">
               
-                <p>NVIDIA cards use belong to certain hardware generations, which have
-codenames. This table contains the hardware names and their compute
-capability.</p>
+                <p>The executor classes that apply and run the job templates will
+store (some of) the output of the jobs again for future use,
+like final models, tensorboard events, android app.</p>
 <h1 id="fields">Fields</h1>
 <ul>
-<li>generation</li>
-<li>compute_capability</li>
+<li>job PK</li>
+<li>
+<p>outputs (one or more); for each output:</p>
+</li>
+<li>
+<p>name</p>
+</li>
+<li>type (model/zip/json/tensorboard/...)</li>
+<li>data (the raw data, BLOB)</li>
 </ul>
 <h1 id="actions">Actions</h1>
-<h2 id="add-hardware">Add hardware</h2>
+<h2 id="add-job-output">Add job output</h2>
 <p>requires:</p>
 <ul>
-<li>generation</li>
-<li>compute_capability</li>
+<li>job PK</li>
+<li>output</li>
 </ul>
-<h2 id="update-harware">Update harware</h2>
-<p>partial update of any of these fields:</p>
-<ul>
-<li>generation</li>
-<li>compute_capability</li>
-</ul>
-<h2 id="delete-hardware">Delete hardware</h2>
+<h2 id="update-job-output">Update job output</h2>
+<p>Allow updating of outputs (add/delete/update)</p>
+<h2 id="delete-job-output">Delete job output</h2>
 <p>requires:</p>
 <ul>
-<li>generation</li>
-</ul>
-<h2 id="links">Links</h2>
-<ul>
-<li><a href="https://docs.nvidia.com/deploy/cuda-compatibility/index.html#support-hardware">Hardware support</a></li>
+<li>job PK</li>
 </ul>
               
             </div>
@@ -221,10 +222,10 @@ capability.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../jobs/" class="btn btn-neutral float-right" title="Jobs">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../image_classification/" class="btn btn-neutral float-right" title="Image classification">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../cuda/" class="btn btn-neutral" title="CUDA"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../job_templates/" class="btn btn-neutral" title="Job templates"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -250,10 +251,10 @@ capability.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../cuda/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../job_templates/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../jobs/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../image_classification/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

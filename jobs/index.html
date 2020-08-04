@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Job execution - UFDL API</title>
+  <title>Jobs - UFDL API</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Job execution";
+    var mkdocs_page_name = "Jobs";
     var mkdocs_page_input_path = "jobs.md";
     var mkdocs_page_url = "/waikato-datamining/ufdl-api/jobs/";
   </script>
@@ -78,34 +78,48 @@
     <a class="" href="../hardware/">Hardware</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Job execution</a>
+    <span class="caption-text">Job execution</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Jobs</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#overview">Overview</a></li>
+    <li class="toctree-l3"><a href="#overview">Overview</a></li>
+    
+
+    <li class="toctree-l3"><a href="#fields">Fields</a></li>
+    
+
+    <li class="toctree-l3"><a href="#actions">Actions</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#train">Train</a></li>
+            <li><a class="toctree-l4" href="#add-job">Add job</a></li>
         
-            <li><a class="toctree-l3" href="#predict-or-pre-label">Predict (or pre-label)</a></li>
+            <li><a class="toctree-l4" href="#update-job">Update job</a></li>
         
-            <li><a class="toctree-l3" href="#evaluate">Evaluate</a></li>
-        
-            <li><a class="toctree-l3" href="#export">Export</a></li>
-        
-            <li><a class="toctree-l3" href="#links">Links</a></li>
+            <li><a class="toctree-l4" href="#delete-job">Delete job</a></li>
         
         </ul>
     
 
+    <li class="toctree-l3"><a href="#links">Links</a></li>
+    
+
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+                </li>
+                <li class="">
+                    
     <a class="" href="../job_templates/">Job templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../job_output/">Job output</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -163,8 +177,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Job execution &raquo;</li>
+        
+      
     
-    <li>Job execution</li>
+    <li>Jobs</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -175,55 +193,47 @@
             <div class="section">
               
                 <h1 id="overview">Overview</h1>
-<p>The following types of jobs are available:</p>
+<p>The following types of jobs are available (but not limited to):</p>
 <ul>
 <li>train</li>
 <li>predict</li>
 <li>evaluate</li>
 <li>export</li>
 </ul>
+<h1 id="fields">Fields</h1>
 <p>Jobs share the following common fields:</p>
 <ul>
-<li>job template</li>
+<li>job template PK</li>
 <li>start_time</li>
 <li>end_time</li>
+<li>inputs (one or more); see job templates</li>
+<li>parameters (zero or more); see job templates</li>
 <li>error</li>
 </ul>
 <p>Once a job gets submitted, a broadcast is sent via RabbitMQ to all worker nodes.
 If a worker node matches (driver version, cpu/gpu memory), it can pull the job.</p>
-<h2 id="train">Train</h2>
-<p>A train job has the additional fields:</p>
+<p>A job template defines what inputs, outputs and parameters are available.</p>
+<h1 id="actions">Actions</h1>
+<h2 id="add-job">Add job</h2>
+<p>requires:</p>
 <ul>
-<li>datasets (train/test/val)</li>
+<li>job template PK</li>
+<li>start_time</li>
+<li>end_time</li>
+<li>inputs (one or more); see job templates</li>
+<li>parameters (zero or more); see job templates</li>
+<li>error</li>
 </ul>
-<h2 id="predict-or-pre-label">Predict (or pre-label)</h2>
-<p>A predict job has the additional fields:</p>
+<h2 id="update-job">Update job</h2>
+<p>partial update of any of the above fields.</p>
+<h2 id="delete-job">Delete job</h2>
+<p>requires:</p>
 <ul>
-<li>final_model</li>
-<li>dataset</li>
+<li>job PK</li>
 </ul>
-<h2 id="evaluate">Evaluate</h2>
-<p>An evaluate job has the additional fields:</p>
-<ul>
-<li>final_model</li>
-<li>dataset (test)</li>
-</ul>
-<h2 id="export">Export</h2>
-<p>An export job has the additional fields:</p>
-<ul>
-<li>final_model</li>
-</ul>
-<p>The following types of exports may be available:</p>
-<ul>
-<li>model</li>
-<li>model + batch-prediction code</li>
-<li>Android app</li>
-</ul>
-<h2 id="links">Links</h2>
+<h1 id="links">Links</h1>
 <ul>
 <li><a href="https://www.rabbitmq.com/">RabbitMQ</a></li>
-<li><a href="https://docker-py.readthedocs.io/en/stable/">docker-py</a></li>
-<li><a href="https://www.docker.com/">docker</a></li>
 </ul>
               
             </div>
