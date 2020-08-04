@@ -42,7 +42,7 @@ requires:
   * name
   * version
   * type
-  * scope
+  * scope -- not high priority!
   * domain
   * framework/version
   * inputs
