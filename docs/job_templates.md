@@ -3,34 +3,34 @@ From building models to generating Android apps.
 
 # Fields
 
-* name
-* version
-* type (train/export/predict/evaluate/...)
-* scope (user/project/public) -- not high priority!
-* domain (classify/objdet/speech/...)
-* framework/version
-* inputs (at least one); for each input:
+  * name
+  * version
+  * type (train/export/predict/evaluate/...)
+  * scope (user/project/public) -- not high priority!
+  * domain (classify/objdet/speech/...)
+  * framework/version
+  * inputs (at least one); for each input:
 
-  * name (eg train/test/val)
-  * type (eg int/float/str/dataset/model/...)
-  * options (optional; eg wai.annotations conversion options)
+    * name (eg train/test/val)
+    * type (eg int/float/str/dataset/model/...)
+    * options (optional; eg wai.annotations conversion options)
 
-* outputs (at least one); for each output:
+  * outputs (at least one); for each output:
 
-  * name (eg model/log/...)
-  * type (eg int/float/str/zip/tensorboard/zip/...)
-  * options (optional)
+    * name (eg model/log/...)
+    * type (eg int/float/str/zip/tensorboard/zip/...)
+    * options (optional)
 
-* parameters (zero or more); for each parameter:
+  * parameters (zero or more); for each parameter:
 
-  * name (eg min_width/steps/...)
-  * type (eg int/float/str)
-  * default (eg 1000)
+    * name (eg min_width/steps/...)
+    * type (eg int/float/str)
+    * default (eg 1000)
 
-* docker_image (PK of image)
-* executor_class (Python class)
-* required_packages (in pip notation, list, can be empty)
-* template (arbitrary text, interpreted by the executor class)
+  * docker_image (PK of image)
+  * executor_class (Python class)
+  * required_packages (in pip notation, list, can be empty)
+  * template (arbitrary text, interpreted by the executor class)
 
 
 # Actions
