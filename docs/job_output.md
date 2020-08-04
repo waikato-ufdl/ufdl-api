@@ -4,12 +4,12 @@ like final models, tensorboard events, android app.
 
 # Fields
 
-* job PK
-* outputs (one or more); for each output:
+  * job PK
+  * outputs (one or more); for each output:
 
-  * name
-  * type (model/zip/json/tensorboard/...)
-  * data (the raw data, BLOB)
+    * name
+    * type (model/zip/json/tensorboard/...)
+    * data (the raw data, BLOB)
 
 
 # Actions
