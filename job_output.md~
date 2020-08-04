@@ -1,6 +1,6 @@
 The executor classes that apply and run the job templates will
 store (some of) the output of the jobs again for future use,
-like final models or 
+like final models, tensorboard events, android app.
 
 # Fields
 
