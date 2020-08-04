@@ -14,6 +14,7 @@ requires:
   * model name
   * version
   * format
+  * framework/version
   * model file or URL to upload
   * local filename (eg a hash; optional)
   * [license](license_overview.md)
@@ -64,6 +65,7 @@ requires:
   * model name
   * version
   * format
+  * framework/version
   * model file or URL to upload
   * pre-trained model ID it was built on top of
   * dataset ID(s) it was trained with
