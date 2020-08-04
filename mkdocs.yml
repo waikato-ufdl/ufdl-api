@@ -11,6 +11,7 @@ nav:
   - 'CUDA': cuda.md
   - 'Hardware': hardware.md
   - 'Job execution': jobs.md
+  - 'Job templates': job_templates.md
   - 'Data domains':
     - 'Image classification': image_classification.md
     - 'Object Detection': object_detection.md
