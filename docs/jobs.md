@@ -13,6 +13,7 @@ The following types of jobs are available (but not limited to):
 Jobs share the following common fields:
 
 * job template PK
+* docker_image PK
 * start_time
 * end_time
 * inputs (one or more); see job templates; plus actual value
@@ -32,6 +33,7 @@ A job template defines what inputs, outputs and parameters are available.
 requires:
 
   * job template PK
+  * docker_image PK
   * start_time
   * end_time
   * inputs (one or more); see job templates
