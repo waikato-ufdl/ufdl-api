@@ -15,8 +15,8 @@ Jobs share the following common fields:
 * job template PK
 * start_time
 * end_time
-* inputs (one or more); see job templates
-* parameters (zero or more); see job templates
+* inputs (one or more); see job templates; plus actual value
+* parameters (zero or more); see job templates; plus actual value
 * error
 
 Once a job gets submitted, a broadcast is sent via RabbitMQ to all worker nodes.

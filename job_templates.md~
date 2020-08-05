@@ -15,12 +15,6 @@ From building models to generating Android apps.
     * type (eg int/float/str/dataset/model/...)
     * options (optional; eg wai.annotations conversion options)
 
-  * outputs (at least one); for each output:
-
-    * name (eg model/log/...)
-    * type (eg int/float/str/zip/tensorboard/zip/...)
-    * options (optional)
-
   * parameters (zero or more); for each parameter:
 
     * name (eg min_width/steps/...)
