@@ -11,7 +11,7 @@ graph {
   final_models [label = "FINAL MODELS\l- framework/version\l- license\l- domain (objdet/classify/speech/...)\l- data\l"];
   nodes [label = "NODES\l- ip\l- driver_version\l- hardware_generation\l- gpu_mem\l- cpu_mem\l- last_seen\l- current_job\l"];
   jobs [label = "JOBS\l- job_template\l- docker_image\l- start_time\l- end_time\l- error\l- inputs\l- parameters\l"];
-  job_templates [label = "JOB TEMPLATES\l- name\l- version\l- scope (user/project/public)\l- framework/version\l- domain (objdet/classify/speech/...)\l- type (train/predict/evaluate/export/android_app/...)\l- inputs (name/type/options)\l- parameters (name/type/default)\l- executor_class\l- required_packages\l- template\l"];
+  job_templates [label = "JOB TEMPLATES\l- name\l- version\l- scope (user/project/public)\l- framework/version\l- domain (objdet/classify/speech/...)\l- type (train/predict/evaluate/export/android_app/...)\l- description\l- inputs (name/type/options)\l- parameters (name/type/default)\l- executor_class\l- required_packages\l- template\l"];
   job_output [label = "JOB OUTPUT\l- job\l- outputs (name/type/data)\l"];
   //job_visualization [label = "JOB VISUALIZATION\l- job\l- template\l"];
   //job_visualization_templates [label = "JOB VISUALIZATION TEMPLATES\leg Tensorboard"];
