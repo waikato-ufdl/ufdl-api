@@ -21,7 +21,6 @@ From building models to generating Android apps.
     * type (eg int/float/str)
     * default (eg 1000)
 
-  * docker_image (PK of image)
   * executor_class (Python class)
   * required_packages (in pip notation, list, can be empty)
   * template (arbitrary text, interpreted by the executor class)
@@ -42,7 +41,6 @@ requires:
   * inputs
   * outputs
   * parameters
-  * docker_image
   * executor_class
   * required_packages
   * template
