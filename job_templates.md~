@@ -9,6 +9,7 @@ From building models to generating Android apps.
   * scope (user/project/public) -- not high priority!
   * domain (classify/objdet/speech/...)
   * framework/version
+  * description
   * inputs (at least one); for each input:
 
     * name (eg train/test/val)
@@ -38,6 +39,7 @@ requires:
   * scope -- not high priority!
   * domain
   * framework/version
+  * description
   * inputs
   * outputs
   * parameters
