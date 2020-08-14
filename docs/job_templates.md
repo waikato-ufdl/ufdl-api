@@ -10,6 +10,7 @@ From building models to generating Android apps.
   * domain (classify/objdet/speech/...)
   * framework/version
   * description
+  * license
   * inputs (at least one); for each input:
 
     * name (eg train/test/val)
@@ -40,6 +41,7 @@ requires:
   * domain
   * framework/version
   * description
+  * license
   * inputs
   * outputs
   * parameters

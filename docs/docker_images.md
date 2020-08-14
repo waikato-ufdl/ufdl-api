@@ -15,6 +15,7 @@ for exporting them and generating other output.
 * framework_version
 * domain (objdet/classify/speech/...)
 * types (train/predict/export/evaluate/...)
+* license
 
 # Actions
 
@@ -34,6 +35,7 @@ requires:
   * framework_version
   * domain
   * types
+  * license
 
 ## Update docker image
 
@@ -51,6 +53,7 @@ partial update of any of these fields:
   * framework_version
   * domain
   * types
+  * license
 
 
 ## Delete docker image
