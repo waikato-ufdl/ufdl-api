@@ -15,7 +15,7 @@ graph {
   job_output [label = "JOB OUTPUT\l- job\l- outputs (name/type/data)\l"];
   //job_visualization [label = "JOB VISUALIZATION\l- job\l- template\l"];
   //job_visualization_templates [label = "JOB VISUALIZATION TEMPLATES\leg Tensorboard"];
-  docker_images [label = "DOCKER IMAGES\l- name\l- url\l- registry\l- registry_user\l- registry_password\l- cuda_version\l- min_hardware_generation\l- cpu?\l- framework/version\l- domain (objdet/classify/speech/...)\l- types (train/predict/export/evaluate/...)\l- license"];
+  docker_images [label = "DOCKER IMAGES\l- name\l- url\l- registry\l- registry_user\l- registry_password\l- cuda_version\l- min_hardware_generation\l- cpu?\l- framework/version\l- domain (objdet/classify/speech/...)\l- types (train/predict/export/evaluate/...)\l- license\l"];
   //temp_downloads [label = "TEMP DOWNLOADS"];
 
   cuda -- docker_images;
