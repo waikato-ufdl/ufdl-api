@@ -18,6 +18,7 @@ nav:
     - 'Image classification': image_classification.md
     - 'Object Detection': object_detection.md
     - 'Speech': speech.md
+    - 'Audio classification': audio_classification.md
   - 'Model Zoo': model_zoo.md
   - 'Model templates': model_templates.md
   - 'Licenses': license_overview.md
