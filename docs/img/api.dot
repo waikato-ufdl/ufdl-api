@@ -9,7 +9,7 @@ graph {
   domains [label = "DOMAINS\l- name (od/ic/sp/...)\l- description (objdet/classify/speech/...)\l"];
 
   cuda [label = "CUDA\l- version\l- full_version\l- min_driver_version"];
-  docker_images [label = "DOCKER IMAGES\l- name\l- version\l- url\l- registry\l- registry_user\l- registry_password\l- cuda_version\l- name\l- min_hardware_generation\l- cpu?\l- framework\l- domain\l- tasks (train/predict/export/evaluate/...)\l- license\l"];
+  docker_images [label = "DOCKER IMAGES\l- name\l- version\l- url\l- registry\l- registry_username\l- registry_password\l- cuda_version\l- name\l- min_hardware_generation\l- cpu?\l- framework\l- domain\l- tasks (train/predict/export/evaluate/...)\l- license\l"];
   frameworks [label = "FRAMEWORKS\l- name\l- version\l"];
   hardware [label = "HARDWARE\l- generation\l- min_compute_capability\l- max_compute_capability\l"];
   nodes [label = "NODES\l- ip\l- index\l- cpu_mem\l- driver_version\l- hardware_generation\l- gpu_mem\l"];
