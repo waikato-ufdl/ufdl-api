@@ -3,34 +3,85 @@ certain versions of CUDA inside docker images will work.
 
 # Fields
 
-* cuda_version (10.0)
-* cuda_full_version (10.0.130)
-* driver_min_version (410.48)
+* version (10.0)
+* full_version (10.0.130)
+* min_driver_version (410.48)
 
 # Actions
 
-## Add mapping
+## List
 
-requires:
+POST: `/v1/core/cuda/list`
 
-  * cuda_version
-  * cuda_full_version
-  * driver_min_version
+Body (optional): filter specification
 
-## Update harware
+## Add
 
-partial update of any of these fields:
+POST: `/v1/core/cuda/create`
 
-  * cuda_version
-  * cuda_full_version
-  * driver_min_version
+Body:
+
+  * version: str
+  * full_version: str
+  * min_driver_version: str
+
+Response:
+
+  * PK: int (primary key of CUDA version)
+  * version: str
+  * full_version: str
+  * min_driver_version: str
+
+## Update
+
+PUT: `/v1/core/cuda/{PK}`
+
+Parameters:
+
+  * PK: int (primary key of CUDA version)
+  
+Body: 
+ 
+  * version: str
+  * full_version: str
+  * min_driver_version: str
+
+Response:
+
+  * PK: int (primary key of CUDA version)
+  * version: str
+  * full_version: str
+  * min_driver_version: str
+
+## Partial update
+
+PATCH: `/v1/core/cuda/{PK}`
+
+Parameters:
+
+  * PK: int (primary key of CUDA version)
+
+Partial update with any of the fields in the body:
+
+  * version: str
+  * full_version: str
+  * min_driver_version: str
+
+Response:
+
+  * PK: int (primary key of CUDA version)
+  * version: str
+  * full_version: str
+  * min_driver_version: str
 
 
-## Delete hardware
+## Delete
 
-requires:
+DELETE: `/v1/core/cuda/{PK}/`
 
-  * cuda_version
+Parameters:
+
+  * PK: int (primary key of CUDA version)
 
 
 ## Links
