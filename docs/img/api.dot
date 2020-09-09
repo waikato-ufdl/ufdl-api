@@ -25,7 +25,6 @@ graph {
   datasets -- projects;
   pretrained_models -- frameworks;
   pretrained_models -- licenses;
-  docker_images -- licenses;
   docker_images -- cuda;
   docker_images -- hardware;
   docker_images -- frameworks;
@@ -36,4 +35,5 @@ graph {
   job_templates -- docker_images;
   jobs -- job_output;
   jobs -- nodes;
+  jobs -- docker_images;
 }
