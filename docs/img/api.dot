@@ -6,16 +6,17 @@ graph {
   teams [label = "TEAMS\l- name\l- membership (user/permission)\l"];
   projects [label = "PROJECTS\l- name\l- team\l"];
   licenses [label = "LICENSES\l- name\l- url\l- domains\l- permissions\l- limitations\l- conditions\l"];
+  domains [label = "DOMAINS\l- name (od/ic/sp/...)\l- description (objdet/classify/speech/...)\l"];
 
   cuda [label = "CUDA\l- version\l- full_version\l- min_driver_version"];
-  docker_images [label = "DOCKER IMAGES\l- name\l- version\l- url\l- registry\l- registry_user\l- registry_password\l- cuda_version\l- name\l- min_hardware_generation\l- cpu?\l- framework\l- domain (objdet/classify/speech/...)\l- tasks (train/predict/export/evaluate/...)\l- license\l"];
+  docker_images [label = "DOCKER IMAGES\l- name\l- version\l- url\l- registry\l- registry_user\l- registry_password\l- cuda_version\l- name\l- min_hardware_generation\l- cpu?\l- framework\l- domain\l- tasks (train/predict/export/evaluate/...)\l- license\l"];
   frameworks [label = "FRAMEWORKS\l- name\l- version\l"];
   hardware [label = "HARDWARE\l- generation\l- min_compute_capability\l- max_compute_capability\l"];
   nodes [label = "NODES\l- ip\l- index\l- cpu_mem\l- driver_version\l- hardware_generation\l- gpu_mem\l"];
 
-  datasets [label = "DATASETS\l- domain (objdet/classify/speech/...)\l- version\l- description\l- license\l- project\l- public?\l- tags\l"];
-  pretrained_models [label = "PRETRAINED MODELS\l- name\l- framework\l- domain (objdet/classify/speech/...)\l- license\l- url\l- description\l"];
-  job_templates [label = "JOB TEMPLATES\l- name\l- version\l- scope (user/project/public)\l- framework\l- domain (objdet/classify/speech/...)\l- type (train/predict/...)\l- description\l- license\l- inputs (name/type/options)\l- parameters (name/type/default)\l- executor_class\l- required_packages\l- template_body\l"];
+  datasets [label = "DATASETS\l- domain\l- version\l- description\l- license\l- project\l- public?\l- tags\l"];
+  pretrained_models [label = "PRETRAINED MODELS\l- name\l- framework\l- domain\l- license\l- url\l- description\l"];
+  job_templates [label = "JOB TEMPLATES\l- name\l- version\l- scope (user/project/public)\l- framework\l- domain\l- type (train/predict/...)\l- description\l- license\l- inputs (name/type/options)\l- parameters (name/type/default)\l- executor_class\l- required_packages\l- template_body\l"];
   jobs [label = "JOBS\l- job_template\l- docker_image\l- inputs\l- parameters\l- description\l- start_time\l- end_time\l- error\l"];
   job_output [label = "JOB OUTPUT\l- job\l- outputs (name/type/data)\l"];
 
@@ -23,16 +24,20 @@ graph {
   projects -- teams;
   datasets -- licenses;
   datasets -- projects;
+  datasets -- domains;
   pretrained_models -- frameworks;
   pretrained_models -- licenses;
+  pretrained_models -- domains;
   docker_images -- cuda;
   docker_images -- hardware;
   docker_images -- frameworks;
   docker_images -- licenses;
+  docker_images -- domains;
   job_templates -- jobs;
   job_templates -- licenses;
   job_templates -- frameworks;
   job_templates -- docker_images;
+  job_templates -- domains;
   jobs -- job_output;
   jobs -- nodes;
   jobs -- docker_images;
