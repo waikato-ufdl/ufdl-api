@@ -1,64 +1,266 @@
-Job templates are the backbone for getting stuff done in the UFDL framework.
-From building models to generating Android apps.
+Manages the job templates.
 
 # Fields
 
-  * name
-  * version
-  * type (train/export/predict/evaluate/...)
-  * scope (user/project/public) -- not high priority!
-  * domain (classify/objdet/speech/...)
-  * framework/version
-  * description
-  * license
-  * inputs (at least one); for each input:
+Available fields:
 
-    * name (eg train/test/val)
-    * type (eg int/float/str/dataset/model/...)
-    * options (optional; eg wai.annotations conversion options)
-
-  * parameters (zero or more); for each parameter:
-
-    * name (eg min_width/steps/...)
-    * type (eg int/float/str)
-    * default (eg 1000)
-
-  * executor_class (Python class)
-  * required_packages (in pip notation, list, can be empty)
-  * template (arbitrary text, interpreted by the executor class)
-
+  * name: str
+  * version: int
+  * scope: str (public/project/user)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * type: str (train/predict/...)
+  * description: str
+  * inputs: array of (name: str, type: str, options: str, help: str)
+  * parameters: array of (name: str, type: str, default: str, help: str)
+  * executor_class: str
+  * required_packages: str
+  * body: str
 
 # Actions
 
-## Add job template
+## List
 
-requires:
+POST: `/v1/core/job-templates/list`
 
-  * name
-  * version
-  * type
-  * scope -- not high priority!
-  * domain
-  * framework/version
-  * description
-  * license
-  * inputs
-  * outputs
-  * parameters
-  * executor_class
-  * required_packages
-  * template
+Body (optional): [filter specification](filtering.md)
+  
+Response:
+
+  * array of
+
+    * pk: int (primary key of job template)
+    * name: str
+    * version: int
+    * scope: str (public/project/user)
+    * framework: [framework ID](frameworks.md)
+    * domain: [domain name](domains.md)
+    * type: str (train/predict/...)
+    * description: str
+    * inputs: array of (name: str, type: str, options: str, help: str)
+    * parameters: array of (name: str, type: str, default: str, help: str)
+    * executor_class: str
+    * required_packages: str
+    * body: str
 
 
-## Update job template
+## Load
 
-partial update of any of the above fields.
+GET: `/v1/core/job-templates/{PK}`
+
+Parameters:
+
+  * PK: int (primary key of job template)
+  
+Response:
+
+  * pk: int (primary key of job template)
+  * name: str
+  * version: int
+  * scope: str (public/project/user)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * type: str (train/predict/...)
+  * description: str
+  * inputs: array of (name: str, type: str, options: str, help: str)
+  * parameters: array of (name: str, type: str, default: str, help: str)
+  * executor_class: str
+  * required_packages: str
+  * body: str
+
+## Add
+
+POST: `/v1/core/job-templates/create`
+
+Body:
+
+  * name: str
+  * version: int
+  * scope: str (public/project/user)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * type: str (train/predict/...)
+  * description: str
+  * executor_class: str
+  * required_packages: str
+  * body: str
+
+Response:
+
+  * pk: int (primary key of job template)
+  * name: str
+  * version: int
+  * scope: str (public/project/user)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * type: str (train/predict/...)
+  * description: str
+  * inputs: array of (name: str, type: str, options: str, help: str)
+  * parameters: array of (name: str, type: str, default: str, help: str)
+  * executor_class: str
+  * required_packages: str
+  * body: str
+
+## Add input
+
+POST: `/v1/core/job-templates/{PK}/inputs/{NAME}`
+
+Parameters:
+
+  * PK: int (primary key of job template)
+  * NAME: str (name of the input)
+
+Body:
+
+  * type: str (bool/int/float/str/dataset/model/joboutput)
+  * options: str
+  * help: str
+
+## Remove input
+
+DELETE: `/v1/core/job-templates/{PK}/inputs/{NAME}`
+
+Parameters:
+
+  * PK: int (primary key of job template)
+  * NAME: str (name of the input)
+
+## Add parameter
+
+POST: `/v1/core/job-templates/{PK}/parameters/{NAME}`
+
+Parameters:
+
+  * PK: int (primary key of job template)
+  * NAME: str (name of the parameter)
+
+Body:
+
+  * type: str (bool/int/float/str/dataset/model/joboutput)
+  * default: str (the default value)
+  * help: str
+
+## Remove parameter
+
+DELETE: `/v1/core/job-templates/{PK}/parameters/{NAME}`
+
+Parameters:
+
+  * PK: int (primary key of job template)
+  * NAME: str (name of the parameter)
+
+## Update
+
+PUT: `/v1/core/job-templates/{PK}`
+
+Parameters:
+
+  * PK: int (primary key of job template)
+  
+Body: 
+ 
+  * name: str
+  * version: int
+  * scope: str (public/project/user)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * type: str (train/predict/...)
+  * description: str
+  * executor_class: str
+  * required_packages: str
+  * body: str
+
+Response:
+
+  * name: str
+  * version: int
+  * scope: str (public/project/user)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * type: str (train/predict/...)
+  * description: str
+  * inputs: array of (name: str, type: str, options: str, help: str)
+  * parameters: array of (name: str, type: str, default: str, help: str)
+  * executor_class: str
+  * required_packages: str
+  * body: str
+
+## Partial update
+
+PATCH: `/v1/core/job-templates/{PK}`
+
+Parameters:
+
+  * PK: int (primary key of job template)
+
+Any of the following fields in the body:
+
+  * name: str
+  * version: int
+  * scope: str (public/project/user)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * type: str (train/predict/...)
+  * description: str
+  * executor_class: str
+  * required_packages: str
+  * body: str
+
+Response:
+
+  * name: str
+  * version: int
+  * scope: str (public/project/user)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * type: str (train/predict/...)
+  * description: str
+  * inputs: array of (name: str, type: str, options: str, help: str)
+  * parameters: array of (name: str, type: str, default: str, help: str)
+  * executor_class: str
+  * required_packages: str
+  * body: str
 
 
-## Delete job template
+## Delete
 
-requires:
+DELETE: `/v1/core/job-templates/{PK}[/hard]`
 
-  * name
-  * version
+Parameters:
 
+  * PK: int (primary key of job template)
+
+Notes:
+
+  * Omitting `/hard` from URL only flags it as deleted, it can be reinstated
+
+## Reinstate
+
+DELETE: `/v1/core/job-templates/{PK}/reinstate`
+
+Parameters:
+
+  * PK: int (primary key of job template)
+
+Notes:
+
+  * Undeletes a previously soft-deleted job template
+
+## New job
+
+POST:  `/v1/core/job-templates/{PK}/create-job`
+
+Parameters:
+
+  * PK: int (primary key of job template)
+
+Body:
+
+  * docker_image: [docker image ID](docker_images.md)
+  * description: str (optional)
+  * input_values: map of input values (name/value)
+  * parameter_values: map of parameter values (name/value)
+  
+Response:
+
+  * [job](jobs.md)

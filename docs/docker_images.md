@@ -1,71 +1,200 @@
-Docker plays a central part in UFDL, not just for training models, but also
-for exporting them and generating other output.
+Manages the docker images used by the worker nodes.
 
 # Fields
 
-* name
-* url (full URL used for a `docker pull`)
-* registry_url (the URL of the registry)
-* registry_user (only necessary if not anonymous access)
-* registry_password (dito)
-* cuda_version (the required cuda version to run this image)
-* min_hardware (Pascal=1080Ti, Turing=2080Ti)
-* cpu (bool)
-* framework_name
-* framework_version
-* domain (objdet/classify/speech/...)
-* types (train/predict/export/evaluate/...)
-* license
+Available fields:
+
+  * name: str
+  * version: str
+  * url: str
+  * registry: str (URL)
+  * registry_username: str (only if registry requires login)
+  * registry_password: str
+  * cuda_version: [CUDA ID](cuda.md)
+  * min_hardware_generation: [hardware ID](hardware.md)
+  * cpu: bool (works on CPU only?)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * tasks: array of str (train/predict/...)
+  * licence: [license ID](licenses.md)
 
 # Actions
 
-## Add docker image
+## List
 
-requires:
+POST: `/v1/core/docker/list`
 
-  * name
-  * url
-  * registry_url
-  * registry_user
-  * registry_password
-  * cuda_version
-  * min_hardware
-  * cpu
-  * framework_name
-  * framework_version
-  * domain
-  * types
-  * license
+Body (optional): [filter specification](filtering.md)
+  
+Response:
 
-## Update docker image
+  * array of
 
-partial update of any of these fields:
-
-  * name
-  * url
-  * registry_url
-  * registry_user
-  * registry_password
-  * cuda_version
-  * min_hardware
-  * cpu
-  * framework_name
-  * framework_version
-  * domain
-  * types
-  * license
+    * pk: int (primary key of docker image)
+    * name: str
+    * version: str
+    * url: str
+    * registry: str (URL)
+    * registry_username: str (only if registry requires login)
+    * registry_password: str
+    * cuda_version: [CUDA ID](cuda.md)
+    * min_hardware_generation: [hardware ID](hardware.md)
+    * cpu: bool (works on CPU only?)
+    * framework: [framework ID](frameworks.md)
+    * domain: [domain name](domains.md)
+    * tasks: array of str (train/predict/...)
+    * licence: [license ID](licenses.md)
 
 
-## Delete docker image
+## Load
 
-requires:
+GET: `/v1/core/docker/{PK}`
 
-  * name
-  * version
+Parameters:
+
+  * PK: int (primary key of docker image)
+  
+Response:
+
+  * pk: int (primary key of docker image)
+  * name: str
+  * version: str
+  * url: str
+  * registry: str (URL)
+  * registry_username: str (only if registry requires login)
+  * registry_password: str
+  * cuda_version: [CUDA ID](cuda.md)
+  * min_hardware_generation: [hardware ID](hardware.md)
+  * cpu: bool (works on CPU only?)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * tasks: array of str (train/predict/...)
+  * licence: [license ID](licenses.md)
+
+## Add
+
+POST: `/v1/core/docker/create`
+
+Body:
+
+  * name: str
+  * version: str
+  * url: str
+  * registry: str (URL)
+  * registry_username: str (only if registry requires login)
+  * registry_password: str
+  * cuda_version: [CUDA ID](cuda.md)
+  * min_hardware_generation: [hardware ID](hardware.md)
+  * cpu: bool (works on CPU only?)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * tasks: array of str (train/predict/...)
+  * licence: [license ID](licenses.md)
+
+Response:
+
+  * pk: int (primary key of docker image)
+  * name: str
+  * version: str
+  * url: str
+  * registry: str (URL)
+  * registry_username: str (only if registry requires login)
+  * registry_password: str
+  * cuda_version: [CUDA ID](cuda.md)
+  * min_hardware_generation: [hardware ID](hardware.md)
+  * cpu: bool (works on CPU only?)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * tasks: array of str (train/predict/...)
+  * licence: [license ID](licenses.md)
+
+## Update
+
+PUT: `/v1/core/docker/{PK}`
+
+Parameters:
+
+  * PK: int (primary key of docker image)
+  
+Body: 
+ 
+  * name: str
+  * version: str
+  * url: str
+  * registry: str (URL)
+  * registry_username: str (only if registry requires login)
+  * registry_password: str
+  * cuda_version: [CUDA ID](cuda.md)
+  * min_hardware_generation: [hardware ID](hardware.md)
+  * cpu: bool (works on CPU only?)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * tasks: array of str (train/predict/...)
+  * licence: [license ID](licenses.md)
+
+Response:
+
+  * pk: int (primary key of docker image)
+  * name: str
+  * version: str
+  * url: str
+  * registry: str (URL)
+  * registry_username: str (only if registry requires login)
+  * registry_password: str
+  * cuda_version: [CUDA ID](cuda.md)
+  * min_hardware_generation: [hardware ID](hardware.md)
+  * cpu: bool (works on CPU only?)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * tasks: array of str (train/predict/...)
+  * licence: [license ID](licenses.md)
+
+## Partial update
+
+PATCH: `/v1/core/docker/{PK}`
+
+Parameters:
+
+  * PK: int (primary key of docker image)
+
+Any of the following fields in the body:
+
+  * name: str
+  * version: str
+  * url: str
+  * registry: str (URL)
+  * registry_username: str (only if registry requires login)
+  * registry_password: str
+  * cuda_version: [CUDA ID](cuda.md)
+  * min_hardware_generation: [hardware ID](hardware.md)
+  * cpu: bool (works on CPU only?)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * tasks: array of str (train/predict/...)
+  * licence: [license ID](licenses.md)
+
+Response:
+
+  * pk: int (primary key of docker image)
+  * name: str
+  * version: str
+  * url: str
+  * registry: str (URL)
+  * registry_username: str (only if registry requires login)
+  * registry_password: str
+  * cuda_version: [CUDA ID](cuda.md)
+  * min_hardware_generation: [hardware ID](hardware.md)
+  * cpu: bool (works on CPU only?)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * tasks: array of str (train/predict/...)
+  * licence: [license ID](licenses.md)
 
 
-## Links
+## Delete
 
-* [docker](https://www.docker.com/)
-* [aml-repo](https://aml-repo.cms.waikato.ac.nz/)
+DELETE: `/v1/core/docker/{PK}`
 
+Parameters:
+
+  * PK: int (primary key of docker image)

@@ -1,134 +1,40 @@
-Speech processing is used for generating text from audio or audio from text.
+Additional speech dataset operations.
 
-# Use-cases
+For core dataset operations, see [here](datasets.md).
 
-The following use-cases must be covered.
+# Fields
 
-## Create dataset
+  * files: array of file names
+  * transcriptions: for each image name a transcription (nested object, transcription field)
 
-requires: 
+# URL
 
-  * name of dataset
-  * project it belongs to (optional; default is *all* project)
-  * users allowed to manage it (optional; default is *only* user creating it)
-  * license (default: proprietary, ie all rights reserved)
-  * optional tag(s)
+Uses `/v1/core/speech/` instead of `/v1/core/datasets/`, 
+also for the core operations.
 
+# Actions
 
-## Delete dataset
+## Add transcript
 
-requires:
+POST: `/v1/core/speech/{PK}/transcriptions/{NAME}`
 
-  * name of dataset
-  
+Parameters:
 
-## Copy dataset
+  * PK: int (primary key of dataset)
+  * NAME: str (name of file to set the transcript for)
 
-requires:
+Body:
 
-  * name of dataset
-  * either:
+  * transcription: str
 
-    * new version
-    * new name
+## Get transcripts
 
+GET: `/v1/core/speech/{PK}/transcriptions`
 
-## List datasets
+Parameters:
 
-requires:
+  * PK: int (primary key of dataset)
 
-  * filters for tags, license, ...
+Response:
 
-
-## List images in dataset
-
-requires:
-
-  * name of dataset to list
-
-
-## Modify dataset
-
-Sub use-cases:
-
-### Add sound file
-
-requires:
-
-  * name of dataset to add to
-  * associated transcript
-
-### Delete sound file
-
-Automatically removes the associated transcript.
-
-requires:
-
-  * name of dataset to remove from
-  * name of file(s) to remove
-
-### Set transcript
-
-requires:
-
-  * name of dataset to update
-  * name of file(s) 
-  * the transcript
-
-### Change license
-
-requires:
-
-  * name of dataset to update
-  * license
-
-### Tag dataset
-
-requires:
-
-  * name of dataset to tag
-  * tag(s)
-
-
-## Download 
-
-### Download sound file
-
-requires:
-
-  * name of dataset
-  * name of file
-
-### Download transcript
-
-requires:
-
-  * name of dataset
-  * name of file
-
-### Download dataset
-
-Downloads the complete dataset as ZIP file.
-
-requires:
-
-  * name of dataset
-  * format
-
-## Other
-
-# Notes
-
-## Versioning
-
-Versioning is handled in database: a dataset simply combines IDs of images
-
-## Public datasets
-
-Users must be able to flag a dataset as being public, i.e., being accessible
-without requiring login. Can be used for research datasets.
-
-## Dependent models
-
-Datasets cannot be deleted if final models are in the model zoo depending on them.
-
+  * for each image name the corresponding transcript (nested object, transcription field)

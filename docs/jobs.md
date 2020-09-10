@@ -1,58 +1,127 @@
-# Overview
-
-The following types of jobs are available (but not limited to):
-
-* train
-* predict
-* evaluate
-* export
-
+Manages the generated jobs.
 
 # Fields
 
-Jobs share the following common fields:
+Available fields:
 
-* job template PK
-* docker_image PK
-* start_time
-* end_time
-* inputs (one or more); see job templates; plus actual value
-* parameters (zero or more); see job templates; plus actual value
-* error
-
-Once a job gets submitted, a broadcast is sent via RabbitMQ to all worker nodes.
-If a worker node matches (driver version, cpu/gpu memory), it can pull the job.
-
-A job template defines what inputs, outputs and parameters are available.
-
+  * description: str
+  * docker_image: [docker image ID](docker_images.md)
+  * template: [job template ID](job_templates.md)
+  * input_values: map of (name: str, value: str)
+  * parameter_values: map of (name: str, value: str)
+  * outputs: array of (name: str, type: str)
+  * node: [node ID](nodes.md)
+  * error: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
+  * start_time: timestamp
+  * end_time: timestamp
 
 # Actions
 
-## Add job
+## List
 
-requires:
+POST: `/v1/core/jobs/list`
 
-  * job template PK
-  * docker_image PK
-  * start_time
-  * end_time
-  * inputs (one or more); see job templates
-  * parameters (zero or more); see job templates
-  * error
+Body (optional): [filter specification](filtering.md)
+  
+Response:
 
-## Update job
+  * array of
 
-partial update of any of the above fields.
+    * pk: int (primary key of job)
+    * description: str
+    * docker_image: [docker image ID](docker_images.md)
+    * template: [job template ID](job_templates.md)
+    * input_values: map of (name: str, value: str)
+    * parameter_values: map of (name: str, value: str)
+    * outputs: array of (name: str, type: str)
+    * node: [node ID](nodes.md)
+    * error: str
+    * creator: [user ID](users.md)
+    * creation_time: timestamp
+    * deletion_time: timestamp
+    * start_time: timestamp
+    * end_time: timestamp
 
 
-## Delete job
+## Load
 
-requires:
+GET: `/v1/core/jobs/{PK}`
 
-  * job PK
+Parameters:
 
+  * PK: int (primary key of job)
+  
+Response:
 
-# Links
+  * pk: int (primary key of job)
+  * description: str
+  * docker_image: [docker image ID](docker_images.md)
+  * template: [job template ID](job_templates.md)
+  * input_values: map of (name: str, value: str)
+  * parameter_values: map of (name: str, value: str)
+  * outputs: array of (name: str, type: str)
+  * node: [node ID](nodes.md)
+  * error: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
+  * start_time: timestamp
+  * end_time: timestamp
 
-* [RabbitMQ](https://www.rabbitmq.com/)
+## Add output
 
+POST: `/v1/core/jobs/{PK}/outputs/{NAME}`
+
+Parameters: 
+
+  * PK: the primary key of the job
+  * NAME: the name of the output to add
+
+Byte array attachment is the binary content of the output. 
+
+## Get output
+
+GET: `/v1/core/jobs/{PK}/outputs/{NAME}`
+
+Parameters: 
+
+  * PK: the primary key of the job
+  * NAME: the name of the output to retrieve
+
+Returned byte array is the binary content of the output. 
+
+## Delete output
+
+DELETE: `/v1/core/jobs/{PK}/outputs/{NAME}`
+
+Parameters: 
+
+  * PK: the primary key of the job
+  * NAME: the name of the output to delete
+
+## Delete
+
+DELETE: `/v1/core/jobs/{PK}[/hard]`
+
+Parameters:
+
+  * PK: int (primary key of job)
+
+Notes:
+
+  * Omitting `/hard` from URL only flags it as deleted, it can be reinstated
+
+## Reinstate
+
+DELETE: `/v1/core/jobs/{PK}/reinstate`
+
+Parameters:
+
+  * PK: int (primary key of job)
+
+Notes:
+
+  * Undeletes a previously soft-deleted job

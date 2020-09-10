@@ -1,163 +1,61 @@
-[Image classification](https://en.wikipedia.org/wiki/Computer_vision#Recognition) 
-is used to assign categories to images, e.g., whether the image represents an animal
-or a face.
+Additional image classification dataset operations.
 
-# Use-cases
+For core dataset operations, see [here](datasets.md).
 
-The following use-cases must be covered.
+# Fields
 
-## Create dataset
+  * files: array of file names
+  * categories: for each image name an array of category strings
 
-requires: 
+# URL
 
-  * name of dataset
-  * project it belongs to (optional; default is *all* project)
-  * users allowed to manage it (optional; default is *only* user creating it)
-  * license (default: proprietary, ie all rights reserved)
-  * optional tag(s)
+Uses `/v1/core/classify/` instead of `/v1/core/datasets/`, 
+also for the core operations.
 
+# Actions
 
-## Delete dataset
+## Add categories
 
-requires:
+PATCH: `/v1/core/classify/{PK}/categories`
 
-  * name of dataset
-  
+Parameters:
 
-## Copy dataset
+  * PK: int (primary key of dataset)
 
-requires:
+Body:
 
-  * name of dataset
-  * either:
+  * method: "add"
+  * images: array of image names
+  * categories: array of category strings to add to all specified images
 
-    * new version
-    * new name
+## Get categories
 
+GET: `/v1/core/classify/{PK}/categories`
 
-## List datasets
+Parameters:
 
-requires:
+  * PK: int (primary key of dataset)
 
-  * filters for tags, license, ...
+Body:
 
+  * method: "add"
+  * images: array of image names
+  * categories: array of category strings to add to all specified images
 
-## List images in dataset
+Response:
 
-requires:
+  * for each image name an array of category strings
 
-  * name of dataset to list
+## Remove categories
 
+PATCH: `/v1/core/classify/{PK}/categories`
 
-## Modify dataset
+Parameters:
 
-Sub use-cases:
+  * PK: int (primary key of dataset)
 
-### Add image
+Body:
 
-requires:
-
-  * name of dataset to add to
-  * image categories
-
-### Delete image
-
-Automatically removes any associated categories.
-
-requires:
-
-  * name of dataset to remove from
-  * name of image(s) to remove
-
-### Add categories
-
-requires:
-
-  * name of dataset to add to
-  * name of image(s) to add to
-  * the categories to add
-
-### Delete categories
-
-requires:
-
-  * name of dataset to remove from
-  * name of image(s) to remove from
-
-### Change license
-
-requires:
-
-  * name of dataset to update
-  * license
-
-### Tag dataset
-
-requires:
-
-  * name of dataset to tag
-  * tag(s)
-
-
-## Download 
-
-### Download image
-
-requires:
-
-  * name of dataset
-  * name of image
-
-### Download categories
-
-requires:
-
-  * name of dataset
-  * annotation format
-
-### Download dataset
-
-Downloads the complete dataset as ZIP file.
-
-requires:
-
-  * name of dataset
-  * annotation format
-
-## Other
-
-### Bulk upload
-
-Uploads a complete dataset as ZIP file. Replaces any existing images
-with the same names and their associated categories.
-
-To be used when annotating data with third-party tools.
-
-requires:
-
-  * name of dataset
-  * annotation format
-
-
-# Notes
-
-## Versioning
-
-Versioning is handled in database: a dataset simply combines IDs of images
-
-## Category formats
-
-The following annotation formats need to be supported:
-
-  * simple JSON: key (= name of image) with associated array of categories
-  * ADAMS ??
-
-## Public datasets
-
-Users must be able to flag a dataset as being public, i.e., being accessible
-without requiring login. Can be used for research datasets.
-
-## Dependent models
-
-Datasets cannot be deleted if final models are in the model zoo depending on them.
-
+  * method: "remove"
+  * images: array of image names
+  * categories: array of category strings to remove from all specified images

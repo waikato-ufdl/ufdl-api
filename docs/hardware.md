@@ -1,38 +1,114 @@
-NVIDIA cards use belong to certain hardware generations, which have
-codenames. This table contains the hardware names and their compute
-capability.
-
+For defining the graphics card hardware generations.
 
 # Fields
 
-* generation
-* compute_capability
+Available fields:
+
+  * generation: str
+  * min_compute_capability: float (inclusive)
+  * max_compute_capability: float (exclusive)
 
 # Actions
 
-## Add hardware
+## List
 
-requires:
+POST: `/v1/core/hardware/list`
 
-  * generation
-  * compute_capability
+Body (optional): [filter specification](filtering.md)
+  
+Response:
 
-## Update harware
+  * array of
 
-partial update of any of these fields:
+    * pk: int (primary key of hardware)
+    * generation: str
+    * min_compute_capability: float
+    * max_compute_capability: float
 
-  * generation
-  * compute_capability
+
+## Load
+
+GET: `/v1/core/hardware/{PK}`
+
+Parameters:
+
+  * PK: int (primary key of hardware)
+  
+Response:
+
+  * pk: int (primary key of hardware)
+  * generation: str
+  * min_compute_capability: float
+  * max_compute_capability: float
+
+## Add
+
+POST: `/v1/core/hardware/create`
+
+Body:
+
+  * generation: str
+  * min_compute_capability: float (incl)
+  * max_compute_capability: float (excl)
+
+Response:
+
+  * pk: int (primary key of hardware)
+  * generation: str
+  * min_compute_capability: float
+  * max_compute_capability: float
+
+## Update
+
+PUT: `/v1/core/hardware/{PK}`
+
+Parameters:
+
+  * PK: int (primary key of hardware)
+  
+Body: 
+ 
+  * generation: str
+  * min_compute_capability: float
+  * max_compute_capability: float
+
+Response:
+
+  * pk: int (primary key of hardware)
+  * generation: str
+  * min_compute_capability: float
+  * max_compute_capability: float
+
+## Partial update
+
+PATCH: `/v1/core/hardware/{PK}`
+
+Parameters:
+
+  * PK: int (primary key of hardware)
+
+Any of the following fields in the body:
+
+  * generation: str
+  * min_compute_capability: float
+  * max_compute_capability: float
+
+Response:
+
+  * pk: int (primary key of hardware)
+  * generation: str
+  * min_compute_capability: float
+  * max_compute_capability: float
 
 
-## Delete hardware
+## Delete
 
-requires:
+DELETE: `/v1/core/hardware/{PK}`
 
-  * generation
+Parameters:
 
+  * PK: int (primary key of hardware)
 
 ## Links
 
-* [Hardware support](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#support-hardware)
-
+* [CUDA/Hardware](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#support-hardware__table-hardware-support)

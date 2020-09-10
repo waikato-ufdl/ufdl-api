@@ -3,9 +3,11 @@ certain versions of CUDA inside docker images will work.
 
 # Fields
 
-* version (10.0)
-* full_version (10.0.130)
-* min_driver_version (410.48)
+Available fields:
+
+  * version: str (10.0)
+  * full_version: str (10.0.130)
+  * min_driver_version: str (410.48)
 
 # Actions
 
@@ -13,7 +15,15 @@ certain versions of CUDA inside docker images will work.
 
 POST: `/v1/core/cuda/list`
 
-Body (optional): filter specification
+Body (optional): [filter specification](filtering.md)
+  
+Response:
+
+  * array of
+
+    * version: str
+    * full_version: str
+    * min_driver_version: str
 
 ## Add
 
@@ -27,7 +37,22 @@ Body:
 
 Response:
 
+  * pk: int (primary key of CUDA version)
+  * version: str
+  * full_version: str
+  * min_driver_version: str
+
+## Load
+
+GET: `/v1/core/cuda/{PK}`
+
+Parameters:
+
   * PK: int (primary key of CUDA version)
+  
+Response:
+
+  * pk: int (primary key of CUDA version)
   * version: str
   * full_version: str
   * min_driver_version: str
@@ -48,7 +73,7 @@ Body:
 
 Response:
 
-  * PK: int (primary key of CUDA version)
+  * pk: int (primary key of CUDA version)
   * version: str
   * full_version: str
   * min_driver_version: str
@@ -61,7 +86,7 @@ Parameters:
 
   * PK: int (primary key of CUDA version)
 
-Partial update with any of the fields in the body:
+Any of the following fields in the body:
 
   * version: str
   * full_version: str
@@ -69,7 +94,7 @@ Partial update with any of the fields in the body:
 
 Response:
 
-  * PK: int (primary key of CUDA version)
+  * pk: int (primary key of CUDA version)
   * version: str
   * full_version: str
   * min_driver_version: str
@@ -77,7 +102,7 @@ Response:
 
 ## Delete
 
-DELETE: `/v1/core/cuda/{PK}/`
+DELETE: `/v1/core/cuda/{PK}`
 
 Parameters:
 

@@ -5,20 +5,25 @@ theme:
     name: readthedocs
 nav:
   - 'Home': index.md
-  - 'User management': user_management.md
-  - 'Data storage': data_storage.md
-  - 'Docker images': docker_images.md
-  - 'CUDA': cuda.md
-  - 'Hardware': hardware.md
+  - 'Core':
+    - 'Authentication': authentication.md
+    - 'CUDA': cuda.md
+    - 'Docker images': docker_images.md
+    - 'Domains': domains.md
+    - 'Frameworks': frameworks.md
+    - 'Hardware': hardware.md
+    - 'Licenses': licenses.md
+    - 'Nodes': nodes.md
+    - 'Pretrained models': pretrained_models.md
+    - 'Projects': projects.md
+    - 'Teams': teams.md
+    - 'Users': users.md
   - 'Job execution':
     - 'Jobs': jobs.md
     - 'Job templates': job_templates.md
-    - 'Job output': job_output.md
-  - 'Data domains':
+  - 'Data':
+    - 'Core dataset': datasets.md
     - 'Image classification': image_classification.md
     - 'Object Detection': object_detection.md
     - 'Speech': speech.md
-    - 'Audio classification': audio_classification.md
-  - 'Model Zoo': model_zoo.md
-  - 'Model templates': model_templates.md
-  - 'Licenses': license_overview.md
+  - 'Filtering': filtering.md
