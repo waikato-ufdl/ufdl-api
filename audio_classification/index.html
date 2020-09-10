@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Model templates - UFDL API</title>
+  <title>Audio classification - UFDL API</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Model templates";
-    var mkdocs_page_input_path = "model_templates.md";
-    var mkdocs_page_url = "/waikato-datamining/ufdl-api/model_templates/";
+    var mkdocs_page_name = "Audio classification";
+    var mkdocs_page_input_path = "audio_classification.md";
+    var mkdocs_page_url = "/waikato-datamining/ufdl-api/audio_classification/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -55,27 +55,57 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../user_management/">User management</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../data_storage/">Data storage</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../docker_images/">Docker images</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+    <span class="caption-text">Core</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../authentication/">Authentication</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../cuda/">CUDA</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+                </li>
+                <li class="">
+                    
+    <a class="" href="../docker_images/">Docker images</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../domains/">Domains</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../frameworks/">Frameworks</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licenses/">Licenses</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../nodes/">Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../pretrained_models/">Pretrained models</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../projects/">Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../teams/">Teams</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../users/">Users</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -90,17 +120,17 @@
                     
     <a class="" href="../job_templates/">Job templates</a>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../job_output/">Job output</a>
-                </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Data domains</span>
+    <span class="caption-text">Data</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../datasets/">Core dataset</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../image_classification/">Image classification</a>
@@ -118,40 +148,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../model_zoo/">Model Zoo</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href="./">Model templates</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#configuration-template">Configuration template</a></li>
-    
-
-    <li class="toctree-l2"><a href="#actions">Actions</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#add-template">Add template</a></li>
-        
-            <li><a class="toctree-l3" href="#delete-template">Delete template</a></li>
-        
-            <li><a class="toctree-l3" href="#download-template">Download template</a></li>
-        
-            <li><a class="toctree-l3" href="#search">Search</a></li>
-        
-            <li><a class="toctree-l3" href="#public-templates">Public templates</a></li>
-        
-        </ul>
-    
-
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../license_overview/">Licenses</a>
+    <a class="" href="../filtering/">Filtering</a>
 	    </li>
           
         </ul>
@@ -176,7 +173,7 @@
     
       
     
-    <li>Model templates</li>
+    <li>Audio classification</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -186,88 +183,111 @@
           <div role="main">
             <div class="section">
               
-                <p>Each deeplearning framework comes with its own configuration file format.
-In order to start training on a dataset with a pre-trained model, we need
-to customize configuration templates.
-Users also need to be able to supply their own, tweaked templates.</p>
-<h1 id="configuration-template">Configuration template</h1>
-<p>A template contains the following information:</p>
+                <p>Audio classification is used to assign categories to audio samples at certain timestamps (for a specified duration), e.g., whether the sample represents a particular song bird.</p>
+<h1 id="use-cases">Use-cases</h1>
+<p>The following use-cases must be covered.</p>
+<h2 id="create-dataset">Create dataset</h2>
+<p>requires: </p>
 <ul>
-<li>template name</li>
-<li>framework (eg tensorflow 2.x)</li>
-<li>model name (Faster RCNN ResNet 101)</li>
-<li>license</li>
-<li>version</li>
+<li>name of dataset</li>
+<li>project it belongs to (optional; default is <em>all</em> project)</li>
+<li>users allowed to manage it (optional; default is <em>only</em> user creating it)</li>
+<li>license (default: proprietary, ie all rights reserved)</li>
+<li>optional tag(s)</li>
+</ul>
+<h2 id="delete-dataset">Delete dataset</h2>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+</ul>
+<h2 id="list-datasets">List datasets</h2>
+<p>requires:</p>
+<ul>
+<li>filters for tags, license, ...</li>
+</ul>
+<h2 id="list-images-in-dataset">List images in dataset</h2>
+<p>requires:</p>
+<ul>
+<li>name of dataset to list</li>
+</ul>
+<h2 id="modify-dataset">Modify dataset</h2>
+<p>Sub use-cases:</p>
+<h3 id="add-sound-file">Add sound file</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to add to</li>
 <li>
-<p>config </p>
+<p>one or more annotations, for each:</p>
 <ul>
-<li>the raw configuration template with placeholders</li>
-<li>based on original framework config file</li>
-<li>simply stored as string between triple quotes</li>
+<li>start timestamp</li>
+<li>duration</li>
+<li>category</li>
 </ul>
 </li>
-<li>
-<p>parameters; each parameter:</p>
+</ul>
+<h3 id="delete-sound-file">Delete sound file</h3>
+<p>Automatically removes any associated categories.</p>
+<p>requires:</p>
 <ul>
-<li>name (eg img_min_dim)</li>
-<li>required (true|false)</li>
-<li>placeholder in config (${IMG_MIN_DIM})</li>
-<li>default value (for optional parameters)</li>
+<li>name of dataset to remove from</li>
+<li>name of sound file(s) to remove</li>
+</ul>
+<h3 id="add-annotations">Add annotations</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to add to</li>
+<li>name of sound(s) to add to</li>
+<li>
+<p>the annotations to add, for each annotation:</p>
+<ul>
+<li>start timestamp</li>
+<li>duration</li>
+<li>label</li>
 </ul>
 </li>
 </ul>
-<h1 id="actions">Actions</h1>
-<h2 id="add-template">Add template</h2>
+<h3 id="delete-annotations">Delete annotations</h3>
 <p>requires:</p>
 <ul>
-<li>template name</li>
-<li>framework</li>
-<li>model name</li>
-<li>version</li>
-<li>config</li>
-<li>parameters</li>
+<li>name of dataset to remove from</li>
+<li>name of sound file(s) to remove from</li>
 </ul>
-<h2 id="delete-template">Delete template</h2>
+<h3 id="change-license">Change license</h3>
 <p>requires:</p>
 <ul>
-<li>template name</li>
-<li>framework</li>
-<li>model name</li>
-<li>version</li>
-</ul>
-<h2 id="download-template">Download template</h2>
-<p>requires:</p>
-<ul>
-<li>template name</li>
-<li>framework</li>
-<li>model name</li>
-<li>version</li>
-</ul>
-<h2 id="search">Search</h2>
-<p>parameters:</p>
-<ul>
-<li>framework</li>
-<li>model name</li>
+<li>name of dataset to update</li>
 <li>license</li>
-<li>version</li>
-<li>...</li>
 </ul>
-<h2 id="public-templates">Public templates</h2>
-<p>Users must be able to flag a templates as being public, i.e., being accessible
-without requiring login.</p>
+<h3 id="tag-dataset">Tag dataset</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset to tag</li>
+<li>tag(s)</li>
+</ul>
+<h2 id="download">Download</h2>
+<h3 id="download-sound-file">Download sound file</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+<li>name of sound file</li>
+</ul>
+<h3 id="download-annotations">Download annotations</h3>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+<li>annotation format</li>
+</ul>
+<h3 id="download-dataset">Download dataset</h3>
+<p>Downloads the complete dataset as ZIP file.</p>
+<p>requires:</p>
+<ul>
+<li>name of dataset</li>
+<li>annotation format</li>
+</ul>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../license_overview/" class="btn btn-neutral float-right" title="Licenses">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../model_zoo/" class="btn btn-neutral" title="Model Zoo"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -291,10 +311,6 @@ without requiring login.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../model_zoo/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../license_overview/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

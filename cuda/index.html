@@ -55,48 +55,84 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../user_management/">User management</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../data_storage/">Data storage</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../docker_images/">Docker images</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
+    <span class="caption-text">Core</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../authentication/">Authentication</a>
+                </li>
+                <li class=" current">
+                    
     <a class="current" href="./">CUDA</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#fields">Fields</a></li>
+    <li class="toctree-l3"><a href="#fields">Fields</a></li>
     
 
-    <li class="toctree-l2"><a href="#actions">Actions</a></li>
+    <li class="toctree-l3"><a href="#actions">Actions</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#add-mapping">Add mapping</a></li>
+            <li><a class="toctree-l4" href="#list">List</a></li>
         
-            <li><a class="toctree-l3" href="#update-harware">Update harware</a></li>
+            <li><a class="toctree-l4" href="#add">Add</a></li>
         
-            <li><a class="toctree-l3" href="#delete-hardware">Delete hardware</a></li>
+            <li><a class="toctree-l4" href="#load">Load</a></li>
         
-            <li><a class="toctree-l3" href="#links">Links</a></li>
+            <li><a class="toctree-l4" href="#update">Update</a></li>
+        
+            <li><a class="toctree-l4" href="#partial-update">Partial update</a></li>
+        
+            <li><a class="toctree-l4" href="#delete">Delete</a></li>
+        
+            <li><a class="toctree-l4" href="#links">Links</a></li>
         
         </ul>
     
 
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+                </li>
+                <li class="">
+                    
+    <a class="" href="../docker_images/">Docker images</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../domains/">Domains</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../frameworks/">Frameworks</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licenses/">Licenses</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../nodes/">Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../pretrained_models/">Pretrained models</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../projects/">Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../teams/">Teams</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../users/">Users</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -111,17 +147,17 @@
                     
     <a class="" href="../job_templates/">Job templates</a>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../job_output/">Job output</a>
-                </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Data domains</span>
+    <span class="caption-text">Data</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../datasets/">Core dataset</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../image_classification/">Image classification</a>
@@ -139,17 +175,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../model_zoo/">Model Zoo</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../model_templates/">Model templates</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../license_overview/">Licenses</a>
+    <a class="" href="../filtering/">Filtering</a>
 	    </li>
           
         </ul>
@@ -173,6 +199,10 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Core &raquo;</li>
+        
+      
     
     <li>CUDA</li>
     <li class="wy-breadcrumbs-aside">
@@ -187,30 +217,98 @@
                 <p>Based on the NVIDIA driver installed on a system only
 certain versions of CUDA inside docker images will work.</p>
 <h1 id="fields">Fields</h1>
+<p>Available fields:</p>
 <ul>
-<li>cuda_version (10.0)</li>
-<li>cuda_full_version (10.0.130)</li>
-<li>driver_min_version (410.48)</li>
+<li>version: str (10.0)</li>
+<li>full_version: str (10.0.130)</li>
+<li>min_driver_version: str (410.48)</li>
 </ul>
 <h1 id="actions">Actions</h1>
-<h2 id="add-mapping">Add mapping</h2>
-<p>requires:</p>
+<h2 id="list">List</h2>
+<p>POST: <code>/v1/core/cuda/list</code></p>
+<p>Body (optional): <a href="../filtering/">filter specification</a></p>
+<p>Response:</p>
 <ul>
-<li>cuda_version</li>
-<li>cuda_full_version</li>
-<li>driver_min_version</li>
+<li>
+<p>array of</p>
+<ul>
+<li>version: str</li>
+<li>full_version: str</li>
+<li>min_driver_version: str</li>
 </ul>
-<h2 id="update-harware">Update harware</h2>
-<p>partial update of any of these fields:</p>
-<ul>
-<li>cuda_version</li>
-<li>cuda_full_version</li>
-<li>driver_min_version</li>
+</li>
 </ul>
-<h2 id="delete-hardware">Delete hardware</h2>
-<p>requires:</p>
+<h2 id="add">Add</h2>
+<p>POST: <code>/v1/core/cuda/create</code></p>
+<p>Body:</p>
 <ul>
-<li>cuda_version</li>
+<li>version: str</li>
+<li>full_version: str</li>
+<li>min_driver_version: str</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>pk: int (primary key of CUDA version)</li>
+<li>version: str</li>
+<li>full_version: str</li>
+<li>min_driver_version: str</li>
+</ul>
+<h2 id="load">Load</h2>
+<p>GET: <code>/v1/core/cuda/{PK}</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of CUDA version)</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>pk: int (primary key of CUDA version)</li>
+<li>version: str</li>
+<li>full_version: str</li>
+<li>min_driver_version: str</li>
+</ul>
+<h2 id="update">Update</h2>
+<p>PUT: <code>/v1/core/cuda/{PK}</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of CUDA version)</li>
+</ul>
+<p>Body: </p>
+<ul>
+<li>version: str</li>
+<li>full_version: str</li>
+<li>min_driver_version: str</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>pk: int (primary key of CUDA version)</li>
+<li>version: str</li>
+<li>full_version: str</li>
+<li>min_driver_version: str</li>
+</ul>
+<h2 id="partial-update">Partial update</h2>
+<p>PATCH: <code>/v1/core/cuda/{PK}</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of CUDA version)</li>
+</ul>
+<p>Any of the following fields in the body:</p>
+<ul>
+<li>version: str</li>
+<li>full_version: str</li>
+<li>min_driver_version: str</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>pk: int (primary key of CUDA version)</li>
+<li>version: str</li>
+<li>full_version: str</li>
+<li>min_driver_version: str</li>
+</ul>
+<h2 id="delete">Delete</h2>
+<p>DELETE: <code>/v1/core/cuda/{PK}</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of CUDA version)</li>
 </ul>
 <h2 id="links">Links</h2>
 <ul>
@@ -223,10 +321,10 @@ certain versions of CUDA inside docker images will work.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../hardware/" class="btn btn-neutral float-right" title="Hardware">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../docker_images/" class="btn btn-neutral float-right" title="Docker images">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../docker_images/" class="btn btn-neutral" title="Docker images"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../authentication/" class="btn btn-neutral" title="Authentication"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -252,10 +350,10 @@ certain versions of CUDA inside docker images will work.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../docker_images/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../authentication/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../hardware/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../docker_images/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

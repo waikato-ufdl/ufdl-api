@@ -55,27 +55,57 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../user_management/">User management</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../data_storage/">Data storage</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../docker_images/">Docker images</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+    <span class="caption-text">Core</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../authentication/">Authentication</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../cuda/">CUDA</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+                </li>
+                <li class="">
+                    
+    <a class="" href="../docker_images/">Docker images</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../domains/">Domains</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../frameworks/">Frameworks</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licenses/">Licenses</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../nodes/">Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../pretrained_models/">Pretrained models</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../projects/">Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../teams/">Teams</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../users/">Users</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -90,17 +120,17 @@
                     
     <a class="" href="../job_templates/">Job templates</a>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../job_output/">Job output</a>
-                </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Data domains</span>
+    <span class="caption-text">Data</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../datasets/">Core dataset</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../image_classification/">Image classification</a>
@@ -110,40 +140,21 @@
     <a class="current" href="./">Object Detection</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#use-cases">Use-cases</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#create-dataset">Create dataset</a></li>
-        
-            <li><a class="toctree-l4" href="#delete-dataset">Delete dataset</a></li>
-        
-            <li><a class="toctree-l4" href="#copy-dataset">Copy dataset</a></li>
-        
-            <li><a class="toctree-l4" href="#list-datasets">List datasets</a></li>
-        
-            <li><a class="toctree-l4" href="#list-images-in-dataset">List images in dataset</a></li>
-        
-            <li><a class="toctree-l4" href="#modify-dataset">Modify dataset</a></li>
-        
-            <li><a class="toctree-l4" href="#download">Download</a></li>
-        
-            <li><a class="toctree-l4" href="#other">Other</a></li>
-        
-        </ul>
+    <li class="toctree-l3"><a href="#fields">Fields</a></li>
     
 
-    <li class="toctree-l3"><a href="#notes">Notes</a></li>
+    <li class="toctree-l3"><a href="#url">URL</a></li>
+    
+
+    <li class="toctree-l3"><a href="#actions">Actions</a></li>
     
         <ul>
         
-            <li><a class="toctree-l4" href="#versioning">Versioning</a></li>
+            <li><a class="toctree-l4" href="#add-annotations">Add annotations</a></li>
         
-            <li><a class="toctree-l4" href="#annotation-formats">Annotation formats</a></li>
+            <li><a class="toctree-l4" href="#get-annotations">Get annotations</a></li>
         
-            <li><a class="toctree-l4" href="#public-datasets">Public datasets</a></li>
-        
-            <li><a class="toctree-l4" href="#dependent-models">Dependent models</a></li>
+            <li><a class="toctree-l4" href="#delete-annotations">Delete annotations</a></li>
         
         </ul>
     
@@ -159,17 +170,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../model_zoo/">Model Zoo</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../model_templates/">Model templates</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../license_overview/">Licenses</a>
+    <a class="" href="../filtering/">Filtering</a>
 	    </li>
           
         </ul>
@@ -194,7 +195,7 @@
     
       
         
-          <li>Data domains &raquo;</li>
+          <li>Data &raquo;</li>
         
       
     
@@ -208,160 +209,59 @@
           <div role="main">
             <div class="section">
               
-                <p><a href="https://en.wikipedia.org/wiki/Object_detection">Object detection</a> or 
-<a href="https://en.wikipedia.org/wiki/Object_Co-segmentation">object co-segmentation</a>
-is used for detecting specific types of objects in images. For this to work, 
-images need to be annotated with the relevant regions highlighted. The regions 
-can either be simple bounding boxes or polygons that align to the shape of the 
-objects.</p>
-<h1 id="use-cases">Use-cases</h1>
-<p>The following use-cases must be covered </p>
-<h2 id="create-dataset">Create dataset</h2>
-<p>requires: </p>
+                <p>Additional object detection dataset operations.</p>
+<p>For core dataset operations, see <a href="../datasets/">here</a>.</p>
+<h1 id="fields">Fields</h1>
 <ul>
-<li>name of dataset</li>
-<li>project it belongs to (optional; default is <em>all</em> project)</li>
-<li>users allowed to manage it (optional; default is <em>only</em> user creating it)</li>
-<li>license (default: proprietary, ie all rights reserved)</li>
-<li>optional tag(s)</li>
+<li>files: array of file names</li>
+<li>annotations: for each image name an array of Annotation objects</li>
 </ul>
-<h2 id="delete-dataset">Delete dataset</h2>
-<p>requires:</p>
+<p>Annotation object fields:</p>
 <ul>
-<li>name of dataset</li>
+<li>x: int</li>
+<li>y: int</li>
+<li>width: int</li>
+<li>height: int</li>
+<li>label: str</li>
+<li>polygon: polygon object (optional)</li>
 </ul>
-<h2 id="copy-dataset">Copy dataset</h2>
-<p>requires:</p>
+<p>Polygon object fields:</p>
 <ul>
-<li>name of dataset</li>
-<li>
-<p>either:</p>
+<li>points: array of array with two int values (x, y)</li>
+</ul>
+<h1 id="url">URL</h1>
+<p>Uses <code>/v1/core/objdet/</code> instead of <code>/v1/core/datasets/</code>, 
+also for the core operations.</p>
+<h1 id="actions">Actions</h1>
+<h2 id="add-annotations">Add annotations</h2>
+<p>POST: <code>/v1/core/objdet/{PK}/annotations/{NAME}</code></p>
+<p>Parameters:</p>
 <ul>
-<li>new version</li>
-<li>new name</li>
+<li>PK: int (primary key of dataset)</li>
+<li>NAME: str (name of file to set annotations for)</li>
 </ul>
-</li>
-</ul>
-<h2 id="list-datasets">List datasets</h2>
-<p>requires:</p>
+<p>Body:</p>
 <ul>
-<li>filters for tags, license, ...</li>
+<li>annotations: array of Annotation objects</li>
 </ul>
-<h2 id="list-images-in-dataset">List images in dataset</h2>
-<p>requires:</p>
+<h2 id="get-annotations">Get annotations</h2>
+<p>GET: <code>/v1/core/objdet/{PK}/annotations/{NAME}</code></p>
+<p>Parameters:</p>
 <ul>
-<li>name of dataset to list</li>
+<li>PK: int (primary key of dataset)</li>
+<li>NAME: str (name of file to get annotations for)</li>
 </ul>
-<h2 id="modify-dataset">Modify dataset</h2>
-<p>Sub use-cases:</p>
-<h3 id="add-image">Add image</h3>
-<p>requires:</p>
+<p>Response:</p>
 <ul>
-<li>name of dataset to add to</li>
+<li>array of Annotation objects</li>
 </ul>
-<h3 id="add-annotations">Add annotations</h3>
-<p>Automatically replaces any existing annotations for an image.</p>
-<p>requires:</p>
+<h2 id="delete-annotations">Delete annotations</h2>
+<p>DELETE: <code>/v1/core/objdet/{PK}/annotations/{NAME}</code></p>
+<p>Parameters:</p>
 <ul>
-<li>name of dataset to add to</li>
-<li>name of image to add to</li>
+<li>PK: int (primary key of dataset)</li>
+<li>NAME: str (name of file to remove the annotations for)</li>
 </ul>
-<h3 id="delete-image">Delete image</h3>
-<p>Automatically removes any associated annotations.</p>
-<p>requires:</p>
-<ul>
-<li>name of dataset to remove from</li>
-<li>name of image(s) to remove</li>
-</ul>
-<h3 id="delete-annotations">Delete annotations</h3>
-<p>requires:</p>
-<ul>
-<li>name of dataset to remove from</li>
-<li>name of image(s) to remove them from</li>
-</ul>
-<h3 id="replace-annotations">Replace annotations</h3>
-<p>See <em>Add annotations</em>.</p>
-<h3 id="change-license">Change license</h3>
-<p>requires:</p>
-<ul>
-<li>name of dataset to update</li>
-<li>license</li>
-</ul>
-<h3 id="tag-dataset">Tag dataset</h3>
-<p>requires:</p>
-<ul>
-<li>name of dataset to tag</li>
-<li>tag(s)</li>
-</ul>
-<h2 id="download">Download</h2>
-<h3 id="download-image">Download image</h3>
-<p>requires:</p>
-<ul>
-<li>name of dataset</li>
-<li>name of image</li>
-</ul>
-<h3 id="download-annotations">Download annotations</h3>
-<p>requires:</p>
-<ul>
-<li>name of dataset</li>
-<li>annotation format</li>
-</ul>
-<h3 id="download-dataset">Download dataset</h3>
-<p>Downloads the complete dataset as ZIP file.</p>
-<p>requires:</p>
-<ul>
-<li>name of dataset</li>
-<li>annotation format</li>
-</ul>
-<h2 id="other">Other</h2>
-<h3 id="bulk-upload">Bulk upload</h3>
-<p>Uploads a complete dataset as ZIP file. Replaces any existing images
-with the same names and their associated annotations.</p>
-<p>To be used when annotating data with third-party tools like ADAMS.</p>
-<p>requires:</p>
-<ul>
-<li>name of dataset</li>
-<li>type of annotations</li>
-</ul>
-<h3 id="pre-label-images">Pre-label images</h3>
-<p>Upload images as ZIP file and submits a job for labeling them.</p>
-<p>requires:</p>
-<ul>
-<li>annotation format</li>
-<li>name of model to use for pre-labeling</li>
-<li>
-<p>either:</p>
-<ul>
-<li>send email with annotations for images</li>
-<li>add images and their annotations to existing dataset (requires dataset name then)</li>
-</ul>
-</li>
-</ul>
-<h1 id="notes">Notes</h1>
-<h2 id="versioning">Versioning</h2>
-<p>Versioning is handled in database: a dataset simply combines IDs of images</p>
-<h2 id="annotation-formats">Annotation formats</h2>
-<p>The following annotation formats need to be supported:</p>
-<ul>
-<li>
-<p>ADAMS reports</p>
-<ul>
-<li>simple <a href="https://en.wikipedia.org/wiki/.properties">Java properties</a> files</li>
-<li>extension <code>.report</code></li>
-<li>annotation format: <code>Object.XYZ.{y|y|width|height|poly_x|poly_y}</code> (<code>poly_x</code> and 
-  <code>poly_y</code> are only used for object shapes; the numeric <code>XYZ</code> index ties the 
-  various properties for an object together)</li>
-</ul>
-</li>
-<li>
-<p><a href="http://cocodataset.org/#format-data">MS COCO JSON</a></p>
-</li>
-</ul>
-<h2 id="public-datasets">Public datasets</h2>
-<p>Users must be able to flag a dataset as being public, i.e., being accessible
-without requiring login. Can be used for research datasets.</p>
-<h2 id="dependent-models">Dependent models</h2>
-<p>Datasets cannot be deleted if final models in the model zoo depend on them.</p>
               
             </div>
           </div>

@@ -2,36 +2,43 @@ graph {
 
   node [shape=record fontname=Arial];
 
-  cuda [label = "CUDA\l- cuda_version\l- cuda_full_version\l- min_driver_version"];
-  hardware [label = "HARDWARE\l- generation\l- compute_capability"];
+  users [label = "USERS\l- username\l- password\l- first_name\l- last_name\l- email\l"];
+  teams [label = "TEAMS\l- name\l- membership (user/permission)\l"];
+  projects [label = "PROJECTS\l- name\l- team\l"];
   licenses [label = "LICENSES\l- name\l- url\l- domains\l- permissions\l- limitations\l- conditions\l"];
-  datasets [label = "DATASETS\l- type (objdet/classify/speech/...)\l- version\l- description\l- license\l"];
-  //dataset_conversions [label = "DATASET CONVERSIONS\l- framework/version\l- domain (objdet/classify/speech/...)\l- options (for wai.annotations)\l"];
-  pretrained_models [label = "PRETRAINED MODELS\l- framework/version\l- domain (objdet/classify/speech/...)\l- license\l- url\l- description\l"];
-  final_models [label = "FINAL MODELS\l- framework/version\l- license\l- domain (objdet/classify/speech/...)\l- data\l"];
-  nodes [label = "NODES\l- ip\l- driver_version\l- hardware_generation\l- gpu_mem\l- cpu_mem\l- last_seen\l- current_job\l"];
-  jobs [label = "JOBS\l- job_template\l- docker_image\l- start_time\l- end_time\l- error\l- inputs\l- parameters\l"];
-  job_templates [label = "JOB TEMPLATES\l- name\l- version\l- scope (user/project/public)\l- framework/version\l- domain (objdet/classify/speech/...)\l- type (train/predict/evaluate/export/android_app/...)\l- description\l- license\l- inputs (name/type/options)\l- parameters (name/type/default)\l- executor_class\l- required_packages\l- template\l"];
-  job_output [label = "JOB OUTPUT\l- job\l- outputs (name/type/data)\l"];
-  //job_visualization [label = "JOB VISUALIZATION\l- job\l- template\l"];
-  //job_visualization_templates [label = "JOB VISUALIZATION TEMPLATES\leg Tensorboard"];
-  docker_images [label = "DOCKER IMAGES\l- name\l- url\l- registry\l- registry_user\l- registry_password\l- cuda_version\l- min_hardware_generation\l- cpu?\l- framework/version\l- domain (objdet/classify/speech/...)\l- types (train/predict/export/evaluate/...)\l- license\l"];
-  //temp_downloads [label = "TEMP DOWNLOADS"];
+  domains [label = "DOMAINS\l- name (od/ic/sp/...)\l- description (objdet/classify/speech/...)\l"];
 
-  cuda -- docker_images;
-  hardware -- docker_images;
+  cuda [label = "CUDA\l- version\l- full_version\l- min_driver_version"];
+  docker_images [label = "DOCKER IMAGES\l- name\l- version\l- url\l- registry\l- registry_username\l- registry_password\l- cuda_version\l- min_hardware_generation\l- cpu?\l- framework\l- domain\l- tasks (train/predict/export/evaluate/...)\l- license\l"];
+  frameworks [label = "FRAMEWORKS\l- name\l- version\l"];
+  hardware [label = "HARDWARE\l- generation\l- min_compute_capability\l- max_compute_capability\l"];
+  nodes [label = "NODES\l- ip\l- index\l- cpu_mem\l- driver_version\l- hardware_generation\l- gpu_mem\l- last_seen\l- current_job\l"];
+
+  datasets [label = "DATASETS\l- domain\l- version\l- description\l- license\l- project\l- public?\l- tags\l"];
+  pretrained_models [label = "PRETRAINED MODELS\l- name\l- framework\l- domain\l- license\l- url\l- description\l"];
+  job_templates [label = "JOB TEMPLATES\l- name\l- version\l- scope (user/project/public)\l- framework\l- domain\l- type (train/predict/...)\l- description\l- license\l- inputs (name/type/options)\l- parameters (name/type/default)\l- executor_class\l- required_packages\l- body\l"];
+  jobs [label = "JOBS\l- job_template\l- docker_image\l- inputs\l- parameters\l- description\l- start_time\l- end_time\l- error\l"];
+  job_output [label = "JOB OUTPUT\l- job\l- outputs (name/type/data)\l"];
+
+  teams -- users;
+  projects -- teams;
   datasets -- licenses;
-  datasets -- jobs;
+  datasets -- projects;
+  datasets -- domains;
+  pretrained_models -- frameworks;
   pretrained_models -- licenses;
-  final_models -- licenses;
+  pretrained_models -- domains;
+  docker_images -- cuda;
+  docker_images -- hardware;
+  docker_images -- frameworks;
+  docker_images -- licenses;
+  docker_images -- domains;
   job_templates -- jobs;
   job_templates -- licenses;
+  job_templates -- frameworks;
+  job_templates -- docker_images;
+  job_templates -- domains;
   jobs -- job_output;
   jobs -- nodes;
-  //job_output -- job_visualization;
-  //job_visualization_templates -- job_visualization;
-  //job_visualization_templates -- docker_images;
-  docker_images -- job_templates;
-  docker_images -- licenses;
-  //dataset_conversions -- job_templates;
+  jobs -- docker_images;
 }

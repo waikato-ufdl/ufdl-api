@@ -25,11 +25,13 @@ graph {
   pretrained_models -- licenses;
   final_models -- licenses;
   job_templates -- jobs;
+  job_templates -- licenses;
   jobs -- job_output;
   jobs -- nodes;
   //job_output -- job_visualization;
   //job_visualization_templates -- job_visualization;
   //job_visualization_templates -- docker_images;
   docker_images -- job_templates;
+  docker_images -- licenses;
   //dataset_conversions -- job_templates;
 }

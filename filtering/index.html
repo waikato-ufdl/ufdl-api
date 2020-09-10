@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Speech - UFDL API</title>
+  <title>Filtering - UFDL API</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Speech";
-    var mkdocs_page_input_path = "speech.md";
-    var mkdocs_page_url = "/waikato-datamining/ufdl-api/speech/";
+    var mkdocs_page_name = "Filtering";
+    var mkdocs_page_input_path = "filtering.md";
+    var mkdocs_page_url = "/waikato-datamining/ufdl-api/filtering/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -139,36 +139,33 @@
                     
     <a class="" href="../object_detection/">Object Detection</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Speech</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#fields">Fields</a></li>
-    
-
-    <li class="toctree-l3"><a href="#url">URL</a></li>
-    
-
-    <li class="toctree-l3"><a href="#actions">Actions</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#add-transcript">Add transcript</a></li>
-        
-            <li><a class="toctree-l4" href="#get-transcripts">Get transcripts</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../speech/">Speech</a>
                 </li>
     </ul>
 	    </li>
           
-            <li class="toctree-l1">
+            <li class="toctree-l1 current">
 		
-    <a class="" href="../filtering/">Filtering</a>
+    <a class="current" href="./">Filtering</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#top-level">Top-level</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#expressions">Expressions</a></li>
+        
+            <li><a class="toctree-l3" href="#order-by">Order by</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#example">Example</a></li>
+    
+
+    </ul>
 	    </li>
           
         </ul>
@@ -192,12 +189,8 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Data &raquo;</li>
-        
-      
     
-    <li>Speech</li>
+    <li>Filtering</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -207,38 +200,158 @@
           <div role="main">
             <div class="section">
               
-                <p>Additional speech dataset operations.</p>
-<p>For core dataset operations, see <a href="../datasets/">here</a>.</p>
-<h1 id="fields">Fields</h1>
+                <p>The API supports generic filtering, which is applied to the database backend.
+Whilst very flexible, this also requires the knowledge of the underlying database 
+field names.</p>
+<h2 id="top-level">Top-level</h2>
+<pre><code class="json">{
+  &quot;expressions&quot;: [ ... expressions ... ],
+  &quot;order_by&quot;: [ ... orderings ... ],
+  &quot;include_inactive&quot;: true/false
+}
+</code></pre>
+
 <ul>
-<li>files: array of file names</li>
-<li>transcriptions: for each image name a transcription (nested object, transcription field)</li>
+<li><code>expressions</code> is an array of expressions which filter the list. 
+  Each is applied in order, further filtering the result of the previous expressions.</li>
+<li><code>order_by</code> is a list of orderings, in order of precedence.</li>
+<li><code>include_inactive</code> is optional, and defaults to false if omitted. 
+  Otherwise it determines whether soft-deleted objects are included in the result.</li>
 </ul>
-<h1 id="url">URL</h1>
-<p>Uses <code>/v1/core/speech/</code> instead of <code>/v1/core/datasets/</code>, 
-also for the core operations.</p>
-<h1 id="actions">Actions</h1>
-<h2 id="add-transcript">Add transcript</h2>
-<p>POST: <code>/v1/core/speech/{PK}/transcriptions/{NAME}</code></p>
-<p>Parameters:</p>
+<h3 id="expressions">Expressions</h3>
+<p>The following expressions (<code>type</code>) are available:</p>
 <ul>
-<li>PK: int (primary key of dataset)</li>
-<li>NAME: str (name of file to set the transcript for)</li>
-</ul>
-<p>Body:</p>
+<li>
+<p><code>or</code> - can contain <code>and(s)</code> and other expressions</p>
 <ul>
-<li>transcription: str</li>
+<li><code>sub_expressions</code> - the sub-expressions to combine via logical OR</li>
 </ul>
-<h2 id="get-transcripts">Get transcripts</h2>
-<p>GET: <code>/v1/core/speech/{PK}/transcriptions</code></p>
-<p>Parameters:</p>
+</li>
+<li>
+<p><code>and</code> - cannot contain <code>or(s)</code> but other expressions</p>
 <ul>
-<li>PK: int (primary key of dataset)</li>
+<li><code>sub_expressions</code> - the sub-expressions to combine via logical AND</li>
 </ul>
-<p>Response:</p>
+</li>
+<li>
+<p><code>exact</code> - for exact matching of bool/int/float/str</p>
 <ul>
-<li>for each image name the corresponding transcript (nested object, transcription field)</li>
+<li>field: str - the field to work on</li>
+<li>value: bool/int/float/str - the value to match</li>
+<li>case_insensitive: bool - for strings only</li>
+<li>invert: bool - whether invert the matching, i.e., logical NOT </li>
 </ul>
+</li>
+<li>
+<p><code>contains</code> - for sub-string matching</p>
+<ul>
+<li>field: str - the field to work on</li>
+<li>value: str - the sub-string to look for</li>
+<li>case_insensitive: bool</li>
+<li>invert: bool - whether invert the matching, i.e., logical NOT </li>
+</ul>
+</li>
+<li>
+<p><code>is_null</code> - checks for NULL values</p>
+<ul>
+<li>field: str - the field to work on</li>
+<li>invert: bool - whether invert the matching, i.e., logical NOT </li>
+</ul>
+</li>
+<li>
+<p><code>compare</code></p>
+<ul>
+<li>field: str - the field to work on</li>
+<li>operator: str - the comparison to perform (&lt;, &gt;, &gt;=, &lt;=)</li>
+<li>value: bool/int/float/str - the value to compare against</li>
+<li>invert: bool - whether invert the comparison, i.e., logical NOT </li>
+</ul>
+</li>
+</ul>
+<h3 id="order-by">Order by</h3>
+<pre><code class="json">{
+  &quot;field&quot;: &quot;my_field&quot;,
+  &quot;ascending&quot;: true/false,
+  &quot;nulls_first&quot;: true/false
+}
+</code></pre>
+
+<ul>
+<li><code>field</code>: str - the field to enforce the ordering on</li>
+<li><code>ascending</code>: bool - ascending or descending</li>
+<li><code>nulls_first</code>: bool (optional) - whether nulls are listed first or last, 
+  uses database default if omitted</li>
+</ul>
+<h2 id="example">Example</h2>
+<p>The following filter searches for anyone with rob in their name (Robert, Robbie, etc.) 
+who is not exactly 2m tall, unless their name is Robert, in which case they must be exactly
+1.75m tall. Ignores the case of the names. Returns people in order of tallest to
+shortest, then alphabetically if their height is the same, and then by some
+mysterious third field for people with the same height and name.</p>
+<pre><code class="json">{
+  &quot;expressions&quot;: [
+    {
+      &quot;sub_expressions&quot;: [
+        {
+          &quot;sub_expressions&quot;: [
+            {
+              &quot;field&quot;: &quot;name&quot;,
+              &quot;value&quot;: &quot;robert&quot;,
+              &quot;case_insensitive&quot;: true,
+              &quot;type&quot;: &quot;exact&quot;
+            },
+            {
+              &quot;field&quot;: &quot;height&quot;,
+              &quot;value&quot;: 1.75,
+              &quot;type&quot;: &quot;exact&quot;
+            }
+          ],
+          &quot;type&quot;: &quot;and&quot;
+        },
+        {
+          &quot;sub_expressions&quot;: [
+            {
+              &quot;field&quot;: &quot;name&quot;,
+              &quot;value&quot;: &quot;robert&quot;,
+              &quot;case_insensitive&quot;: true,
+              &quot;invert&quot;: true,
+              &quot;type&quot;: &quot;exact&quot;
+            },
+            {
+              &quot;field&quot;: &quot;name&quot;,
+              &quot;sub_string&quot;: &quot;rob&quot;,
+              &quot;case_insensitive&quot;: true,
+              &quot;type&quot;: &quot;contains&quot;
+            },
+            {
+              &quot;field&quot;: &quot;height&quot;,
+              &quot;value&quot;: 2.0,
+              &quot;invert&quot;: true,
+              &quot;type&quot;: &quot;exact&quot;
+            }
+          ],
+          &quot;type&quot;: &quot;and&quot;
+        }
+      ],
+      &quot;type&quot;: &quot;or&quot;
+    }
+  ],
+  &quot;order_by&quot;: [
+    {
+      &quot;field&quot;: &quot;height&quot;,
+      &quot;ascending&quot;: false
+    },
+    {
+      &quot;field&quot;: &quot;name&quot;
+    },
+    {
+      &quot;field&quot;: &quot;other&quot;,
+      &quot;nulls_first&quot;: true
+    }
+  ],
+  &quot;include_inactive&quot;: false
+}
+</code></pre>
               
             </div>
           </div>
@@ -246,10 +359,8 @@ also for the core operations.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../filtering/" class="btn btn-neutral float-right" title="Filtering">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../object_detection/" class="btn btn-neutral" title="Object Detection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../speech/" class="btn btn-neutral" title="Speech"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -275,10 +386,8 @@ also for the core operations.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../object_detection/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../speech/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../filtering/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
