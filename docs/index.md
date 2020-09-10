@@ -5,7 +5,5 @@ at any given time as the project evolves.
 
 All requests and responses are JSON, unless stated otherwise. 
 
-## Overview
-
 ![API](img/api.png)
 
