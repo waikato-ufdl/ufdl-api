@@ -16,7 +16,7 @@ graph {
 
   datasets [label = "DATASETS\l- domain\l- version\l- description\l- license\l- project\l- public?\l- tags\l"];
   pretrained_models [label = "PRETRAINED MODELS\l- name\l- framework\l- domain\l- license\l- url\l- description\l"];
-  job_templates [label = "JOB TEMPLATES\l- name\l- version\l- scope (user/project/public)\l- framework\l- domain\l- type (train/predict/...)\l- description\l- license\l- inputs (name/type/options)\l- parameters (name/type/default)\l- executor_class\l- required_packages\l- template_body\l"];
+  job_templates [label = "JOB TEMPLATES\l- name\l- version\l- scope (user/project/public)\l- framework\l- domain\l- type (train/predict/...)\l- description\l- license\l- inputs (name/type/options)\l- parameters (name/type/default)\l- executor_class\l- required_packages\l- body\l"];
   jobs [label = "JOBS\l- job_template\l- docker_image\l- inputs\l- parameters\l- description\l- start_time\l- end_time\l- error\l"];
   job_output [label = "JOB OUTPUT\l- job\l- outputs (name/type/data)\l"];
 
