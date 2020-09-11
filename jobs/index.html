@@ -234,7 +234,7 @@
 </ul>
 <h1 id="actions">Actions</h1>
 <h2 id="list">List</h2>
-<p>POST: <code>/v1/core/jobs/list</code></p>
+<p>POST: <code>/v1/jobs/list</code></p>
 <p>Body (optional): <a href="../filtering/">filter specification</a></p>
 <p>Response:</p>
 <ul>
@@ -259,7 +259,7 @@
 </li>
 </ul>
 <h2 id="load">Load</h2>
-<p>GET: <code>/v1/core/jobs/{PK}</code></p>
+<p>GET: <code>/v1/jobs/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job)</li>
@@ -282,7 +282,7 @@
 <li>end_time: timestamp</li>
 </ul>
 <h2 id="add-output">Add output</h2>
-<p>POST: <code>/v1/core/jobs/{PK}/outputs/{NAME}</code></p>
+<p>POST: <code>/v1/jobs/{PK}/outputs/{NAME}</code></p>
 <p>Parameters: </p>
 <ul>
 <li>PK: the primary key of the job</li>
@@ -290,7 +290,7 @@
 </ul>
 <p>Byte array attachment is the binary content of the output. </p>
 <h2 id="get-output">Get output</h2>
-<p>GET: <code>/v1/core/jobs/{PK}/outputs/{NAME}</code></p>
+<p>GET: <code>/v1/jobs/{PK}/outputs/{NAME}</code></p>
 <p>Parameters: </p>
 <ul>
 <li>PK: the primary key of the job</li>
@@ -298,14 +298,14 @@
 </ul>
 <p>Returned byte array is the binary content of the output. </p>
 <h2 id="delete-output">Delete output</h2>
-<p>DELETE: <code>/v1/core/jobs/{PK}/outputs/{NAME}</code></p>
+<p>DELETE: <code>/v1/jobs/{PK}/outputs/{NAME}</code></p>
 <p>Parameters: </p>
 <ul>
 <li>PK: the primary key of the job</li>
 <li>NAME: the name of the output to delete</li>
 </ul>
 <h2 id="delete">Delete</h2>
-<p>DELETE: <code>/v1/core/jobs/{PK}[/hard]</code></p>
+<p>DELETE: <code>/v1/jobs/{PK}[/hard]</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job)</li>
@@ -315,7 +315,7 @@
 <li>Omitting <code>/hard</code> from URL only flags it as deleted, it can be reinstated</li>
 </ul>
 <h2 id="reinstate">Reinstate</h2>
-<p>DELETE: <code>/v1/core/jobs/{PK}/reinstate</code></p>
+<p>DELETE: <code>/v1/jobs/{PK}/reinstate</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job)</li>

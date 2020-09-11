@@ -243,7 +243,7 @@
 </ul>
 <h1 id="actions">Actions</h1>
 <h2 id="list">List</h2>
-<p>POST: <code>/v1/core/job-templates/list</code></p>
+<p>POST: <code>/v1/job-templates/list</code></p>
 <p>Body (optional): <a href="../filtering/">filter specification</a></p>
 <p>Response:</p>
 <ul>
@@ -267,7 +267,7 @@
 </li>
 </ul>
 <h2 id="load">Load</h2>
-<p>GET: <code>/v1/core/job-templates/{PK}</code></p>
+<p>GET: <code>/v1/job-templates/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job template)</li>
@@ -289,7 +289,7 @@
 <li>body: str</li>
 </ul>
 <h2 id="add">Add</h2>
-<p>POST: <code>/v1/core/job-templates/create</code></p>
+<p>POST: <code>/v1/job-templates/create</code></p>
 <p>Body:</p>
 <ul>
 <li>name: str</li>
@@ -320,7 +320,7 @@
 <li>body: str</li>
 </ul>
 <h2 id="add-input">Add input</h2>
-<p>POST: <code>/v1/core/job-templates/{PK}/inputs/{NAME}</code></p>
+<p>POST: <code>/v1/job-templates/{PK}/inputs/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job template)</li>
@@ -333,14 +333,14 @@
 <li>help: str</li>
 </ul>
 <h2 id="remove-input">Remove input</h2>
-<p>DELETE: <code>/v1/core/job-templates/{PK}/inputs/{NAME}</code></p>
+<p>DELETE: <code>/v1/job-templates/{PK}/inputs/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job template)</li>
 <li>NAME: str (name of the input)</li>
 </ul>
 <h2 id="add-parameter">Add parameter</h2>
-<p>POST: <code>/v1/core/job-templates/{PK}/parameters/{NAME}</code></p>
+<p>POST: <code>/v1/job-templates/{PK}/parameters/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job template)</li>
@@ -353,14 +353,14 @@
 <li>help: str</li>
 </ul>
 <h2 id="remove-parameter">Remove parameter</h2>
-<p>DELETE: <code>/v1/core/job-templates/{PK}/parameters/{NAME}</code></p>
+<p>DELETE: <code>/v1/job-templates/{PK}/parameters/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job template)</li>
 <li>NAME: str (name of the parameter)</li>
 </ul>
 <h2 id="update">Update</h2>
-<p>PUT: <code>/v1/core/job-templates/{PK}</code></p>
+<p>PUT: <code>/v1/job-templates/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job template)</li>
@@ -394,7 +394,7 @@
 <li>body: str</li>
 </ul>
 <h2 id="partial-update">Partial update</h2>
-<p>PATCH: <code>/v1/core/job-templates/{PK}</code></p>
+<p>PATCH: <code>/v1/job-templates/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job template)</li>
@@ -428,7 +428,7 @@
 <li>body: str</li>
 </ul>
 <h2 id="delete">Delete</h2>
-<p>DELETE: <code>/v1/core/job-templates/{PK}[/hard]</code></p>
+<p>DELETE: <code>/v1/job-templates/{PK}[/hard]</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job template)</li>
@@ -438,7 +438,7 @@
 <li>Omitting <code>/hard</code> from URL only flags it as deleted, it can be reinstated</li>
 </ul>
 <h2 id="reinstate">Reinstate</h2>
-<p>DELETE: <code>/v1/core/job-templates/{PK}/reinstate</code></p>
+<p>DELETE: <code>/v1/job-templates/{PK}/reinstate</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job template)</li>
@@ -448,7 +448,7 @@
 <li>Undeletes a previously soft-deleted job template</li>
 </ul>
 <h2 id="new-job">New job</h2>
-<p>POST:  <code>/v1/core/job-templates/{PK}/create-job</code></p>
+<p>POST:  <code>/v1/job-templates/{PK}/create-job</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of job template)</li>

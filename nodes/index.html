@@ -226,7 +226,7 @@
 </ul>
 <h1 id="actions">Actions</h1>
 <h2 id="list">List</h2>
-<p>POST: <code>/v1/core/nodes/list</code></p>
+<p>POST: <code>/v1/nodes/list</code></p>
 <p>Body (optional): <a href="../filtering/">filter specification</a></p>
 <p>Response:</p>
 <ul>
@@ -245,7 +245,7 @@
 </li>
 </ul>
 <h2 id="load">Load</h2>
-<p>GET: <code>/v1/core/nodes/{PK}</code></p>
+<p>GET: <code>/v1/nodes/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of node)</li>
@@ -262,7 +262,7 @@
 <li>current_job_id: int </li>
 </ul>
 <h2 id="add">Add</h2>
-<p>POST: <code>/v1/core/nodes/create</code></p>
+<p>POST: <code>/v1/nodes/create</code></p>
 <p>Body:</p>
 <ul>
 <li>index: int (GPU index, 0 for CPU-only nodes)</li>
@@ -283,7 +283,7 @@
 <li>current_job_id: int </li>
 </ul>
 <h2 id="update">Update</h2>
-<p>PUT: <code>/v1/core/nodes/{PK}</code></p>
+<p>PUT: <code>/v1/nodes/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of node)</li>
@@ -308,7 +308,7 @@
 <li>current_job_id: int </li>
 </ul>
 <h2 id="partial-update">Partial update</h2>
-<p>PATCH: <code>/v1/core/nodes/{PK}</code></p>
+<p>PATCH: <code>/v1/nodes/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of node)</li>
@@ -333,7 +333,7 @@
 <li>current_job_id: int </li>
 </ul>
 <h2 id="delete">Delete</h2>
-<p>DELETE: <code>/v1/core/nodes/{PK}</code></p>
+<p>DELETE: <code>/v1/nodes/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of node)</li>

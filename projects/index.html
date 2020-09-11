@@ -226,7 +226,7 @@
 </ul>
 <h1 id="actions">Actions</h1>
 <h2 id="list">List</h2>
-<p>POST: <code>/v1/core/projects/list</code></p>
+<p>POST: <code>/v1/projects/list</code></p>
 <p>Body (optional): <a href="../filtering/">filter specification</a></p>
 <p>Response:</p>
 <ul>
@@ -243,7 +243,7 @@
 </li>
 </ul>
 <h2 id="load">Load</h2>
-<p>GET: <code>/v1/core/projects/{PK}</code></p>
+<p>GET: <code>/v1/projects/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of project)</li>
@@ -258,7 +258,7 @@
 <li>deletion_time: timestamp</li>
 </ul>
 <h2 id="add">Add</h2>
-<p>POST: <code>/v1/core/project/create</code></p>
+<p>POST: <code>/v1/project/create</code></p>
 <p>Body:</p>
 <ul>
 <li>name: str</li>
@@ -274,7 +274,7 @@
 <li>deletion_time: timestamp</li>
 </ul>
 <h2 id="update">Update</h2>
-<p>PUT: <code>/v1/core/project/{PK}</code></p>
+<p>PUT: <code>/v1/project/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of project)</li>
@@ -294,7 +294,7 @@
 <li>deletion_time: timestamp</li>
 </ul>
 <h2 id="partial-update">Partial update</h2>
-<p>PATCH: <code>/v1/core/project/{PK}</code></p>
+<p>PATCH: <code>/v1/project/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of project)</li>
@@ -314,7 +314,7 @@
 <li>deletion_time: timestamp</li>
 </ul>
 <h2 id="delete">Delete</h2>
-<p>DELETE: <code>/v1/core/project/{PK}[/hard]</code></p>
+<p>DELETE: <code>/v1/project/{PK}[/hard]</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of project)</li>
@@ -324,7 +324,7 @@
 <li>Omitting <code>/hard</code> from URL only flags it as deleted, it can be reinstated</li>
 </ul>
 <h2 id="reinstate">Reinstate</h2>
-<p>DELETE: <code>/v1/core/project/{PK}/reinstate</code></p>
+<p>DELETE: <code>/v1/project/{PK}/reinstate</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of project)</li>

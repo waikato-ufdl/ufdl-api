@@ -230,11 +230,11 @@
 <li>points: array of array with two int values (x, y)</li>
 </ul>
 <h1 id="url">URL</h1>
-<p>Uses <code>/v1/core/objdet/</code> instead of <code>/v1/core/datasets/</code>, 
+<p>Uses <code>/v1/objdet/</code> instead of <code>/v1/datasets/</code>, 
 also for the core operations.</p>
 <h1 id="actions">Actions</h1>
 <h2 id="add-annotations">Add annotations</h2>
-<p>POST: <code>/v1/core/objdet/{PK}/annotations/{NAME}</code></p>
+<p>POST: <code>/v1/objdet/{PK}/annotations/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -245,7 +245,7 @@ also for the core operations.</p>
 <li>annotations: array of Annotation objects</li>
 </ul>
 <h2 id="get-annotations">Get annotations</h2>
-<p>GET: <code>/v1/core/objdet/{PK}/annotations/{NAME}</code></p>
+<p>GET: <code>/v1/objdet/{PK}/annotations/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -256,7 +256,7 @@ also for the core operations.</p>
 <li>array of Annotation objects</li>
 </ul>
 <h2 id="delete-annotations">Delete annotations</h2>
-<p>DELETE: <code>/v1/core/objdet/{PK}/annotations/{NAME}</code></p>
+<p>DELETE: <code>/v1/objdet/{PK}/annotations/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>

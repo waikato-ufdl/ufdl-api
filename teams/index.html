@@ -233,7 +233,7 @@
 </ul>
 <h1 id="actions">Actions</h1>
 <h2 id="list">List</h2>
-<p>POST: <code>/v1/core/teams/list</code></p>
+<p>POST: <code>/v1/teams/list</code></p>
 <p>Body (optional): <a href="../filtering/">filter specification</a></p>
 <p>Response:</p>
 <ul>
@@ -250,7 +250,7 @@
 </li>
 </ul>
 <h2 id="load">Load</h2>
-<p>GET: <code>/v1/core/teams/{PK}</code></p>
+<p>GET: <code>/v1/teams/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of team)</li>
@@ -265,7 +265,7 @@
 <li>deletion_time: timestamp</li>
 </ul>
 <h2 id="add">Add</h2>
-<p>POST: <code>/v1/core/team/create</code></p>
+<p>POST: <code>/v1/team/create</code></p>
 <p>Body:</p>
 <ul>
 <li>name: str</li>
@@ -280,7 +280,7 @@
 <li>deletion_time: timestamp</li>
 </ul>
 <h2 id="update">Update</h2>
-<p>PUT: <code>/v1/core/team/{PK}</code></p>
+<p>PUT: <code>/v1/team/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of team)</li>
@@ -299,7 +299,7 @@
 <li>deletion_time: timestamp</li>
 </ul>
 <h2 id="modify-membership">Modify membership</h2>
-<p>PATCH: <code>/v1/core/team/{PK}/memberships</code></p>
+<p>PATCH: <code>/v1/team/{PK}/memberships</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of team)</li>
@@ -311,7 +311,7 @@
 <li>permissions: str (R/W/X/A, only add/update)</li>
 </ul>
 <h2 id="delete">Delete</h2>
-<p>DELETE: <code>/v1/core/team/{PK}[/hard]</code></p>
+<p>DELETE: <code>/v1/team/{PK}[/hard]</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of team)</li>
@@ -321,7 +321,7 @@
 <li>Omitting <code>/hard</code> from URL only flags it as deleted, it can be reinstated</li>
 </ul>
 <h2 id="reinstate">Reinstate</h2>
-<p>DELETE: <code>/v1/core/team/{PK}/reinstate</code></p>
+<p>DELETE: <code>/v1/team/{PK}/reinstate</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of team)</li>

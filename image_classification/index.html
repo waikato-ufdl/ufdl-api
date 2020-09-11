@@ -217,11 +217,11 @@
 <li>categories: for each image name an array of category strings</li>
 </ul>
 <h1 id="url">URL</h1>
-<p>Uses <code>/v1/core/classify/</code> instead of <code>/v1/core/datasets/</code>, 
+<p>Uses <code>/v1/classify/</code> instead of <code>/v1/datasets/</code>, 
 also for the core operations.</p>
 <h1 id="actions">Actions</h1>
 <h2 id="add-categories">Add categories</h2>
-<p>PATCH: <code>/v1/core/classify/{PK}/categories</code></p>
+<p>PATCH: <code>/v1/classify/{PK}/categories</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -233,7 +233,7 @@ also for the core operations.</p>
 <li>categories: array of category strings to add to all specified images</li>
 </ul>
 <h2 id="get-categories">Get categories</h2>
-<p>GET: <code>/v1/core/classify/{PK}/categories</code></p>
+<p>GET: <code>/v1/classify/{PK}/categories</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -249,7 +249,7 @@ also for the core operations.</p>
 <li>for each image name an array of category strings</li>
 </ul>
 <h2 id="remove-categories">Remove categories</h2>
-<p>PATCH: <code>/v1/core/classify/{PK}/categories</code></p>
+<p>PATCH: <code>/v1/classify/{PK}/categories</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>

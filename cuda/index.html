@@ -225,7 +225,7 @@ certain versions of CUDA inside docker images will work.</p>
 </ul>
 <h1 id="actions">Actions</h1>
 <h2 id="list">List</h2>
-<p>POST: <code>/v1/core/cuda/list</code></p>
+<p>POST: <code>/v1/cuda/list</code></p>
 <p>Body (optional): <a href="../filtering/">filter specification</a></p>
 <p>Response:</p>
 <ul>
@@ -239,7 +239,7 @@ certain versions of CUDA inside docker images will work.</p>
 </li>
 </ul>
 <h2 id="add">Add</h2>
-<p>POST: <code>/v1/core/cuda/create</code></p>
+<p>POST: <code>/v1/cuda/create</code></p>
 <p>Body:</p>
 <ul>
 <li>version: str</li>
@@ -254,7 +254,7 @@ certain versions of CUDA inside docker images will work.</p>
 <li>min_driver_version: str</li>
 </ul>
 <h2 id="load">Load</h2>
-<p>GET: <code>/v1/core/cuda/{PK}</code></p>
+<p>GET: <code>/v1/cuda/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of CUDA version)</li>
@@ -267,7 +267,7 @@ certain versions of CUDA inside docker images will work.</p>
 <li>min_driver_version: str</li>
 </ul>
 <h2 id="update">Update</h2>
-<p>PUT: <code>/v1/core/cuda/{PK}</code></p>
+<p>PUT: <code>/v1/cuda/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of CUDA version)</li>
@@ -286,7 +286,7 @@ certain versions of CUDA inside docker images will work.</p>
 <li>min_driver_version: str</li>
 </ul>
 <h2 id="partial-update">Partial update</h2>
-<p>PATCH: <code>/v1/core/cuda/{PK}</code></p>
+<p>PATCH: <code>/v1/cuda/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of CUDA version)</li>
@@ -305,7 +305,7 @@ certain versions of CUDA inside docker images will work.</p>
 <li>min_driver_version: str</li>
 </ul>
 <h2 id="delete">Delete</h2>
-<p>DELETE: <code>/v1/core/cuda/{PK}</code></p>
+<p>DELETE: <code>/v1/cuda/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of CUDA version)</li>

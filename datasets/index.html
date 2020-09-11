@@ -245,7 +245,7 @@
 </ul>
 <h1 id="actions">Actions</h1>
 <h2 id="list">List</h2>
-<p>POST: <code>/v1/core/datasets/list</code></p>
+<p>POST: <code>/v1/datasets/list</code></p>
 <p>Body (optional): <a href="../filtering/">filter specification</a></p>
 <p>Response:</p>
 <ul>
@@ -266,7 +266,7 @@
 </li>
 </ul>
 <h2 id="load">Load</h2>
-<p>GET: <code>/v1/core/datasets/{PK}</code></p>
+<p>GET: <code>/v1/datasets/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -285,7 +285,7 @@
 <li>deletion_time: timestamp</li>
 </ul>
 <h2 id="add">Add</h2>
-<p>POST: <code>/v1/core/datasets/create</code></p>
+<p>POST: <code>/v1/datasets/create</code></p>
 <p>Body:</p>
 <ul>
 <li>name: str</li>
@@ -311,7 +311,7 @@
 <li>deletion_time: timestamp</li>
 </ul>
 <h2 id="update">Update</h2>
-<p>PUT: <code>/v1/core/datasets/{PK}</code></p>
+<p>PUT: <code>/v1/datasets/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -341,7 +341,7 @@
 <li>deletion_time: timestamp</li>
 </ul>
 <h2 id="partial-update">Partial update</h2>
-<p>PATCH: <code>/v1/core/datasets/{PK}</code></p>
+<p>PATCH: <code>/v1/datasets/{PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -371,7 +371,7 @@
 <li>deletion_time: timestamp</li>
 </ul>
 <h2 id="delete">Delete</h2>
-<p>DELETE: <code>/v1/core/datasets/{PK}[/hard]</code></p>
+<p>DELETE: <code>/v1/datasets/{PK}[/hard]</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -381,7 +381,7 @@
 <li>Omitting <code>/hard</code> from URL only flags it as deleted, it can be reinstated</li>
 </ul>
 <h2 id="reinstate">Reinstate</h2>
-<p>DELETE: <code>/v1/core/datasets/{PK}/reinstate</code></p>
+<p>DELETE: <code>/v1/datasets/{PK}/reinstate</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -391,7 +391,7 @@
 <li>Undeletes a previously soft-deleted dataset</li>
 </ul>
 <h2 id="copy">Copy</h2>
-<p>POST: <code>/v1/core/datasets/{PK}/copy</code></p>
+<p>POST: <code>/v1/datasets/{PK}/copy</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -401,7 +401,7 @@
 <li>new_name: str  </li>
 </ul>
 <h2 id="merge">Merge</h2>
-<p>POST: <code>/v1/core/datasets/{PK}/merge/{SOURCE_PK}</code></p>
+<p>POST: <code>/v1/datasets/{PK}/merge/{SOURCE_PK}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -413,7 +413,7 @@
 <li>hard: bool (optional, default: false)  </li>
 </ul>
 <h2 id="add-file">Add file</h2>
-<p>POST: <code>/v1/core/datasets/{PK}/files/{NAME}</code></p>
+<p>POST: <code>/v1/datasets/{PK}/files/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -421,7 +421,7 @@
 </ul>
 <p>Byte array attachment is the binary content of the file.</p>
 <h2 id="get-file">Get file</h2>
-<p>GET: <code>/v1/core/datasets/{PK}/files/{NAME}</code></p>
+<p>GET: <code>/v1/datasets/{PK}/files/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -429,14 +429,14 @@
 </ul>
 <p>Returned byte array is the binary content of the file. </p>
 <h2 id="delete-file">Delete file</h2>
-<p>DELETE: <code>/v1/core/datasets/{PK}/files/{NAME}</code></p>
+<p>DELETE: <code>/v1/datasets/{PK}/files/{NAME}</code></p>
 <p>Parameters: </p>
 <ul>
 <li>PK: the primary key of the dataset</li>
 <li>NAME: the name of the file to delete</li>
 </ul>
 <h2 id="set-meta-data">Set meta-data</h2>
-<p>POST: <code>/v1/core/datasets/{PK}/metadata/{NAME}</code></p>
+<p>POST: <code>/v1/datasets/{PK}/metadata/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -447,7 +447,7 @@
 <li>metadata: str (free form text meta-data)  </li>
 </ul>
 <h2 id="get-meta-data">Get meta-data</h2>
-<p>GET: <code>/v1/core/datasets/{PK}/metadata/{NAME}</code></p>
+<p>GET: <code>/v1/datasets/{PK}/metadata/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>

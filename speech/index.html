@@ -215,11 +215,11 @@
 <li>transcriptions: for each image name a transcription (nested object, transcription field)</li>
 </ul>
 <h1 id="url">URL</h1>
-<p>Uses <code>/v1/core/speech/</code> instead of <code>/v1/core/datasets/</code>, 
+<p>Uses <code>/v1/speech/</code> instead of <code>/v1/datasets/</code>, 
 also for the core operations.</p>
 <h1 id="actions">Actions</h1>
 <h2 id="add-transcript">Add transcript</h2>
-<p>POST: <code>/v1/core/speech/{PK}/transcriptions/{NAME}</code></p>
+<p>POST: <code>/v1/speech/{PK}/transcriptions/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -230,7 +230,7 @@ also for the core operations.</p>
 <li>transcription: str</li>
 </ul>
 <h2 id="get-transcripts">Get transcripts</h2>
-<p>GET: <code>/v1/core/speech/{PK}/transcriptions</code></p>
+<p>GET: <code>/v1/speech/{PK}/transcriptions</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
