@@ -17,6 +17,9 @@ Available fields:
   * domain: [domain name](domains.md)
   * tasks: array of str (train/predict/...)
   * licence: [license ID](licenses.md)
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 # Actions
 
@@ -44,6 +47,9 @@ Response:
     * domain: [domain name](domains.md)
     * tasks: array of str (train/predict/...)
     * licence: [license ID](licenses.md)
+    * creator: [user ID](users.md)
+    * creation_time: timestamp
+    * deletion_time: timestamp
 
 
 ## Load
@@ -70,6 +76,9 @@ Response:
   * domain: [domain name](domains.md)
   * tasks: array of str (train/predict/...)
   * licence: [license ID](licenses.md)
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 ## Add
 
@@ -107,6 +116,9 @@ Response:
   * domain: [domain name](domains.md)
   * tasks: array of str (train/predict/...)
   * licence: [license ID](licenses.md)
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 ## Update
 
@@ -148,6 +160,9 @@ Response:
   * domain: [domain name](domains.md)
   * tasks: array of str (train/predict/...)
   * licence: [license ID](licenses.md)
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 ## Partial update
 
@@ -189,6 +204,9 @@ Response:
   * domain: [domain name](domains.md)
   * tasks: array of str (train/predict/...)
   * licence: [license ID](licenses.md)
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 
 ## Delete

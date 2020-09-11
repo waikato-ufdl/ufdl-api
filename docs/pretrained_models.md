@@ -10,6 +10,9 @@ Available fields:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 # Actions
 
@@ -30,6 +33,9 @@ Response:
     * licence: [license ID](licenses.md)
     * url: str
     * description: str
+    * creator: [user ID](users.md)
+    * creation_time: timestamp
+    * deletion_time: timestamp
 
 
 ## Load
@@ -49,6 +55,9 @@ Response:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 ## Add
 
@@ -72,6 +81,9 @@ Response:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 ## Update
 
@@ -99,6 +111,9 @@ Response:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 ## Partial update
 
@@ -126,6 +141,9 @@ Response:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 
 ## Delete

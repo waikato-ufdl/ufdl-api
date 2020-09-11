@@ -16,6 +16,9 @@ Available fields:
   * executor_class: str
   * required_packages: str
   * body: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 # Actions
 
@@ -42,6 +45,9 @@ Response:
     * executor_class: str
     * required_packages: str
     * body: str
+    * creator: [user ID](users.md)
+    * creation_time: timestamp
+    * deletion_time: timestamp
 
 
 ## Load
@@ -67,6 +73,9 @@ Response:
   * executor_class: str
   * required_packages: str
   * body: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 ## Add
 
@@ -100,6 +109,9 @@ Response:
   * executor_class: str
   * required_packages: str
   * body: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 ## Add input
 
@@ -184,6 +196,9 @@ Response:
   * executor_class: str
   * required_packages: str
   * body: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 ## Partial update
 
@@ -220,6 +235,9 @@ Response:
   * executor_class: str
   * required_packages: str
   * body: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
 
 
 ## Delete
