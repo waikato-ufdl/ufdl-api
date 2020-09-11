@@ -4,7 +4,7 @@ Authentication is done via [JSON Web Tokens (JWT)](https://en.wikipedia.org/wiki
 
 ## Obtain
 
-POST: `/v1/auth/obtain/`
+POST: `/v1/auth/obtain`
 
 Body: 
 
@@ -18,7 +18,7 @@ Response:
 
 ## Refresh
 
-POST: `/v1/auth/refresh/`
+POST: `/v1/auth/refresh`
 
 Body:
 
