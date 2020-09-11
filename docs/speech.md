@@ -9,14 +9,14 @@ For core dataset operations, see [here](datasets.md).
 
 # URL
 
-Uses `/v1/core/speech/` instead of `/v1/core/datasets/`, 
+Uses `/v1/speech/` instead of `/v1/datasets/`, 
 also for the core operations.
 
 # Actions
 
 ## Add transcript
 
-POST: `/v1/core/speech/{PK}/transcriptions/{NAME}`
+POST: `/v1/speech/{PK}/transcriptions/{NAME}`
 
 Parameters:
 
@@ -29,7 +29,7 @@ Body:
 
 ## Get transcripts
 
-GET: `/v1/core/speech/{PK}/transcriptions`
+GET: `/v1/speech/{PK}/transcriptions`
 
 Parameters:
 

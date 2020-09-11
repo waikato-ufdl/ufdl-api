@@ -12,7 +12,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/domains/list`
+POST: `/v1/domains/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -27,7 +27,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/domains/{PK}`
+GET: `/v1/domains/{PK}`
 
 Parameters:
 

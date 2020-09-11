@@ -19,7 +19,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/users/list`
+POST: `/v1/users/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -42,7 +42,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/users/{PK}`
+GET: `/v1/users/{PK}`
 
 Parameters:
 
@@ -62,7 +62,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/users/create`
+POST: `/v1/users/create`
 
 Body:
 
@@ -88,7 +88,7 @@ Response:
 
 ## Update
 
-PUT: `/v1/core/users/{PK}`
+PUT: `/v1/users/{PK}`
 
 Parameters:
 
@@ -119,7 +119,7 @@ Response:
 
 ## Partial update
 
-PATCH: `/v1/core/users/{PK}`
+PATCH: `/v1/users/{PK}`
 
 Parameters:
 
@@ -151,7 +151,7 @@ Response:
 
 ## Delete
 
-DELETE: `/v1/core/users/{PK}`
+DELETE: `/v1/users/{PK}`
 
 Parameters:
 

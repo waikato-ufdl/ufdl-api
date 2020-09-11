@@ -22,7 +22,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/jobs/list`
+POST: `/v1/jobs/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -48,7 +48,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/jobs/{PK}`
+GET: `/v1/jobs/{PK}`
 
 Parameters:
 
@@ -73,7 +73,7 @@ Response:
 
 ## Add output
 
-POST: `/v1/core/jobs/{PK}/outputs/{NAME}`
+POST: `/v1/jobs/{PK}/outputs/{NAME}`
 
 Parameters: 
 
@@ -84,7 +84,7 @@ Byte array attachment is the binary content of the output.
 
 ## Get output
 
-GET: `/v1/core/jobs/{PK}/outputs/{NAME}`
+GET: `/v1/jobs/{PK}/outputs/{NAME}`
 
 Parameters: 
 
@@ -95,7 +95,7 @@ Returned byte array is the binary content of the output.
 
 ## Delete output
 
-DELETE: `/v1/core/jobs/{PK}/outputs/{NAME}`
+DELETE: `/v1/jobs/{PK}/outputs/{NAME}`
 
 Parameters: 
 
@@ -104,7 +104,7 @@ Parameters:
 
 ## Delete
 
-DELETE: `/v1/core/jobs/{PK}[/hard]`
+DELETE: `/v1/jobs/{PK}[/hard]`
 
 Parameters:
 
@@ -116,7 +116,7 @@ Notes:
 
 ## Reinstate
 
-DELETE: `/v1/core/jobs/{PK}/reinstate`
+DELETE: `/v1/jobs/{PK}/reinstate`
 
 Parameters:
 

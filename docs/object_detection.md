@@ -22,14 +22,14 @@ Polygon object fields:
 
 # URL
 
-Uses `/v1/core/objdet/` instead of `/v1/core/datasets/`, 
+Uses `/v1/objdet/` instead of `/v1/datasets/`, 
 also for the core operations.
 
 # Actions
 
 ## Add annotations
 
-POST: `/v1/core/objdet/{PK}/annotations/{NAME}`
+POST: `/v1/objdet/{PK}/annotations/{NAME}`
 
 Parameters:
 
@@ -42,7 +42,7 @@ Body:
 
 ## Get annotations
 
-GET: `/v1/core/objdet/{PK}/annotations/{NAME}`
+GET: `/v1/objdet/{PK}/annotations/{NAME}`
 
 Parameters:
 
@@ -55,7 +55,7 @@ Response:
 
 ## Delete annotations
 
-DELETE: `/v1/core/objdet/{PK}/annotations/{NAME}`
+DELETE: `/v1/objdet/{PK}/annotations/{NAME}`
 
 Parameters:
 

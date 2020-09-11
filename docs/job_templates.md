@@ -21,7 +21,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/job-templates/list`
+POST: `/v1/job-templates/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -46,7 +46,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/job-templates/{PK}`
+GET: `/v1/job-templates/{PK}`
 
 Parameters:
 
@@ -70,7 +70,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/job-templates/create`
+POST: `/v1/job-templates/create`
 
 Body:
 
@@ -103,7 +103,7 @@ Response:
 
 ## Add input
 
-POST: `/v1/core/job-templates/{PK}/inputs/{NAME}`
+POST: `/v1/job-templates/{PK}/inputs/{NAME}`
 
 Parameters:
 
@@ -118,7 +118,7 @@ Body:
 
 ## Remove input
 
-DELETE: `/v1/core/job-templates/{PK}/inputs/{NAME}`
+DELETE: `/v1/job-templates/{PK}/inputs/{NAME}`
 
 Parameters:
 
@@ -127,7 +127,7 @@ Parameters:
 
 ## Add parameter
 
-POST: `/v1/core/job-templates/{PK}/parameters/{NAME}`
+POST: `/v1/job-templates/{PK}/parameters/{NAME}`
 
 Parameters:
 
@@ -142,7 +142,7 @@ Body:
 
 ## Remove parameter
 
-DELETE: `/v1/core/job-templates/{PK}/parameters/{NAME}`
+DELETE: `/v1/job-templates/{PK}/parameters/{NAME}`
 
 Parameters:
 
@@ -151,7 +151,7 @@ Parameters:
 
 ## Update
 
-PUT: `/v1/core/job-templates/{PK}`
+PUT: `/v1/job-templates/{PK}`
 
 Parameters:
 
@@ -187,7 +187,7 @@ Response:
 
 ## Partial update
 
-PATCH: `/v1/core/job-templates/{PK}`
+PATCH: `/v1/job-templates/{PK}`
 
 Parameters:
 
@@ -224,7 +224,7 @@ Response:
 
 ## Delete
 
-DELETE: `/v1/core/job-templates/{PK}[/hard]`
+DELETE: `/v1/job-templates/{PK}[/hard]`
 
 Parameters:
 
@@ -236,7 +236,7 @@ Notes:
 
 ## Reinstate
 
-DELETE: `/v1/core/job-templates/{PK}/reinstate`
+DELETE: `/v1/job-templates/{PK}/reinstate`
 
 Parameters:
 
@@ -248,7 +248,7 @@ Notes:
 
 ## New job
 
-POST:  `/v1/core/job-templates/{PK}/create-job`
+POST:  `/v1/job-templates/{PK}/create-job`
 
 Parameters:
 

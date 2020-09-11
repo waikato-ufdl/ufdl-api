@@ -12,7 +12,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/hardware/list`
+POST: `/v1/hardware/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -28,7 +28,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/hardware/{PK}`
+GET: `/v1/hardware/{PK}`
 
 Parameters:
 
@@ -43,7 +43,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/hardware/create`
+POST: `/v1/hardware/create`
 
 Body:
 
@@ -60,7 +60,7 @@ Response:
 
 ## Update
 
-PUT: `/v1/core/hardware/{PK}`
+PUT: `/v1/hardware/{PK}`
 
 Parameters:
 
@@ -81,7 +81,7 @@ Response:
 
 ## Partial update
 
-PATCH: `/v1/core/hardware/{PK}`
+PATCH: `/v1/hardware/{PK}`
 
 Parameters:
 
@@ -103,7 +103,7 @@ Response:
 
 ## Delete
 
-DELETE: `/v1/core/hardware/{PK}`
+DELETE: `/v1/hardware/{PK}`
 
 Parameters:
 

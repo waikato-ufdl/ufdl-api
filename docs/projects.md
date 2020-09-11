@@ -14,7 +14,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/projects/list`
+POST: `/v1/projects/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -32,7 +32,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/projects/{PK}`
+GET: `/v1/projects/{PK}`
 
 Parameters:
 
@@ -49,7 +49,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/project/create`
+POST: `/v1/project/create`
 
 Body:
 
@@ -67,7 +67,7 @@ Response:
 
 ## Update
 
-PUT: `/v1/core/project/{PK}`
+PUT: `/v1/project/{PK}`
 
 Parameters:
 
@@ -89,7 +89,7 @@ Response:
 
 ## Partial update
 
-PATCH: `/v1/core/project/{PK}`
+PATCH: `/v1/project/{PK}`
 
 Parameters:
 
@@ -111,7 +111,7 @@ Response:
 
 ## Delete
 
-DELETE: `/v1/core/project/{PK}[/hard]`
+DELETE: `/v1/project/{PK}[/hard]`
 
 Parameters:
 
@@ -123,7 +123,7 @@ Notes:
 
 ## Reinstate
 
-DELETE: `/v1/core/project/{PK}/reinstate`
+DELETE: `/v1/project/{PK}/reinstate`
 
 Parameters:
 

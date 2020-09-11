@@ -22,7 +22,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/docker/list`
+POST: `/v1/docker/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -48,7 +48,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/docker/{PK}`
+GET: `/v1/docker/{PK}`
 
 Parameters:
 
@@ -73,7 +73,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/docker/create`
+POST: `/v1/docker/create`
 
 Body:
 
@@ -110,7 +110,7 @@ Response:
 
 ## Update
 
-PUT: `/v1/core/docker/{PK}`
+PUT: `/v1/docker/{PK}`
 
 Parameters:
 
@@ -151,7 +151,7 @@ Response:
 
 ## Partial update
 
-PATCH: `/v1/core/docker/{PK}`
+PATCH: `/v1/docker/{PK}`
 
 Parameters:
 
@@ -193,7 +193,7 @@ Response:
 
 ## Delete
 
-DELETE: `/v1/core/docker/{PK}`
+DELETE: `/v1/docker/{PK}`
 
 Parameters:
 

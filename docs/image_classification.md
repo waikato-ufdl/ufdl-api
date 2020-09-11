@@ -9,14 +9,14 @@ For core dataset operations, see [here](datasets.md).
 
 # URL
 
-Uses `/v1/core/classify/` instead of `/v1/core/datasets/`, 
+Uses `/v1/classify/` instead of `/v1/datasets/`, 
 also for the core operations.
 
 # Actions
 
 ## Add categories
 
-PATCH: `/v1/core/classify/{PK}/categories`
+PATCH: `/v1/classify/{PK}/categories`
 
 Parameters:
 
@@ -30,7 +30,7 @@ Body:
 
 ## Get categories
 
-GET: `/v1/core/classify/{PK}/categories`
+GET: `/v1/classify/{PK}/categories`
 
 Parameters:
 
@@ -48,7 +48,7 @@ Response:
 
 ## Remove categories
 
-PATCH: `/v1/core/classify/{PK}/categories`
+PATCH: `/v1/classify/{PK}/categories`
 
 Parameters:
 

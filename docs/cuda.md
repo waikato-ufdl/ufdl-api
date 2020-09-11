@@ -13,7 +13,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/cuda/list`
+POST: `/v1/cuda/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -27,7 +27,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/cuda/create`
+POST: `/v1/cuda/create`
 
 Body:
 
@@ -44,7 +44,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/cuda/{PK}`
+GET: `/v1/cuda/{PK}`
 
 Parameters:
 
@@ -59,7 +59,7 @@ Response:
 
 ## Update
 
-PUT: `/v1/core/cuda/{PK}`
+PUT: `/v1/cuda/{PK}`
 
 Parameters:
 
@@ -80,7 +80,7 @@ Response:
 
 ## Partial update
 
-PATCH: `/v1/core/cuda/{PK}`
+PATCH: `/v1/cuda/{PK}`
 
 Parameters:
 
@@ -102,7 +102,7 @@ Response:
 
 ## Delete
 
-DELETE: `/v1/core/cuda/{PK}`
+DELETE: `/v1/cuda/{PK}`
 
 Parameters:
 

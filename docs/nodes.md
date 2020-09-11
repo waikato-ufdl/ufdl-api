@@ -16,7 +16,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/nodes/list`
+POST: `/v1/nodes/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -36,7 +36,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/nodes/{PK}`
+GET: `/v1/nodes/{PK}`
 
 Parameters:
 
@@ -55,7 +55,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/nodes/create`
+POST: `/v1/nodes/create`
 
 Body:
 
@@ -78,7 +78,7 @@ Response:
 
 ## Update
 
-PUT: `/v1/core/nodes/{PK}`
+PUT: `/v1/nodes/{PK}`
 
 Parameters:
 
@@ -105,7 +105,7 @@ Response:
 
 ## Partial update
 
-PATCH: `/v1/core/nodes/{PK}`
+PATCH: `/v1/nodes/{PK}`
 
 Parameters:
 
@@ -133,7 +133,7 @@ Response:
 
 ## Delete
 
-DELETE: `/v1/core/nodes/{PK}`
+DELETE: `/v1/nodes/{PK}`
 
 Parameters:
 

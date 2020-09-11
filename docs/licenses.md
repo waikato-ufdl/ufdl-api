@@ -15,7 +15,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/licences/list`
+POST: `/v1/licences/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -34,7 +34,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/licences/{PK}`
+GET: `/v1/licences/{PK}`
 
 Parameters:
 
@@ -52,7 +52,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/licences/create`
+POST: `/v1/licences/create`
 
 Body:
 
@@ -71,7 +71,7 @@ Response:
 
 ## Update
 
-PUT: `/v1/core/licences/{PK}`
+PUT: `/v1/licences/{PK}`
 
 Parameters:
 
@@ -94,7 +94,7 @@ Response:
 
 ## Partial update
 
-PATCH: `/v1/core/licences/{PK}`
+PATCH: `/v1/licences/{PK}`
 
 Parameters:
 
@@ -117,7 +117,7 @@ Response:
 
 ## Modify domains/permissions/limitations/conditions
 
-PATCH: `/v1/core/licences/{PK}/subdescriptors`
+PATCH: `/v1/licences/{PK}/subdescriptors`
 
 Parameters:
 
@@ -132,7 +132,7 @@ Body:
 
 ## Delete
 
-DELETE: `/v1/core/licences/{PK}`
+DELETE: `/v1/licences/{PK}`
 
 Parameters:
 

@@ -11,7 +11,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/frameworks/list`
+POST: `/v1/frameworks/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -26,7 +26,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/frameworks/{PK}`
+GET: `/v1/frameworks/{PK}`
 
 Parameters:
 
@@ -40,7 +40,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/frameworks/create`
+POST: `/v1/frameworks/create`
 
 Body:
 
@@ -55,7 +55,7 @@ Response:
 
 ## Update
 
-PUT: `/v1/core/frameworks/{PK}`
+PUT: `/v1/frameworks/{PK}`
 
 Parameters:
 
@@ -74,7 +74,7 @@ Response:
 
 ## Partial update
 
-PATCH: `/v1/core/frameworks/{PK}`
+PATCH: `/v1/frameworks/{PK}`
 
 Parameters:
 
@@ -94,7 +94,7 @@ Response:
 
 ## Delete
 
-DELETE: `/v1/core/frameworks/{PK}`
+DELETE: `/v1/frameworks/{PK}`
 
 Parameters:
 

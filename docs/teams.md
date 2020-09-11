@@ -21,7 +21,7 @@ Permissions:
 
 ## List
 
-POST: `/v1/core/teams/list`
+POST: `/v1/teams/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -39,7 +39,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/teams/{PK}`
+GET: `/v1/teams/{PK}`
 
 Parameters:
 
@@ -56,7 +56,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/team/create`
+POST: `/v1/team/create`
 
 Body:
 
@@ -73,7 +73,7 @@ Response:
 
 ## Update
 
-PUT: `/v1/core/team/{PK}`
+PUT: `/v1/team/{PK}`
 
 Parameters:
 
@@ -94,7 +94,7 @@ Response:
 
 ## Modify membership
 
-PATCH: `/v1/core/team/{PK}/memberships`
+PATCH: `/v1/team/{PK}/memberships`
 
 Parameters:
 
@@ -109,7 +109,7 @@ Body:
 
 ## Delete
 
-DELETE: `/v1/core/team/{PK}[/hard]`
+DELETE: `/v1/team/{PK}[/hard]`
 
 Parameters:
 
@@ -121,7 +121,7 @@ Notes:
 
 ## Reinstate
 
-DELETE: `/v1/core/team/{PK}/reinstate`
+DELETE: `/v1/team/{PK}/reinstate`
 
 Parameters:
 

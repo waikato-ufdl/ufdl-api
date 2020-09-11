@@ -15,7 +15,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/pretrained-models/list`
+POST: `/v1/pretrained-models/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -34,7 +34,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/pretrained-models/{PK}`
+GET: `/v1/pretrained-models/{PK}`
 
 Parameters:
 
@@ -52,7 +52,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/pretrained-models/create`
+POST: `/v1/pretrained-models/create`
 
 Body:
 
@@ -75,7 +75,7 @@ Response:
 
 ## Update
 
-PUT: `/v1/core/pretrained-models/{PK}`
+PUT: `/v1/pretrained-models/{PK}`
 
 Parameters:
 
@@ -102,7 +102,7 @@ Response:
 
 ## Partial update
 
-PATCH: `/v1/core/pretrained-models/{PK}`
+PATCH: `/v1/pretrained-models/{PK}`
 
 Parameters:
 
@@ -130,7 +130,7 @@ Response:
 
 ## Delete
 
-DELETE: `/v1/core/pretrained-models/{PK}`
+DELETE: `/v1/pretrained-models/{PK}`
 
 Parameters:
 

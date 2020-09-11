@@ -19,7 +19,7 @@ Available fields:
 
 ## List
 
-POST: `/v1/core/datasets/list`
+POST: `/v1/datasets/list`
 
 Body (optional): [filter specification](filtering.md)
   
@@ -40,7 +40,7 @@ Response:
 
 ## Load
 
-GET: `/v1/core/datasets/{PK}`
+GET: `/v1/datasets/{PK}`
 
 Parameters:
 
@@ -61,7 +61,7 @@ Response:
 
 ## Add
 
-POST: `/v1/core/datasets/create`
+POST: `/v1/datasets/create`
 
 Body:
 
@@ -89,7 +89,7 @@ Response:
 
 ## Update
 
-PUT: `/v1/core/datasets/{PK}`
+PUT: `/v1/datasets/{PK}`
 
 Parameters:
 
@@ -121,7 +121,7 @@ Response:
 
 ## Partial update
 
-PATCH: `/v1/core/datasets/{PK}`
+PATCH: `/v1/datasets/{PK}`
 
 Parameters:
 
@@ -154,7 +154,7 @@ Response:
 
 ## Delete
 
-DELETE: `/v1/core/datasets/{PK}[/hard]`
+DELETE: `/v1/datasets/{PK}[/hard]`
 
 Parameters:
 
@@ -166,7 +166,7 @@ Notes:
 
 ## Reinstate
 
-DELETE: `/v1/core/datasets/{PK}/reinstate`
+DELETE: `/v1/datasets/{PK}/reinstate`
 
 Parameters:
 
@@ -178,7 +178,7 @@ Notes:
 
 ## Copy
 
-POST: `/v1/core/datasets/{PK}/copy`
+POST: `/v1/datasets/{PK}/copy`
 
 Parameters:
 
@@ -190,7 +190,7 @@ Body:
 
 ## Merge
 
-POST: `/v1/core/datasets/{PK}/merge/{SOURCE_PK}`
+POST: `/v1/datasets/{PK}/merge/{SOURCE_PK}`
 
 Parameters:
 
@@ -204,7 +204,7 @@ Body:
 
 ## Add file
 
-POST: `/v1/core/datasets/{PK}/files/{NAME}`
+POST: `/v1/datasets/{PK}/files/{NAME}`
 
 Parameters:
 
@@ -215,7 +215,7 @@ Byte array attachment is the binary content of the file.
 
 ## Get file
 
-GET: `/v1/core/datasets/{PK}/files/{NAME}`
+GET: `/v1/datasets/{PK}/files/{NAME}`
 
 Parameters:
 
@@ -226,7 +226,7 @@ Returned byte array is the binary content of the file.
 
 ## Delete file
 
-DELETE: `/v1/core/datasets/{PK}/files/{NAME}`
+DELETE: `/v1/datasets/{PK}/files/{NAME}`
 
 Parameters: 
 
@@ -235,7 +235,7 @@ Parameters:
 
 ## Set meta-data
 
-POST: `/v1/core/datasets/{PK}/metadata/{NAME}`
+POST: `/v1/datasets/{PK}/metadata/{NAME}`
 
 Parameters:
 
@@ -248,7 +248,7 @@ Body:
 
 ## Get meta-data
 
-GET: `/v1/core/datasets/{PK}/metadata/{NAME}`
+GET: `/v1/datasets/{PK}/metadata/{NAME}`
 
 Parameters:
 
