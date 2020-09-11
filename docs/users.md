@@ -1,4 +1,4 @@
-Manages the users of the user.
+Manages the users of the server.
 
 # Fields
 
