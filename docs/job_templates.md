@@ -264,6 +264,44 @@ Notes:
 
   * Undeletes a previously soft-deleted job template
 
+## Export
+
+GET: `/v1/job-templates/{PK}/export`
+
+Parameters:
+
+  * PK: int (primary key of job template)
+
+Response:
+
+  * JSON representation of job template ([example](https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json))
+
+## Import
+
+POST:  `/v1/job-templates/import`
+
+Body:
+
+  * JSON representation of job template ([example](https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json))
+  
+Response:
+
+  * name: str
+  * version: int
+  * scope: str (public/project/user)
+  * framework: [framework ID](frameworks.md)
+  * domain: [domain name](domains.md)
+  * type: str (train/predict/...)
+  * description: str
+  * inputs: array of (name: str, type: str, options: str, help: str)
+  * parameters: array of (name: str, type: str, default: str, help: str)
+  * executor_class: str
+  * required_packages: str
+  * body: str
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
+
 ## New job
 
 POST:  `/v1/job-templates/{PK}/create-job`
