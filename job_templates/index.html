@@ -150,6 +150,10 @@
         
             <li><a class="toctree-l4" href="#reinstate">Reinstate</a></li>
         
+            <li><a class="toctree-l4" href="#export">Export</a></li>
+        
+            <li><a class="toctree-l4" href="#import">Import</a></li>
+        
             <li><a class="toctree-l4" href="#new-job">New job</a></li>
         
         </ul>
@@ -464,6 +468,40 @@
 <p>Notes:</p>
 <ul>
 <li>Undeletes a previously soft-deleted job template</li>
+</ul>
+<h2 id="export">Export</h2>
+<p>GET: <code>/v1/job-templates/{PK}/export</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of job template)</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>JSON representation of job template (<a href="https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json">example</a>)</li>
+</ul>
+<h2 id="import">Import</h2>
+<p>POST:  <code>/v1/job-templates/import</code></p>
+<p>Body:</p>
+<ul>
+<li>JSON representation of job template (<a href="https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json">example</a>)</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>name: str</li>
+<li>version: int</li>
+<li>scope: str (public/project/user)</li>
+<li>framework: <a href="../frameworks/">framework ID</a></li>
+<li>domain: <a href="../domains/">domain name</a></li>
+<li>type: str (train/predict/...)</li>
+<li>description: str</li>
+<li>inputs: array of (name: str, type: str, options: str, help: str)</li>
+<li>parameters: array of (name: str, type: str, default: str, help: str)</li>
+<li>executor_class: str</li>
+<li>required_packages: str</li>
+<li>body: str</li>
+<li>creator: <a href="../users/">user ID</a></li>
+<li>creation_time: timestamp</li>
+<li>deletion_time: timestamp</li>
 </ul>
 <h2 id="new-job">New job</h2>
 <p>POST:  <code>/v1/job-templates/{PK}/create-job</code></p>
