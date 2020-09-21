@@ -165,7 +165,9 @@
         
             <li><a class="toctree-l4" href="#set-meta-data">Set meta-data</a></li>
         
-            <li><a class="toctree-l4" href="#get-meta-data">Get meta-data</a></li>
+            <li><a class="toctree-l4" href="#get-meta-data-for-file">Get meta-data (for file)</a></li>
+        
+            <li><a class="toctree-l4" href="#get-meta-data-for-dataset">Get meta-data (for dataset)</a></li>
         
         </ul>
     
@@ -446,7 +448,7 @@
 <ul>
 <li>metadata: str (free form text meta-data)  </li>
 </ul>
-<h2 id="get-meta-data">Get meta-data</h2>
+<h2 id="get-meta-data-for-file">Get meta-data (for file)</h2>
 <p>GET: <code>/v1/datasets/{PK}/metadata/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
@@ -454,6 +456,14 @@
 <li>NAME: str (the name of the file in the dataset)</li>
 </ul>
 <p>Returned string is the meta-data for the file.  </p>
+<h2 id="get-meta-data-for-dataset">Get meta-data (for dataset)</h2>
+<p>GET: <code>/v1/datasets/{PK}/metadata</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of dataset)</li>
+<li>NAME: str (the name of the file in the dataset)</li>
+</ul>
+<p>Returns JSON with filename - meta-data string association.  </p>
               
             </div>
           </div>
