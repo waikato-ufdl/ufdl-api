@@ -246,7 +246,7 @@ Body:
 
   * metadata: str (free form text meta-data)  
 
-## Get meta-data
+## Get meta-data (for file)
 
 GET: `/v1/datasets/{PK}/metadata/{NAME}`
 
@@ -256,3 +256,14 @@ Parameters:
   * NAME: str (the name of the file in the dataset)
 
 Returned string is the meta-data for the file.  
+
+## Get meta-data (for dataset)
+
+GET: `/v1/datasets/{PK}/metadata`
+
+Parameters:
+
+  * PK: int (primary key of dataset)
+  * NAME: str (the name of the file in the dataset)
+
+Returns JSON with filename - meta-data string association.  
