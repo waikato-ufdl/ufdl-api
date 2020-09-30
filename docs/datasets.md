@@ -14,6 +14,7 @@ Available fields:
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
+  * files: array of file names (str)
 
 # Actions
 
@@ -37,6 +38,7 @@ Response:
     * creator: [user ID](users.md)
     * creation_time: timestamp
     * deletion_time: timestamp
+    * files: array of file names (str)
 
 ## Load
 
@@ -58,6 +60,7 @@ Response:
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
+  * files: array of file names (str)
 
 ## Add
 
@@ -86,6 +89,7 @@ Response:
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
+  * files: array of file names (str)
 
 ## Update
 
@@ -118,6 +122,7 @@ Response:
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
+  * files: array of file names (str)
 
 ## Partial update
 
@@ -150,6 +155,7 @@ Response:
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
+  * files: array of file names (str)
 
 
 ## Delete
