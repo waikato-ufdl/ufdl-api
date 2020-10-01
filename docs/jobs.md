@@ -73,34 +73,37 @@ Response:
 
 ## Add output
 
-POST: `/v1/jobs/{PK}/outputs/{NAME}`
+POST: `/v1/jobs/{PK}/outputs/{NAME}/{TYPE}`
 
 Parameters: 
 
   * PK: the primary key of the job
   * NAME: the name of the output to add
+  * TYPE: the type of the output to add
 
 Byte array attachment is the binary content of the output. 
 
 ## Get output
 
-GET: `/v1/jobs/{PK}/outputs/{NAME}`
+GET: `/v1/jobs/{PK}/outputs/{NAME}/{TYPE}`
 
 Parameters: 
 
   * PK: the primary key of the job
   * NAME: the name of the output to retrieve
+  * TYPE: the type of the output to retrieve
 
 Returned byte array is the binary content of the output. 
 
 ## Delete output
 
-DELETE: `/v1/jobs/{PK}/outputs/{NAME}`
+DELETE: `/v1/jobs/{PK}/outputs/{NAME}/{TYPE}`
 
 Parameters: 
 
   * PK: the primary key of the job
   * NAME: the name of the output to delete
+  * TYPE: the type of the output to delete
 
 ## Delete
 
