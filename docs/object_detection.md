@@ -62,3 +62,15 @@ Parameters:
   * PK: int (primary key of dataset)
   * NAME: str (name of file to remove the annotations for)
 
+
+## Get labels
+
+GET: `/v1/objdet/{PK}/labels`
+
+Parameters:
+
+  * PK: int (primary key of dataset)
+
+Response:
+
+  * array of string labels present in dataset
