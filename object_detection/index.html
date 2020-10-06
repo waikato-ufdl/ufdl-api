@@ -156,6 +156,8 @@
         
             <li><a class="toctree-l4" href="#delete-annotations">Delete annotations</a></li>
         
+            <li><a class="toctree-l4" href="#get-labels">Get labels</a></li>
+        
         </ul>
     
 
@@ -261,6 +263,16 @@ also for the core operations.</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
 <li>NAME: str (name of file to remove the annotations for)</li>
+</ul>
+<h2 id="get-labels">Get labels</h2>
+<p>GET: <code>/v1/objdet/{PK}/labels</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of dataset)</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>array of string labels present in dataset</li>
 </ul>
               
             </div>
