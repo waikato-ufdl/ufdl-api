@@ -158,6 +158,34 @@ Response:
   * files: array of file names (str)
 
 
+## Clear
+
+DELETE: `/v1/datasets/{PK}/clear`
+
+Parameters:
+
+  * PK: int (primary key of dataset)
+
+Response:
+
+  * pk: int (primary key of dataset)
+  * name: str
+  * description: str
+  * version: int
+  * project: [project ID](projects.md)
+  * licence: [license ID](licenses.md)
+  * tags: str
+  * is_public: bool
+  * creator: [user ID](users.md)
+  * creation_time: timestamp
+  * deletion_time: timestamp
+  * files: array of file names (str)
+
+Notes:
+
+  * Removes meta-data and annotations from a dataset
+
+
 ## Delete
 
 DELETE: `/v1/datasets/{PK}[/hard]`
