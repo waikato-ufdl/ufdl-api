@@ -149,6 +149,8 @@
         
             <li><a class="toctree-l4" href="#partial-update">Partial update</a></li>
         
+            <li><a class="toctree-l4" href="#clear">Clear</a></li>
+        
             <li><a class="toctree-l4" href="#delete">Delete</a></li>
         
             <li><a class="toctree-l4" href="#reinstate">Reinstate</a></li>
@@ -377,6 +379,31 @@
 <li>creation_time: timestamp</li>
 <li>deletion_time: timestamp</li>
 <li>files: array of file names (str)</li>
+</ul>
+<h2 id="clear">Clear</h2>
+<p>DELETE: <code>/v1/datasets/{PK}/clear</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of dataset)</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>pk: int (primary key of dataset)</li>
+<li>name: str</li>
+<li>description: str</li>
+<li>version: int</li>
+<li>project: <a href="../projects/">project ID</a></li>
+<li>licence: <a href="../licenses/">license ID</a></li>
+<li>tags: str</li>
+<li>is_public: bool</li>
+<li>creator: <a href="../users/">user ID</a></li>
+<li>creation_time: timestamp</li>
+<li>deletion_time: timestamp</li>
+<li>files: array of file names (str)</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>Removes meta-data and annotations from a dataset</li>
 </ul>
 <h2 id="delete">Delete</h2>
 <p>DELETE: <code>/v1/datasets/{PK}[/hard]</code></p>
