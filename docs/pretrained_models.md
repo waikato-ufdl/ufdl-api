@@ -10,6 +10,7 @@ Available fields:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * metadata: str
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
@@ -33,6 +34,7 @@ Response:
     * licence: [license ID](licenses.md)
     * url: str
     * description: str
+    * metadata: str
     * creator: [user ID](users.md)
     * creation_time: timestamp
     * deletion_time: timestamp
@@ -55,6 +57,7 @@ Response:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * metadata: str
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
@@ -71,6 +74,7 @@ Body:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * metadata: str
 
 Response:
 
@@ -81,6 +85,7 @@ Response:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * metadata: str
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
@@ -101,6 +106,7 @@ Body:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * metadata: str
 
 Response:
 
@@ -111,6 +117,7 @@ Response:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * metadata: str
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
@@ -131,6 +138,7 @@ Any of the following fields in the body:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * metadata: str
 
 Response:
 
@@ -141,6 +149,7 @@ Response:
   * licence: [license ID](licenses.md)
   * url: str
   * description: str
+  * metadata: str
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
