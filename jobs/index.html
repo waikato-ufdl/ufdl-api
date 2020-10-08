@@ -138,6 +138,8 @@
         
             <li><a class="toctree-l4" href="#reinstate">Reinstate</a></li>
         
+            <li><a class="toctree-l4" href="#reset">Reset</a></li>
+        
         </ul>
     
 
@@ -326,6 +328,16 @@
 <p>Notes:</p>
 <ul>
 <li>Undeletes a previously soft-deleted job</li>
+</ul>
+<h2 id="reset">Reset</h2>
+<p>DELETE: <code>/v1/jobs/{PK}/reset</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of job)</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>Resets a job, allowing it to be re-run again without having to re-configure/re-submit it</li>
 </ul>
               
             </div>
