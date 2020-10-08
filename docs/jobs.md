@@ -128,3 +128,15 @@ Parameters:
 Notes:
 
   * Undeletes a previously soft-deleted job
+
+## Reset
+
+DELETE: `/v1/jobs/{PK}/reset`
+
+Parameters:
+
+  * PK: int (primary key of job)
+
+Notes:
+
+  * Resets a job, allowing it to be re-run again without having to re-configure/re-submit it
