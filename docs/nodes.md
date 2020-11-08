@@ -138,3 +138,12 @@ DELETE: `/v1/nodes/{PK}`
 Parameters:
 
   * PK: int (primary key of node)
+
+
+## Ping
+
+GET: `/v1/nodes/ping`
+  
+Response: None
+
+**Note:** Just simple no-op to reestablish connection after long-running tasks.
