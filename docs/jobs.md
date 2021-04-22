@@ -4,7 +4,6 @@ Manages the generated jobs.
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: [job template ID](job_templates.md)
   * input_values: str
   * parameter_values: str or null
@@ -48,7 +47,6 @@ Lists the jobs present on the server.
 
     * pk: int (primary key of job)
     * description: str
-    * docker_image: [docker image ID](docker_images.md)
     * template: object
       * pk: [job template ID](job_templates.md)
       * name: str
@@ -95,7 +93,6 @@ Gets the information about a specific job.
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -147,7 +144,6 @@ Updates the description of a specific job.
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -199,7 +195,6 @@ Updates the description of a specific job.
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -404,7 +399,6 @@ the job).
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -455,7 +449,6 @@ cannot complete the job).
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -507,7 +500,6 @@ Allows a node to indicate that it has begun work on completing a job.
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -562,7 +554,6 @@ been made on the completion of a job.
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -619,7 +610,6 @@ successfully or in-error).
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -668,7 +658,6 @@ re-attempted.
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -717,7 +706,6 @@ a node that has gone offline.
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -766,7 +754,6 @@ of that job.
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -814,7 +801,6 @@ Permanently deletes the job. For soft-deletion, see [Destroy](#destroy).
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
@@ -862,7 +848,6 @@ Undeletes a previously soft-deleted job.
 
   * pk: int (primary key of job)
   * description: str
-  * docker_image: [docker image ID](docker_images.md)
   * template: object
     * pk: [job template ID](job_templates.md)
     * name: str
