@@ -27,3 +27,4 @@ nav:
     - 'Object Detection': object_detection.md
     - 'Speech': speech.md
   - 'Filtering': filtering.md
+  - 'Permissions': permissions.md
