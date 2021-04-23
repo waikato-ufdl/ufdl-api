@@ -88,6 +88,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../job_outputs/">Job outputs</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../job_types/">Job types</a>
+                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Data</span></p>
                 <ul>
@@ -146,29 +148,37 @@
               
                 <p>Manages the job templates.</p>
 <h1 id="fields">Fields</h1>
-<p>Available fields:</p>
 <ul>
+<li>pk: int (primary key of job template)</li>
 <li>name: str</li>
 <li>version: int</li>
-<li>scope: str (public/project/user)</li>
-<li>framework: <a href="../frameworks/">framework ID</a></li>
-<li>domain: <a href="../domains/">domain name</a></li>
-<li>type: str (train/predict/...)</li>
 <li>description: str</li>
-<li>inputs: array of (name: str, type: str, options: str, help: str)</li>
-<li>parameters: array of (name: str, type: str, default: str, help: str)</li>
-<li>executor_class: str</li>
-<li>required_packages: str</li>
-<li>body: str</li>
-<li>creator: <a href="../users/">user ID</a></li>
+<li>scope: str (public/project/user)</li>
+<li>licence: <a href="../licenses/">licence</a></li>
+<li>domain: <a href="../domains/">domain</a></li>
+<li>inputs: set of <a href="../inputs/">inputs</a></li>
+<li>parameters: set of <a href="../parameters/">parameters</a></li>
+<li>creator: <a href="../users/">user</a> or null</li>
 <li>creation_time: timestamp</li>
-<li>deletion_time: timestamp</li>
+<li>deletion_time: timestamp or null</li>
+<li>workabletemplate: <a href="../workable_templates/">workable template</a> or null</li>
+<li>metatemplate: <a href="../meta_templates/">meta-template</a> or null </li>
 </ul>
 <h1 id="actions">Actions</h1>
 <h2 id="list">List</h2>
-<p>POST: <code>/v1/job-templates/list</code></p>
-<p>Body (optional): <a href="../filtering/">filter specification</a></p>
-<p>Response:</p>
+<h3 id="method">Method</h3>
+<p><code>POST</code></p>
+<h3 id="url">URL</h3>
+<p><code>/v1/job-templates/list</code></p>
+<h3 id="body-optional">Body (optional)</h3>
+<ul>
+<li><a href="../filtering/">filter specification</a></li>
+</ul>
+<h3 id="permissions">Permissions</h3>
+<ul>
+<li><a href="../permissions/#isauthenticated">user is authenticated</a></li>
+</ul>
+<h3 id="response">Response</h3>
 <ul>
 <li>
 <p>array of</p>
@@ -176,265 +186,327 @@
 <li>pk: int (primary key of job template)</li>
 <li>name: str</li>
 <li>version: int</li>
-<li>scope: str (public/project/user)</li>
-<li>framework: <a href="../frameworks/">framework ID</a></li>
-<li>domain: <a href="../domains/">domain name</a></li>
-<li>type: str (train/predict/...)</li>
 <li>description: str</li>
-<li>inputs: array of (name: str, type: str, options: str, help: str)</li>
-<li>parameters: array of (name: str, type: str, default: str, help: str)</li>
-<li>executor_class: str</li>
-<li>required_packages: str</li>
-<li>body: str</li>
-<li>creator: <a href="../users/">user ID</a></li>
+<li>scope: str (public/project/user)</li>
+<li>domain: str (<a href="../domains/">domain name</a>)</li>
+<li>inputs: array of:</li>
+<li>name: str</li>
+<li>types: array of str</li>
+<li>options: str</li>
+<li>help: str</li>
+<li>parameters: array of:</li>
+<li>name: str</li>
+<li>type: str</li>
+<li>default: str</li>
+<li>help: str</li>
+<li>licence: <a href="../licenses/">licence ID</a></li>
+<li>creator: <a href="../users/">user ID</a> or null</li>
 <li>creation_time: timestamp</li>
-<li>deletion_time: timestamp</li>
+<li>deletion_time: timestamp or null</li>
+<li>framework (optional): <a href="../frameworks/">framework ID</a></li>
+<li>type (optional): str</li>
+<li>executor_class (optional): str</li>
+<li>required_packages (optional): str</li>
+<li>body (optional): str</li>
 </ul>
 </li>
 </ul>
-<h2 id="load">Load</h2>
-<p>GET: <code>/v1/job-templates/{PK}</code></p>
-<p>Parameters:</p>
+<h2 id="retrieve">Retrieve</h2>
+<h3 id="method_1">Method</h3>
+<p><code>GET</code></p>
+<h3 id="url_1">URL</h3>
+<p><code>/v1/job-templates/{PK}</code></p>
+<h3 id="parameters">Parameters</h3>
 <ul>
-<li>PK: int (primary key of job template)</li>
+<li><code>PK</code>: int (primary key of job template)</li>
 </ul>
-<p>Response:</p>
+<h3 id="permissions_1">Permissions</h3>
+<ul>
+<li><a href="../permissions/#isauthenticated">user is authenticated</a></li>
+</ul>
+<h3 id="response_1">Response</h3>
 <ul>
 <li>pk: int (primary key of job template)</li>
 <li>name: str</li>
 <li>version: int</li>
-<li>scope: str (public/project/user)</li>
-<li>framework: <a href="../frameworks/">framework ID</a></li>
-<li>domain: <a href="../domains/">domain name</a></li>
-<li>type: str (train/predict/...)</li>
 <li>description: str</li>
-<li>inputs: array of (name: str, type: str, options: str, help: str)</li>
-<li>parameters: array of (name: str, type: str, default: str, help: str)</li>
-<li>executor_class: str</li>
-<li>required_packages: str</li>
-<li>body: str</li>
-<li>creator: <a href="../users/">user ID</a></li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp</li>
-</ul>
-<h2 id="add">Add</h2>
-<p>POST: <code>/v1/job-templates/create</code></p>
-<p>Body:</p>
-<ul>
+<li>scope: str (public/project/user)</li>
+<li>domain: str (<a href="../domains/">domain name</a>)</li>
+<li>inputs: array of:<ul>
 <li>name: str</li>
-<li>version: int</li>
-<li>scope: str (public/project/user)</li>
-<li>framework: <a href="../frameworks/">framework ID</a></li>
-<li>domain: <a href="../domains/">domain name</a></li>
-<li>type: str (train/predict/...)</li>
-<li>description: str</li>
-<li>executor_class: str</li>
-<li>required_packages: str</li>
-<li>body: str</li>
-</ul>
-<p>Response:</p>
-<ul>
-<li>pk: int (primary key of job template)</li>
-<li>name: str</li>
-<li>version: int</li>
-<li>scope: str (public/project/user)</li>
-<li>framework: <a href="../frameworks/">framework ID</a></li>
-<li>domain: <a href="../domains/">domain name</a></li>
-<li>type: str (train/predict/...)</li>
-<li>description: str</li>
-<li>inputs: array of (name: str, type: str, options: str, help: str)</li>
-<li>parameters: array of (name: str, type: str, default: str, help: str)</li>
-<li>executor_class: str</li>
-<li>required_packages: str</li>
-<li>body: str</li>
-<li>creator: <a href="../users/">user ID</a></li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp</li>
-</ul>
-<h2 id="add-input">Add input</h2>
-<p>POST: <code>/v1/job-templates/{PK}/inputs/{NAME}</code></p>
-<p>Parameters:</p>
-<ul>
-<li>PK: int (primary key of job template)</li>
-<li>NAME: str (name of the input)</li>
-</ul>
-<p>Body:</p>
-<ul>
-<li>type: str (bool/int/float/str/dataset/model/joboutput)</li>
+<li>types: array of str</li>
 <li>options: str</li>
 <li>help: str</li>
 </ul>
-<h2 id="remove-input">Remove input</h2>
-<p>DELETE: <code>/v1/job-templates/{PK}/inputs/{NAME}</code></p>
-<p>Parameters:</p>
-<ul>
-<li>PK: int (primary key of job template)</li>
-<li>NAME: str (name of the input)</li>
-</ul>
-<h2 id="add-parameter">Add parameter</h2>
-<p>POST: <code>/v1/job-templates/{PK}/parameters/{NAME}</code></p>
-<p>Parameters:</p>
-<ul>
-<li>PK: int (primary key of job template)</li>
-<li>NAME: str (name of the parameter)</li>
-</ul>
-<p>Body:</p>
-<ul>
-<li>type: str (bool/int/float/str/dataset/model/joboutput)</li>
-<li>default: str (the default value)</li>
+</li>
+<li>parameters: array of:<ul>
+<li>name: str</li>
+<li>type: str</li>
+<li>default: str</li>
 <li>help: str</li>
 </ul>
-<h2 id="remove-parameter">Remove parameter</h2>
-<p>DELETE: <code>/v1/job-templates/{PK}/parameters/{NAME}</code></p>
-<p>Parameters:</p>
-<ul>
-<li>PK: int (primary key of job template)</li>
-<li>NAME: str (name of the parameter)</li>
-</ul>
-<h2 id="update">Update</h2>
-<p>PUT: <code>/v1/job-templates/{PK}</code></p>
-<p>Parameters:</p>
-<ul>
-<li>PK: int (primary key of job template)</li>
-</ul>
-<p>Body: </p>
-<ul>
-<li>name: str</li>
-<li>version: int</li>
-<li>scope: str (public/project/user)</li>
-<li>framework: <a href="../frameworks/">framework ID</a></li>
-<li>domain: <a href="../domains/">domain name</a></li>
-<li>type: str (train/predict/...)</li>
-<li>description: str</li>
-<li>executor_class: str</li>
-<li>required_packages: str</li>
-<li>body: str</li>
-</ul>
-<p>Response:</p>
-<ul>
-<li>name: str</li>
-<li>version: int</li>
-<li>scope: str (public/project/user)</li>
-<li>framework: <a href="../frameworks/">framework ID</a></li>
-<li>domain: <a href="../domains/">domain name</a></li>
-<li>type: str (train/predict/...)</li>
-<li>description: str</li>
-<li>inputs: array of (name: str, type: str, options: str, help: str)</li>
-<li>parameters: array of (name: str, type: str, default: str, help: str)</li>
-<li>executor_class: str</li>
-<li>required_packages: str</li>
-<li>body: str</li>
-<li>creator: <a href="../users/">user ID</a></li>
+</li>
+<li>licence: <a href="../licenses/">licence ID</a></li>
+<li>creator: <a href="../users/">user ID</a> or null</li>
 <li>creation_time: timestamp</li>
-<li>deletion_time: timestamp</li>
+<li>deletion_time: timestamp or null</li>
+<li>framework (optional): <a href="../frameworks/">framework ID</a></li>
+<li>type (optional): str</li>
+<li>executor_class (optional): str</li>
+<li>required_packages (optional): str</li>
+<li>body (optional): str</li>
 </ul>
-<h2 id="partial-update">Partial update</h2>
-<p>PATCH: <code>/v1/job-templates/{PK}</code></p>
-<p>Parameters:</p>
+<h2 id="destroy">Destroy</h2>
+<p>Flags a job template as deleted, it can be <a href="#reinstate">reinstated</a>. To
+permanently delete, see <a href="#hard-delete">Hard Delete</a>.</p>
+<h3 id="method_2">Method</h3>
+<p><code>DELETE</code></p>
+<h3 id="url_2">URL</h3>
+<p><code>/v1/job-templates/{PK}</code></p>
+<h3 id="parameters_1">Parameters</h3>
 <ul>
-<li>PK: int (primary key of job template)</li>
+<li><code>PK</code>: int (primary key of job template)</li>
 </ul>
-<p>Any of the following fields in the body:</p>
+<h3 id="permissions_2">Permissions</h3>
 <ul>
+<li><a href="../permissions/#isadminuser">user is an admin</a></li>
+</ul>
+<h2 id="create-job">Create Job</h2>
+<h3 id="method_3">Method</h3>
+<p><code>POST</code></p>
+<h3 id="url_3">URL</h3>
+<p><code>/v1/job-templates/{PK}/create-job</code></p>
+<h3 id="parameters_2">Parameters</h3>
+<ul>
+<li><code>PK</code>: int (primary key of job template)</li>
+</ul>
+<h3 id="body">Body</h3>
+<ul>
+<li>input_values: map from input name to:<ul>
+<li>value: str</li>
+<li>type: str</li>
+</ul>
+</li>
+<li>parameter_values (optional): map from parameter name to str</li>
+<li>description (optional): str</li>
+<li>notification_override: object<ul>
+<li>actions: object</li>
+<li>on_acquire: array of <a href="../notifications/">notifications</a></li>
+<li>on_release: array of <a href="../notifications/">notifications</a></li>
+<li>on_start: array of <a href="../notifications/">notifications</a></li>
+<li>on_progress: array of <a href="../notifications/">notifications</a></li>
+<li>on_finish: array of <a href="../notifications/">notifications</a></li>
+<li>on_error: array of <a href="../notifications/">notifications</a></li>
+<li>on_reset: array of <a href="../notifications/">notifications</a></li>
+<li>on_abort: array of <a href="../notifications/">notifications</a></li>
+<li>on_cancel: array of <a href="../notifications/">notifications</a></li>
+<li>keep_default (optional): bool</li>
+</ul>
+</li>
+<li>child_notification_overrides: map of child template name to:<ul>
+<li>actions: object</li>
+<li>on_acquire: array of <a href="../notifications/">notifications</a></li>
+<li>on_release: array of <a href="../notifications/">notifications</a></li>
+<li>on_start: array of <a href="../notifications/">notifications</a></li>
+<li>on_progress: array of <a href="../notifications/">notifications</a></li>
+<li>on_finish: array of <a href="../notifications/">notifications</a></li>
+<li>on_error: array of <a href="../notifications/">notifications</a></li>
+<li>on_reset: array of <a href="../notifications/">notifications</a></li>
+<li>on_abort: array of <a href="../notifications/">notifications</a></li>
+<li>on_cancel: array of <a href="../notifications/">notifications</a></li>
+<li>keep_default (optional): bool</li>
+</ul>
+</li>
+</ul>
+<h3 id="permissions_3">Permissions</h3>
+<ul>
+<li><a href="../permissions/#isauthenticated">user is authenticated</a></li>
+</ul>
+<h3 id="response_2">Response</h3>
+<ul>
+<li>pk: <a href="../jobs/">job ID</a></li>
+<li>description: str</li>
+<li>template: object<ul>
+<li>pk: int (same as <code>PK</code>)</li>
 <li>name: str</li>
 <li>version: int</li>
-<li>scope: str (public/project/user)</li>
-<li>framework: <a href="../frameworks/">framework ID</a></li>
-<li>domain: <a href="../domains/">domain name</a></li>
-<li>type: str (train/predict/...)</li>
-<li>description: str</li>
-<li>executor_class: str</li>
-<li>required_packages: str</li>
-<li>body: str</li>
 </ul>
-<p>Response:</p>
-<ul>
+</li>
+<li>input_values: map of input name to:<ul>
+<li>value: str</li>
+<li>type: str</li>
+</ul>
+</li>
+<li>parameter_values: null or map of parameter name to str</li>
+<li>outputs: array of objects<ul>
+<li>pk: <a href="../job_outputs/">job output ID</a></li>
 <li>name: str</li>
-<li>version: int</li>
-<li>scope: str (public/project/user)</li>
-<li>framework: <a href="../frameworks/">framework ID</a></li>
-<li>domain: <a href="../domains/">domain name</a></li>
-<li>type: str (train/predict/...)</li>
-<li>description: str</li>
-<li>inputs: array of (name: str, type: str, options: str, help: str)</li>
-<li>parameters: array of (name: str, type: str, default: str, help: str)</li>
-<li>executor_class: str</li>
-<li>required_packages: str</li>
-<li>body: str</li>
-<li>creator: <a href="../users/">user ID</a></li>
+<li>type: str</li>
+</ul>
+</li>
+<li>node: <a href="../nodes/">node ID</a> or null</li>
+<li>error_reason: str or null</li>
+<li>creator: <a href="../users/">user ID</a> or null</li>
 <li>creation_time: timestamp</li>
-<li>deletion_time: timestamp</li>
+<li>deletion_time: timestamp or null</li>
+<li>start_time: timestamp or null</li>
+<li>end_time: timestamp or null</li>
+<li>parent: int (primary key of parent job) or null</li>
+<li>is_cancelled: bool</li>
 </ul>
-<h2 id="delete">Delete</h2>
-<p>DELETE: <code>/v1/job-templates/{PK}[/hard]</code></p>
-<p>Parameters:</p>
+<h2 id="hard-delete">Hard Delete</h2>
+<p>Permanently deletes the job template. For soft-deletion, see <a href="#destroy">Destroy</a>.</p>
+<h3 id="method_4">METHOD</h3>
+<p><code>DELETE</code></p>
+<h3 id="url_4">URL</h3>
+<p><code>/v1/job-templates/{PK}/hard</code></p>
+<h3 id="parameters_3">Parameters</h3>
 <ul>
-<li>PK: int (primary key of job template)</li>
+<li><code>PK</code>: int (primary key of job template)</li>
 </ul>
-<p>Notes:</p>
+<h3 id="permissions_4">Permissions</h3>
 <ul>
-<li>Omitting <code>/hard</code> from URL only flags it as deleted, it can be reinstated</li>
+<li><a href="../permissions/#isadminuser">user is admin</a></li>
+</ul>
+<h3 id="response_3">Response</h3>
+<ul>
+<li>pk: int (primary key of job template)</li>
+<li>name: str</li>
+<li>version: int</li>
+<li>description: str</li>
+<li>scope: str (public/project/user)</li>
+<li>domain: str (<a href="../domains/">domain name</a>)</li>
+<li>inputs: array of:<ul>
+<li>name: str</li>
+<li>types: array of str</li>
+<li>options: str</li>
+<li>help: str</li>
+</ul>
+</li>
+<li>parameters: array of:<ul>
+<li>name: str</li>
+<li>type: str</li>
+<li>default: str</li>
+<li>help: str</li>
+</ul>
+</li>
+<li>licence: <a href="../licenses/">licence ID</a></li>
+<li>creator: <a href="../users/">user ID</a> or null</li>
+<li>creation_time: timestamp</li>
+<li>deletion_time: timestamp or null</li>
+<li>framework (optional): <a href="../frameworks/">framework ID</a></li>
+<li>type (optional): str</li>
+<li>executor_class (optional): str</li>
+<li>required_packages (optional): str</li>
+<li>body (optional): str</li>
 </ul>
 <h2 id="reinstate">Reinstate</h2>
-<p>DELETE: <code>/v1/job-templates/{PK}/reinstate</code></p>
-<p>Parameters:</p>
+<p>Undeletes a previously soft-deleted job template.</p>
+<h3 id="method_5">Method</h3>
+<p><code>DELETE</code></p>
+<h3 id="url_5">URL</h3>
+<p><code>/v1/job-templates/{PK}/reinstate</code></p>
+<h3 id="parameters_4">Parameters</h3>
 <ul>
-<li>PK: int (primary key of job template)</li>
+<li><code>PK</code>: int (primary key of job template)</li>
 </ul>
-<p>Notes:</p>
+<h3 id="permissions_5">Permissions</h3>
 <ul>
-<li>Undeletes a previously soft-deleted job template</li>
+<li><a href="../permissions/#isadminuser">user is admin</a></li>
 </ul>
-<h2 id="export">Export</h2>
-<p>GET: <code>/v1/job-templates/{PK}/export</code></p>
-<p>Parameters:</p>
+<h3 id="response_4">Response</h3>
 <ul>
-<li>PK: int (primary key of job template)</li>
-</ul>
-<p>Response:</p>
-<ul>
-<li>JSON representation of job template (<a href="https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json">example</a>)</li>
-</ul>
-<h2 id="import">Import</h2>
-<p>POST:  <code>/v1/job-templates/import</code></p>
-<p>Body:</p>
-<ul>
-<li>JSON representation of job template (<a href="https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json">example</a>)</li>
-</ul>
-<p>Response:</p>
-<ul>
+<li>pk: int (primary key of job template)</li>
 <li>name: str</li>
 <li>version: int</li>
-<li>scope: str (public/project/user)</li>
-<li>framework: <a href="../frameworks/">framework ID</a></li>
-<li>domain: <a href="../domains/">domain name</a></li>
-<li>type: str (train/predict/...)</li>
 <li>description: str</li>
-<li>inputs: array of (name: str, type: str, options: str, help: str)</li>
-<li>parameters: array of (name: str, type: str, default: str, help: str)</li>
-<li>executor_class: str</li>
-<li>required_packages: str</li>
-<li>body: str</li>
-<li>creator: <a href="../users/">user ID</a></li>
+<li>scope: str (public/project/user)</li>
+<li>domain: str (<a href="../domains/">domain name</a>)</li>
+<li>inputs: array of:<ul>
+<li>name: str</li>
+<li>types: array of str</li>
+<li>options: str</li>
+<li>help: str</li>
+</ul>
+</li>
+<li>parameters: array of:<ul>
+<li>name: str</li>
+<li>type: str</li>
+<li>default: str</li>
+<li>help: str</li>
+</ul>
+</li>
+<li>licence: <a href="../licenses/">licence ID</a></li>
+<li>creator: <a href="../users/">user ID</a> or null</li>
 <li>creation_time: timestamp</li>
-<li>deletion_time: timestamp</li>
+<li>deletion_time: timestamp or null</li>
+<li>framework (optional): <a href="../frameworks/">framework ID</a></li>
+<li>type (optional): str</li>
+<li>executor_class (optional): str</li>
+<li>required_packages (optional): str</li>
+<li>body (optional): str</li>
 </ul>
-<h2 id="new-job">New job</h2>
-<p>POST:  <code>/v1/job-templates/{PK}/create-job</code></p>
-<p>Parameters:</p>
+<h2 id="import-template">Import Template</h2>
+<h3 id="method_6">Method</h3>
+<p><code>POST</code></p>
+<h3 id="url_6">URL</h3>
+<p><code>/v1/job-templates/import</code></p>
+<h3 id="body_1">Body</h3>
 <ul>
-<li>PK: int (primary key of job template)</li>
+<li>JSON representation of job template (<a href="https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json">example</a>)</li>
 </ul>
-<p>Body:</p>
+<h3 id="permissions_6">Permissions</h3>
 <ul>
-<li>docker_image: <a href="../docker_images/">docker image ID</a></li>
-<li>description: str (optional)</li>
-<li>input_values: map of input values (name/value)</li>
-<li>parameter_values: map of parameter values (name/value)</li>
+<li><a href="../permissions/#isadminuser">user is admin</a></li>
 </ul>
-<p>Response:</p>
+<h3 id="response_5">Response</h3>
 <ul>
-<li><a href="../jobs/">job</a></li>
+<li>pk: int (primary key of job template)</li>
+<li>name: str</li>
+<li>version: int</li>
+<li>description: str</li>
+<li>scope: str (public/project/user)</li>
+<li>domain: str (<a href="../domains/">domain name</a>)</li>
+<li>inputs: array of:<ul>
+<li>name: str</li>
+<li>types: array of str</li>
+<li>options: str</li>
+<li>help: str</li>
+</ul>
+</li>
+<li>parameters: array of:<ul>
+<li>name: str</li>
+<li>type: str</li>
+<li>default: str</li>
+<li>help: str</li>
+</ul>
+</li>
+<li>licence: <a href="../licenses/">licence ID</a></li>
+<li>creator: <a href="../users/">user ID</a> or null</li>
+<li>creation_time: timestamp</li>
+<li>deletion_time: timestamp or null</li>
+<li>framework (optional): <a href="../frameworks/">framework ID</a></li>
+<li>type (optional): str</li>
+<li>executor_class (optional): str</li>
+<li>required_packages (optional): str</li>
+<li>body (optional): str</li>
+</ul>
+<h2 id="export-template">Export Template</h2>
+<h3 id="method_7">Method</h3>
+<p><code>GET</code></p>
+<h3 id="url_7">URL</h3>
+<p><code>/v1/job-templates/{PK}/export</code></p>
+<h3 id="parameters_5">Parameters</h3>
+<ul>
+<li><code>PK</code>: int (primary key of job template)</li>
+</ul>
+<h3 id="permissions_7">Permissions</h3>
+<ul>
+<li><a href="../permissions/#isadminuser">user is admin</a></li>
+</ul>
+<h3 id="response_6">Response</h3>
+<ul>
+<li>JSON representation of job template (<a href="https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json">example</a>)</li>
 </ul>
               
             </div>
