@@ -148,13 +148,12 @@
 Whilst very flexible, this also requires the knowledge of the underlying database 
 field names.</p>
 <h2 id="top-level">Top-level</h2>
-<pre><code class="json">{
+<pre><code class="language-json">{
   &quot;expressions&quot;: [ ... expressions ... ],
   &quot;order_by&quot;: [ ... orderings ... ],
   &quot;include_inactive&quot;: true/false
 }
 </code></pre>
-
 <ul>
 <li><code>expressions</code> is an array of expressions which filter the list. 
   Each is applied in order, further filtering the result of the previous expressions.</li>
@@ -213,13 +212,12 @@ field names.</p>
 </li>
 </ul>
 <h3 id="order-by">Order by</h3>
-<pre><code class="json">{
+<pre><code class="language-json">{
   &quot;field&quot;: &quot;my_field&quot;,
   &quot;ascending&quot;: true/false,
   &quot;nulls_first&quot;: true/false
 }
 </code></pre>
-
 <ul>
 <li><code>field</code>: str - the field to enforce the ordering on</li>
 <li><code>ascending</code>: bool - ascending or descending</li>
@@ -232,7 +230,7 @@ who is not exactly 2m tall, unless their name is Robert, in which case they must
 1.75m tall. Ignores the case of the names. Returns people in order of tallest to
 shortest, then alphabetically if their height is the same, and then by some
 mysterious third field for people with the same height and name.</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
   &quot;expressions&quot;: [
     {
       &quot;sub_expressions&quot;: [
