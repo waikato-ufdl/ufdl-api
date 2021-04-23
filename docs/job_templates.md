@@ -2,321 +2,379 @@ Manages the job templates.
 
 # Fields
 
-Available fields:
-
+  * pk: int (primary key of job template)
   * name: str
   * version: int
-  * scope: str (public/project/user)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * type: str (train/predict/...)
   * description: str
-  * inputs: array of (name: str, type: str, options: str, help: str)
-  * parameters: array of (name: str, type: str, default: str, help: str)
-  * executor_class: str
-  * required_packages: str
-  * body: str
-  * creator: [user ID](users.md)
+  * scope: str (public/project/user)
+  * licence: [licence](licenses.md)
+  * domain: [domain](domains.md)
+  * inputs: set of [inputs](inputs.md)
+  * parameters: set of [parameters](parameters.md)
+  * creator: [user](users.md) or null
   * creation_time: timestamp
-  * deletion_time: timestamp
+  * deletion_time: timestamp or null
+  * workabletemplate: [workable template](workable_templates.md) or null
+  * metatemplate: [meta-template](meta_templates.md) or null 
 
 # Actions
 
 ## List
 
-POST: `/v1/job-templates/list`
+### Method
 
-Body (optional): [filter specification](filtering.md)
+`POST`
+
+### URL
+
+`/v1/job-templates/list`
+
+### Body (optional)
+ 
+  * [filter specification](filtering.md)
   
-Response:
+### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+  
+### Response
 
   * array of
 
     * pk: int (primary key of job template)
     * name: str
     * version: int
-    * scope: str (public/project/user)
-    * framework: [framework ID](frameworks.md)
-    * domain: [domain name](domains.md)
-    * type: str (train/predict/...)
     * description: str
-    * inputs: array of (name: str, type: str, options: str, help: str)
-    * parameters: array of (name: str, type: str, default: str, help: str)
-    * executor_class: str
-    * required_packages: str
-    * body: str
-    * creator: [user ID](users.md)
+    * scope: str (public/project/user)
+    * domain: str ([domain name](domains.md))
+    * inputs: array of:
+      * name: str
+      * types: array of str
+      * options: str
+      * help: str
+    * parameters: array of:
+      * name: str
+      * type: str
+      * default: str
+      * help: str
+    * licence: [licence ID](licenses.md)
+    * creator: [user ID](users.md) or null
     * creation_time: timestamp
-    * deletion_time: timestamp
+    * deletion_time: timestamp or null
+    * framework (optional): [framework ID](frameworks.md)
+    * type (optional): str
+    * executor_class (optional): str
+    * required_packages (optional): str
+    * body (optional): str
 
+## Retrieve
 
-## Load
+### Method
 
-GET: `/v1/job-templates/{PK}`
+`GET`
 
-Parameters:
+### URL
 
-  * PK: int (primary key of job template)
+`/v1/job-templates/{PK}`
+
+### Parameters
+
+  * `PK`: int (primary key of job template)
   
-Response:
+### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+  
+### Response
 
   * pk: int (primary key of job template)
   * name: str
   * version: int
-  * scope: str (public/project/user)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * type: str (train/predict/...)
   * description: str
-  * inputs: array of (name: str, type: str, options: str, help: str)
-  * parameters: array of (name: str, type: str, default: str, help: str)
-  * executor_class: str
-  * required_packages: str
-  * body: str
-  * creator: [user ID](users.md)
+  * scope: str (public/project/user)
+  * domain: str ([domain name](domains.md))
+  * inputs: array of:
+    * name: str
+    * types: array of str
+    * options: str
+    * help: str
+  * parameters: array of:
+    * name: str
+    * type: str
+    * default: str
+    * help: str
+  * licence: [licence ID](licenses.md)
+  * creator: [user ID](users.md) or null
   * creation_time: timestamp
-  * deletion_time: timestamp
+  * deletion_time: timestamp or null
+  * framework (optional): [framework ID](frameworks.md)
+  * type (optional): str
+  * executor_class (optional): str
+  * required_packages (optional): str
+  * body (optional): str
 
-## Add
+## Destroy
 
-POST: `/v1/job-templates/create`
+Flags a job template as deleted, it can be [reinstated](#reinstate). To
+permanently delete, see [Hard Delete](#hard-delete).
 
-Body:
+### Method
 
-  * name: str
-  * version: int
-  * scope: str (public/project/user)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * type: str (train/predict/...)
+`DELETE`
+
+### URL
+
+`/v1/job-templates/{PK}`
+
+### Parameters
+
+  * `PK`: int (primary key of job template)
+
+### Permissions
+
+  * [user is an admin](permissions.md#isadminuser)
+  
+
+## Create Job
+
+### Method
+
+`POST`
+
+### URL
+
+`/v1/job-templates/{PK}/create-job`
+
+### Parameters
+
+  * `PK`: int (primary key of job template)
+
+### Body
+
+  * input_values: map from input name to:
+    * value: str
+    * type: str
+  * parameter_values (optional): map from parameter name to str
+  * description (optional): str
+  * notification_override: object
+    * actions: object
+      * on_acquire: array of [notifications](notifications.md)
+      * on_release: array of [notifications](notifications.md)
+      * on_start: array of [notifications](notifications.md)
+      * on_progress: array of [notifications](notifications.md)
+      * on_finish: array of [notifications](notifications.md)
+      * on_error: array of [notifications](notifications.md)
+      * on_reset: array of [notifications](notifications.md)
+      * on_abort: array of [notifications](notifications.md)
+      * on_cancel: array of [notifications](notifications.md)
+    * keep_default (optional): bool
+  * child_notification_overrides: map of child template name to:
+    * actions: object
+      * on_acquire: array of [notifications](notifications.md)
+      * on_release: array of [notifications](notifications.md)
+      * on_start: array of [notifications](notifications.md)
+      * on_progress: array of [notifications](notifications.md)
+      * on_finish: array of [notifications](notifications.md)
+      * on_error: array of [notifications](notifications.md)
+      * on_reset: array of [notifications](notifications.md)
+      * on_abort: array of [notifications](notifications.md)
+      * on_cancel: array of [notifications](notifications.md)
+    * keep_default (optional): bool
+
+### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+
+### Response
+
+  * pk: [job ID](jobs.md)
   * description: str
-  * executor_class: str
-  * required_packages: str
-  * body: str
+  * template: object
+    * pk: int (same as `PK`)
+    * name: str
+    * version: int
+  * input_values: map of input name to:
+    * value: str
+    * type: str
+  * parameter_values: null or map of parameter name to str
+  * outputs: array of objects
+    * pk: [job output ID](job_outputs.md)
+    * name: str
+    * type: str
+  * node: [node ID](nodes.md) or null
+  * error_reason: str or null
+  * creator: [user ID](users.md) or null
+  * creation_time: timestamp
+  * deletion_time: timestamp or null
+  * start_time: timestamp or null
+  * end_time: timestamp or null
+  * parent: int (primary key of parent job) or null
+  * is_cancelled: bool
+  
+  
+## Hard Delete
 
-Response:
+Permanently deletes the job template. For soft-deletion, see [Destroy](#destroy).
+
+### METHOD
+
+`DELETE`
+
+### URL
+
+`/v1/job-templates/{PK}/hard`
+
+### Parameters
+
+  * `PK`: int (primary key of job template)
+
+### Permissions
+
+  * [user is admin](permissions.md#isadminuser)
+
+### Response
 
   * pk: int (primary key of job template)
   * name: str
   * version: int
-  * scope: str (public/project/user)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * type: str (train/predict/...)
   * description: str
-  * inputs: array of (name: str, type: str, options: str, help: str)
-  * parameters: array of (name: str, type: str, default: str, help: str)
-  * executor_class: str
-  * required_packages: str
-  * body: str
-  * creator: [user ID](users.md)
+  * scope: str (public/project/user)
+  * domain: str ([domain name](domains.md))
+  * inputs: array of:
+    * name: str
+    * types: array of str
+    * options: str
+    * help: str
+  * parameters: array of:
+    * name: str
+    * type: str
+    * default: str
+    * help: str
+  * licence: [licence ID](licenses.md)
+  * creator: [user ID](users.md) or null
   * creation_time: timestamp
-  * deletion_time: timestamp
+  * deletion_time: timestamp or null
+  * framework (optional): [framework ID](frameworks.md)
+  * type (optional): str
+  * executor_class (optional): str
+  * required_packages (optional): str
+  * body (optional): str
 
-## Add input
-
-POST: `/v1/job-templates/{PK}/inputs/{NAME}`
-
-Parameters:
-
-  * PK: int (primary key of job template)
-  * NAME: str (name of the input)
-
-Body:
-
-  * type: str (bool/int/float/str/dataset/model/joboutput)
-  * options: str
-  * help: str
-
-## Remove input
-
-DELETE: `/v1/job-templates/{PK}/inputs/{NAME}`
-
-Parameters:
-
-  * PK: int (primary key of job template)
-  * NAME: str (name of the input)
-
-## Add parameter
-
-POST: `/v1/job-templates/{PK}/parameters/{NAME}`
-
-Parameters:
-
-  * PK: int (primary key of job template)
-  * NAME: str (name of the parameter)
-
-Body:
-
-  * type: str (bool/int/float/str/dataset/model/joboutput)
-  * default: str (the default value)
-  * help: str
-
-## Remove parameter
-
-DELETE: `/v1/job-templates/{PK}/parameters/{NAME}`
-
-Parameters:
-
-  * PK: int (primary key of job template)
-  * NAME: str (name of the parameter)
-
-## Update
-
-PUT: `/v1/job-templates/{PK}`
-
-Parameters:
-
-  * PK: int (primary key of job template)
-  
-Body: 
- 
-  * name: str
-  * version: int
-  * scope: str (public/project/user)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * type: str (train/predict/...)
-  * description: str
-  * executor_class: str
-  * required_packages: str
-  * body: str
-
-Response:
-
-  * name: str
-  * version: int
-  * scope: str (public/project/user)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * type: str (train/predict/...)
-  * description: str
-  * inputs: array of (name: str, type: str, options: str, help: str)
-  * parameters: array of (name: str, type: str, default: str, help: str)
-  * executor_class: str
-  * required_packages: str
-  * body: str
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
-
-## Partial update
-
-PATCH: `/v1/job-templates/{PK}`
-
-Parameters:
-
-  * PK: int (primary key of job template)
-
-Any of the following fields in the body:
-
-  * name: str
-  * version: int
-  * scope: str (public/project/user)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * type: str (train/predict/...)
-  * description: str
-  * executor_class: str
-  * required_packages: str
-  * body: str
-
-Response:
-
-  * name: str
-  * version: int
-  * scope: str (public/project/user)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * type: str (train/predict/...)
-  * description: str
-  * inputs: array of (name: str, type: str, options: str, help: str)
-  * parameters: array of (name: str, type: str, default: str, help: str)
-  * executor_class: str
-  * required_packages: str
-  * body: str
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
-
-
-## Delete
-
-DELETE: `/v1/job-templates/{PK}[/hard]`
-
-Parameters:
-
-  * PK: int (primary key of job template)
-
-Notes:
-
-  * Omitting `/hard` from URL only flags it as deleted, it can be reinstated
 
 ## Reinstate
 
-DELETE: `/v1/job-templates/{PK}/reinstate`
+Undeletes a previously soft-deleted job template.
 
-Parameters:
+### Method
 
-  * PK: int (primary key of job template)
+`DELETE`
 
-Notes:
+### URL
 
-  * Undeletes a previously soft-deleted job template
+`/v1/job-templates/{PK}/reinstate`
 
-## Export
+### Parameters
 
-GET: `/v1/job-templates/{PK}/export`
+  * `PK`: int (primary key of job template)
 
-Parameters:
+### Permissions
 
-  * PK: int (primary key of job template)
+  * [user is admin](permissions.md#isadminuser)
 
-Response:
+### Response
 
-  * JSON representation of job template ([example](https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json))
-
-## Import
-
-POST:  `/v1/job-templates/import`
-
-Body:
-
-  * JSON representation of job template ([example](https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json))
-  
-Response:
-
+  * pk: int (primary key of job template)
   * name: str
   * version: int
-  * scope: str (public/project/user)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * type: str (train/predict/...)
   * description: str
-  * inputs: array of (name: str, type: str, options: str, help: str)
-  * parameters: array of (name: str, type: str, default: str, help: str)
-  * executor_class: str
-  * required_packages: str
-  * body: str
-  * creator: [user ID](users.md)
+  * scope: str (public/project/user)
+  * domain: str ([domain name](domains.md))
+  * inputs: array of:
+    * name: str
+    * types: array of str
+    * options: str
+    * help: str
+  * parameters: array of:
+    * name: str
+    * type: str
+    * default: str
+    * help: str
+  * licence: [licence ID](licenses.md)
+  * creator: [user ID](users.md) or null
   * creation_time: timestamp
-  * deletion_time: timestamp
+  * deletion_time: timestamp or null
+  * framework (optional): [framework ID](frameworks.md)
+  * type (optional): str
+  * executor_class (optional): str
+  * required_packages (optional): str
+  * body (optional): str
 
-## New job
 
-POST:  `/v1/job-templates/{PK}/create-job`
+## Import Template
 
-Parameters:
+### Method
 
-  * PK: int (primary key of job template)
+`POST`
 
-Body:
+### URL
 
-  * docker_image: [docker image ID](docker_images.md)
-  * description: str (optional)
-  * input_values: map of input values (name/value)
-  * parameter_values: map of parameter values (name/value)
+`/v1/job-templates/import`
+
+### Body
+
+  * JSON representation of job template ([example](https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json))
+
+### Permissions
+
+  * [user is admin](permissions.md#isadminuser)
+
+### Response
+
+  * pk: int (primary key of job template)
+  * name: str
+  * version: int
+  * description: str
+  * scope: str (public/project/user)
+  * domain: str ([domain name](domains.md))
+  * inputs: array of:
+    * name: str
+    * types: array of str
+    * options: str
+    * help: str
+  * parameters: array of:
+    * name: str
+    * type: str
+    * default: str
+    * help: str
+  * licence: [licence ID](licenses.md)
+  * creator: [user ID](users.md) or null
+  * creation_time: timestamp
+  * deletion_time: timestamp or null
+  * framework (optional): [framework ID](frameworks.md)
+  * type (optional): str
+  * executor_class (optional): str
+  * required_packages (optional): str
+  * body (optional): str
+
+
+## Export Template
+
+### Method
+
+`GET`
+
+### URL
+
+`/v1/job-templates/{PK}/export`
+
+### Parameters
+
+  * `PK`: int (primary key of job template)
   
-Response:
+### Permissions
 
-  * [job](jobs.md)
+  * [user is admin](permissions.md#isadminuser)
+
+### Response
+
+  * JSON representation of job template ([example](https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json))

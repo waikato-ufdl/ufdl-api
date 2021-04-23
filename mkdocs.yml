@@ -22,6 +22,7 @@ nav:
     - 'Jobs': jobs.md
     - 'Job templates': job_templates.md
     - 'Job outputs': job_outputs.md
+    - 'Job types': job_types.md
   - 'Data':
     - 'Core dataset': datasets.md
     - 'Image classification': image_classification.md
