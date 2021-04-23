@@ -1,6 +1,6 @@
 Manages the relationship between a meta-template and its child templates.
 
-# Fields
+## Fields
 
   * pk: int (primary key of the relation)
   * parent: [meta-template](meta_templates.md)
@@ -9,6 +9,6 @@ Manages the relationship between a meta-template and its child templates.
   * dependents: set of [meta-template dependencies](meta_template_dependencies.md)
   * dependencies: set of [meta-template dependencies](meta_template_dependencies.md)
 
-# Actions
+## Actions
 
-None
+### None

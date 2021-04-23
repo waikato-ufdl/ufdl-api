@@ -1,6 +1,6 @@
 Manages the job templates.
 
-# Fields
+## Fields
 
   * pk: int (primary key of job template)
   * name: str
@@ -17,27 +17,27 @@ Manages the job templates.
   * workabletemplate: [workable template](workable_templates.md) or null
   * metatemplate: [meta-template](meta_templates.md) or null 
 
-# Actions
+## Actions
 
-## List
+### List
 
-### Method
+#### Method
 
 `POST`
 
-### URL
+#### URL
 
 `/v1/job-templates/list`
 
-### Body (optional)
+#### Body (optional)
  
   * [filter specification](filtering.md)
   
-### Permissions
+#### Permissions
 
   * [user is authenticated](permissions.md#isauthenticated)
   
-### Response
+#### Response
 
   * array of
 
@@ -67,25 +67,25 @@ Manages the job templates.
     * required_packages (optional): str
     * body (optional): str
 
-## Retrieve
+### Retrieve
 
-### Method
+#### Method
 
 `GET`
 
-### URL
+#### URL
 
 `/v1/job-templates/{PK}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job template)
   
-### Permissions
+#### Permissions
 
   * [user is authenticated](permissions.md#isauthenticated)
   
-### Response
+#### Response
 
   * pk: int (primary key of job template)
   * name: str
@@ -113,43 +113,43 @@ Manages the job templates.
   * required_packages (optional): str
   * body (optional): str
 
-## Destroy
+### Destroy
 
 Flags a job template as deleted, it can be [reinstated](#reinstate). To
 permanently delete, see [Hard Delete](#hard-delete).
 
-### Method
+#### Method
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/job-templates/{PK}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job template)
 
-### Permissions
+#### Permissions
 
   * [user is an admin](permissions.md#isadminuser)
   
 
-## Create Job
+### Create Job
 
-### Method
+#### Method
 
 `POST`
 
-### URL
+#### URL
 
 `/v1/job-templates/{PK}/create-job`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job template)
 
-### Body
+#### Body
 
   * input_values: map from input name to:
     * value: str
@@ -181,11 +181,11 @@ permanently delete, see [Hard Delete](#hard-delete).
       * on_cancel: array of [notifications](notifications.md)
     * keep_default (optional): bool
 
-### Permissions
+#### Permissions
 
   * [user is authenticated](permissions.md#isauthenticated)
 
-### Response
+#### Response
 
   * pk: [job ID](jobs.md)
   * description: str
@@ -212,27 +212,27 @@ permanently delete, see [Hard Delete](#hard-delete).
   * is_cancelled: bool
   
   
-## Hard Delete
+### Hard Delete
 
 Permanently deletes the job template. For soft-deletion, see [Destroy](#destroy).
 
-### METHOD
+#### METHOD
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/job-templates/{PK}/hard`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job template)
 
-### Permissions
+#### Permissions
 
   * [user is admin](permissions.md#isadminuser)
 
-### Response
+#### Response
 
   * pk: int (primary key of job template)
   * name: str
@@ -261,27 +261,27 @@ Permanently deletes the job template. For soft-deletion, see [Destroy](#destroy)
   * body (optional): str
 
 
-## Reinstate
+### Reinstate
 
 Undeletes a previously soft-deleted job template.
 
-### Method
+#### Method
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/job-templates/{PK}/reinstate`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job template)
 
-### Permissions
+#### Permissions
 
   * [user is admin](permissions.md#isadminuser)
 
-### Response
+#### Response
 
   * pk: int (primary key of job template)
   * name: str
@@ -310,25 +310,25 @@ Undeletes a previously soft-deleted job template.
   * body (optional): str
 
 
-## Import Template
+### Import Template
 
-### Method
+#### Method
 
 `POST`
 
-### URL
+#### URL
 
 `/v1/job-templates/import`
 
-### Body
+#### Body
 
   * JSON representation of job template ([example](https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json))
 
-### Permissions
+#### Permissions
 
   * [user is admin](permissions.md#isadminuser)
 
-### Response
+#### Response
 
   * pk: int (primary key of job template)
   * name: str
@@ -357,24 +357,24 @@ Undeletes a previously soft-deleted job template.
   * body (optional): str
 
 
-## Export Template
+### Export Template
 
-### Method
+#### Method
 
 `GET`
 
-### URL
+#### URL
 
 `/v1/job-templates/{PK}/export`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job template)
   
-### Permissions
+#### Permissions
 
   * [user is admin](permissions.md#isadminuser)
 
-### Response
+#### Response
 
   * JSON representation of job template ([example](https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json))

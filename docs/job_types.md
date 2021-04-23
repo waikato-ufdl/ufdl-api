@@ -1,33 +1,33 @@
 Manages the job types.
 
-# Fields
+## Fields
 
   * pk: int (primary key of job type)
   * name: str
 
-# Actions
+## Actions
 
-## List
+### List
 
 Lists the job types registyered with the server.
 
-### Method
+#### Method
 
 `POST`
 
-### URL
+#### URL
 
 `/v1/job-types/list`
 
-### Body (optional)
+#### Body (optional)
  
   * [filter specification](filtering.md)
   
-### Permissions
+#### Permissions
 
   * [user is authenticated](permissions.md#isauthenticated)
   
-### Response
+#### Response
 
   * array of
 
@@ -35,136 +35,136 @@ Lists the job types registyered with the server.
     * name: str
 
 
-## Create
+### Create
 
 Creates a new job type.
 
-### Method
+#### Method
 
 `POST`
 
-### URL
+#### URL
 
 `/v1/job-types`
 
-### Body
+#### Body
 
   * name: str
   
-### Permissions
+#### Permissions
 
   * [user is an admin](permissions.md#isadminuser)
   
-### Response
+#### Response
 
   * pk: int (same as `PK`)
   * name: str
 
 
-## Retrieve
+### Retrieve
 
 Gets the representation of the job type.
 
-### Method
+#### Method
 
 `GET`
 
-### URL
+#### URL
 
 `/v1/job-types/{PK}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job type)
   
-### Permissions
+#### Permissions
 
   * [user is authenticated](permissions.md#isauthenticated)
   
-### Response
+#### Response
 
   * pk: int (same as `PK`)
   * name: str
 
 
-## Update
+### Update
 
 Updates the fields of the job type.
 
-### Method
+#### Method
 
 `PUT`
 
-### URL
+#### URL
 
 `/v1/job-types/{PK}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job type)
   
-### Body
+#### Body
 
   * name: str
   
-### Permissions
+#### Permissions
 
   * [user is an admin](permissions.md#isadminuser)
   
-### Response
+#### Response
 
   * pk: int (same as `PK`)
   * name: str
   
 
-## Partial Update
+### Partial Update
 
 Updates a selection of fields on the job type. As job types only have a `name` field,
 this is functionally equivalent to [Update](#update).
 
-### Method
+#### Method
 
 `PATCH`
 
-### URL
+#### URL
 
 `/v1/job-types/{PK}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job type)
   
-### Body
+#### Body
 
   * name (optional): str
   
-### Permissions
+#### Permissions
 
   * [user is an admin](permissions.md#isadminuser)
   
-### Response
+#### Response
 
   * pk: int (same as `PK`)
   * name: str
 
-## Destroy
+### Destroy
 
 Attempts to delete a job-type from the system. Only succeeds if no other models
 are referencing the job type.
 
-### Method
+#### Method
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/job-types/{PK}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job type)
 
-### Permissions
+#### Permissions
 
   * [user is an admin](permissions.md#isadminuser)
   

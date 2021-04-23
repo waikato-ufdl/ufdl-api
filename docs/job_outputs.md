@@ -1,6 +1,6 @@
 Manages the output data attached to jobs.
 
-# Fields
+## Fields
 
   * pk: int (primary key of job output)
   * job: int (primary key of job)
@@ -9,30 +9,30 @@ Manages the output data attached to jobs.
   * data: [file ID]()
 
 
-# Actions
+## Actions
 
-## Retrieve
+### Retrieve
 
 Gets the information about a specific job output. Can also be performed by
 name/type [from the associated job](jobs.md#get-output-info).
 
-### Method
+#### Method
 
 `GET`
 
-### URL
+#### URL
 
 `/v1/job-outputs/{PK}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job output)
 
-### Permissions
+#### Permissions
 
   * [user is authenticated](permissions.md#isauthenticated)
 
-### Response
+#### Response
 
   * pk: int (primary key of job output)
   * job: [job ID](jobs.md)
@@ -43,27 +43,27 @@ name/type [from the associated job](jobs.md#get-output-info).
   * deletion_time: timestamp or null
 
 
-## Download
+### Download
 
 Downloads the data for a job output. Can also be performed by
 name/type [from the associated job](jobs.md#get-output).
 
-### Method
+#### Method
 
 `POST`
 
-### URL
+#### URL
 
 `/v1/job-outputs/{PK}/download`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job output)
 
-### Permissions
+#### Permissions
 
   * [user is authenticated](permissions.md#isauthenticated)
 
-### Response
+#### Response
 
   * Binary content of the output.

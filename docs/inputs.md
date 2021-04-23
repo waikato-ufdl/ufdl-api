@@ -1,6 +1,6 @@
 Manages the inputs of a job-template.
 
-# Fields
+## Fields
 
   * pk: int (primary key of input)
   * template: [job template ID](job_templates.md)
@@ -9,6 +9,6 @@ Manages the inputs of a job-template.
   * options: str
   * help: str 
 
-# Actions
+## Actions
 
-None
+### None

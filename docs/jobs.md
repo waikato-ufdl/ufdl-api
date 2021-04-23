@@ -1,6 +1,6 @@
 Manages the generated jobs.
 
-# Fields
+## Fields
 
   * pk: int (primary key of job)
   * description: str
@@ -19,29 +19,29 @@ Manages the generated jobs.
   * progress_amount: float
 
 
-# Actions
+## Actions
 
-## List
+### List
 
 Lists the jobs present on the server.
 
-### Method
+#### Method
 
 `POST`
 
-### URL
+#### URL
 
 `/v1/jobs/list`
 
-### Permissions
+#### Permissions
 
   * [user is authenticated](permissions.md#isauthenticated)
 
-### Body (optional)
+#### Body (optional)
 
   * [filter specification](filtering.md)
   
-### Response
+#### Response
 
   * array of
 
@@ -69,27 +69,27 @@ Lists the jobs present on the server.
     * parent: int (primary key of parent job) or null
     * is_cancelled: bool
 
-## Retrieve
+### Retrieve
 
 Gets the information about a specific job.
 
-### Method
+#### Method
 
 `GET`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Permissions
+#### Permissions
 
   * [user is authenticated](permissions.md#isauthenticated)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -116,31 +116,31 @@ Gets the information about a specific job.
   * is_cancelled: bool
 
 
-## Update
+### Update
 
 Updates the description of a specific job.
 
-### Method
+#### Method
 
 `PUT`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Body
+#### Body
 
   * description: str
 
-### Permissions
+#### Permissions
 
   * [user is admin](permissions.md#isadminuser)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -167,31 +167,31 @@ Updates the description of a specific job.
   * is_cancelled: bool
 
 
-## Partial Update
+### Partial Update
 
 Updates the description of a specific job.
 
-### Method
+#### Method
 
 `PATCH`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Body
+#### Body
 
   * description (optional): str
 
-### Permissions
+#### Permissions
 
   * [user is admin](permissions.md#isadminuser)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -218,57 +218,57 @@ Updates the description of a specific job.
   * is_cancelled: bool
 
 
-## Destroy
+### Destroy
 
 Flags a job as deleted, it can be [reinstated](#reinstate). To
 permanently delete, see [Hard Delete](#hard-delete).
 
-### Method
+#### Method
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Permissions
+#### Permissions
 
   * [user is admin](permissions.md#isadminuser)
 
 
-## Add Output
+### Add Output
 
 Adds an output (with data) to a job.
 
-### Method
+#### Method
 
 `POST`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/outputs/{NAME}/{TYPE}`
 
-### Parameters
+#### Parameters
 
   * `PK`: the primary key of the job
   * `NAME`: the name of the output to add
   * `TYPE`: the type of the output to add
 
-### Body
+#### Body
 
   * Binary content of the output.
 
-### Permissions
+#### Permissions
 
   * Either of
     * [user is an admin](permissions.md#isadminuser)
     * [node has acquired the job](permissions.md#nodeownsjob)
     
-### Response
+#### Response
 
   * pk: [job output ID](job_outputs.md)
   * job: job ID (same as the `PK` parameter)
@@ -279,29 +279,29 @@ Adds an output (with data) to a job.
   * deletion_time: timestamp or null
 
 
-## Delete Output
+### Delete Output
 
 Removes an output from a job.
 
-### Method
+#### Method
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/outputs/{NAME}/{TYPE}`
 
-### Parameters
+#### Parameters
 
   * PK: the primary key of the job
   * NAME: the name of the output to delete
   * TYPE: the type of the output to delete
 
-### Permissions
+#### Permissions
 
   * [user is admin](permissions.md#isadminuser)
 
-### Response
+#### Response
 
   * pk: [job output ID](job_outputs.md)
   * job: job ID (same as the `PK` parameter)
@@ -312,56 +312,56 @@ Removes an output from a job.
   * deletion_time: timestamp or null
 
 
-## Get Output
+### Get Output
 
 Downloads the output data of a job output.
 
-### Method
+#### Method
 
 `GET`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/outputs/{NAME}/{TYPE}`
 
-### Parameters
+#### Parameters
 
   * PK: the primary key of the job
   * NAME: the name of the output to retrieve
   * TYPE: the type of the output to retrieve
 
-### Permissions
+#### Permissions
 
   * [user is authenticated](permissions.md#isauthenticated)
 
-### Response
+#### Response
 
   * Binary content of the output.
 
 
-## Get Output Info
+### Get Output Info
 
 Gets the meta-data of a job output.
 
-### Method
+#### Method
 
 `GET`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/outputs/{NAME}/{TYPE}/info`
 
-### Parameters
+#### Parameters
 
   * PK: the primary key of the job
   * NAME: the name of the output to delete
   * TYPE: the type of the output to delete
 
-### Permissions
+#### Permissions
 
   * [user is authenticated](permissions.md#isauthenticated)
 
-### Response
+#### Response
 
   * pk: [job output ID](job_outputs.md)
   * job: job ID (same as the `PK` parameter)
@@ -372,30 +372,30 @@ Gets the meta-data of a job output.
   * deletion_time: timestamp or null
 
 
-## Acquire Job
+### Acquire Job
 
 Allows a node to reserve a job for exclusive access (so it can enact
 the job).
 
-### Method
+#### Method
 
 `GET`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/acquire`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Permissions
+#### Permissions
 
   * Both:
     * [accessed by a node](permissions.md#isnode); and
     * [job is not a meta-job](permissions.md#jobisworkable)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -422,30 +422,30 @@ the job).
   * is_cancelled: bool
 
 
-## Release Job
+### Release Job
 
 Allows a node to give up its reservation of a job (e.g. if it realises it
 cannot complete the job).
 
-### Method
+#### Method
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/release`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Permissions
+#### Permissions
 
   * Either:
     * [the node has acquired the job](permissions.md#nodeownsjob); or
     * [it thinks it has](permissions.md#nodeworkingjob)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -472,31 +472,31 @@ cannot complete the job).
   * is_cancelled: bool
 
 
-## Start Job
+### Start Job
 
 Allows a node to indicate that it has begun work on completing a job.
 
-### Method
+#### Method
 
 `POST`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/start`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Body
+#### Body
 
   * send_notification: str (currently unused)
 
-### Permissions
+#### Permissions
 
   * [the node has acquired the job](permissions.md#nodeownsjob)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -523,34 +523,34 @@ Allows a node to indicate that it has begun work on completing a job.
   * is_cancelled: bool
 
 
-## Progress Job
+### Progress Job
 
 Allows a node to update interested parties that some progress has
 been made on the completion of a job.
 
-### Method
+#### Method
 
 `POST`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/progress/{PROGRESS}`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
   * `PROGRESS`: float between 0.0 and 1.0
 
-### Body
+#### Body
 
   * Any JSON object can be attached to this action, and it will be forwarded
     to any watchers of the job.
 
-### Permissions
+#### Permissions
 
   * [the node has acquired the job](permissions.md#nodeownsjob)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -577,36 +577,36 @@ been made on the completion of a job.
   * is_cancelled: bool
 
 
-## Finish Job
+### Finish Job
 
 Allows a node to indicate that it has completed work on a job (either
 successfully or in-error).
 
-### Method
+#### Method
 
 `POST`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/finish`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Body
+#### Body
 
   * success: bool (currently unused)
   * send_notification: str (currently unused)
   * error (optional): str
 
-### Permissions
+#### Permissions
 
   * Either:
     * [the node has acquired the job](permissions.md#nodeownsjob); or
     * [it thinks it has](permissions.md#nodeworkingjob)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -633,28 +633,28 @@ successfully or in-error).
   * is_cancelled: bool
 
 
-## Reset Job
+### Reset Job
 
 Allows a node to reset a job to its initial state so that it can be
 re-attempted.
 
-### Method
+#### Method
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/reset`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Permissions
+#### Permissions
 
   * [the node has acquired the job](permissions.md#nodeownsjob)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -681,28 +681,28 @@ re-attempted.
   * is_cancelled: bool
 
 
-## Abort Job
+### Abort Job
 
 Allows a job to be reset to its initial state in case it is locked by
 a node that has gone offline.
 
-### Method
+#### Method
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/abort`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Permissions
+#### Permissions
 
   * [user is an admin](permissions.md#isadminuser)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -729,28 +729,28 @@ a node that has gone offline.
   * is_cancelled: bool
 
 
-## Cancel Job
+### Cancel Job
 
 Allows a user to cancel a job, if they no longer require the results
 of that job.
 
-### Method
+#### Method
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/cancel`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Permissions
+#### Permissions
 
   * [user is an admin](permissions.md#isadminuser)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -777,27 +777,27 @@ of that job.
   * is_cancelled: bool
 
 
-## Hard Delete
+### Hard Delete
 
 Permanently deletes the job. For soft-deletion, see [Destroy](#destroy).
 
-### METHOD
+#### METHOD
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/hard`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Permissions
+#### Permissions
 
   * [user is admin](permissions.md#isadminuser)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
@@ -824,27 +824,27 @@ Permanently deletes the job. For soft-deletion, see [Destroy](#destroy).
   * is_cancelled: bool
 
 
-## Reinstate
+### Reinstate
 
 Undeletes a previously soft-deleted job.
 
-### Method
+#### Method
 
 `DELETE`
 
-### URL
+#### URL
 
 `/v1/jobs/{PK}/reinstate`
 
-### Parameters
+#### Parameters
 
   * `PK`: int (primary key of job)
 
-### Permissions
+#### Permissions
 
   * [user is admin](permissions.md#isadminuser)
 
-### Response
+#### Response
 
   * pk: int (primary key of job)
   * description: str
