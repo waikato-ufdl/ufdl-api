@@ -1,22 +1,37 @@
 For defining the graphics card hardware generations.
 
-# Fields
+## Links
 
-Available fields:
+* [CUDA/Hardware](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#support-hardware__table-hardware-support)
+
+
+## Fields
 
   * generation: str
   * min_compute_capability: float (inclusive)
   * max_compute_capability: float (exclusive)
 
-# Actions
+## Actions
 
-## List
+### List
 
-POST: `/v1/hardware/list`
+#### Method
 
-Body (optional): [filter specification](filtering.md)
-  
-Response:
+`POST`
+
+#### URL
+
+`/v1/hardware/list`
+
+#### Body (optional)
+ 
+  * [filter specification](filtering.md)
+
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+
+#### Response
 
   * array of
 
@@ -26,74 +41,84 @@ Response:
     * max_compute_capability: float
 
 
-## Load
+### Create
 
-GET: `/v1/hardware/{PK}`
+#### Method
 
-Parameters:
+`POST`
 
-  * PK: int (primary key of hardware)
-  
-Response:
+#### URL
 
-  * pk: int (primary key of hardware)
-  * generation: str
-  * min_compute_capability: float
-  * max_compute_capability: float
+`/v1/hardware/create`
 
-## Add
-
-POST: `/v1/hardware/create`
-
-Body:
+#### Body
 
   * generation: str
   * min_compute_capability: float (incl)
   * max_compute_capability: float (excl)
 
-Response:
+#### Permissions
+
+  * [user is an admin](permissions.md#isadminuser)
+
+#### Response
 
   * pk: int (primary key of hardware)
   * generation: str
   * min_compute_capability: float
   * max_compute_capability: float
 
-## Update
 
-PUT: `/v1/hardware/{PK}`
+### Retrieve
 
-Parameters:
+#### Method
 
-  * PK: int (primary key of hardware)
+`GET`
+
+#### URL
+
+`/v1/hardware/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of hardware)
   
-Body: 
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+  
+#### Response
+
+  * pk: int (primary key of hardware)
+  * generation: str
+  * min_compute_capability: float
+  * max_compute_capability: float
+
+### Update
+
+#### Method
+
+`PUT`
+
+#### URL
+
+`/v1/hardware/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of hardware)
+
+#### Body 
  
   * generation: str
   * min_compute_capability: float
   * max_compute_capability: float
 
-Response:
+#### Permissions
 
-  * pk: int (primary key of hardware)
-  * generation: str
-  * min_compute_capability: float
-  * max_compute_capability: float
+  * [user is an admin](permissions.md#isadminuser)
 
-## Partial update
-
-PATCH: `/v1/hardware/{PK}`
-
-Parameters:
-
-  * PK: int (primary key of hardware)
-
-Any of the following fields in the body:
-
-  * generation: str
-  * min_compute_capability: float
-  * max_compute_capability: float
-
-Response:
+#### Response
 
   * pk: int (primary key of hardware)
   * generation: str
@@ -101,14 +126,78 @@ Response:
   * max_compute_capability: float
 
 
-## Delete
+### Partial update
 
-DELETE: `/v1/hardware/{PK}`
+#### Method
 
-Parameters:
+`PATCH`
 
-  * PK: int (primary key of hardware)
+#### URL
 
-## Links
+`/v1/hardware/{PK}`
 
-* [CUDA/Hardware](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#support-hardware__table-hardware-support)
+#### Parameters
+
+  * `PK`: int (primary key of hardware)
+  
+#### Body
+
+  * generation (optional): str
+  * min_compute_capability (optional): float
+  * max_compute_capability (optional): float
+
+#### Permissions
+
+  * [user is an admin](permissions.md#isadminuser)
+
+#### Response
+
+  * pk: int (primary key of hardware)
+  * generation: str
+  * min_compute_capability: float
+  * max_compute_capability: float
+
+
+### Destroy
+
+#### Method
+
+`DELETE`
+
+#### URL
+
+`/v1/hardware/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of hardware)
+  
+#### Permissions
+
+  * [user is an admin](permissions.md#isadminuser)
+
+
+### Get Hardware Generation
+
+#### Method
+
+`GET`
+
+#### URL
+
+`/v1/hardware/get-hardware-generation/{COMPUTE}`
+
+#### Parameters
+
+  * `COMPUTE`: float
+  
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+  
+#### Response
+
+  * pk: int (primary key of hardware)
+  * generation: str
+  * min_compute_capability: float
+  * max_compute_capability: float
