@@ -20,10 +20,10 @@ Best approach is to install mkdocs (>= 0.16.0) in a virtual environment
   virtualenv -p /usr/bin/python3.7 venv
   ```
 
-* Install the mkdocs package
+* Install the mkdocs package (newer versions screw up the TOC navigation!)
 
   ```
-  ./venv/bin/pip install mkdocs
+  ./venv/bin/pip install mkdocs==1.0.4
   ```
 
 
