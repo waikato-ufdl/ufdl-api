@@ -7,6 +7,7 @@ For defining the graphics card hardware generations.
 
 ## Fields
 
+  * pk: int (primary key of hardware specification)
   * generation: str
   * min_compute_capability: float (inclusive)
   * max_compute_capability: float (exclusive)
