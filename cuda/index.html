@@ -66,6 +66,9 @@
     <a class="current" href="./">CUDA</a>
     <ul class="subnav">
             
+    <li class="toctree-l3"><a href="#links">Links</a></li>
+    
+
     <li class="toctree-l3"><a href="#fields">Fields</a></li>
     
 
@@ -75,17 +78,15 @@
         
             <li><a class="toctree-l4" href="#list">List</a></li>
         
-            <li><a class="toctree-l4" href="#add">Add</a></li>
+            <li><a class="toctree-l4" href="#create">Create</a></li>
         
-            <li><a class="toctree-l4" href="#load">Load</a></li>
+            <li><a class="toctree-l4" href="#retrieve">Retrieve</a></li>
         
             <li><a class="toctree-l4" href="#update">Update</a></li>
         
-            <li><a class="toctree-l4" href="#partial-update">Partial update</a></li>
+            <li><a class="toctree-l4" href="#partial-update">Partial Update</a></li>
         
-            <li><a class="toctree-l4" href="#delete">Delete</a></li>
-        
-            <li><a class="toctree-l4" href="#links">Links</a></li>
+            <li><a class="toctree-l4" href="#destroy">Destroy</a></li>
         
         </ul>
     
@@ -229,103 +230,155 @@
               
                 <p>Based on the NVIDIA driver installed on a system only
 certain versions of CUDA inside docker images will work.</p>
-<h3 id="fields">Fields</h3>
-<p>Available fields:</p>
+<h4 id="links">Links</h4>
 <ul>
+<li><a href="https://docs.nvidia.com/deploy/cuda-compatibility/index.html#binary-compatibility">CUDA/Driver version</a></li>
+</ul>
+<h4 id="fields">Fields</h4>
+<ul>
+<li>pk: int (primary key of CUDA instance)</li>
 <li>version: str (10.0)</li>
 <li>full_version: str (10.0.130)</li>
 <li>min_driver_version: str (410.48)</li>
 </ul>
-<h3 id="actions">Actions</h3>
-<h4 id="list">List</h4>
-<p>POST: <code>/v1/cuda/list</code></p>
-<p>Body (optional): <a href="../filtering/">filter specification</a></p>
-<p>Response:</p>
+<h4 id="actions">Actions</h4>
+<h5 id="list">List</h5>
+<p>Lists the CUDA versions registered with the backend.</p>
+<h6 id="method">Method</h6>
+<p><code>POST</code></p>
+<h6 id="url">URL</h6>
+<p><code>/v1/cuda/list</code></p>
+<h6 id="body-optional">Body (optional)</h6>
+<ul>
+<li><a href="../filtering/">filter specification</a></li>
+</ul>
+<h6 id="permissions">Permissions</h6>
+<ul>
+<li><a href="../permissions/#isauthenticated">user is authenticated</a></li>
+</ul>
+<h6 id="response">Response</h6>
 <ul>
 <li>
 <p>array of</p>
 <ul>
+<li>pk: int (primary key of CUDA version)</li>
 <li>version: str</li>
 <li>full_version: str</li>
 <li>min_driver_version: str</li>
 </ul>
 </li>
 </ul>
-<h4 id="add">Add</h4>
-<p>POST: <code>/v1/cuda/create</code></p>
-<p>Body:</p>
+<h5 id="create">Create</h5>
+<p>Adds a new CUDA version to the backend.</p>
+<h6 id="method_1">Method</h6>
+<p><code>POST</code></p>
+<h6 id="url_1">URL</h6>
+<p><code>/v1/cuda/create</code></p>
+<h6 id="body">Body</h6>
 <ul>
 <li>version: str</li>
 <li>full_version: str</li>
 <li>min_driver_version: str</li>
 </ul>
-<p>Response:</p>
+<h6 id="permissions_1">Permissions</h6>
+<ul>
+<li><a href="../permissions/#isadminuser">user is an admin</a></li>
+</ul>
+<h6 id="response_1">Response</h6>
 <ul>
 <li>pk: int (primary key of CUDA version)</li>
 <li>version: str</li>
 <li>full_version: str</li>
 <li>min_driver_version: str</li>
 </ul>
-<h4 id="load">Load</h4>
-<p>GET: <code>/v1/cuda/{PK}</code></p>
-<p>Parameters:</p>
+<h5 id="retrieve">Retrieve</h5>
+<p>Retrieves the details about a specific CUDA version.</p>
+<h6 id="method_2">Method</h6>
+<p><code>GET</code></p>
+<h6 id="url_2">URL</h6>
+<p><code>/v1/cuda/{PK}</code></p>
+<h6 id="parameters">Parameters</h6>
 <ul>
-<li>PK: int (primary key of CUDA version)</li>
+<li><code>PK</code>: int (primary key of CUDA version)</li>
 </ul>
-<p>Response:</p>
+<h6 id="permissions_2">Permissions</h6>
+<ul>
+<li><a href="../permissions/#isauthenticated">user is authenticated</a></li>
+</ul>
+<h6 id="response_2">Response</h6>
 <ul>
 <li>pk: int (primary key of CUDA version)</li>
 <li>version: str</li>
 <li>full_version: str</li>
 <li>min_driver_version: str</li>
 </ul>
-<h4 id="update">Update</h4>
-<p>PUT: <code>/v1/cuda/{PK}</code></p>
-<p>Parameters:</p>
+<h5 id="update">Update</h5>
+<p>Updates the details of a specific CUDA version.</p>
+<h6 id="method_3">Method</h6>
+<p><code>PUT</code></p>
+<h6 id="url_3">URL</h6>
+<p><code>/v1/cuda/{PK}</code></p>
+<h6 id="parameters_1">Parameters</h6>
 <ul>
-<li>PK: int (primary key of CUDA version)</li>
+<li><code>PK</code>: int (primary key of CUDA version)</li>
 </ul>
-<p>Body: </p>
+<h6 id="body_1">Body</h6>
 <ul>
 <li>version: str</li>
 <li>full_version: str</li>
 <li>min_driver_version: str</li>
 </ul>
-<p>Response:</p>
+<h6 id="permissions_3">Permissions</h6>
+<ul>
+<li><a href="../permissions/#isadminuser">user is an admin</a></li>
+</ul>
+<h6 id="response_3">Response</h6>
 <ul>
 <li>pk: int (primary key of CUDA version)</li>
 <li>version: str</li>
 <li>full_version: str</li>
 <li>min_driver_version: str</li>
 </ul>
-<h4 id="partial-update">Partial update</h4>
-<p>PATCH: <code>/v1/cuda/{PK}</code></p>
-<p>Parameters:</p>
+<h5 id="partial-update">Partial Update</h5>
+<p>Updates a sub-set of details about a particular CUDA version.</p>
+<h6 id="method_4">METHOD</h6>
+<p><code>PATCH</code></p>
+<h6 id="url_4">URL</h6>
+<p><code>/v1/cuda/{PK}</code></p>
+<h6 id="parameters_2">Parameters</h6>
 <ul>
-<li>PK: int (primary key of CUDA version)</li>
+<li><code>PK</code>: int (primary key of CUDA version)</li>
 </ul>
-<p>Any of the following fields in the body:</p>
+<h6 id="body_2">Body</h6>
 <ul>
-<li>version: str</li>
-<li>full_version: str</li>
-<li>min_driver_version: str</li>
+<li>version (optional): str</li>
+<li>full_version (optional): str</li>
+<li>min_driver_version (optional): str</li>
 </ul>
-<p>Response:</p>
+<h6 id="permissions_4">Permissions</h6>
+<ul>
+<li><a href="../permissions/#isadminuser">user is an admin</a></li>
+</ul>
+<h6 id="response_4">Response</h6>
 <ul>
 <li>pk: int (primary key of CUDA version)</li>
 <li>version: str</li>
 <li>full_version: str</li>
 <li>min_driver_version: str</li>
 </ul>
-<h4 id="delete">Delete</h4>
-<p>DELETE: <code>/v1/cuda/{PK}</code></p>
-<p>Parameters:</p>
+<h5 id="destroy">Destroy</h5>
+<p>Removes a CUDA version from the backend.</p>
+<h6 id="method_5">Method</h6>
+<p><code>DELETE</code></p>
+<h6 id="url_5">URL</h6>
+<p><code>/v1/cuda/{PK}</code></p>
+<h6 id="parameters_3">Parameters</h6>
 <ul>
-<li>PK: int (primary key of CUDA version)</li>
+<li><code>PK</code>: int (primary key of CUDA version)</li>
 </ul>
-<h4 id="links">Links</h4>
+<h6 id="permissions_5">Permissions</h6>
 <ul>
-<li><a href="https://docs.nvidia.com/deploy/cuda-compatibility/index.html#binary-compatibility">CUDA/Driver version</a></li>
+<li><a href="../permissions/#isadminuser">user is an admin</a></li>
 </ul>
               
             </div>
