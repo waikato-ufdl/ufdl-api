@@ -1,98 +1,166 @@
 Based on the NVIDIA driver installed on a system only
 certain versions of CUDA inside docker images will work.
 
-# Fields
+## Links
 
-Available fields:
+* [CUDA/Driver version](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#binary-compatibility)
 
+
+## Fields
+
+  * pk: int (primary key of CUDA instance)
   * version: str (10.0)
   * full_version: str (10.0.130)
   * min_driver_version: str (410.48)
 
-# Actions
 
-## List
+## Actions
 
-POST: `/v1/cuda/list`
+### List
 
-Body (optional): [filter specification](filtering.md)
+Lists the CUDA versions registered with the backend.
+
+#### Method
+
+`POST`
+
+#### URL
+
+`/v1/cuda/list`
+
+#### Body (optional)
+
+  * [filter specification](filtering.md)
   
-Response:
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+  
+#### Response
 
   * array of
 
+    * pk: int (primary key of CUDA version)
     * version: str
     * full_version: str
     * min_driver_version: str
 
-## Add
+### Create
 
-POST: `/v1/cuda/create`
+Adds a new CUDA version to the backend.
 
-Body:
+#### Method
+
+`POST`
+
+#### URL
+
+`/v1/cuda/create`
+
+#### Body
 
   * version: str
   * full_version: str
   * min_driver_version: str
 
-Response:
+#### Permissions
+
+  * [user is an admin](permissions.md#isadminuser)
+
+#### Response
 
   * pk: int (primary key of CUDA version)
   * version: str
   * full_version: str
   * min_driver_version: str
 
-## Load
+### Retrieve
 
-GET: `/v1/cuda/{PK}`
+Retrieves the details about a specific CUDA version.
 
-Parameters:
+#### Method
 
-  * PK: int (primary key of CUDA version)
+`GET`
+
+#### URL
+
+`/v1/cuda/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of CUDA version)
   
-Response:
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+  
+#### Response
 
   * pk: int (primary key of CUDA version)
   * version: str
   * full_version: str
   * min_driver_version: str
 
-## Update
+### Update
 
-PUT: `/v1/cuda/{PK}`
+Updates the details of a specific CUDA version.
 
-Parameters:
+#### Method
 
-  * PK: int (primary key of CUDA version)
+`PUT`
+
+#### URL
+
+`/v1/cuda/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of CUDA version)
   
-Body: 
+#### Body 
  
   * version: str
   * full_version: str
   * min_driver_version: str
 
-Response:
+#### Permissions
+
+  * [user is an admin](permissions.md#isadminuser)
+
+#### Response
 
   * pk: int (primary key of CUDA version)
   * version: str
   * full_version: str
   * min_driver_version: str
 
-## Partial update
+### Partial Update
 
-PATCH: `/v1/cuda/{PK}`
+Updates a sub-set of details about a particular CUDA version.
 
-Parameters:
+#### METHOD
 
-  * PK: int (primary key of CUDA version)
+`PATCH`
 
-Any of the following fields in the body:
+#### URL
 
-  * version: str
-  * full_version: str
-  * min_driver_version: str
+`/v1/cuda/{PK}`
 
-Response:
+#### Parameters
+
+  * `PK`: int (primary key of CUDA version)
+
+#### Body
+
+  * version (optional): str
+  * full_version (optional): str
+  * min_driver_version (optional): str
+
+#### Permissions
+
+  * [user is an admin](permissions.md#isadminuser)
+
+#### Response
 
   * pk: int (primary key of CUDA version)
   * version: str
@@ -100,16 +168,22 @@ Response:
   * min_driver_version: str
 
 
-## Delete
+### Destroy
 
-DELETE: `/v1/cuda/{PK}`
+Removes a CUDA version from the backend.
 
-Parameters:
+#### Method
 
-  * PK: int (primary key of CUDA version)
+`DELETE`
 
+#### URL
 
-## Links
+`/v1/cuda/{PK}`
 
-* [CUDA/Driver version](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#binary-compatibility)
+#### Parameters
 
+  * `PK`: int (primary key of CUDA version)
+
+#### Permissions
+
+  * [user is an admin](permissions.md#isadminuser)
