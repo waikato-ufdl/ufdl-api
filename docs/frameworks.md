@@ -9,6 +9,8 @@ Centralized table with frameworks and their versions (e.g., PyTorch 1.2).
 
 ### List
 
+Lists the frameworks registered with the server.
+
 #### Method
 
 `POST`
@@ -36,6 +38,8 @@ Centralized table with frameworks and their versions (e.g., PyTorch 1.2).
 
 ### Create
 
+Adds a new framework to the server.
+
 #### Method
 
 `POST`
@@ -62,6 +66,8 @@ Centralized table with frameworks and their versions (e.g., PyTorch 1.2).
 
 ### Retrieve
 
+Gets the information about a framework.
+
 #### Method
 
 `GET`
@@ -86,6 +92,8 @@ Centralized table with frameworks and their versions (e.g., PyTorch 1.2).
 
 
 ### Update
+
+Modifies the details of a framework.
 
 #### Method
 
@@ -117,6 +125,8 @@ Centralized table with frameworks and their versions (e.g., PyTorch 1.2).
 
 ### Partial update
 
+Modifies a subset of the details of a framework.
+
 #### Method
 
 `PATCH`
@@ -146,6 +156,8 @@ Centralized table with frameworks and their versions (e.g., PyTorch 1.2).
 
 
 ### Destroy
+
+Removes a framework from the server.
 
 #### Method
 
