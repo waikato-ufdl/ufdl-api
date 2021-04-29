@@ -1,21 +1,31 @@
 Centralized table with frameworks and their versions (e.g., PyTorch 1.2).
 
-# Fields
-
-Available fields:
+## Fields
 
   * name: str
   * version: str
 
-# Actions
+## Actions
 
-## List
+### List
 
-POST: `/v1/frameworks/list`
+#### Method
 
-Body (optional): [filter specification](filtering.md)
+`POST`
+
+#### URL
+
+`/v1/frameworks/list`
+
+#### Body (optional)
+
+  * [filter specification](filtering.md)
   
-Response:
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+  
+#### Response
 
   * array of
 
@@ -24,78 +34,131 @@ Response:
     * version: str
 
 
-## Load
+### Create
 
-GET: `/v1/frameworks/{PK}`
+#### Method
 
-Parameters:
+`POST`
 
-  * PK: int (primary key of framework)
-  
-Response:
+#### URL
+
+`/v1/frameworks/create`
+
+#### Body
+
+  * name: str
+  * version: str
+
+#### Permissions
+
+  * [user is an admin](permissions.md#isadminuser)
+
+#### Response
 
   * pk: int (primary key of framework)
   * name: str
   * version: str
 
-## Add
 
-POST: `/v1/frameworks/create`
+### Retrieve
 
-Body:
+#### Method
 
-  * name: str
-  * version: str
+`GET`
 
-Response:
+#### URL
+
+`/v1/frameworks/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of framework)
+  
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+  
+#### Response
 
   * pk: int (primary key of framework)
   * name: str
   * version: str
 
-## Update
 
-PUT: `/v1/frameworks/{PK}`
+### Update
 
-Parameters:
+#### Method
 
-  * PK: int (primary key of framework)
+`PUT`
+
+#### URL
+
+`/v1/frameworks/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of framework)
   
-Body: 
+#### Body
  
   * name: str
   * version: str
 
-Response:
+#### Permissions
 
-  * pk: int (primary key of framework)
-  * name: str
-  * version: str
+  * [user is an admin](permissions.md#isadminuser)
 
-## Partial update
-
-PATCH: `/v1/frameworks/{PK}`
-
-Parameters:
-
-  * PK: int (primary key of framework)
-
-Any of the following fields in the body:
-
-  * name: str
-  * version: str
-
-Response:
+#### Response
 
   * pk: int (primary key of framework)
   * name: str
   * version: str
 
 
-## Delete
+### Partial update
 
-DELETE: `/v1/frameworks/{PK}`
+#### Method
 
-Parameters:
+`PATCH`
 
-  * PK: int (primary key of framework)
+#### URL
+
+`/v1/frameworks/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of framework)
+
+#### Body
+
+  * name (optional): str
+  * version (optional): str
+
+#### Permissions
+
+  * [user is an admin](permissions.md#isadminuser)
+
+#### Response
+
+  * pk: int (primary key of framework)
+  * name: str
+  * version: str
+
+
+### Destroy
+
+#### Method
+
+`DELETE`
+
+#### URL
+
+`/v1/frameworks/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of framework)
+
+#### Permissions
+
+  * [user is an admin](permissions.md#isadminuser)
