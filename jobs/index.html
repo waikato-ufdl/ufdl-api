@@ -286,43 +286,37 @@
 <li><a href="../filtering/">filter specification</a></li>
 </ul>
 <h6 id="response">Response</h6>
-<ul>
-<li>
 <p>array of</p>
 <ul>
 <li>pk: int (primary key of job)</li>
 <li>description: str</li>
 <li>
 <p>template (object):</p>
-</li>
-<li>
-<p>pk: <a href="../job_templates/">job template ID</a></p>
-</li>
+<ul>
+<li>pk: <a href="../job_templates/">job template ID</a></li>
 <li>name: str</li>
-<li>
-<p>version: int</p>
+<li>version: int</li>
+</ul>
 </li>
 <li>
 <p>input_values (object):</p>
-</li>
-<li>
-<p>(input name) -&gt; { value: str, type: str }</p>
+<ul>
+<li>(input name) -&gt; { value: str, type: str }</li>
+</ul>
 </li>
 <li>
 <p>parameter_values (object or null):</p>
-</li>
-<li>
-<p>(parameter name) -&gt; string</p>
+<ul>
+<li>(parameter name) -&gt; string</li>
+</ul>
 </li>
 <li>
 <p>outputs (array of objects):</p>
-</li>
-<li>
-<p>pk: <a href="../job_outputs/">job output ID</a></p>
-</li>
+<ul>
+<li>pk: <a href="../job_outputs/">job output ID</a></li>
 <li>name: str</li>
-<li>
-<p>type: str</p>
+<li>type: str</li>
+</ul>
 </li>
 <li>
 <p>node: <a href="../nodes/">node ID</a> or null</p>
@@ -335,8 +329,6 @@
 <li>end_time: timestamp or null</li>
 <li>parent: int (primary key of parent job) or null</li>
 <li>is_cancelled: bool</li>
-</ul>
-</li>
 </ul>
 <h5 id="retrieve">Retrieve</h5>
 <p>Gets the information about a specific job.</p>

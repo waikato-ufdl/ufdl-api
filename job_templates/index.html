@@ -262,8 +262,6 @@
 <li><a href="../permissions/#isauthenticated">user is authenticated</a></li>
 </ul>
 <h6 id="response">Response</h6>
-<ul>
-<li>
 <p>array of</p>
 <ul>
 <li>pk: int (primary key of job template)</li>
@@ -274,25 +272,21 @@
 <li>domain: str (<a href="../domains/">domain name</a>)</li>
 <li>
 <p>inputs (array of):</p>
-</li>
-<li>
-<p>name: str</p>
-</li>
+<ul>
+<li>name: str</li>
 <li>types: array of str</li>
 <li>options: str</li>
-<li>
-<p>help: str</p>
+<li>help: str</li>
+</ul>
 </li>
 <li>
 <p>parameters (array of):</p>
-</li>
-<li>
-<p>name: str</p>
-</li>
+<ul>
+<li>name: str</li>
 <li>type: str</li>
 <li>default: str</li>
-<li>
-<p>help: str</p>
+<li>help: str</li>
+</ul>
 </li>
 <li>
 <p>licence: <a href="../licenses/">licence ID</a></p>
@@ -305,8 +299,6 @@
 <li>executor_class (optional): str</li>
 <li>required_packages (optional): str</li>
 <li>body (optional): str</li>
-</ul>
-</li>
 </ul>
 <h5 id="retrieve">Retrieve</h5>
 <h6 id="method_1">Method</h6>
