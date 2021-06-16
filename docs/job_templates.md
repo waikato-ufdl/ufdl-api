@@ -39,37 +39,37 @@ Manages the job templates.
   
 #### Response
 
-  * array of
+array of
 
-    * pk: int (primary key of job template)
+  * pk: int (primary key of job template)
+  * name: str
+  * version: int
+  * description: str
+  * scope: str (public/project/user)
+  * domain: str ([domain name](domains.md))
+  * inputs (array of):
+      
     * name: str
-    * version: int
-    * description: str
-    * scope: str (public/project/user)
-    * domain: str ([domain name](domains.md))
-    * inputs (array of):
-      
-      * name: str
-      * types: array of str
-      * options: str
-      * help: str
+    * types: array of str
+    * options: str
+    * help: str
         
-    * parameters (array of):
+  * parameters (array of):
       
-      * name: str
-      * type: str
-      * default: str
-      * help: str
+    * name: str
+    * type: str
+    * default: str
+    * help: str
         
-    * licence: [licence ID](licenses.md)
-    * creator: [user ID](users.md) or null
-    * creation_time: timestamp
-    * deletion_time: timestamp or null
-    * framework (optional): [framework ID](frameworks.md)
-    * type (optional): str
-    * executor_class (optional): str
-    * required_packages (optional): str
-    * body (optional): str
+  * licence: [licence ID](licenses.md)
+  * creator: [user ID](users.md) or null
+  * creation_time: timestamp
+  * deletion_time: timestamp or null
+  * framework (optional): [framework ID](frameworks.md)
+  * type (optional): str
+  * executor_class (optional): str
+  * required_packages (optional): str
+  * body (optional): str
 
 ### Retrieve
 

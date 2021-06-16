@@ -43,39 +43,39 @@ Lists the jobs present on the server.
   
 #### Response
 
-  * array of
+array of
 
-    * pk: int (primary key of job)
-    * description: str
-    * template (object):
+  * pk: int (primary key of job)
+  * description: str
+  * template (object):
       
-      * pk: [job template ID](job_templates.md)
-      * name: str
-      * version: int
+    * pk: [job template ID](job_templates.md)
+    * name: str
+    * version: int
         
-    * input_values (object):
+  * input_values (object):
       
-      * (input name) -> { value: str, type: str }
+    * (input name) -> { value: str, type: str }
         
-    * parameter_values (object or null):
+  * parameter_values (object or null):
       
-      * (parameter name) -> string
+    * (parameter name) -> string
         
-    * outputs (array of objects):
+  * outputs (array of objects):
       
-      * pk: [job output ID](job_outputs.md)
-      * name: str
-      * type: str
+    * pk: [job output ID](job_outputs.md)
+    * name: str
+    * type: str
         
-    * node: [node ID](nodes.md) or null
-    * error_reason: str or null
-    * creator: [user ID](users.md) or null
-    * creation_time: timestamp
-    * deletion_time: timestamp or null
-    * start_time: timestamp or null
-    * end_time: timestamp or null
-    * parent: int (primary key of parent job) or null
-    * is_cancelled: bool
+  * node: [node ID](nodes.md) or null
+  * error_reason: str or null
+  * creator: [user ID](users.md) or null
+  * creation_time: timestamp
+  * deletion_time: timestamp or null
+  * start_time: timestamp or null
+  * end_time: timestamp or null
+  * parent: int (primary key of parent job) or null
+  * is_cancelled: bool
 
 ### Retrieve
 
