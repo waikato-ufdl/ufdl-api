@@ -272,17 +272,31 @@
 <li>description: str</li>
 <li>scope: str (public/project/user)</li>
 <li>domain: str (<a href="../domains/">domain name</a>)</li>
-<li>inputs: array of:</li>
-<li>name: str</li>
+<li>
+<p>inputs (array of):</p>
+</li>
+<li>
+<p>name: str</p>
+</li>
 <li>types: array of str</li>
 <li>options: str</li>
-<li>help: str</li>
-<li>parameters: array of:</li>
-<li>name: str</li>
+<li>
+<p>help: str</p>
+</li>
+<li>
+<p>parameters (array of):</p>
+</li>
+<li>
+<p>name: str</p>
+</li>
 <li>type: str</li>
 <li>default: str</li>
-<li>help: str</li>
-<li>licence: <a href="../licenses/">licence ID</a></li>
+<li>
+<p>help: str</p>
+</li>
+<li>
+<p>licence: <a href="../licenses/">licence ID</a></p>
+</li>
 <li>creator: <a href="../users/">user ID</a> or null</li>
 <li>creation_time: timestamp</li>
 <li>deletion_time: timestamp or null</li>
@@ -315,21 +329,27 @@
 <li>description: str</li>
 <li>scope: str (public/project/user)</li>
 <li>domain: str (<a href="../domains/">domain name</a>)</li>
-<li>inputs: array of:<ul>
+<li>
+<p>inputs (array of):</p>
+<ul>
 <li>name: str</li>
 <li>types: array of str</li>
 <li>options: str</li>
 <li>help: str</li>
 </ul>
 </li>
-<li>parameters: array of:<ul>
+<li>
+<p>parameters (array of):</p>
+<ul>
 <li>name: str</li>
 <li>type: str</li>
 <li>default: str</li>
 <li>help: str</li>
 </ul>
 </li>
-<li>licence: <a href="../licenses/">licence ID</a></li>
+<li>
+<p>licence: <a href="../licenses/">licence ID</a></p>
+</li>
 <li>creator: <a href="../users/">user ID</a> or null</li>
 <li>creation_time: timestamp</li>
 <li>deletion_time: timestamp or null</li>
@@ -365,16 +385,26 @@ permanently delete, see <a href="#hard-delete">Hard Delete</a>.</p>
 </ul>
 <h6 id="body">Body</h6>
 <ul>
-<li>input_values: map from input name to:<ul>
+<li>
+<p>input_values (map from input name to):</p>
+<ul>
 <li>value: str</li>
 <li>type: str</li>
 </ul>
 </li>
-<li>parameter_values (optional): map from parameter name to str</li>
+<li>
+<p>parameter_values (optional): map from parameter name to str</p>
+</li>
 <li>description (optional): str</li>
-<li>notification_override: object<ul>
-<li>actions: object</li>
-<li>on_acquire: array of <a href="../notifications/">notifications</a></li>
+<li>
+<p>notification_override (object):</p>
+<ul>
+<li>
+<p>actions (object):</p>
+</li>
+<li>
+<p>on_acquire: array of <a href="../notifications/">notifications</a></p>
+</li>
 <li>on_release: array of <a href="../notifications/">notifications</a></li>
 <li>on_start: array of <a href="../notifications/">notifications</a></li>
 <li>on_progress: array of <a href="../notifications/">notifications</a></li>
@@ -382,13 +412,23 @@ permanently delete, see <a href="#hard-delete">Hard Delete</a>.</p>
 <li>on_error: array of <a href="../notifications/">notifications</a></li>
 <li>on_reset: array of <a href="../notifications/">notifications</a></li>
 <li>on_abort: array of <a href="../notifications/">notifications</a></li>
-<li>on_cancel: array of <a href="../notifications/">notifications</a></li>
-<li>keep_default (optional): bool</li>
+<li>
+<p>on_cancel: array of <a href="../notifications/">notifications</a></p>
+</li>
+<li>
+<p>keep_default (optional): bool</p>
+</li>
 </ul>
 </li>
-<li>child_notification_overrides: map of child template name to:<ul>
-<li>actions: object</li>
-<li>on_acquire: array of <a href="../notifications/">notifications</a></li>
+<li>
+<p>child_notification_overrides (map of child template name to):</p>
+<ul>
+<li>
+<p>actions (object):</p>
+</li>
+<li>
+<p>on_acquire: array of <a href="../notifications/">notifications</a></p>
+</li>
 <li>on_release: array of <a href="../notifications/">notifications</a></li>
 <li>on_start: array of <a href="../notifications/">notifications</a></li>
 <li>on_progress: array of <a href="../notifications/">notifications</a></li>
@@ -396,8 +436,12 @@ permanently delete, see <a href="#hard-delete">Hard Delete</a>.</p>
 <li>on_error: array of <a href="../notifications/">notifications</a></li>
 <li>on_reset: array of <a href="../notifications/">notifications</a></li>
 <li>on_abort: array of <a href="../notifications/">notifications</a></li>
-<li>on_cancel: array of <a href="../notifications/">notifications</a></li>
-<li>keep_default (optional): bool</li>
+<li>
+<p>on_cancel: array of <a href="../notifications/">notifications</a></p>
+</li>
+<li>
+<p>keep_default (optional): bool</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -409,25 +453,35 @@ permanently delete, see <a href="#hard-delete">Hard Delete</a>.</p>
 <ul>
 <li>pk: <a href="../jobs/">job ID</a></li>
 <li>description: str</li>
-<li>template: object<ul>
+<li>
+<p>template (object):</p>
+<ul>
 <li>pk: int (same as <code>PK</code>)</li>
 <li>name: str</li>
 <li>version: int</li>
 </ul>
 </li>
-<li>input_values: map of input name to:<ul>
+<li>
+<p>input_values (map of input name to):</p>
+<ul>
 <li>value: str</li>
 <li>type: str</li>
 </ul>
 </li>
-<li>parameter_values: null or map of parameter name to str</li>
-<li>outputs: array of objects<ul>
+<li>
+<p>parameter_values: null or map of parameter name to str</p>
+</li>
+<li>
+<p>outputs (array of objects):</p>
+<ul>
 <li>pk: <a href="../job_outputs/">job output ID</a></li>
 <li>name: str</li>
 <li>type: str</li>
 </ul>
 </li>
-<li>node: <a href="../nodes/">node ID</a> or null</li>
+<li>
+<p>node: <a href="../nodes/">node ID</a> or null</p>
+</li>
 <li>error_reason: str or null</li>
 <li>creator: <a href="../users/">user ID</a> or null</li>
 <li>creation_time: timestamp</li>
