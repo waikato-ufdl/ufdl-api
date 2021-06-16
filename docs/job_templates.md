@@ -47,16 +47,20 @@ Manages the job templates.
     * description: str
     * scope: str (public/project/user)
     * domain: str ([domain name](domains.md))
-    * inputs: array of:
+    * inputs (array of):
+      
       * name: str
       * types: array of str
       * options: str
       * help: str
-    * parameters: array of:
+        
+    * parameters (array of):
+      
       * name: str
       * type: str
       * default: str
       * help: str
+        
     * licence: [licence ID](licenses.md)
     * creator: [user ID](users.md) or null
     * creation_time: timestamp
@@ -93,16 +97,20 @@ Manages the job templates.
   * description: str
   * scope: str (public/project/user)
   * domain: str ([domain name](domains.md))
-  * inputs: array of:
+  * inputs (array of):
+    
     * name: str
     * types: array of str
     * options: str
     * help: str
-  * parameters: array of:
+    
+  * parameters (array of):
+    
     * name: str
     * type: str
     * default: str
     * help: str
+    
   * licence: [licence ID](licenses.md)
   * creator: [user ID](users.md) or null
   * creation_time: timestamp
@@ -151,13 +159,17 @@ permanently delete, see [Hard Delete](#hard-delete).
 
 #### Body
 
-  * input_values: map from input name to:
+  * input_values (map from input name to):
+    
     * value: str
     * type: str
+      
   * parameter_values (optional): map from parameter name to str
   * description (optional): str
-  * notification_override: object
-    * actions: object
+  * notification_override (object):
+    
+    * actions (object):
+      
       * on_acquire: array of [notifications](notifications.md)
       * on_release: array of [notifications](notifications.md)
       * on_start: array of [notifications](notifications.md)
@@ -167,9 +179,13 @@ permanently delete, see [Hard Delete](#hard-delete).
       * on_reset: array of [notifications](notifications.md)
       * on_abort: array of [notifications](notifications.md)
       * on_cancel: array of [notifications](notifications.md)
+        
     * keep_default (optional): bool
-  * child_notification_overrides: map of child template name to:
-    * actions: object
+    
+  * child_notification_overrides (map of child template name to):
+    
+    * actions (object):
+      
       * on_acquire: array of [notifications](notifications.md)
       * on_release: array of [notifications](notifications.md)
       * on_start: array of [notifications](notifications.md)
@@ -179,6 +195,7 @@ permanently delete, see [Hard Delete](#hard-delete).
       * on_reset: array of [notifications](notifications.md)
       * on_abort: array of [notifications](notifications.md)
       * on_cancel: array of [notifications](notifications.md)
+        
     * keep_default (optional): bool
 
 #### Permissions
@@ -189,18 +206,24 @@ permanently delete, see [Hard Delete](#hard-delete).
 
   * pk: [job ID](jobs.md)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: int (same as `PK`)
     * name: str
     * version: int
-  * input_values: map of input name to:
+    
+  * input_values (map of input name to):
+    
     * value: str
     * type: str
+    
   * parameter_values: null or map of parameter name to str
-  * outputs: array of objects
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null

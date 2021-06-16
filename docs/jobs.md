@@ -47,18 +47,26 @@ Lists the jobs present on the server.
 
     * pk: int (primary key of job)
     * description: str
-    * template: object
+    * template (object):
+      
       * pk: [job template ID](job_templates.md)
       * name: str
       * version: int
-    * input_values: object
+        
+    * input_values (object):
+      
       * (input name) -> { value: str, type: str }
-    * parameter_values: object or null
+        
+    * parameter_values (object or null):
+      
       * (parameter name) -> string
-    * outputs: array of objects
+        
+    * outputs (array of objects):
+      
       * pk: [job output ID](job_outputs.md)
       * name: str
       * type: str
+        
     * node: [node ID](nodes.md) or null
     * error_reason: str or null
     * creator: [user ID](users.md) or null
@@ -93,18 +101,26 @@ Gets the information about a specific job.
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -144,18 +160,26 @@ Updates the description of a specific job.
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -195,18 +219,26 @@ Updates the description of a specific job.
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -399,18 +431,26 @@ the job).
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -449,18 +489,26 @@ cannot complete the job).
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -500,18 +548,26 @@ Allows a node to indicate that it has begun work on completing a job.
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -554,18 +610,26 @@ been made on the completion of a job.
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -610,18 +674,26 @@ successfully or in-error).
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -658,18 +730,26 @@ re-attempted.
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -706,18 +786,26 @@ a node that has gone offline.
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -754,18 +842,26 @@ of that job.
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -801,18 +897,26 @@ Permanently deletes the job. For soft-deletion, see [Destroy](#destroy).
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
@@ -848,18 +952,26 @@ Undeletes a previously soft-deleted job.
 
   * pk: int (primary key of job)
   * description: str
-  * template: object
+  * template (object):
+    
     * pk: [job template ID](job_templates.md)
     * name: str
     * version: int
-  * input_values: object
+    
+  * input_values (object):
+    
     * (input name) -> { value: str, type: str }
-  * parameter_values: object or null
+    
+  * parameter_values (object or null):
+    
     * (parameter name) -> string
-  * outputs: array of objects
+    
+  * outputs (array of objects):
+    
     * pk: [job output ID](job_outputs.md)
     * name: str
     * type: str
+    
   * node: [node ID](nodes.md) or null
   * error_reason: str or null
   * creator: [user ID](users.md) or null
