@@ -29,6 +29,7 @@ nav:
   - 'Data':
     - 'Core dataset': datasets.md
     - 'Image classification': image_classification.md
+    - 'Image segmentation': image_segmentation.md
     - 'Object Detection': object_detection.md
     - 'Speech': speech.md
   - 'Filtering': filtering.md
