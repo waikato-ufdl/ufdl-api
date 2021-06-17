@@ -2,20 +2,16 @@ Additional image classification dataset operations.
 
 For core dataset operations, see [here](datasets.md).
 
-# Fields
-
-  * categories: for each image name an array of category strings
-
 # URL
 
-Uses `/v1/classify/` instead of `/v1/datasets/`, 
+Uses `/v1/classify/datasets/` instead of `/v1/datasets/`, 
 also for the core operations.
 
 # Actions
 
 ## Add categories
 
-PATCH: `/v1/classify/{PK}/categories`
+PATCH: `/v1/classify/datasets/{PK}/categories`
 
 Parameters:
 
@@ -29,7 +25,7 @@ Body:
 
 ## Get categories
 
-GET: `/v1/classify/{PK}/categories`
+GET: `/v1/classify/datasets/{PK}/categories`
 
 Parameters:
 
@@ -47,7 +43,7 @@ Response:
 
 ## Remove categories
 
-PATCH: `/v1/classify/{PK}/categories`
+PATCH: `/v1/classify/datasets/{PK}/categories`
 
 Parameters:
 

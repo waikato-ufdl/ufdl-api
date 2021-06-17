@@ -2,20 +2,16 @@ Additional speech dataset operations.
 
 For core dataset operations, see [here](datasets.md).
 
-# Fields
-
-  * transcriptions: for each image name a transcription (nested object, transcription field)
-
 # URL
 
-Uses `/v1/speech/` instead of `/v1/datasets/`, 
+Uses `/v1/speech/datasets/` instead of `/v1/datasets/`, 
 also for the core operations.
 
 # Actions
 
 ## Add transcript
 
-POST: `/v1/speech/{PK}/transcriptions/{NAME}`
+POST: `/v1/speech/datasets/{PK}/transcriptions/{NAME}`
 
 Parameters:
 
@@ -28,7 +24,7 @@ Body:
 
 ## Get transcripts
 
-GET: `/v1/speech/{PK}/transcriptions`
+GET: `/v1/speech/datasets/{PK}/transcriptions`
 
 Parameters:
 

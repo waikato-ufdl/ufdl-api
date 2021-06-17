@@ -4,9 +4,7 @@ For core dataset operations, see [here](datasets.md).
 
 # Fields
 
-  * annotations: for each image name an array of Annotation objects
-
-Annotation object fields:
+Annotation objects:
 
   * x: int
   * y: int
@@ -15,20 +13,20 @@ Annotation object fields:
   * label: str
   * polygon: polygon object (optional)
   
-Polygon object fields:
+Polygon objects:
 
   * points: array of array with two int values (x, y)
 
 # URL
 
-Uses `/v1/objdet/` instead of `/v1/datasets/`, 
+Uses `/v1/objdet/datasets/` instead of `/v1/datasets/`, 
 also for the core operations.
 
 # Actions
 
 ## Add annotations
 
-POST: `/v1/objdet/{PK}/annotations/{NAME}`
+POST: `/v1/objdet/datasets/{PK}/annotations/{NAME}`
 
 Parameters:
 
@@ -41,7 +39,7 @@ Body:
 
 ## Get annotations
 
-GET: `/v1/objdet/{PK}/annotations/{NAME}`
+GET: `/v1/objdet/datasets/{PK}/annotations/{NAME}`
 
 Parameters:
 
@@ -54,7 +52,7 @@ Response:
 
 ## Delete annotations
 
-DELETE: `/v1/objdet/{PK}/annotations/{NAME}`
+DELETE: `/v1/objdet/datasets/{PK}/annotations/{NAME}`
 
 Parameters:
 
@@ -64,7 +62,7 @@ Parameters:
 
 ## Get labels
 
-GET: `/v1/objdet/{PK}/labels`
+GET: `/v1/objdet/datasets/{PK}/labels`
 
 Parameters:
 
