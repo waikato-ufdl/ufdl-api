@@ -4,7 +4,6 @@ For core dataset operations, see [here](datasets.md).
 
 # Fields
 
-  * files: array of file names
   * transcriptions: for each image name a transcription (nested object, transcription field)
 
 # URL

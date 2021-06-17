@@ -4,7 +4,6 @@ For core dataset operations, see [here](datasets.md).
 
 # Fields
 
-  * files: array of file names
   * annotations: for each image name an array of Annotation objects
 
 Annotation object fields:

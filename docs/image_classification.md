@@ -4,7 +4,6 @@ For core dataset operations, see [here](datasets.md).
 
 # Fields
 
-  * files: array of file names
   * categories: for each image name an array of category strings
 
 # URL
