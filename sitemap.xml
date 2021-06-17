@@ -96,6 +96,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://github.com/waikato-datamining/ufdl-api/image_segmentation/</loc>
+     <lastmod>2021-06-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://github.com/waikato-datamining/ufdl-api/object_detection/</loc>
      <lastmod>2021-06-17</lastmod>
      <changefreq>daily</changefreq>

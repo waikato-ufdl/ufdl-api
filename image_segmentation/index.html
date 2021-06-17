@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Permissions - UFDL API</title>
+  <title>Image segmentation - UFDL API</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Permissions";
-    var mkdocs_page_input_path = "permissions.md";
-    var mkdocs_page_url = "/waikato-datamining/ufdl-api/permissions/";
+    var mkdocs_page_name = "Image segmentation";
+    var mkdocs_page_input_path = "image_segmentation.md";
+    var mkdocs_page_url = "/waikato-datamining/ufdl-api/image_segmentation/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -143,9 +143,30 @@
                     
     <a class="" href="../image_classification/">Image classification</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../image_segmentation/">Image segmentation</a>
+    <a class="current" href="./">Image segmentation</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#url">URL</a></li>
+    
+
+    <li class="toctree-l3"><a href="#actions">Actions</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#set-labels">Set labels</a></li>
+        
+            <li><a class="toctree-l4" href="#get-labels">Get labels</a></li>
+        
+            <li><a class="toctree-l4" href="#set-layer">Set layer</a></li>
+        
+            <li><a class="toctree-l4" href="#get-layer">Get layer</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -163,57 +184,9 @@
     <a class="" href="../filtering/">Filtering</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Permissions</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#allownone">AllowNone</a></li>
-    
-
-    <li class="toctree-l2"><a href="#isadminuser">IsAdminUser</a></li>
-    
-
-    <li class="toctree-l2"><a href="#isauthenticated">IsAuthenticated</a></li>
-    
-
-    <li class="toctree-l2"><a href="#ismember">IsMember</a></li>
-    
-
-    <li class="toctree-l2"><a href="#isnode">IsNode</a></li>
-    
-
-    <li class="toctree-l2"><a href="#isownmembership">IsOwnMembership</a></li>
-    
-
-    <li class="toctree-l2"><a href="#ispublic">IsPublic</a></li>
-    
-
-    <li class="toctree-l2"><a href="#isself">IsSelf</a></li>
-    
-
-    <li class="toctree-l2"><a href="#jobisworkable">JobIsWorkable</a></li>
-    
-
-    <li class="toctree-l2"><a href="#memberhasadminpermission">MemberHasAdminPermission</a></li>
-    
-
-    <li class="toctree-l2"><a href="#memberhasexecutepermission">MemberHasExecutePermission</a></li>
-    
-
-    <li class="toctree-l2"><a href="#memberhaswritepermission">MemberHasWritePermission</a></li>
-    
-
-    <li class="toctree-l2"><a href="#nodeisself">NodeIsSelf</a></li>
-    
-
-    <li class="toctree-l2"><a href="#nodeownsjob">NodeOwnsJob</a></li>
-    
-
-    <li class="toctree-l2"><a href="#nodeworkingjob">NodeWorkingJob</a></li>
-    
-
-    </ul>
+    <a class="" href="../permissions/">Permissions</a>
 	    </li>
           
         </ul>
@@ -237,8 +210,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Data &raquo;</li>
+        
+      
     
-    <li>Permissions</li>
+    <li>Image segmentation</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -248,55 +225,60 @@
           <div role="main">
             <div class="section">
               
-                <p>The types of permissions required to perform actions on the server.</p>
-<p>Each request to the server contains the user making the request, as well
-as a node ID that the user is acting on behalf of. Based on the state of
-the user/node and the action being performed, access to the action may be
-permitted/denied based on any of the following criteria.</p>
-<h4 id="allownone">AllowNone</h4>
-<p>Access to this action is never permitted under any circumstance.</p>
-<h4 id="isadminuser">IsAdminUser</h4>
-<p>Can only perform the action if the user has the <code>is_staff</code> flag.</p>
-<h4 id="isauthenticated">IsAuthenticated</h4>
-<p>Can only perform the action if a registered user is making the request.</p>
-<h4 id="ismember">IsMember</h4>
-<p>For objects on the server that are owned by a particular team, actions
-against those objects can only be performed by members of the team.</p>
-<h4 id="isnode">IsNode</h4>
-<p>Can only perform the action if acting on behalf of a registered node.</p>
-<h4 id="isownmembership">IsOwnMembership</h4>
-<p>Only the user to which a team membership pertains can perform the action
-against that membership.</p>
-<h4 id="ispublic">IsPublic</h4>
-<p>For objects on the server which can be flagged as publicly available, actions
-against those objects which are flagged as such can be performed by anyone.</p>
-<h4 id="isself">IsSelf</h4>
-<p>Users can retrieve their own user records.</p>
-<h4 id="jobisworkable">JobIsWorkable</h4>
-<p>The action can only be performed against a job if it is not a meta-job.</p>
-<h4 id="memberhasadminpermission">MemberHasAdminPermission</h4>
-<p>For objects on the server that are owned by a particular team, actions
-against those objects can only be performed by members of the team who
-hold admin-level permissions.</p>
-<h4 id="memberhasexecutepermission">MemberHasExecutePermission</h4>
-<p>For objects on the server that are owned by a particular team, actions
-against those objects can only be performed by members of the team who
-hold execute-level permissions.</p>
-<h4 id="memberhaswritepermission">MemberHasWritePermission</h4>
-<p>For objects on the server that are owned by a particular team, actions
-against those objects can only be performed by members of the team who
-hold write-level permissions.</p>
-<h4 id="nodeisself">NodeIsSelf</h4>
-<p>Actions on a node can be performed by a user acting on behalf of that node.</p>
-<h4 id="nodeownsjob">NodeOwnsJob</h4>
-<p>Actions on a job can be performed by nodes that have acquired a lock on the
-job.</p>
-<h4 id="nodeworkingjob">NodeWorkingJob</h4>
-<p>Actions on a job can be performed by nodes that are/were executing a job. This
-is for the case where a node goes offline while performing a job, and while it
-is offline the job is wrested away from it. When the node comes back, it can
-perform clean-up actions (that hold this permission) around the job it was
-working on.</p>
+                <p>Additional image segmentation dataset operations.</p>
+<p>For core dataset operations, see <a href="../datasets/">here</a>.</p>
+<p><strong>NB:</strong> labels = layer names</p>
+<h3 id="url">URL</h3>
+<p>Uses <code>/v1/segments/datasets/</code> instead of <code>/v1/datasets/</code>, 
+also for the core operations.</p>
+<h3 id="actions">Actions</h3>
+<h4 id="set-labels">Set labels</h4>
+<p>Must be invoked after creating a new dataset to allow the upload of layer masks.</p>
+<p>POST: <code>/v1/segments/datasets/{PK}/labels</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of dataset)</li>
+</ul>
+<p>Body:</p>
+<ul>
+<li>labels: array of labels</li>
+</ul>
+<h4 id="get-labels">Get labels</h4>
+<p>GET: <code>/v1/segments/datasets/{PK}/labels</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of dataset)</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>array of labels</li>
+</ul>
+<h4 id="set-layer">Set layer</h4>
+<p>Uploads a layer mask for an image.</p>
+<p>POST: <code>/v1/segments/datasets/{PK}/layers/{image}/{label}</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of dataset)</li>
+<li>image: the name of the image to upload the mask for</li>
+<li>label: the name of the layer</li>
+</ul>
+<p>Body:</p>
+<ul>
+<li>the layer mask as file attachment</li>
+</ul>
+<h4 id="get-layer">Get layer</h4>
+<p>Downloads a layer mask of an image (may not exist).</p>
+<p>GET: <code>/v1/segments/datasets/{PK}/layers/{image}/{label}</code></p>
+<p>Parameters:</p>
+<ul>
+<li>PK: int (primary key of dataset)</li>
+<li>image: the name of the image to upload the mask for</li>
+<li>label: the name of the layer</li>
+</ul>
+<p>Response:</p>
+<ul>
+<li>byte array representing the mask file (0-length if layer not present)</li>
+</ul>
               
             </div>
           </div>
@@ -304,8 +286,10 @@ working on.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../object_detection/" class="btn btn-neutral float-right" title="Object Detection">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../filtering/" class="btn btn-neutral" title="Filtering"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../image_classification/" class="btn btn-neutral" title="Image classification"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -331,8 +315,10 @@ working on.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../filtering/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../image_classification/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../object_detection/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

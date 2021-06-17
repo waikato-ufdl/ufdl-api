@@ -145,6 +145,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../image_segmentation/">Image segmentation</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../object_detection/">Object Detection</a>
                 </li>
                 <li class=" current">
@@ -152,9 +156,6 @@
     <a class="current" href="./">Speech</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#fields">Fields</a></li>
-    
-
     <li class="toctree-l3"><a href="#url">URL</a></li>
     
 
@@ -222,17 +223,12 @@
               
                 <p>Additional speech dataset operations.</p>
 <p>For core dataset operations, see <a href="../datasets/">here</a>.</p>
-<h3 id="fields">Fields</h3>
-<ul>
-<li>files: array of file names</li>
-<li>transcriptions: for each image name a transcription (nested object, transcription field)</li>
-</ul>
 <h3 id="url">URL</h3>
-<p>Uses <code>/v1/speech/</code> instead of <code>/v1/datasets/</code>, 
+<p>Uses <code>/v1/speech/datasets/</code> instead of <code>/v1/datasets/</code>, 
 also for the core operations.</p>
 <h3 id="actions">Actions</h3>
 <h4 id="add-transcript">Add transcript</h4>
-<p>POST: <code>/v1/speech/{PK}/transcriptions/{NAME}</code></p>
+<p>POST: <code>/v1/speech/datasets/{PK}/transcriptions/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -243,7 +239,7 @@ also for the core operations.</p>
 <li>transcription: str</li>
 </ul>
 <h4 id="get-transcripts">Get transcripts</h4>
-<p>GET: <code>/v1/speech/{PK}/transcriptions</code></p>
+<p>GET: <code>/v1/speech/datasets/{PK}/transcriptions</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>

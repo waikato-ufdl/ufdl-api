@@ -143,6 +143,10 @@
                     
     <a class="" href="../image_classification/">Image classification</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../image_segmentation/">Image segmentation</a>
+                </li>
                 <li class=" current">
                     
     <a class="current" href="./">Object Detection</a>
@@ -227,11 +231,7 @@
                 <p>Additional object detection dataset operations.</p>
 <p>For core dataset operations, see <a href="../datasets/">here</a>.</p>
 <h3 id="fields">Fields</h3>
-<ul>
-<li>files: array of file names</li>
-<li>annotations: for each image name an array of Annotation objects</li>
-</ul>
-<p>Annotation object fields:</p>
+<p>Annotation objects:</p>
 <ul>
 <li>x: int</li>
 <li>y: int</li>
@@ -240,16 +240,16 @@
 <li>label: str</li>
 <li>polygon: polygon object (optional)</li>
 </ul>
-<p>Polygon object fields:</p>
+<p>Polygon objects:</p>
 <ul>
 <li>points: array of array with two int values (x, y)</li>
 </ul>
 <h3 id="url">URL</h3>
-<p>Uses <code>/v1/objdet/</code> instead of <code>/v1/datasets/</code>, 
+<p>Uses <code>/v1/objdet/datasets/</code> instead of <code>/v1/datasets/</code>, 
 also for the core operations.</p>
 <h3 id="actions">Actions</h3>
 <h4 id="add-annotations">Add annotations</h4>
-<p>POST: <code>/v1/objdet/{PK}/annotations/{NAME}</code></p>
+<p>POST: <code>/v1/objdet/datasets/{PK}/annotations/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -260,7 +260,7 @@ also for the core operations.</p>
 <li>annotations: array of Annotation objects</li>
 </ul>
 <h4 id="get-annotations">Get annotations</h4>
-<p>GET: <code>/v1/objdet/{PK}/annotations/{NAME}</code></p>
+<p>GET: <code>/v1/objdet/datasets/{PK}/annotations/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -271,14 +271,14 @@ also for the core operations.</p>
 <li>array of Annotation objects</li>
 </ul>
 <h4 id="delete-annotations">Delete annotations</h4>
-<p>DELETE: <code>/v1/objdet/{PK}/annotations/{NAME}</code></p>
+<p>DELETE: <code>/v1/objdet/datasets/{PK}/annotations/{NAME}</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
 <li>NAME: str (name of file to remove the annotations for)</li>
 </ul>
 <h4 id="get-labels">Get labels</h4>
-<p>GET: <code>/v1/objdet/{PK}/labels</code></p>
+<p>GET: <code>/v1/objdet/datasets/{PK}/labels</code></p>
 <p>Parameters:</p>
 <ul>
 <li>PK: int (primary key of dataset)</li>
@@ -297,7 +297,7 @@ also for the core operations.</p>
         <a href="../speech/" class="btn btn-neutral float-right" title="Speech">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../image_classification/" class="btn btn-neutral" title="Image classification"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../image_segmentation/" class="btn btn-neutral" title="Image segmentation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -323,7 +323,7 @@ also for the core operations.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../image_classification/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../image_segmentation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../speech/" style="color: #fcfcfc">Next &raquo;</a></span>
