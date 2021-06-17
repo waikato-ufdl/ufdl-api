@@ -14,7 +14,9 @@ Available fields:
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
-  * files: array of file names (str)
+  * files (object): 
+    
+    * file name (str): cache ID (str)
 
 # Actions
 
@@ -38,7 +40,9 @@ Response:
     * creator: [user ID](users.md)
     * creation_time: timestamp
     * deletion_time: timestamp
-    * files: array of file names (str)
+    * files (object): 
+    
+      * file name (str): cache ID (str)
 
 ## Load
 
@@ -60,7 +64,9 @@ Response:
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
-  * files: array of file names (str)
+  * files (object): 
+    
+    * file name (str): cache ID (str)
 
 ## Add
 
@@ -89,7 +95,9 @@ Response:
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
-  * files: array of file names (str)
+  * files (object): 
+    
+    * file name (str): cache ID (str)
 
 ## Update
 
@@ -122,7 +130,9 @@ Response:
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
-  * files: array of file names (str)
+  * files (object): 
+    
+    * file name (str): cache ID (str)
 
 ## Partial update
 
@@ -155,7 +165,9 @@ Response:
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
-  * files: array of file names (str)
+  * files (object): 
+    
+    * file name (str): cache ID (str)
 
 
 ## Clear
@@ -179,7 +191,9 @@ Response:
   * creator: [user ID](users.md)
   * creation_time: timestamp
   * deletion_time: timestamp
-  * files: array of file names (str)
+  * files (object): 
+    
+    * file name (str): cache ID (str)
 
 Notes:
 
