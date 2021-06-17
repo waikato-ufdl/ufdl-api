@@ -31,12 +31,6 @@ Parameters:
 
   * PK: int (primary key of dataset)
 
-Body:
-
-  * method: "add"
-  * images: array of image names
-  * categories: array of category strings to add to all specified images
-
 Response:
 
   * for each image name an array of category strings
