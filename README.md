@@ -4,7 +4,7 @@ Contains the documentation for the user-friendly deep-learning (UFDL) framework.
 
 Generated documentation is available at:
 
-https://waikato-ufdl.github.io/ufdl-api/
+https://ufdl.cms.waikato.ac.nz/ufdl-api/
 
 
 ## Installation
