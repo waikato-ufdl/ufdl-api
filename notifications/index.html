@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#print-notification" class="md-skip">
+        <a href="#notification-data" class="md-skip">
           Skip to content
         </a>
       
@@ -667,23 +667,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#notification-data" class="md-nav__link">
+    Notification Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notification-types" class="md-nav__link">
+    Notification Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Notification Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#print-notification" class="md-nav__link">
     Print Notification
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#email-notification" class="md-nav__link">
     Email Notification
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#websocket-notification" class="md-nav__link">
     Websocket Notification
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -709,21 +729,70 @@
 
   <h1>Notifications</h1>
 
-<p>The server currently supports specification of 3 types of notification.</p>
-<h3 id="print-notification">Print Notification<a class="headerlink" href="#print-notification" title="Permanent link">#</a></h3>
+<p>Notifications are actions taken when a <a href="../jobs/">job</a> transitions from one phase to another through-out its lifecycle.
+The phase-transitions that can occur during a job's lifecycle (and thus can trigger notifications) are:</p>
 <ul>
-<li>message: str</li>
+<li>Acquisition: a worker node has reserved the job for exclusive access</li>
+<li>Release: the worker node has released the job, as it cannot perform it (due to missing requirements, e.g. hardware)</li>
+<li>Start: the worker node has checked that it can perform the job, and has started to do so</li>
+<li>Progression: the worker node has made some progress toward completing the job</li>
+<li>Finish: the worker node has successfully completed the job</li>
+<li>Error: the worker node has encountered a problem while trying to complete the job</li>
+<li>Reset: the worker node has voluntarily reset the job to its initial state
+           (occurs when a worker-node crashes, comes back online, and has lost the work-state needed to continue the job)</li>
+<li>Abortion: an admin user has forcefully reset the job to its initial state
+              (used to unlock jobs from crashed worker-nodes)</li>
+<li>Cancellation: a user has determined that the job is no longer required</li>
 </ul>
-<h3 id="email-notification">Email Notification<a class="headerlink" href="#email-notification" title="Permanent link">#</a></h3>
+<h3 id="notification-data">Notification Data<a class="headerlink" href="#notification-data" title="Permanent link">#</a></h3>
+<p>A packet of notification data is given to each notification type, to be used to add job-specific information to the
+notification. See the <a href="#notification-types">Notification Types section</a> for how this information is added to each type
+of notification. The data provided is:</p>
 <ul>
-<li>subject: str</li>
-<li>body: str</li>
+<li>transition: str (the transition that occurred)</li>
+<li>description: str (the <code>description</code> <a href="../jobs/#fields">field of the job</a> that transitioned)</li>
+<li>pk: int (the primary-key of the <a href="../jobs/">job</a> that transitioned)</li>
+<li>progress: float (the current progress amount of the <a href="../jobs/">job</a> that transitioned)</li>
+<li>cancelled: bool (whether the <a href="../jobs/">job</a> that transitioned has been cancelled)</li>
+<li>node (optional): int (the primary-key of the <a href="../nodes/">node</a> that has acquired the job, if any)</li>
+<li>error (optional): str (the error that stopped the <a href="../jobs/">job</a>, if any)</li>
+<li>transition_data: JSON object (arbitrary data supplied during a <code>progress</code> transition, empty for all other transitions)</li>
+</ul>
+<h3 id="notification-types">Notification Types<a class="headerlink" href="#notification-types" title="Permanent link">#</a></h3>
+<p>The server currently supports specification of 3 types of notification. These are defined when
+<a href="../job_templates/#create-job">creating a job from a job-template</a>. Named replacement-fields below refers to a part of a
+string which is replaced with data from the <a href="#notification-data">notification data</a> provided to the notification. It
+appears as the name of a <a href="#notification-data">notification data</a> field enclosed in <code>{}</code> e.g. <code>"Hello from job #{pk}"</code>
+would have the sub-string <code>"{pk}"</code> substituted with the <code>pk</code> value from the notification data, to become e.g.
+<code>"Hello from job #1"</code>.</p>
+<h4 id="print-notification">Print Notification<a class="headerlink" href="#print-notification" title="Permanent link">#</a></h4>
+<p>Prints a message to the log output of the server.</p>
+<ul>
+<li>
+<p>JSON object containing:</p>
+<ul>
+<li>message: str (can contain named replacement fields)</li>
+</ul>
+</li>
+</ul>
+<h4 id="email-notification">Email Notification<a class="headerlink" href="#email-notification" title="Permanent link">#</a></h4>
+<p>Sends an email to a recipient.</p>
+<ul>
+<li>
+<p>JSON object containing:</p>
+<ul>
+<li>subject: str (can contain named replacement fields, except for <code>transition_data</code>)</li>
+<li>body: str (can contain named replacement fields)</li>
 <li>to: array of str</li>
 <li>cc: array of str</li>
 <li>bcc: array of str</li>
 </ul>
-<h3 id="websocket-notification">Websocket Notification<a class="headerlink" href="#websocket-notification" title="Permanent link">#</a></h3>
-<p>To specify a web-socket notification, use an empty object.</p>
+</li>
+</ul>
+<h4 id="websocket-notification">Websocket Notification<a class="headerlink" href="#websocket-notification" title="Permanent link">#</a></h4>
+<p>To specify a web-socket notification, use an empty JSON object. Clients listening to the job (via
+<a href="../jobs/#connect-to-job">Connect To Job</a>) will receive the <a href="#notification-data">notification data</a>, as JSON via the
+connected websocket, for transitions that have this notification type specified.</p>
 
 
 

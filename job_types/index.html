@@ -835,6 +835,54 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#get-all-values-of-type" class="md-nav__link">
+    Get All Values Of Type
+  </a>
+  
+    <nav class="md-nav" aria-label="Get All Values Of Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method_6" class="md-nav__link">
+    Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_6" class="md-nav__link">
+    URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions_6" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_5" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1323,6 +1371,54 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#get-all-values-of-type" class="md-nav__link">
+    Get All Values Of Type
+  </a>
+  
+    <nav class="md-nav" aria-label="Get All Values Of Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method_6" class="md-nav__link">
+    Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_6" class="md-nav__link">
+    URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions_6" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_5" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1350,15 +1446,19 @@
 
   <h1>Job types</h1>
 
-<p>Manages the job types.</p>
+<p>Manages the job types. Job-types are Python classes that know how to serialise/deserialise/specify values
+to a job's inputs/outputs/parameters. The information kept by the server is meta-data about where to find
+those classes.</p>
 <h3 id="fields">Fields<a class="headerlink" href="#fields" title="Permanent link">#</a></h3>
 <ul>
 <li>pk: int (primary key of job type)</li>
-<li>name: str</li>
+<li>name: str (the name used to refer to the type on the server)</li>
+<li>pkg: str (the Python package exporting the job-type's class definition)</li>
+<li>cls: str (the fully-qualified path to the class which implements the job-type as exported from <code>pkg</code>)</li>
 </ul>
 <h3 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">#</a></h3>
 <h4 id="list">List<a class="headerlink" href="#list" title="Permanent link">#</a></h4>
-<p>Lists the job types registyered with the server.</p>
+<p>Lists the job types registered with the server.</p>
 <h5 id="method">Method<a class="headerlink" href="#method" title="Permanent link">#</a></h5>
 <p><code>POST</code></p>
 <h5 id="url">URL<a class="headerlink" href="#url" title="Permanent link">#</a></h5>
@@ -1373,13 +1473,7 @@
 </ul>
 <h5 id="response">Response<a class="headerlink" href="#response" title="Permanent link">#</a></h5>
 <ul>
-<li>
-<p>array of</p>
-<ul>
-<li>pk: int (primary key of job type)</li>
-<li>name: str</li>
-</ul>
-</li>
+<li>A JSON array of objects containing each job-type's <a href="#fields">fields</a></li>
 </ul>
 <h4 id="create">Create<a class="headerlink" href="#create" title="Permanent link">#</a></h4>
 <p>Creates a new job type.</p>
@@ -1389,7 +1483,9 @@
 <p><code>/v1/job-types</code></p>
 <h5 id="body">Body<a class="headerlink" href="#body" title="Permanent link">#</a></h5>
 <ul>
-<li>name: str</li>
+<li>name: str (the name used to refer to the type on the server)</li>
+<li>pkg: str (the Python package exporting the job-type's class definition)</li>
+<li>cls: str (the fully-qualified path to the class which implements the job-type as exported from <code>pkg</code>)</li>
 </ul>
 <h5 id="permissions_1">Permissions<a class="headerlink" href="#permissions_1" title="Permanent link">#</a></h5>
 <ul>
@@ -1397,8 +1493,7 @@
 </ul>
 <h5 id="response_1">Response<a class="headerlink" href="#response_1" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (same as <code>PK</code>)</li>
-<li>name: str</li>
+<li>A JSON object containing the newly-created job-type's <a href="#fields">fields</a></li>
 </ul>
 <h4 id="retrieve">Retrieve<a class="headerlink" href="#retrieve" title="Permanent link">#</a></h4>
 <p>Gets the representation of the job type.</p>
@@ -1416,8 +1511,7 @@
 </ul>
 <h5 id="response_2">Response<a class="headerlink" href="#response_2" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (same as <code>PK</code>)</li>
-<li>name: str</li>
+<li>A JSON object containing the job-type's <a href="#fields">fields</a></li>
 </ul>
 <h4 id="update">Update<a class="headerlink" href="#update" title="Permanent link">#</a></h4>
 <p>Updates the fields of the job type.</p>
@@ -1431,7 +1525,9 @@
 </ul>
 <h5 id="body_1">Body<a class="headerlink" href="#body_1" title="Permanent link">#</a></h5>
 <ul>
-<li>name: str</li>
+<li>name: str (the name used to refer to the type on the server)</li>
+<li>pkg: str (the Python package exporting the job-type's class definition)</li>
+<li>cls: str (the fully-qualified path to the class which implements the job-type as exported from <code>pkg</code>)</li>
 </ul>
 <h5 id="permissions_3">Permissions<a class="headerlink" href="#permissions_3" title="Permanent link">#</a></h5>
 <ul>
@@ -1439,12 +1535,10 @@
 </ul>
 <h5 id="response_3">Response<a class="headerlink" href="#response_3" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (same as <code>PK</code>)</li>
-<li>name: str</li>
+<li>A JSON object containing the updated job-type's <a href="#fields">fields</a></li>
 </ul>
 <h4 id="partial-update">Partial Update<a class="headerlink" href="#partial-update" title="Permanent link">#</a></h4>
-<p>Updates a selection of fields on the job type. As job types only have a <code>name</code> field,
-this is functionally equivalent to <a href="#update">Update</a>.</p>
+<p>Updates a selection of fields on the job type.</p>
 <h5 id="method_4">Method<a class="headerlink" href="#method_4" title="Permanent link">#</a></h5>
 <p><code>PATCH</code></p>
 <h5 id="url_4">URL<a class="headerlink" href="#url_4" title="Permanent link">#</a></h5>
@@ -1455,7 +1549,9 @@ this is functionally equivalent to <a href="#update">Update</a>.</p>
 </ul>
 <h5 id="body_2">Body<a class="headerlink" href="#body_2" title="Permanent link">#</a></h5>
 <ul>
-<li>name (optional): str</li>
+<li>name (optional): str (the name used to refer to the type on the server)</li>
+<li>pkg (optional): str (the Python package exporting the job-type's class definition)</li>
+<li>cls (optional): str (the fully-qualified path to the class which implements the job-type as exported from <code>pkg</code>)</li>
 </ul>
 <h5 id="permissions_4">Permissions<a class="headerlink" href="#permissions_4" title="Permanent link">#</a></h5>
 <ul>
@@ -1463,8 +1559,7 @@ this is functionally equivalent to <a href="#update">Update</a>.</p>
 </ul>
 <h5 id="response_4">Response<a class="headerlink" href="#response_4" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (same as <code>PK</code>)</li>
-<li>name: str</li>
+<li>A JSON object containing the updated job-type's <a href="#fields">fields</a></li>
 </ul>
 <h4 id="destroy">Destroy<a class="headerlink" href="#destroy" title="Permanent link">#</a></h4>
 <p>Attempts to delete a job-type from the system. Only succeeds if no other models
@@ -1480,6 +1575,24 @@ are referencing the job type.</p>
 <h5 id="permissions_5">Permissions<a class="headerlink" href="#permissions_5" title="Permanent link">#</a></h5>
 <ul>
 <li><a href="../permissions/#isadminuser">user is an admin</a></li>
+</ul>
+<h4 id="get-all-values-of-type">Get All Values Of Type<a class="headerlink" href="#get-all-values-of-type" title="Permanent link">#</a></h4>
+<p>Gets all values of a server-resident job-type held by the server.</p>
+<h5 id="method_6">Method<a class="headerlink" href="#method_6" title="Permanent link">#</a></h5>
+<p><code>GET</code></p>
+<h5 id="url_6">URL<a class="headerlink" href="#url_6" title="Permanent link">#</a></h5>
+<p><code>/v1/job-types/get-all-values/{TYPE}</code></p>
+<h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">#</a></h5>
+<ul>
+<li><code>TYPE</code>: str (the server-resident type to get values of)</li>
+</ul>
+<h5 id="permissions_6">Permissions<a class="headerlink" href="#permissions_6" title="Permanent link">#</a></h5>
+<ul>
+<li><a href="../permissions/#isauthenticated">user is authenticated</a></li>
+</ul>
+<h5 id="response_5">Response<a class="headerlink" href="#response_5" title="Permanent link">#</a></h5>
+<ul>
+<li>array of JSON-representations of resident objects, exact fields depends on <code>TYPE</code>.</li>
 </ul>
 
 

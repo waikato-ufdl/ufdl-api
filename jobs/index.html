@@ -1445,6 +1445,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#connect-to-job" class="md-nav__link">
+    Connect To Job
+  </a>
+  
+    <nav class="md-nav" aria-label="Connect To Job">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method_19" class="md-nav__link">
+    Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_19" class="md-nav__link">
+    URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_18" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions_19" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2627,6 +2668,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#connect-to-job" class="md-nav__link">
+    Connect To Job
+  </a>
+  
+    <nav class="md-nav" aria-label="Connect To Job">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method_19" class="md-nav__link">
+    Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_19" class="md-nav__link">
+    URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_18" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions_19" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2658,20 +2740,52 @@
 <h3 id="fields">Fields<a class="headerlink" href="#fields" title="Permanent link">#</a></h3>
 <ul>
 <li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>template: <a href="../job_templates/">job template ID</a></li>
-<li>input_values: str</li>
-<li>parameter_values: str or null</li>
-<li>outputs: array of <a href="../job_outputs/">job outputs</a></li>
-<li>node: <a href="../nodes/">node ID</a> or null</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>progress_amount: float</li>
+<li>
+<p>template: JSON object containing:</p>
+<ul>
+<li>pk: <a href="../job_templates/">job template ID</a> (primary-key of the job-template this job was created from)</li>
+<li>name: str (the name of the job-template)</li>
+<li>version: int (the version of the job-template)</li>
+</ul>
+</li>
+<li>
+<p>parent: int or null (primary key of parent job, or null if job has no parent)</p>
+</li>
+<li>start_time: timestamp or null (time the job was started, or null if not yet started)</li>
+<li>end_time: timestamp or null (time the job was finished, or null if not yet finished)</li>
+<li>error_reason: str or null (the reason the job failed, or null if it hasn't failed)</li>
+<li>
+<p>input_values: JSON object from input names to:</p>
+<ul>
+<li>value: JSON (the JSON representation of the input value)</li>
+<li>type: str (the string representation of the input value's <a href="../job_types/">type</a>)</li>
+</ul>
+</li>
+<li>
+<p>parameter_values: null or JSON object from parameter names to:</p>
+<ul>
+<li>value: JSON (the JSON representation of the parameter value)</li>
+<li>type: str (the string representation of the parameter value's <a href="../job_types/">type</a>)</li>
+</ul>
+</li>
+<li>
+<p>node: <a href="../nodes/">node ID</a> or null (the node performing the job, or null if no node has acquired it yet)</p>
+</li>
+<li>description: str (a description of the purpose of the job)</li>
+<li>
+<p>outputs: JSON array of:</p>
+<ul>
+<li>pk: int (the primary-key of the <a href="../job_outputs/">job-output</a>)</li>
+<li>name: str (the name of the output)</li>
+<li>type: str (the <a href="../job_types/">type</a> of the output)</li>
+</ul>
+</li>
+<li>
+<p>is_cancelled: bool (whether the job has been cancelled)</p>
+</li>
+<li>creator: int or null (primary key of the <a href="../users/">user</a> that created the output)</li>
+<li>creation_time: timestamp (the date-time that the output was created)</li>
+<li>deletion_time: timestamp or null (the date-time that the output was soft-deleted, or null if still active)</li>
 </ul>
 <h3 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">#</a></h3>
 <h4 id="list">List<a class="headerlink" href="#list" title="Permanent link">#</a></h4>
@@ -2689,49 +2803,8 @@
 <li><a href="../filtering/">filter specification</a></li>
 </ul>
 <h5 id="response">Response<a class="headerlink" href="#response" title="Permanent link">#</a></h5>
-<p>array of</p>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>A JSON array of objects containing each job's <a href="#fields">fields</a></li>
 </ul>
 <h4 id="retrieve">Retrieve<a class="headerlink" href="#retrieve" title="Permanent link">#</a></h4>
 <p>Gets the information about a specific job.</p>
@@ -2749,47 +2822,7 @@
 </ul>
 <h5 id="response_1">Response<a class="headerlink" href="#response_1" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>A JSON object containing the created job's <a href="#fields">fields</a></li>
 </ul>
 <h4 id="update">Update<a class="headerlink" href="#update" title="Permanent link">#</a></h4>
 <p>Updates the description of a specific job.</p>
@@ -2803,7 +2836,12 @@
 </ul>
 <h5 id="body">Body<a class="headerlink" href="#body" title="Permanent link">#</a></h5>
 <ul>
-<li>description: str</li>
+<li>
+<p>JSON object containing:</p>
+<ul>
+<li>description: str (the new description for the job)</li>
+</ul>
+</li>
 </ul>
 <h5 id="permissions_2">Permissions<a class="headerlink" href="#permissions_2" title="Permanent link">#</a></h5>
 <ul>
@@ -2811,47 +2849,7 @@
 </ul>
 <h5 id="response_2">Response<a class="headerlink" href="#response_2" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>A JSON object containing the updated job's <a href="#fields">fields</a></li>
 </ul>
 <h4 id="partial-update">Partial Update<a class="headerlink" href="#partial-update" title="Permanent link">#</a></h4>
 <p>Updates the description of a specific job.</p>
@@ -2865,7 +2863,12 @@
 </ul>
 <h5 id="body_1">Body<a class="headerlink" href="#body_1" title="Permanent link">#</a></h5>
 <ul>
-<li>description (optional): str</li>
+<li>
+<p>JSON object containing:</p>
+<ul>
+<li>description: str (the new description for the job)</li>
+</ul>
+</li>
 </ul>
 <h5 id="permissions_3">Permissions<a class="headerlink" href="#permissions_3" title="Permanent link">#</a></h5>
 <ul>
@@ -2873,47 +2876,7 @@
 </ul>
 <h5 id="response_3">Response<a class="headerlink" href="#response_3" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>A JSON object containing the updated job's <a href="#fields">fields</a></li>
 </ul>
 <h4 id="destroy">Destroy<a class="headerlink" href="#destroy" title="Permanent link">#</a></h4>
 <p>Flags a job as deleted, it can be <a href="#reinstate">reinstated</a>. To
@@ -2956,13 +2919,7 @@ permanently delete, see <a href="#hard-delete">Hard Delete</a>.</p>
 </ul>
 <h5 id="response_4">Response<a class="headerlink" href="#response_4" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>job: job ID (same as the <code>PK</code> parameter)</li>
-<li>name: str (same as the <code>NAME</code> parameter) </li>
-<li>type: str (same as the <code>TYPE</code> parameter)</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
+<li>JSON object containing the <a href="../job_outputs/#fields">fields</a> of the added job-output.</li>
 </ul>
 <h4 id="delete-output">Delete Output<a class="headerlink" href="#delete-output" title="Permanent link">#</a></h4>
 <p>Removes an output from a job.</p>
@@ -2972,9 +2929,9 @@ permanently delete, see <a href="#hard-delete">Hard Delete</a>.</p>
 <p><code>/v1/jobs/{PK}/outputs/{NAME}/{TYPE}</code></p>
 <h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">#</a></h5>
 <ul>
-<li>PK: the primary key of the job</li>
-<li>NAME: the name of the output to delete</li>
-<li>TYPE: the type of the output to delete</li>
+<li><code>PK</code>: the primary key of the job</li>
+<li><code>NAME</code>: the name of the output to delete</li>
+<li><code>TYPE</code>: the type of the output to delete</li>
 </ul>
 <h5 id="permissions_6">Permissions<a class="headerlink" href="#permissions_6" title="Permanent link">#</a></h5>
 <ul>
@@ -2982,13 +2939,7 @@ permanently delete, see <a href="#hard-delete">Hard Delete</a>.</p>
 </ul>
 <h5 id="response_5">Response<a class="headerlink" href="#response_5" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>job: job ID (same as the <code>PK</code> parameter)</li>
-<li>name: str (same as the <code>NAME</code> parameter)</li>
-<li>type: str (same as the <code>TYPE</code> parameter)</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
+<li>JSON object containing the <a href="../job_outputs/#fields">fields</a> of the deleted job-output.</li>
 </ul>
 <h4 id="get-output">Get Output<a class="headerlink" href="#get-output" title="Permanent link">#</a></h4>
 <p>Downloads the output data of a job output.</p>
@@ -2998,9 +2949,9 @@ permanently delete, see <a href="#hard-delete">Hard Delete</a>.</p>
 <p><code>/v1/jobs/{PK}/outputs/{NAME}/{TYPE}</code></p>
 <h5 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">#</a></h5>
 <ul>
-<li>PK: the primary key of the job</li>
-<li>NAME: the name of the output to retrieve</li>
-<li>TYPE: the type of the output to retrieve</li>
+<li><code>PK</code>: the primary key of the job</li>
+<li><code>NAME</code>: the name of the output to retrieve</li>
+<li><code>TYPE</code>: the type of the output to retrieve</li>
 </ul>
 <h5 id="permissions_7">Permissions<a class="headerlink" href="#permissions_7" title="Permanent link">#</a></h5>
 <ul>
@@ -3018,9 +2969,9 @@ permanently delete, see <a href="#hard-delete">Hard Delete</a>.</p>
 <p><code>/v1/jobs/{PK}/outputs/{NAME}/{TYPE}/info</code></p>
 <h5 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">#</a></h5>
 <ul>
-<li>PK: the primary key of the job</li>
-<li>NAME: the name of the output to delete</li>
-<li>TYPE: the type of the output to delete</li>
+<li><code>PK</code>: the primary key of the job</li>
+<li><code>NAME</code>: the name of the output to delete</li>
+<li><code>TYPE</code>: the type of the output to delete</li>
 </ul>
 <h5 id="permissions_8">Permissions<a class="headerlink" href="#permissions_8" title="Permanent link">#</a></h5>
 <ul>
@@ -3028,13 +2979,7 @@ permanently delete, see <a href="#hard-delete">Hard Delete</a>.</p>
 </ul>
 <h5 id="response_7">Response<a class="headerlink" href="#response_7" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>job: job ID (same as the <code>PK</code> parameter)</li>
-<li>name: str (same as the <code>NAME</code> parameter)</li>
-<li>type: str (same as the <code>TYPE</code> parameter)</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
+<li>JSON object containing the <a href="../job_outputs/#fields">fields</a> of the job-output.</li>
 </ul>
 <h4 id="acquire-job">Acquire Job<a class="headerlink" href="#acquire-job" title="Permanent link">#</a></h4>
 <p>Allows a node to reserve a job for exclusive access (so it can enact
@@ -3057,47 +3002,7 @@ the job).</p>
 </ul>
 <h5 id="response_8">Response<a class="headerlink" href="#response_8" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>JSON object containing the <a href="#fields">fields</a> of the acquired job.</li>
 </ul>
 <h4 id="release-job">Release Job<a class="headerlink" href="#release-job" title="Permanent link">#</a></h4>
 <p>Allows a node to give up its reservation of a job (e.g. if it realises it
@@ -3120,50 +3025,10 @@ cannot complete the job).</p>
 </ul>
 <h5 id="response_9">Response<a class="headerlink" href="#response_9" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>JSON object containing the <a href="#fields">fields</a> of the released job.</li>
 </ul>
 <h4 id="start-job">Start Job<a class="headerlink" href="#start-job" title="Permanent link">#</a></h4>
-<p>Allows a node to indicate that it has begun work on completing a job.</p>
+<p>Allows a node to indicate that it has begun work on a job.</p>
 <h5 id="method_11">Method<a class="headerlink" href="#method_11" title="Permanent link">#</a></h5>
 <p><code>POST</code></p>
 <h5 id="url_11">URL<a class="headerlink" href="#url_11" title="Permanent link">#</a></h5>
@@ -3174,7 +3039,12 @@ cannot complete the job).</p>
 </ul>
 <h5 id="body_3">Body<a class="headerlink" href="#body_3" title="Permanent link">#</a></h5>
 <ul>
+<li>
+<p>JSON object containing:</p>
+<ul>
 <li>send_notification: str (currently unused)</li>
+</ul>
+</li>
 </ul>
 <h5 id="permissions_11">Permissions<a class="headerlink" href="#permissions_11" title="Permanent link">#</a></h5>
 <ul>
@@ -3182,47 +3052,7 @@ cannot complete the job).</p>
 </ul>
 <h5 id="response_10">Response<a class="headerlink" href="#response_10" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>JSON object containing the <a href="#fields">fields</a> of the started job.</li>
 </ul>
 <h4 id="progress-job">Progress Job<a class="headerlink" href="#progress-job" title="Permanent link">#</a></h4>
 <p>Allows a node to update interested parties that some progress has
@@ -3234,7 +3064,7 @@ been made on the completion of a job.</p>
 <h5 id="parameters_11">Parameters<a class="headerlink" href="#parameters_11" title="Permanent link">#</a></h5>
 <ul>
 <li><code>PK</code>: int (primary key of job)</li>
-<li><code>PROGRESS</code>: float between 0.0 and 1.0</li>
+<li><code>PROGRESS</code>: float (percent completed, between 0.0 and 1.0 inclusive)</li>
 </ul>
 <h5 id="body_4">Body<a class="headerlink" href="#body_4" title="Permanent link">#</a></h5>
 <ul>
@@ -3247,47 +3077,7 @@ been made on the completion of a job.</p>
 </ul>
 <h5 id="response_11">Response<a class="headerlink" href="#response_11" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>JSON object containing the <a href="#fields">fields</a> of the updated job.</li>
 </ul>
 <h4 id="finish-job">Finish Job<a class="headerlink" href="#finish-job" title="Permanent link">#</a></h4>
 <p>Allows a node to indicate that it has completed work on a job (either
@@ -3302,9 +3092,15 @@ successfully or in-error).</p>
 </ul>
 <h5 id="body_5">Body<a class="headerlink" href="#body_5" title="Permanent link">#</a></h5>
 <ul>
+<li>
+<p>JSON object containing:</p>
+<ul>
 <li>success: bool (currently unused)</li>
 <li>send_notification: str (currently unused)</li>
-<li>error (optional): str</li>
+<li>error (optional): str (if present, the error that prevented the job from completing successfully; if absent,
+                         job completed successfully)</li>
+</ul>
+</li>
 </ul>
 <h5 id="permissions_13">Permissions<a class="headerlink" href="#permissions_13" title="Permanent link">#</a></h5>
 <ul>
@@ -3316,47 +3112,7 @@ successfully or in-error).</p>
 </ul>
 <h5 id="response_12">Response<a class="headerlink" href="#response_12" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>JSON object containing the <a href="#fields">fields</a> of the finished job.</li>
 </ul>
 <h4 id="reset-job">Reset Job<a class="headerlink" href="#reset-job" title="Permanent link">#</a></h4>
 <p>Allows a node to reset a job to its initial state so that it can be
@@ -3375,47 +3131,7 @@ re-attempted.</p>
 </ul>
 <h5 id="response_13">Response<a class="headerlink" href="#response_13" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>JSON object containing the <a href="#fields">fields</a> of the reset job.</li>
 </ul>
 <h4 id="abort-job">Abort Job<a class="headerlink" href="#abort-job" title="Permanent link">#</a></h4>
 <p>Allows a job to be reset to its initial state in case it is locked by
@@ -3434,47 +3150,7 @@ a node that has gone offline.</p>
 </ul>
 <h5 id="response_14">Response<a class="headerlink" href="#response_14" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>JSON object containing the <a href="#fields">fields</a> of the aborted job.</li>
 </ul>
 <h4 id="cancel-job">Cancel Job<a class="headerlink" href="#cancel-job" title="Permanent link">#</a></h4>
 <p>Allows a user to cancel a job, if they no longer require the results
@@ -3493,47 +3169,7 @@ of that job.</p>
 </ul>
 <h5 id="response_15">Response<a class="headerlink" href="#response_15" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>JSON object containing the <a href="#fields">fields</a> of the cancelled job.</li>
 </ul>
 <h4 id="hard-delete">Hard Delete<a class="headerlink" href="#hard-delete" title="Permanent link">#</a></h4>
 <p>Permanently deletes the job. For soft-deletion, see <a href="#destroy">Destroy</a>.</p>
@@ -3551,47 +3187,7 @@ of that job.</p>
 </ul>
 <h5 id="response_16">Response<a class="headerlink" href="#response_16" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
-</ul>
-</li>
-<li>
-<p>input_values (object):</p>
-<ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
-</ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
-<ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>JSON object containing the <a href="#fields">fields</a> of the hard-deleted job.</li>
 </ul>
 <h4 id="reinstate">Reinstate<a class="headerlink" href="#reinstate" title="Permanent link">#</a></h4>
 <p>Undeletes a previously soft-deleted job.</p>
@@ -3609,47 +3205,21 @@ of that job.</p>
 </ul>
 <h5 id="response_17">Response<a class="headerlink" href="#response_17" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of job)</li>
-<li>description: str</li>
-<li>
-<p>template (object):</p>
-<ul>
-<li>pk: <a href="../job_templates/">job template ID</a></li>
-<li>name: str</li>
-<li>version: int</li>
+<li>JSON object containing the <a href="#fields">fields</a> of the reinstated job.</li>
 </ul>
-</li>
-<li>
-<p>input_values (object):</p>
+<h4 id="connect-to-job">Connect To Job<a class="headerlink" href="#connect-to-job" title="Permanent link">#</a></h4>
+<p>The UFDL server also provides the ability to receive notifications about a job's progress via web-socket.</p>
+<h5 id="method_19">Method<a class="headerlink" href="#method_19" title="Permanent link">#</a></h5>
+<p><code>WEB SOCKET</code></p>
+<h5 id="url_19">URL<a class="headerlink" href="#url_19" title="Permanent link">#</a></h5>
+<p><code>/v1/jobs/{PK}</code></p>
+<h5 id="parameters_18">Parameters<a class="headerlink" href="#parameters_18" title="Permanent link">#</a></h5>
 <ul>
-<li>(input name) -&gt; { value: str, type: str }</li>
+<li><code>PK</code>: int (primary key of job)</li>
 </ul>
-</li>
-<li>
-<p>parameter_values (object or null):</p>
+<h5 id="permissions_19">Permissions<a class="headerlink" href="#permissions_19" title="Permanent link">#</a></h5>
 <ul>
-<li>(parameter name) -&gt; string</li>
-</ul>
-</li>
-<li>
-<p>outputs (array of objects):</p>
-<ul>
-<li>pk: <a href="../job_outputs/">job output ID</a></li>
-<li>name: str</li>
-<li>type: str</li>
-</ul>
-</li>
-<li>
-<p>node: <a href="../nodes/">node ID</a> or null</p>
-</li>
-<li>error_reason: str or null</li>
-<li>creator: <a href="../users/">user ID</a> or null</li>
-<li>creation_time: timestamp</li>
-<li>deletion_time: timestamp or null</li>
-<li>start_time: timestamp or null</li>
-<li>end_time: timestamp or null</li>
-<li>parent: int (primary key of parent job) or null</li>
-<li>is_cancelled: bool</li>
+<li>N/A</li>
 </ul>
 
 

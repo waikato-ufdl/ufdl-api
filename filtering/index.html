@@ -831,8 +831,8 @@ field names.</p>
 <p><code>contains</code> - for sub-string matching</p>
 <ul>
 <li>field: str - the field to work on</li>
-<li>value: str - the sub-string to look for</li>
-<li>case_insensitive: bool</li>
+<li>sub_string: str - the sub-string to look for</li>
+<li>case_insensitive: bool - whether to ignore case when searching for the sub-string</li>
 <li>invert: bool - whether invert the matching, i.e., logical NOT </li>
 </ul>
 </li>
@@ -848,7 +848,7 @@ field names.</p>
 <ul>
 <li>field: str - the field to work on</li>
 <li>operator: str - the comparison to perform (&lt;, &gt;, &gt;=, &lt;=)</li>
-<li>value: bool/int/float/str - the value to compare against</li>
+<li>value: int/float/str - the value to compare against</li>
 <li>invert: bool - whether invert the comparison, i.e., logical NOT </li>
 </ul>
 </li>
@@ -862,7 +862,7 @@ field names.</p>
 </code></pre>
 <ul>
 <li><code>field</code>: str - the field to enforce the ordering on</li>
-<li><code>ascending</code>: bool - ascending or descending</li>
+<li><code>ascending</code>: bool - ascending or (if false) descending</li>
 <li><code>nulls_first</code>: bool (optional) - whether nulls are listed first or last, 
   uses database default if omitted</li>
 </ul>
