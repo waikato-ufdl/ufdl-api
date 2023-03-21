@@ -3,20 +3,38 @@ Manages the generated jobs.
 ## Fields
 
   * pk: int (primary key of job)
-  * description: str
-  * template: [job template ID](job_templates.md)
-  * input_values: str
-  * parameter_values: str or null
-  * outputs: array of [job outputs](job_outputs.md)
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * progress_amount: float
+  * template: JSON object containing:
+
+    * pk: [job template ID](job_templates.md) (primary-key of the job-template this job was created from)
+    * name: str (the name of the job-template)
+    * version: int (the version of the job-template)
+
+  * parent: int or null (primary key of parent job, or null if job has no parent)
+  * start_time: timestamp or null (time the job was started, or null if not yet started)
+  * end_time: timestamp or null (time the job was finished, or null if not yet finished)
+  * error_reason: str or null (the reason the job failed, or null if it hasn't failed)
+  * input_values: JSON object from input names to:
+
+    * value: JSON (the JSON representation of the input value)
+    * type: str (the string representation of the input value's [type](job_types.md))
+
+  * parameter_values: null or JSON object from parameter names to:
+
+    * value: JSON (the JSON representation of the parameter value)
+    * type: str (the string representation of the parameter value's [type](job_types.md))
+
+  * node: [node ID](nodes.md) or null (the node performing the job, or null if no node has acquired it yet)
+  * description: str (a description of the purpose of the job)
+  * outputs: JSON array of:
+
+    * pk: int (the primary-key of the [job-output](job_outputs.md))
+    * name: str (the name of the output)
+    * type: str (the [type](job_types.md) of the output)
+
+  * is_cancelled: bool (whether the job has been cancelled)
+  * creator: int or null (primary key of the [user](users.md) that created the output)
+  * creation_time: timestamp (the date-time that the output was created)
+  * deletion_time: timestamp or null (the date-time that the output was soft-deleted, or null if still active)
 
 
 ## Actions
@@ -43,39 +61,7 @@ Lists the jobs present on the server.
   
 #### Response
 
-array of
-
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-      
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-        
-  * input_values (object):
-      
-    * (input name) -> { value: str, type: str }
-        
-  * parameter_values (object or null):
-      
-    * (parameter name) -> string
-        
-  * outputs (array of objects):
-      
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-        
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * A JSON array of objects containing each job's [fields](#fields)
 
 ### Retrieve
 
@@ -99,37 +85,7 @@ Gets the information about a specific job.
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * A JSON object containing the created job's [fields](#fields)
 
 
 ### Update
@@ -150,7 +106,9 @@ Updates the description of a specific job.
 
 #### Body
 
-  * description: str
+  * JSON object containing:
+
+    * description: str (the new description for the job)
 
 #### Permissions
 
@@ -158,37 +116,7 @@ Updates the description of a specific job.
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * A JSON object containing the updated job's [fields](#fields)
 
 
 ### Partial Update
@@ -209,7 +137,9 @@ Updates the description of a specific job.
 
 #### Body
 
-  * description (optional): str
+  * JSON object containing:
+
+    * description: str (the new description for the job)
 
 #### Permissions
 
@@ -217,37 +147,7 @@ Updates the description of a specific job.
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * A JSON object containing the updated job's [fields](#fields)
 
 
 ### Destroy
@@ -302,13 +202,7 @@ Adds an output (with data) to a job.
     
 #### Response
 
-  * pk: [job output ID](job_outputs.md)
-  * job: job ID (same as the `PK` parameter)
-  * name: str (same as the `NAME` parameter) 
-  * type: str (same as the `TYPE` parameter)
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
+  * JSON object containing the [fields](job_outputs.md#fields) of the added job-output.
 
 
 ### Delete Output
@@ -325,9 +219,9 @@ Removes an output from a job.
 
 #### Parameters
 
-  * PK: the primary key of the job
-  * NAME: the name of the output to delete
-  * TYPE: the type of the output to delete
+  * `PK`: the primary key of the job
+  * `NAME`: the name of the output to delete
+  * `TYPE`: the type of the output to delete
 
 #### Permissions
 
@@ -335,13 +229,7 @@ Removes an output from a job.
 
 #### Response
 
-  * pk: [job output ID](job_outputs.md)
-  * job: job ID (same as the `PK` parameter)
-  * name: str (same as the `NAME` parameter)
-  * type: str (same as the `TYPE` parameter)
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
+  * JSON object containing the [fields](job_outputs.md#fields) of the deleted job-output.
 
 
 ### Get Output
@@ -358,9 +246,9 @@ Downloads the output data of a job output.
 
 #### Parameters
 
-  * PK: the primary key of the job
-  * NAME: the name of the output to retrieve
-  * TYPE: the type of the output to retrieve
+  * `PK`: the primary key of the job
+  * `NAME`: the name of the output to retrieve
+  * `TYPE`: the type of the output to retrieve
 
 #### Permissions
 
@@ -385,9 +273,9 @@ Gets the meta-data of a job output.
 
 #### Parameters
 
-  * PK: the primary key of the job
-  * NAME: the name of the output to delete
-  * TYPE: the type of the output to delete
+  * `PK`: the primary key of the job
+  * `NAME`: the name of the output to delete
+  * `TYPE`: the type of the output to delete
 
 #### Permissions
 
@@ -395,13 +283,7 @@ Gets the meta-data of a job output.
 
 #### Response
 
-  * pk: [job output ID](job_outputs.md)
-  * job: job ID (same as the `PK` parameter)
-  * name: str (same as the `NAME` parameter)
-  * type: str (same as the `TYPE` parameter)
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
+  * JSON object containing the [fields](job_outputs.md#fields) of the job-output.
 
 
 ### Acquire Job
@@ -429,37 +311,7 @@ the job).
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * JSON object containing the [fields](#fields) of the acquired job.
 
 
 ### Release Job
@@ -487,42 +339,12 @@ cannot complete the job).
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * JSON object containing the [fields](#fields) of the released job.
 
 
 ### Start Job
 
-Allows a node to indicate that it has begun work on completing a job.
+Allows a node to indicate that it has begun work on a job.
 
 #### Method
 
@@ -538,7 +360,9 @@ Allows a node to indicate that it has begun work on completing a job.
 
 #### Body
 
-  * send_notification: str (currently unused)
+  * JSON object containing:
+
+    * send_notification: str (currently unused)
 
 #### Permissions
 
@@ -546,37 +370,7 @@ Allows a node to indicate that it has begun work on completing a job.
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * JSON object containing the [fields](#fields) of the started job.
 
 
 ### Progress Job
@@ -595,7 +389,7 @@ been made on the completion of a job.
 #### Parameters
 
   * `PK`: int (primary key of job)
-  * `PROGRESS`: float between 0.0 and 1.0
+  * `PROGRESS`: float (percent completed, between 0.0 and 1.0 inclusive)
 
 #### Body
 
@@ -608,37 +402,7 @@ been made on the completion of a job.
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * JSON object containing the [fields](#fields) of the updated job.
 
 
 ### Finish Job
@@ -660,9 +424,12 @@ successfully or in-error).
 
 #### Body
 
-  * success: bool (currently unused)
-  * send_notification: str (currently unused)
-  * error (optional): str
+  * JSON object containing:
+
+    * success: bool (currently unused)
+    * send_notification: str (currently unused)
+    * error (optional): str (if present, the error that prevented the job from completing successfully; if absent,
+                             job completed successfully)
 
 #### Permissions
 
@@ -672,37 +439,7 @@ successfully or in-error).
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * JSON object containing the [fields](#fields) of the finished job.
 
 
 ### Reset Job
@@ -728,37 +465,7 @@ re-attempted.
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * JSON object containing the [fields](#fields) of the reset job.
 
 
 ### Abort Job
@@ -784,37 +491,7 @@ a node that has gone offline.
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * JSON object containing the [fields](#fields) of the aborted job.
 
 
 ### Cancel Job
@@ -840,37 +517,7 @@ of that job.
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * JSON object containing the [fields](#fields) of the cancelled job.
 
 
 ### Hard Delete
@@ -895,37 +542,7 @@ Permanently deletes the job. For soft-deletion, see [Destroy](#destroy).
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * JSON object containing the [fields](#fields) of the hard-deleted job.
 
 
 ### Reinstate
@@ -950,34 +567,25 @@ Undeletes a previously soft-deleted job.
 
 #### Response
 
-  * pk: int (primary key of job)
-  * description: str
-  * template (object):
-    
-    * pk: [job template ID](job_templates.md)
-    * name: str
-    * version: int
-    
-  * input_values (object):
-    
-    * (input name) -> { value: str, type: str }
-    
-  * parameter_values (object or null):
-    
-    * (parameter name) -> string
-    
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * JSON object containing the [fields](#fields) of the reinstated job.
+
+
+### Connect To Job
+
+The UFDL server also provides the ability to receive notifications about a job's progress via web-socket.
+
+#### Method
+
+`WEB SOCKET`
+
+#### URL
+
+`/v1/jobs/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of job)
+
+#### Permissions
+
+  * N/A

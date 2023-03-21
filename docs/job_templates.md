@@ -1,4 +1,7 @@
-Manages the job templates.
+Manages the job templates. Job-templates come in one of two varieties: workable templates and meta-templates.
+Workable templates specify an `executor`, which is a Python class which implements the functionality that jobs
+created from a template will perform. Meta-templates specify a graph of other templates to enact, and how to connect
+the outputs from prior jobs to subsequent jobs. This allows for re-using templates to create higher-order jobs.
 
 ## Fields
 
@@ -7,15 +10,25 @@ Manages the job templates.
   * version: int
   * description: str
   * scope: str (public/project/user)
-  * licence: [licence](licenses.md)
-  * domain: [domain](domains.md)
-  * inputs: set of [inputs](inputs.md)
-  * parameters: set of [parameters](parameters.md)
-  * creator: [user](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * workabletemplate: [workable template](workable_templates.md) or null
-  * metatemplate: [meta-template](meta_templates.md) or null 
+  * domain: str (the name of the [domain](domains.md) that this template operates in)
+  * licence: int (the primary-key of this job-template's [licence](licenses.md))
+  * creator: int or null (primary key of the [user](users.md) that created the output)
+  * creation_time: timestamp (the date-time that the output was created)
+  * deletion_time: timestamp or null (the date-time that the output was soft-deleted, or null if still active)
+
+If the job-template is a workable template, also included are:
+
+  * type: str (the [contract](job_contracts.md) that this template fulfills)
+  * executor_class: str (the fully-qualified path to the `executor` class for this template)
+  * required_packages: str (space-separated list of packages to install to use the `executor` class)
+  * parameters: JSON-object from parameter-names to objects containing:
+
+    * types: array of str (the types of value that this parameter can take)
+    * help: str (help text describing the parameter)
+    * default (optional): JSON (value that is used for this parameter if no value is provided)
+    * default_type (optional): str (the type of the `default` value)
+    * const (optional): bool (whether the parameter value is fixed)
+
 
 ## Actions
 
@@ -39,37 +52,8 @@ Manages the job templates.
   
 #### Response
 
-array of
+  * A JSON array of objects containing each job-template's [fields](#fields)
 
-  * pk: int (primary key of job template)
-  * name: str
-  * version: int
-  * description: str
-  * scope: str (public/project/user)
-  * domain: str ([domain name](domains.md))
-  * inputs (array of):
-      
-    * name: str
-    * types: array of str
-    * options: str
-    * help: str
-        
-  * parameters (array of):
-      
-    * name: str
-    * type: str
-    * default: str
-    * help: str
-        
-  * licence: [licence ID](licenses.md)
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * framework (optional): [framework ID](frameworks.md)
-  * type (optional): str
-  * executor_class (optional): str
-  * required_packages (optional): str
-  * body (optional): str
 
 ### Retrieve
 
@@ -91,35 +75,8 @@ array of
   
 #### Response
 
-  * pk: int (primary key of job template)
-  * name: str
-  * version: int
-  * description: str
-  * scope: str (public/project/user)
-  * domain: str ([domain name](domains.md))
-  * inputs (array of):
-    
-    * name: str
-    * types: array of str
-    * options: str
-    * help: str
-    
-  * parameters (array of):
-    
-    * name: str
-    * type: str
-    * default: str
-    * help: str
-    
-  * licence: [licence ID](licenses.md)
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * framework (optional): [framework ID](frameworks.md)
-  * type (optional): str
-  * executor_class (optional): str
-  * required_packages (optional): str
-  * body (optional): str
+  * A JSON object containing the job-output's [fields](#fields)
+
 
 ### Destroy
 
@@ -159,44 +116,48 @@ permanently delete, see [Hard Delete](#hard-delete).
 
 #### Body
 
-  * input_values (map from input name to):
+  * input_values: object mapping input names to objects containing:
     
-    * value: str
-    * type: str
+    * value: JSON (the value to give the input)
+    * type: str (the type to interpret the input value as)
       
-  * parameter_values (optional): map from parameter name to str
-  * description (optional): str
-  * notification_override (object):
+  * parameter_values (optional): object mapping parameter names to objects containing:
     
-    * actions (object):
+    * value: JSON (the value to give the parameter)
+    * type: str (the type to interpret the parameter value as)
+
+  * description (optional): str (a free-text description of why the job was executed)
+  * notification_override (optional): object containing:
+    
+    * actions: object containing:
       
-      * on_acquire: array of [notifications](notifications.md)
-      * on_release: array of [notifications](notifications.md)
-      * on_start: array of [notifications](notifications.md)
-      * on_progress: array of [notifications](notifications.md)
-      * on_finish: array of [notifications](notifications.md)
-      * on_error: array of [notifications](notifications.md)
-      * on_reset: array of [notifications](notifications.md)
-      * on_abort: array of [notifications](notifications.md)
-      * on_cancel: array of [notifications](notifications.md)
+      * on_acquire (optional): array of [notifications](notifications.md)
+      * on_release (optional): array of [notifications](notifications.md)
+      * on_start (optional): array of [notifications](notifications.md)
+      * on_progress (optional): array of [notifications](notifications.md)
+      * on_finish (optional): array of [notifications](notifications.md)
+      * on_error (optional): array of [notifications](notifications.md)
+      * on_reset (optional): array of [notifications](notifications.md)
+      * on_abort (optional): array of [notifications](notifications.md)
+      * on_cancel (optional): array of [notifications](notifications.md)
         
-    * keep_default (optional): bool
+    * keep_default (optional): bool (true to append the given notifications to the default, or false to remove the defaults)
     
-  * child_notification_overrides (map of child template name to):
+  * child_notification_overrides (optional): map of child template name to:
     
-    * actions (object):
+    * actions: object containing:
       
-      * on_acquire: array of [notifications](notifications.md)
-      * on_release: array of [notifications](notifications.md)
-      * on_start: array of [notifications](notifications.md)
-      * on_progress: array of [notifications](notifications.md)
-      * on_finish: array of [notifications](notifications.md)
-      * on_error: array of [notifications](notifications.md)
-      * on_reset: array of [notifications](notifications.md)
-      * on_abort: array of [notifications](notifications.md)
-      * on_cancel: array of [notifications](notifications.md)
+      * on_acquire (optional): array of [notifications](notifications.md)
+      * on_release (optional): array of [notifications](notifications.md)
+      * on_start (optional): array of [notifications](notifications.md)
+      * on_progress (optional): array of [notifications](notifications.md)
+      * on_finish (optional): array of [notifications](notifications.md)
+      * on_error (optional): array of [notifications](notifications.md)
+      * on_reset (optional): array of [notifications](notifications.md)
+      * on_abort (optional): array of [notifications](notifications.md)
+      * on_cancel (optional): array of [notifications](notifications.md)
         
-    * keep_default (optional): bool
+    * keep_default (optional): bool (true to append the given notifications to the default, or false to remove the defaults)
 
 #### Permissions
 
@@ -204,35 +165,7 @@ permanently delete, see [Hard Delete](#hard-delete).
 
 #### Response
 
-  * pk: [job ID](jobs.md)
-  * description: str
-  * template (object):
-    
-    * pk: int (same as `PK`)
-    * name: str
-    * version: int
-    
-  * input_values (map of input name to):
-    
-    * value: str
-    * type: str
-    
-  * parameter_values: null or map of parameter name to str
-  * outputs (array of objects):
-    
-    * pk: [job output ID](job_outputs.md)
-    * name: str
-    * type: str
-    
-  * node: [node ID](nodes.md) or null
-  * error_reason: str or null
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * start_time: timestamp or null
-  * end_time: timestamp or null
-  * parent: int (primary key of parent job) or null
-  * is_cancelled: bool
+  * A JSON object containing the created job's [fields](jobs.md#fields)
   
   
 ### Hard Delete
@@ -257,31 +190,7 @@ Permanently deletes the job template. For soft-deletion, see [Destroy](#destroy)
 
 #### Response
 
-  * pk: int (primary key of job template)
-  * name: str
-  * version: int
-  * description: str
-  * scope: str (public/project/user)
-  * domain: str ([domain name](domains.md))
-  * inputs: array of:
-    * name: str
-    * types: array of str
-    * options: str
-    * help: str
-  * parameters: array of:
-    * name: str
-    * type: str
-    * default: str
-    * help: str
-  * licence: [licence ID](licenses.md)
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * framework (optional): [framework ID](frameworks.md)
-  * type (optional): str
-  * executor_class (optional): str
-  * required_packages (optional): str
-  * body (optional): str
+  * A JSON object containing the hard-deleted job-template's [fields](#fields)
 
 
 ### Reinstate
@@ -306,31 +215,7 @@ Undeletes a previously soft-deleted job template.
 
 #### Response
 
-  * pk: int (primary key of job template)
-  * name: str
-  * version: int
-  * description: str
-  * scope: str (public/project/user)
-  * domain: str ([domain name](domains.md))
-  * inputs: array of:
-    * name: str
-    * types: array of str
-    * options: str
-    * help: str
-  * parameters: array of:
-    * name: str
-    * type: str
-    * default: str
-    * help: str
-  * licence: [licence ID](licenses.md)
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * framework (optional): [framework ID](frameworks.md)
-  * type (optional): str
-  * executor_class (optional): str
-  * required_packages (optional): str
-  * body (optional): str
+  * A JSON object containing the reinstated job-template's [fields](#fields)
 
 
 ### Import Template
@@ -353,31 +238,7 @@ Undeletes a previously soft-deleted job template.
 
 #### Response
 
-  * pk: int (primary key of job template)
-  * name: str
-  * version: int
-  * description: str
-  * scope: str (public/project/user)
-  * domain: str ([domain name](domains.md))
-  * inputs: array of:
-    * name: str
-    * types: array of str
-    * options: str
-    * help: str
-  * parameters: array of:
-    * name: str
-    * type: str
-    * default: str
-    * help: str
-  * licence: [licence ID](licenses.md)
-  * creator: [user ID](users.md) or null
-  * creation_time: timestamp
-  * deletion_time: timestamp or null
-  * framework (optional): [framework ID](frameworks.md)
-  * type (optional): str
-  * executor_class (optional): str
-  * required_packages (optional): str
-  * body (optional): str
+  * A JSON object containing the imported job-template's [fields](#fields)
 
 
 ### Export Template
@@ -401,3 +262,114 @@ Undeletes a previously soft-deleted job template.
 #### Response
 
   * JSON representation of job template ([example](https://github.com/waikato-ufdl/ufdl-backend/blob/master/ufdl-image-classification-app/src/ufdl/image_classification_app/migrations/job_templates/0001_tensorflow_1_14_image_class_train.json))
+
+
+### Get All Matching Templates
+
+Gets a list of all templates which implement a [job-contract](job_contracts.md) with inputs of specific types.
+
+#### Method
+
+`GET`
+
+#### URL
+
+`/v1/job-templates/get-all-matching-templates/{CONTRACT}?{INPUT_NAME}={INPUT_TYPE}&...`
+
+#### Parameters
+
+  * `CONTRACT`: int (primary key of job template)
+  * `INPUT_NAME`: str (the name of an input to filter by type)
+  * `INPUT_TYPE`: str (the type that the input should be able to take)
+  
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+
+#### Response
+
+  * A JSON array of objects containing all matching job-templates' [fields](#fields)
+
+
+### Get All Parameters
+
+Gets a list of the parameters to a job-template.
+
+#### Method
+
+`GET`
+
+#### URL
+
+`/v1/job-templates/{PK}/get-all-parameters`
+
+#### Parameters
+
+  * `PK`: int (primary key of job template)
+  
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+
+#### Response
+
+  * A JSON object from the job-template's parameter names to objects containing:
+
+    * types: object (types the parameter can take to the JSON schema for that type)
+    * help: str (a description of the parameter)
+    * value (optional): JSON (the default value of the parameter)
+    * type (optional): str (the type of the default value)
+    * schema (optional): JSON (the JSON schema for the default type)
+    * const (optional): bool (whether the parameter's value is fixed)
+
+
+### Get Types
+
+Gets the type-parametrisation of a job-template's [contract](job_contracts.md).
+
+#### Method
+
+`GET`
+
+#### URL
+
+`/v1/job-templates/{PK}/get-types`
+
+#### Parameters
+
+  * `PK`: int (primary key of job template)
+  
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+
+#### Response
+
+  * A JSON object from the job-template's generic type-parameter names to the type that the job-template
+    specifies for that type-parameter.
+
+
+### Get Outputs
+
+Gets the types of a job-template's [outputs](job_outputs.md).
+
+#### Method
+
+`GET`
+
+#### URL
+
+`/v1/job-templates/{PK}/get-outputs`
+
+#### Parameters
+
+  * `PK`: int (primary key of job template)
+  
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+
+#### Response
+
+  * A JSON object from the job-template's [contractual](job_contracts.md) output names to the type that the job-template
+    specifies for that output.

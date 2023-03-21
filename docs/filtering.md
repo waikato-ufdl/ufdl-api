@@ -42,8 +42,8 @@ The following expressions (`type`) are available:
   * `contains` - for sub-string matching
 
     * field: str - the field to work on
-    * value: str - the sub-string to look for
-    * case_insensitive: bool
+    * sub_string: str - the sub-string to look for
+    * case_insensitive: bool - whether to ignore case when searching for the sub-string
     * invert: bool - whether invert the matching, i.e., logical NOT 
 
   * `is_null` - checks for NULL values
@@ -55,7 +55,7 @@ The following expressions (`type`) are available:
 
     * field: str - the field to work on
     * operator: str - the comparison to perform (<, >, >=, <=)
-    * value: bool/int/float/str - the value to compare against
+    * value: int/float/str - the value to compare against
     * invert: bool - whether invert the comparison, i.e., logical NOT 
 
 
@@ -70,7 +70,7 @@ The following expressions (`type`) are available:
 ```
 
 * `field`: str - the field to enforce the ordering on
-* `ascending`: bool - ascending or descending
+* `ascending`: bool - ascending or (if false) descending
 * `nulls_first`: bool (optional) - whether nulls are listed first or last, 
   uses database default if omitted
 
