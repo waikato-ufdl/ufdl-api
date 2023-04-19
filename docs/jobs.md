@@ -63,6 +63,7 @@ Lists the jobs present on the server.
 
   * A JSON array of objects containing each job's [fields](#fields)
 
+
 ### Retrieve
 
 Gets the information about a specific job.
@@ -85,7 +86,7 @@ Gets the information about a specific job.
 
 #### Response
 
-  * A JSON object containing the created job's [fields](#fields)
+  * A JSON object containing the job's [fields](#fields)
 
 
 ### Update
