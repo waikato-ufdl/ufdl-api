@@ -1,218 +1,214 @@
 Manages the docker images used by the worker nodes.
 
-# Fields
+## Fields
 
-Available fields:
+  * pk: int (primary key of the Docker image)
+  * name: str
+  * version: str
+  * url: str
+  * registry_url: str (URL)
+  * registry_username: str or null (null if registry doesn't require login)
+  * registry_password: str or null (null if registry doesn't require login)
+  * cuda_version: JSON representation of the Docker image's [CUDA version](cuda.md#fields)
+  * framework: JSON representation of the Docker image's [framework](frameworks.md#fields)
+  * domain: str (name of the [domain](domains.md) the Docker image operates in)
+  * tasks: array of str (names of [job-contracts](job_contracts.md) that the Docker image can be used with e.g. Train/Predict/...)
+  * min_hardware_generation: JSON representation of the Docker image's [minimum required hardware generation](hardware.md#fields) or null
+  * cpu: bool (works on CPU only?)
+  * licence: str (name of the Docker image's [license](licenses.md))
+
+## Actions
+
+### List
+
+Lists the Docker images present on the server.
+
+#### Method
+
+`POST`
+
+#### URL
+
+`/v1/docker/list`
+
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+
+#### Body (optional)
+
+  * [filter specification](filtering.md)
+  
+#### Response
+
+  * A JSON array of objects containing each Docker image's [fields](#fields)
+
+
+### Create
+
+Creates a new Docker image.
+
+#### Method
+
+`POST`
+
+#### URL
+
+`/v1/docker`
+
+#### Body
 
   * name: str
   * version: str
   * url: str
-  * registry: str (URL)
-  * registry_username: str (only if registry requires login)
-  * registry_password: str
-  * cuda_version: [CUDA ID](cuda.md)
-  * min_hardware_generation: [hardware ID](hardware.md)
+  * registry_url: str (URL)
+  * registry_username: str or null (null if registry doesn't require login)
+  * registry_password: str or null (null if registry doesn't require login)
+  * cuda_version: str ([CUDA version-string](cuda.md#fields))
+  * framework: int ([framework primary-key](frameworks.md#fields))
+  * domain: str (name of the [domain](domains.md) the Docker image operates in)
+  * tasks: array of str (names of [job-contracts](job_contracts.md) that the Docker image can be used with e.g. Train/Predict/...)
+  * min_hardware_generation: ([minimum required hardware generation-string](hardware.md#fields)) or null
   * cpu: bool (works on CPU only?)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * tasks: array of str (train/predict/...)
-  * licence: [license ID](licenses.md)
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
+  * licence: str (name of the Docker image's [license](licenses.md))
 
-# Actions
+#### Permissions
 
-## List
+  * [user is admin](permissions.md#isadminuser)
 
-POST: `/v1/docker/list`
+#### Response
 
-Body (optional): [filter specification](filtering.md)
-  
-Response:
+  * A JSON object containing the newly-created Docker image's [fields](#fields)
 
-  * array of
 
-    * pk: int (primary key of docker image)
+### Retrieve
+
+Gets the information about a specific Docker image.
+
+#### Method
+
+`GET`
+
+#### URL
+
+`/v1/docker/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of Docker image)
+
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+
+#### Response
+
+  * A JSON object containing the Docker image's [fields](#fields)
+
+
+### Update
+
+Updates a specific Docker image.
+
+#### Method
+
+`PUT`
+
+#### URL
+
+`/v1/docker/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of Docker image)
+
+#### Body
+
+  * JSON object containing:
+
     * name: str
     * version: str
     * url: str
-    * registry: str (URL)
-    * registry_username: str (only if registry requires login)
-    * registry_password: str
-    * cuda_version: [CUDA ID](cuda.md)
-    * min_hardware_generation: [hardware ID](hardware.md)
+    * registry_url: str (URL)
+    * registry_username: str or null (null if registry doesn't require login)
+    * registry_password: str or null (null if registry doesn't require login)
+    * cuda_version: str ([CUDA version-string](cuda.md#fields))
+    * framework: int ([framework primary-key](frameworks.md#fields))
+    * domain: str (name of the [domain](domains.md) the Docker image operates in)
+    * tasks: array of str (names of [job-contracts](job_contracts.md) that the Docker image can be used with e.g. Train/Predict/...)
+    * min_hardware_generation: ([minimum required hardware generation-string](hardware.md#fields)) or null
     * cpu: bool (works on CPU only?)
-    * framework: [framework ID](frameworks.md)
-    * domain: [domain name](domains.md)
-    * tasks: array of str (train/predict/...)
-    * licence: [license ID](licenses.md)
-    * creator: [user ID](users.md)
-    * creation_time: timestamp
-    * deletion_time: timestamp
+    * licence: str (name of the Docker image's [license](licenses.md))
+
+#### Permissions
+
+  * [user is admin](permissions.md#isadminuser)
+
+#### Response
+
+  * A JSON object containing the updated job's [fields](#fields)
 
 
-## Load
+### Partial Update
 
-GET: `/v1/docker/{PK}`
+Updates a specific Docker image.
 
-Parameters:
+#### Method
 
-  * PK: int (primary key of docker image)
-  
-Response:
+`PATCH`
 
-  * pk: int (primary key of docker image)
-  * name: str
-  * version: str
-  * url: str
-  * registry: str (URL)
-  * registry_username: str (only if registry requires login)
-  * registry_password: str
-  * cuda_version: [CUDA ID](cuda.md)
-  * min_hardware_generation: [hardware ID](hardware.md)
-  * cpu: bool (works on CPU only?)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * tasks: array of str (train/predict/...)
-  * licence: [license ID](licenses.md)
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
+#### URL
 
-## Add
+`/v1/docker/{PK}`
 
-POST: `/v1/docker/create`
+#### Parameters
 
-Body:
+  * `PK`: int (primary key of Docker image)
 
-  * name: str
-  * version: str
-  * url: str
-  * registry: str (URL)
-  * registry_username: str (only if registry requires login)
-  * registry_password: str
-  * cuda_version: [CUDA ID](cuda.md)
-  * min_hardware_generation: [hardware ID](hardware.md)
-  * cpu: bool (works on CPU only?)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * tasks: array of str (train/predict/...)
-  * licence: [license ID](licenses.md)
+#### Body
 
-Response:
+  * JSON object containing:
 
-  * pk: int (primary key of docker image)
-  * name: str
-  * version: str
-  * url: str
-  * registry: str (URL)
-  * registry_username: str (only if registry requires login)
-  * registry_password: str
-  * cuda_version: [CUDA ID](cuda.md)
-  * min_hardware_generation: [hardware ID](hardware.md)
-  * cpu: bool (works on CPU only?)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * tasks: array of str (train/predict/...)
-  * licence: [license ID](licenses.md)
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
+    * name (optional): str
+    * version (optional): str
+    * url (optional): str
+    * registry_url (optional): str (URL)
+    * registry_username (optional): str or null (null if registry doesn't require login)
+    * registry_password (optional): str or null (null if registry doesn't require login)
+    * cuda_version (optional): str ([CUDA version-string](cuda.md#fields))
+    * framework (optional): int ([framework primary-key](frameworks.md#fields))
+    * domain (optional): str (name of the [domain](domains.md) the Docker image operates in)
+    * tasks (optional): array of str (names of [job-contracts](job_contracts.md) that the Docker image can be used with e.g. Train/Predict/...)
+    * min_hardware_generation (optional): ([minimum required hardware generation-string](hardware.md#fields)) or null
+    * cpu (optional): bool (works on CPU only?)
+    * licence (optional): str (name of the Docker image's [license](licenses.md))
 
-## Update
+#### Permissions
 
-PUT: `/v1/docker/{PK}`
+  * [user is admin](permissions.md#isadminuser)
 
-Parameters:
+#### Response
 
-  * PK: int (primary key of docker image)
-  
-Body: 
- 
-  * name: str
-  * version: str
-  * url: str
-  * registry: str (URL)
-  * registry_username: str (only if registry requires login)
-  * registry_password: str
-  * cuda_version: [CUDA ID](cuda.md)
-  * min_hardware_generation: [hardware ID](hardware.md)
-  * cpu: bool (works on CPU only?)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * tasks: array of str (train/predict/...)
-  * licence: [license ID](licenses.md)
-
-Response:
-
-  * pk: int (primary key of docker image)
-  * name: str
-  * version: str
-  * url: str
-  * registry: str (URL)
-  * registry_username: str (only if registry requires login)
-  * registry_password: str
-  * cuda_version: [CUDA ID](cuda.md)
-  * min_hardware_generation: [hardware ID](hardware.md)
-  * cpu: bool (works on CPU only?)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * tasks: array of str (train/predict/...)
-  * licence: [license ID](licenses.md)
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
-
-## Partial update
-
-PATCH: `/v1/docker/{PK}`
-
-Parameters:
-
-  * PK: int (primary key of docker image)
-
-Any of the following fields in the body:
-
-  * name: str
-  * version: str
-  * url: str
-  * registry: str (URL)
-  * registry_username: str (only if registry requires login)
-  * registry_password: str
-  * cuda_version: [CUDA ID](cuda.md)
-  * min_hardware_generation: [hardware ID](hardware.md)
-  * cpu: bool (works on CPU only?)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * tasks: array of str (train/predict/...)
-  * licence: [license ID](licenses.md)
-
-Response:
-
-  * pk: int (primary key of docker image)
-  * name: str
-  * version: str
-  * url: str
-  * registry: str (URL)
-  * registry_username: str (only if registry requires login)
-  * registry_password: str
-  * cuda_version: [CUDA ID](cuda.md)
-  * min_hardware_generation: [hardware ID](hardware.md)
-  * cpu: bool (works on CPU only?)
-  * framework: [framework ID](frameworks.md)
-  * domain: [domain name](domains.md)
-  * tasks: array of str (train/predict/...)
-  * licence: [license ID](licenses.md)
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
+  * A JSON object containing the updated job's [fields](#fields)
 
 
-## Delete
+### Destroy
 
-DELETE: `/v1/docker/{PK}`
+Attempts to delete a Docker image from the server. The Docker image will only be deleted
+if no references are held to it by other models on the server.
 
-Parameters:
+#### Method
 
-  * PK: int (primary key of docker image)
+`DELETE`
+
+#### URL
+
+`/v1/docker/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of job)
+
+#### Permissions
+
+  * [user is admin](permissions.md#isadminuser)
