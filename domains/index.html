@@ -343,12 +343,94 @@
     List
   </a>
   
+    <nav class="md-nav" aria-label="List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method" class="md-nav__link">
+    Method
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#load" class="md-nav__link">
-    Load
+  <a href="#url" class="md-nav__link">
+    URL
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#body-optional" class="md-nav__link">
+    Body (optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieve" class="md-nav__link">
+    Retrieve
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieve">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method_1" class="md-nav__link">
+    Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions_1" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_1" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -752,12 +834,94 @@
     List
   </a>
   
+    <nav class="md-nav" aria-label="List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method" class="md-nav__link">
+    Method
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#load" class="md-nav__link">
-    Load
+  <a href="#url" class="md-nav__link">
+    URL
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#body-optional" class="md-nav__link">
+    Body (optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieve" class="md-nav__link">
+    Retrieve
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieve">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method_1" class="md-nav__link">
+    Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions_1" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_1" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -790,38 +954,48 @@
 
 <p>Centralized table with domains. Domains are automatically added to 
 the database, depending on the available modules in the backend.</p>
-<h2 id="fields">Fields<a class="headerlink" href="#fields" title="Permanent link">#</a></h2>
-<p>Available fields:</p>
+<h3 id="fields">Fields<a class="headerlink" href="#fields" title="Permanent link">#</a></h3>
 <ul>
-<li>name: str (od)</li>
-<li>description: str (Object detection)</li>
+<li>pk: int</li>
+<li>name: str (2-letter short-code for the domain e.g. "od")</li>
+<li>description: str (Long-format name for the domain e.g. "Object Detection")</li>
 </ul>
-<h2 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">#</a></h2>
-<h3 id="list">List<a class="headerlink" href="#list" title="Permanent link">#</a></h3>
-<p>POST: <code>/v1/domains/list</code></p>
-<p>Body (optional): <a href="../filtering/">filter specification</a></p>
-<p>Response:</p>
+<h3 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">#</a></h3>
+<h4 id="list">List<a class="headerlink" href="#list" title="Permanent link">#</a></h4>
+<p>Lists the domains present on the server.</p>
+<h5 id="method">Method<a class="headerlink" href="#method" title="Permanent link">#</a></h5>
+<p><code>POST</code></p>
+<h5 id="url">URL<a class="headerlink" href="#url" title="Permanent link">#</a></h5>
+<p><code>/v1/domains/list</code></p>
+<h5 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">#</a></h5>
 <ul>
-<li>
-<p>array of</p>
-<ul>
-<li>pk: int (primary key of domain)</li>
-<li>name: str</li>
-<li>description: str</li>
+<li><a href="../permissions/#isauthenticated">user is authenticated</a></li>
 </ul>
-</li>
-</ul>
-<h3 id="load">Load<a class="headerlink" href="#load" title="Permanent link">#</a></h3>
-<p>GET: <code>/v1/domains/{PK}</code></p>
-<p>Parameters:</p>
+<h5 id="body-optional">Body (optional)<a class="headerlink" href="#body-optional" title="Permanent link">#</a></h5>
 <ul>
-<li>PK: int (primary key of domain)</li>
+<li><a href="../filtering/">filter specification</a></li>
 </ul>
-<p>Response:</p>
+<h5 id="response">Response<a class="headerlink" href="#response" title="Permanent link">#</a></h5>
 <ul>
-<li>pk: int (primary key of domain)</li>
-<li>name: str</li>
-<li>description: str</li>
+<li>A JSON array of objects containing each domain's <a href="#fields">fields</a></li>
+</ul>
+<h4 id="retrieve">Retrieve<a class="headerlink" href="#retrieve" title="Permanent link">#</a></h4>
+<p>Gets the information about a specific domain.</p>
+<h5 id="method_1">Method<a class="headerlink" href="#method_1" title="Permanent link">#</a></h5>
+<p><code>GET</code></p>
+<h5 id="url_1">URL<a class="headerlink" href="#url_1" title="Permanent link">#</a></h5>
+<p><code>/v1/domains/{PK}</code></p>
+<h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h5>
+<ul>
+<li><code>PK</code>: int (primary key of the domain)</li>
+</ul>
+<h5 id="permissions_1">Permissions<a class="headerlink" href="#permissions_1" title="Permanent link">#</a></h5>
+<ul>
+<li><a href="../permissions/#isauthenticated">user is authenticated</a></li>
+</ul>
+<h5 id="response_1">Response<a class="headerlink" href="#response_1" title="Permanent link">#</a></h5>
+<ul>
+<li>A JSON object containing the domain's <a href="#fields">fields</a></li>
 </ul>
 
 
