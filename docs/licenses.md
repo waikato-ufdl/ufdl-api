@@ -1,139 +1,208 @@
 Gives access to the available licenses on the server.
 
-# Fields
+## Fields
 
-Available fields:
-
+  * pk: int
   * name: str
   * url: str
-  * domains: str (Software/Models/Data)
+  * domains: array of str (Software/Models/Data)
   * permissions: array of str
   * limitations: array of str
   * conditions: array of str
 
-# Actions
+## Actions
 
-## List
+### List
 
-POST: `/v1/licences/list`
+Lists the licences present on the server.
 
-Body (optional): [filter specification](filtering.md)
+#### Method
+
+`POST`
+
+#### URL
+
+`/v1/licences/list`
+`/v1/licenses/list`
+
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+
+#### Body (optional)
+
+  * [filter specification](filtering.md)
   
-Response:
+#### Response
 
-  * array of
-
-    * pk: int (primary key of license)
-    * name: str
-    * url: str
-    * domains: str (Software/Models/Data)
-    * permissions: array of str
-    * limitations: array of str
-    * conditions: array of str
+  * A JSON array of objects containing each licence's [fields](#fields)
 
 
-## Load
+### Create
 
-GET: `/v1/licences/{PK}`
+Creates a new licence.
 
-Parameters:
+#### Method
 
-  * PK: int (primary key of license)
-  
-Response:
+`POST`
 
-  * pk: int (primary key of license)
-  * name: str
-  * url: str
-  * domains: str (Software/Models/Data)
-  * permissions: array of str
-  * limitations: array of str
-  * conditions: array of str
+#### URL
 
-## Add
+`/v1/licences/create`
+`/v1/licenses/create`
 
-POST: `/v1/licences/create`
-
-Body:
+#### Body
 
   * name: str
   * url: str
 
-Response:
+#### Permissions
 
-  * pk: int (primary key of license)
+  * [user is admin](permissions.md#isadminuser)
+
+#### Response
+
+  * A JSON object containing the newly-created licence's [fields](#fields)
+
+
+
+### Retrieve
+
+Gets the information about a specific licence.
+
+#### Method
+
+`GET`
+
+#### URL
+
+`/v1/licences/{PK}`
+`/v1/licenses/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of the licence)
+
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+
+#### Response
+
+  * A JSON object containing the licence's [fields](#fields)
+
+
+### Update
+
+Updates a specific licence.
+
+#### Method
+
+`PUT`
+
+#### URL
+
+`/v1/licences/{PK}`
+`/v1/licenses/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of licence)
+
+#### Body
+
   * name: str
   * url: str
-  * domains: str (Software/Models/Data)
-  * permissions: array of str
-  * limitations: array of str
-  * conditions: array of str
 
-## Update
+#### Permissions
 
-PUT: `/v1/licences/{PK}`
+  * [user is admin](permissions.md#isadminuser)
 
-Parameters:
+#### Response
 
-  * PK: int (primary key of license)
-  
-Body: 
- 
-  * name: str
-  * url: str
-
-Response:
-
-  * pk: int (primary key of license)
-  * name: str
-  * url: str
-  * domains: str (Software/Models/Data)
-  * permissions: array of str
-  * limitations: array of str
-  * conditions: array of str
-
-## Partial update
-
-PATCH: `/v1/licences/{PK}`
-
-Parameters:
-
-  * PK: int (primary key of license)
-
-Any of the following fields in the body:
-
-  * name: str
-  * url: str
-
-Response:
-
-  * pk: int (primary key of license)
-  * name: str
-  * url: str
-  * domains: str (Software/Models/Data)
-  * permissions: array of str
-  * limitations: array of str
-  * conditions: array of str
-
-## Modify domains/permissions/limitations/conditions
-
-PATCH: `/v1/licences/{PK}/subdescriptors`
-
-Parameters:
-
-  * PK: int (primary key of license)
-  
-Body:
-
-  * method: str (add/remove)
-  * type: str (domains/permissions/limitations/conditions)
-  * names: array of str
+  * A JSON object containing the updated licence's [fields](#fields)
 
 
-## Delete
+### Partial Update
 
-DELETE: `/v1/licences/{PK}`
+Updates a specific licence.
 
-Parameters:
+#### Method
 
-  * PK: int (primary key of license)
+`PATCH`
+
+#### URL
+
+`/v1/licences/{PK}`
+`/v1/licenses/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of the licence)
+
+#### Body
+
+  * name (optional): str
+  * url (optional): str
+
+#### Permissions
+
+  * [user is admin](permissions.md#isadminuser)
+
+#### Response
+
+  * A JSON object containing the updated licence's [fields](#fields)
+
+
+### Destroy
+
+Deletes a licence from the server.
+
+#### Method
+
+`DELETE`
+
+#### URL
+
+`/v1/licences/{PK}`
+`/v1/licenses/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of the licence)
+
+#### Permissions
+
+  * [user is admin](permissions.md#isadminuser)
+
+
+### Modify Subdescriptors
+
+Modifies the domains, permissions, limitations and conditions of a licence.
+
+#### Method
+
+`PATCH`
+
+#### URL
+
+`/v1/licences/{PK}/subdescriptors`
+`/v1/licenses/{PK}/subdescriptors`
+
+#### Parameters
+
+  * `PK`: int (primary key of the licence)
+
+#### Body
+
+  * type: str (one of: "domains", "permissions", "limitations", "conditions")
+  * method: str (one of: "add", "remove")
+  * names: array of str (the `type` sub-descriptors to add to/remove from the licence)
+
+#### Permissions
+
+  * [user is admin](permissions.md#isadminuser)
+
+#### Response
+
+  * A JSON object containing the updated licence's [fields](#fields)
