@@ -67,7 +67,7 @@ Creates a new job contract.
 
 #### URL
 
-`/v1/job-contracts`
+`/v1/job-contracts/create`
 
 #### Body
 

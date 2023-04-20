@@ -46,7 +46,7 @@ Creates a new job type.
 
 #### URL
 
-`/v1/job-types`
+`/v1/job-types/create`
 
 #### Body
 

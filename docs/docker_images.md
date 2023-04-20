@@ -54,7 +54,7 @@ Creates a new Docker image.
 
 #### URL
 
-`/v1/docker`
+`/v1/docker/create`
 
 #### Body
 
