@@ -2,6 +2,7 @@ Centralized table with frameworks and their versions (e.g., PyTorch 1.2).
 
 ## Fields
 
+  * pk: int
   * name: str
   * version: str
 
