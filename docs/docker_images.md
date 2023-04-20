@@ -189,7 +189,7 @@ Updates a specific Docker image.
 
 #### Response
 
-  * A JSON object containing the updated job's [fields](#fields)
+  * A JSON object containing the updated Docker image's [fields](#fields)
 
 
 ### Destroy
