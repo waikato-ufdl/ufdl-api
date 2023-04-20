@@ -111,6 +111,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/models/</loc>
+         <lastmod>2023-04-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/nodes/</loc>
          <lastmod>2023-04-20</lastmod>
          <changefreq>daily</changefreq>
