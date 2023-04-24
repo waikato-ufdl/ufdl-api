@@ -1,134 +1,229 @@
-Projects link datasets and projects.
+Projects are for organising groups of datasets within a team.
 
 # Fields
 
+## Fields
+
 Available fields:
 
+  * pk: int
   * name: str
-  * project: [project ID](projects.md)
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
+  * team: int (primary key of the team that owns the project)
+  * creator: int or null (primary key of the [user](users.md) that created the project)
+  * creation_time: timestamp (the date-time that the project was created)
+  * deletion_time: timestamp or null (the date-time that the project was soft-deleted, or null if still active)
 
-# Actions
 
-## List
+## Actions
 
-POST: `/v1/projects/list`
+### List
 
-Body (optional): [filter specification](filtering.md)
+Lists the projects present on the server.
+
+#### Method
+
+`POST`
+
+#### URL
+
+`/v1/projects/list`
+
+#### Permissions
+
+  * [user is authenticated](permissions.md#isauthenticated)
+
+#### Body (optional)
+
+  * [filter specification](filtering.md)
   
-Response:
+#### Response
 
-  * array of
-
-    * pk: int (primary key of project)
-    * name: str
-    * team: [team ID](projects.md)
-    * creator: [user ID](users.md)
-    * creation_time: timestamp
-    * deletion_time: timestamp
+  * A JSON array of objects containing each project's [fields](#fields)
 
 
-## Load
+### Create
 
-GET: `/v1/projects/{PK}`
+Creates a new project.
 
-Parameters:
+#### Method
 
-  * PK: int (primary key of project)
-  
-Response:
+`POST`
 
-  * pk: int (primary key of project)
-  * name: str
-  * team: [team ID](projects.md)
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
+#### URL
 
-## Add
+`/v1/projects/create`
 
-POST: `/v1/project/create`
-
-Body:
+#### Body
 
   * name: str
-  * team: [team ID](projects.md)
+  * team: int (primary key of the team to create the project for)
 
-Response:
+#### Permissions
 
-  * pk: int (primary key of project)
+  * [user is a member of the project's team with write permission](permissions.md#memberhaswritepermission), or
+  * [user is admin](permissions.md#isadminuser)
+
+#### Response
+
+  * A JSON object containing the newly-created project's [fields](#fields)
+
+
+### Retrieve
+
+Gets the information about a specific project.
+
+#### Method
+
+`GET`
+
+#### URL
+
+`/v1/projects/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of project)
+
+#### Permissions
+
+  * [user is a member of the project's team](permissions.md#ismember), or
+  * [user is admin](permissions.md#isadminuser)
+
+#### Response
+
+  * A JSON object containing the project's [fields](#fields)
+
+
+### Update
+
+Updates a specific project.
+
+#### Method
+
+`PUT`
+
+#### URL
+
+`/v1/projects/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of project)
+
+#### Body
+
   * name: str
-  * team: [team ID](projects.md)
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
+  * team: int (primary key of the team to move the project to)
 
-## Update
+#### Permissions
 
-PUT: `/v1/project/{PK}`
+  * [user is a member of the project's team with write permission](permissions.md#memberhaswritepermission), or
+  * [user is admin](permissions.md#isadminuser)
 
-Parameters:
+#### Response
 
-  * PK: int (primary key of project)
-  
-Body: 
- 
-  * name: str
-  * team: [team ID](projects.md)
+  * A JSON object containing the updated project's [fields](#fields)
 
-Response:
 
-  * pk: int (primary key of project)
-  * name: str
-  * team: [team ID](projects.md)
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
+### Partial Update
 
-## Partial update
+Updates a specific project.
 
-PATCH: `/v1/project/{PK}`
+#### Method
 
-Parameters:
+`PATCH`
 
-  * PK: int (primary key of project)
-  
-Any of the following fields in the body:
- 
-  * name: str
-  * team: [team ID](projects.md)
+#### URL
 
-Response:
+`/v1/projects/{PK}`
 
-  * pk: int (primary key of project)
-  * name: str
-  * team: [team ID](projects.md)
-  * creator: [user ID](users.md)
-  * creation_time: timestamp
-  * deletion_time: timestamp
+#### Parameters
 
-## Delete
+  * `PK`: int (primary key of project)
 
-DELETE: `/v1/project/{PK}[/hard]`
+#### Body
 
-Parameters:
+  * name (optional): str
+  * team (optional): int (primary key of the team to move the project to)
 
-  * PK: int (primary key of project)
+#### Permissions
 
-Notes:
+  * [user is a member of the project's team with write permission](permissions.md#memberhaswritepermission), or
+  * [user is admin](permissions.md#isadminuser)
 
-  * Omitting `/hard` from URL only flags it as deleted, it can be reinstated
+#### Response
 
-## Reinstate
+  * A JSON object containing the updated project's [fields](#fields)
 
-DELETE: `/v1/project/{PK}/reinstate`
 
-Parameters:
+### Destroy
 
-  * PK: int (primary key of project)
+Flags a project as deleted, it can be [reinstated](#reinstate). To
+permanently delete, see [Hard Delete](#hard-delete).
 
-Notes:
+#### Method
 
-  * Undeletes a previously soft-deleted project
+`DELETE`
+
+#### URL
+
+`/v1/projects/{PK}`
+
+#### Parameters
+
+  * `PK`: int (primary key of project)
+
+#### Permissions
+
+  * [user is a member of the project's team with write permission](permissions.md#memberhaswritepermission), or
+  * [user is admin](permissions.md#isadminuser)
+
+
+### Hard Delete
+
+Permanently deletes the project. For soft-deletion, see [Destroy](#destroy).
+
+#### METHOD
+
+`DELETE`
+
+#### URL
+
+`/v1/projects/{PK}/hard`
+
+#### Parameters
+
+  * `PK`: int (primary key of project)
+
+#### Permissions
+
+  * [user is admin](permissions.md#isadminuser)
+
+#### Response
+
+  * JSON object containing the [fields](#fields) of the hard-deleted project.
+
+
+### Reinstate
+
+Undeletes a previously soft-deleted project.
+
+#### Method
+
+`DELETE`
+
+#### URL
+
+`/v1/projects/{PK}/reinstate`
+
+#### Parameters
+
+  * `PK`: int (primary key of project)
+
+#### Permissions
+
+  * [user is admin](permissions.md#isadminuser)
+
+#### Response
+
+  * JSON object containing the [fields](#fields) of the reinstated project.
