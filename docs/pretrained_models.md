@@ -4,7 +4,7 @@ Manages the pre-trained models, centralizing downloads to decrease network conge
 
   * pk: int (primary key of the pretrained model)
   * framework: JSON object (containing the [framework fields](frameworks.md#fields))
-  * domain: str ([domain name](domains.md#fields))
+  * domain: str ([domain description](domains.md#fields))
   * licence: str ([licence name](licenses.md#fields))
   * data: bool (whether the pretrained model's data is available)
   * creator: int or null (primary key of the [user](users.md) that created the pretrained model)

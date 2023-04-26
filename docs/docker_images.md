@@ -11,7 +11,7 @@ Manages the docker images used by the worker nodes.
   * registry_password: str or null (null if registry doesn't require login)
   * cuda_version: JSON representation of the Docker image's [CUDA version](cuda.md#fields)
   * framework: JSON representation of the Docker image's [framework](frameworks.md#fields)
-  * domain: str (name of the [domain](domains.md) the Docker image operates in)
+  * domain: str (long-name of the [domain](domains.md) the Docker image operates in)
   * tasks: array of str (names of [job-contracts](job_contracts.md) that the Docker image can be used with e.g. Train/Predict/...)
   * min_hardware_generation: JSON representation of the Docker image's [minimum required hardware generation](hardware.md#fields) or null
   * cpu: bool (works on CPU only?)
