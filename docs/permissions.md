@@ -5,6 +5,10 @@ as a node ID that the user is acting on behalf of. Based on the state of
 the user/node and the action being performed, access to the action may be
 permitted/denied based on any of the following criteria.
 
+## AllowAny
+
+Access to this action is always permitted.
+
 ## AllowNone
 
 Access to this action is never permitted under any circumstance.
