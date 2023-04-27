@@ -4,67 +4,132 @@ For core dataset operations, see [here](datasets.md).
 
 **NB:** labels = layer names
 
-# URL
+## URL
 
 Uses `/v1/segments/datasets/` instead of `/v1/datasets/`, 
 also for the core operations.
 
-# Actions
+## Actions
 
-## Set labels
+### Get Layer
 
-Must be invoked after creating a new dataset to allow the upload of layer masks.
+Gets the segmentation mask image for a label in a dataset.
 
-POST: `/v1/segments/datasets/{PK}/labels`
+#### Method
 
-Parameters:
+`GET`
 
-  * PK: int (primary key of dataset)
+#### URL
 
-Body:
+`/v1/segments/datasets/{PK}/layers/{FILENAME}/{LABEL}`
 
-  * labels: array of labels
+#### Parameters
 
-## Get labels
+  * `PK`: int (primary key of the dataset)
+  * `FILENAME`: str (the filename of the image to get the layer from)
+  * `LABEL`: str (the label of the layer to get)
 
-GET: `/v1/segments/datasets/{PK}/labels`
+#### Permissions
 
-Parameters:
+  * [user is a member of the team that owns the dataset](permissions.md#ismember), or
+  * [user is admin](permissions.md#isadminuser)
+  
+#### Response
 
-  * PK: int (primary key of dataset)
+  Binary image data for the layer mask.
+  
 
-Response:
+### Set Layer
 
-  * array of labels
+Sets the segmentation mask image for a label in a dataset.
 
-## Set layer
+#### Method
 
-Uploads a layer mask for an image.
+`POST`
 
-POST: `/v1/segments/datasets/{PK}/layers/{image}/{label}`
+#### URL
 
-Parameters:
+`/v1/segments/datasets/{PK}/layers/{FILENAME}/{LABEL}`
 
-  * PK: int (primary key of dataset)
-  * image: the name of the image to upload the mask for
-  * label: the name of the layer
+#### Parameters
 
-Body:
+  * `PK`: int (primary key of the dataset)
+  * `FILENAME`: str (the filename of the image to get the layer from)
+  * `LABEL`: str (the label of the layer to get)
 
-  * the layer mask as file attachment
+#### Body
 
-## Get layer
+  Binary image data for the layer mask.
 
-Downloads a layer mask of an image (may not exist).
+#### Permissions
 
-GET: `/v1/segments/datasets/{PK}/layers/{image}/{label}`
+  * [user is a member of the team that owns the dataset with write permission](permissions.md#memberhaswritepermission), or
+  * [user is admin](permissions.md#isadminuser), or
+  * both:
+    * [user is a member of the team that owns the dataset with execute permission](permissions.md#memberhasexecutepermission), and
+    * [user is a node](permissions.md#isnode)
+  
+#### Response
 
-Parameters:
+  JSON string containing the label.
+  
 
-  * PK: int (primary key of dataset)
-  * image: the name of the image to upload the mask for
-  * label: the name of the layer
+### Get Labels
 
-Response:
+Gets the labels used by a dataset.
 
-  * byte array representing the mask file (0-length if layer not present)
+#### Method
+
+`GET`
+
+#### URL
+
+`/v1/segments/datasets/{PK}/labels`
+
+#### Parameters
+
+  * `PK`: int (primary key of the dataset)
+
+#### Permissions
+
+  * [user is a member of the team that owns the dataset](permissions.md#ismember), or
+  * [user is admin](permissions.md#isadminuser)
+  
+#### Response
+
+  A JSON array of strings containing the labels.
+
+
+### Set Labels
+
+Gets the labels used by a dataset.
+
+#### Method
+
+`POST`
+
+#### URL
+
+`/v1/segments/datasets/{PK}/labels`
+
+#### Parameters
+
+  * `PK`: int (primary key of the dataset)
+
+#### Body
+
+  * labels: array of str
+
+#### Permissions
+
+  * [user is a member of the team that owns the dataset with write permission](permissions.md#memberhaswritepermission), or
+  * [user is admin](permissions.md#isadminuser), or
+  * both:
+    * [user is a member of the team that owns the dataset with execute permission](permissions.md#memberhasexecutepermission), and
+    * [user is a node](permissions.md#isnode)
+  
+#### Response
+
+  A JSON array of strings containing the labels.
+
+  
