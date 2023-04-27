@@ -2,172 +2,177 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/audio_classification/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/authentication/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/cuda/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/datasets/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/docker_images/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/domains/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/filtering/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/frameworks/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/hardware/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/image_classification/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/image_segmentation/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/inputs/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/job_contracts/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/job_outputs/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/job_templates/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/job_types/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/jobs/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/licenses/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/meta_template_child_relations/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/meta_template_dependencies/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/meta_templates/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/models/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/nodes/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/notifications/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/object_detection/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/parameters/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/permissions/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/pretrained_models/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/projects/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/spectrum_classification/</loc>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/speech/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/teams/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/users/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ufdl.cms.waikato.ac.nz/ufdl-api/workable_templates/</loc>
-         <lastmod>2023-04-20</lastmod>
+         <lastmod>2023-04-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
